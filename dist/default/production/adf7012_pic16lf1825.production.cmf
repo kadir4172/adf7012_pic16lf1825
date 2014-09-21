@@ -11,37 +11,41 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\Kadir\AppData\Local\Temp\s58s.obj
+$C:\Users\Kadir\AppData\Local\Temp\s530.obj
 end_init CODE 0 43 43 2 2
 reset_vec CODE 0 0 0 2 2
 config CONFIG 0 8007 8007 2 2
 $dist/default/production\adf7012_pic16lf1825.production.obj
-cinit CODE 0 45 45 1C 2
+cinit CODE 0 45 45 27 2
 intentry CODE 0 4 4 3F 2
-text7 CODE 0 105 105 6 2
-text6 CODE 0 10B 10B 5 2
-text5 CODE 0 D3 D3 11 2
-text4 CODE 0 E4 E4 D 2
-text3 CODE 0 61 61 2E 2
-text2 CODE 0 110 110 2 2
-text1 CODE 0 F1 F1 8 2
-maintext CODE 0 B7 B7 1C 2
-cstackBANK0 BANK0 1 55 55 2 1
-cstackCOMMON COMMON 1 70 70 7 1
-inittext CODE 0 FF FF 6 2
-clrtext CODE 0 F9 F9 6 2
-dataBANK0 BANK0 1 20 20 28 1
-bssBANK0 BANK0 1 48 48 D 1
-bssCOMMON COMMON 1 77 77 5 1
-idataBANK0 CODE 0 8F 8F 28 2
+text9 CODE 0 158 158 6 2
+text8 CODE 0 15E 15E 5 2
+text7 CODE 0 138 138 C 2
+text6 CODE 0 10C 10C 11 2
+text5 CODE 0 12B 12B D 2
+text4 CODE 0 C8 C8 2A 2
+text3 CODE 0 9A 9A 2E 2
+text2 CODE 0 163 163 2 2
+text1 CODE 0 144 144 8 2
+maintext CODE 0 6C 6C 2E 2
+cstackBANK0 BANK0 1 67 67 5 1
+cstackCOMMON COMMON 1 70 70 8 1
+inittext CODE 0 152 152 6 2
+clrtext CODE 0 14C 14C 6 2
+dataBANK1 BANK1 1 A0 A0 1A 1
+dataBANK0 BANK0 1 59 59 E 1
+bssBANK0 BANK0 1 20 20 39 1
+bssCOMMON COMMON 1 78 78 4 1
+idataBANK1 CODE 0 F2 F2 1A 2
+idataBANK0 CODE 0 11D 11D E 2
 # %UNUSED Section
 # This section enumerates the unused ranges of each CLASS. Each entry
 # is described on a single line as follows:
 #    <class name> <range> <delta>
 # Addresses given in the range are in hexadecimal and units of delta.
 %UNUSED
-BANK0 00057-0006F 1
-BANK1 000A0-000EF 1
+BANK0 0006C-0006F 1
+BANK1 000BA-000EF 1
 BANK10 00520-0056F 1
 BANK11 005A0-005EF 1
 BANK12 00620-0064F 1
@@ -55,16 +59,16 @@ BANK8 00420-0046F 1
 BANK9 004A0-004EF 1
 BIGRAM 02000-023EF 1
 CODE 00002-00003 2
-CODE 00112-01FFF 2
+CODE 00165-01FFF 2
 COMMON 0007C-0007D 1
 CONST 00002-00003 2
-CONST 00112-01FFF 2
+CONST 00165-01FFF 2
 EEDATA 0F000-0F0FF 2
 ENTRY 00002-00003 2
-ENTRY 00112-01FFF 2
+ENTRY 00165-01FFF 2
 IDLOC 08000-08003 2
-RAM 00057-0006F 1
-RAM 000A0-000EF 1
+RAM 0006C-0006F 1
+RAM 000BA-000EF 1
 RAM 00120-0016F 1
 RAM 001A0-001EF 1
 RAM 00220-0026F 1
@@ -108,11 +112,11 @@ SFR6 00300-0031F 1
 SFR7 00380-0039F 1
 SFR8 00400-0041F 1
 SFR9 00480-0049F 1
-STACK 02037-0231F 1
+STACK 0206A-0231F 1
 STRCODE 00002-00003 2
-STRCODE 00112-01FFF 2
+STRCODE 00165-01FFF 2
 STRING 00002-00003 2
-STRING 00112-01FFF 2
+STRING 00165-01FFF 2
 # %LINETAB Section
 # This section enumerates the file/line to address mappings.
 # The beginning of the section is indicated by %LINETAB.
@@ -132,7 +136,7 @@ $dist/default/production\adf7012_pic16lf1825.production.obj
 "C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":37 D intentry CODE
 "C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":38 F intentry CODE
 "C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":39 14 intentry CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":41 18 intentry CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":41 19 intentry CODE
 "C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":46 1A intentry CODE
 "C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":48 1C intentry CODE
 "C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":52 20 intentry CODE
@@ -146,114 +150,146 @@ $dist/default/production\adf7012_pic16lf1825.production.obj
 "C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":71 39 intentry CODE
 "C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":77 3D intentry CODE
 "C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":78 3E intentry CODE
-"C:\Users\Kadir\AppData\Local\Temp\s58s.":838 45 cinit CODE
-"C:\Users\Kadir\AppData\Local\Temp\s58s.":841 45 cinit CODE
-"C:\Users\Kadir\AppData\Local\Temp\s58s.":909 45 cinit CODE
-"C:\Users\Kadir\AppData\Local\Temp\s58s.":910 46 cinit CODE
-"C:\Users\Kadir\AppData\Local\Temp\s58s.":911 47 cinit CODE
-"C:\Users\Kadir\AppData\Local\Temp\s58s.":912 48 cinit CODE
-"C:\Users\Kadir\AppData\Local\Temp\s58s.":913 49 cinit CODE
-"C:\Users\Kadir\AppData\Local\Temp\s58s.":917 4A cinit CODE
-"C:\Users\Kadir\AppData\Local\Temp\s58s.":918 4B cinit CODE
-"C:\Users\Kadir\AppData\Local\Temp\s58s.":919 4C cinit CODE
-"C:\Users\Kadir\AppData\Local\Temp\s58s.":920 4D cinit CODE
-"C:\Users\Kadir\AppData\Local\Temp\s58s.":921 4E cinit CODE
-"C:\Users\Kadir\AppData\Local\Temp\s58s.":922 4F cinit CODE
-"C:\Users\Kadir\AppData\Local\Temp\s58s.":937 52 cinit CODE
-"C:\Users\Kadir\AppData\Local\Temp\s58s.":938 53 cinit CODE
-"C:\Users\Kadir\AppData\Local\Temp\s58s.":939 54 cinit CODE
-"C:\Users\Kadir\AppData\Local\Temp\s58s.":940 55 cinit CODE
-"C:\Users\Kadir\AppData\Local\Temp\s58s.":941 56 cinit CODE
-"C:\Users\Kadir\AppData\Local\Temp\s58s.":942 57 cinit CODE
-"C:\Users\Kadir\AppData\Local\Temp\s58s.":943 58 cinit CODE
-"C:\Users\Kadir\AppData\Local\Temp\s58s.":944 59 cinit CODE
-"C:\Users\Kadir\AppData\Local\Temp\s58s.":945 5A cinit CODE
-"C:\Users\Kadir\AppData\Local\Temp\s58s.":946 5B cinit CODE
-"C:\Users\Kadir\AppData\Local\Temp\s58s.":952 5D cinit CODE
-"C:\Users\Kadir\AppData\Local\Temp\s58s.":953 5D cinit CODE
-"C:\Users\Kadir\AppData\Local\Temp\s58s.":954 5E cinit CODE
-"C:\Users\Kadir\AppData\Local\Temp\s58s.":955 5F cinit CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":123 61 text3 CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":126 61 text3 CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":127 63 text3 CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":128 67 text3 CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":132 68 text3 CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":133 69 text3 CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":138 6A text3 CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":139 6C text3 CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":142 6D text3 CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":143 6E text3 CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":146 6F text3 CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":147 70 text3 CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":150 71 text3 CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":151 73 text3 CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":152 74 text3 CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":153 75 text3 CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":158 76 text3 CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":159 78 text3 CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":160 79 text3 CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":161 7A text3 CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":166 7B text3 CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":167 7D text3 CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":168 82 text3 CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":169 83 text3 CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":170 84 text3 CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":171 85 text3 CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":172 86 text3 CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":173 87 text3 CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":174 88 text3 CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":175 89 text3 CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":180 8A text3 CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":184 8E text3 CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":187 B7 maintext CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":189 B7 maintext CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":190 BA maintext CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":193 BD maintext CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":194 C0 maintext CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":196 C3 maintext CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":198 C6 maintext CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":200 C9 maintext CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":203 D1 maintext CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\utility.c":48 D3 text5 CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\utility.c":50 D4 text5 CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\utility.c":53 E4 text4 CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\utility.c":55 E4 text4 CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\utility.c":56 E7 text4 CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\utility.c":57 EF text4 CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\utility.c":56 F0 text4 CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":87 F1 text1 CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":90 F1 text1 CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":91 F4 text1 CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":94 F6 text1 CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":95 F8 text1 CODE
-"C:\Users\Kadir\AppData\Local\Temp\s58s.":898 F9 clrtext CODE
-"C:\Users\Kadir\AppData\Local\Temp\s58s.":899 F9 clrtext CODE
-"C:\Users\Kadir\AppData\Local\Temp\s58s.":900 FA clrtext CODE
-"C:\Users\Kadir\AppData\Local\Temp\s58s.":901 FA clrtext CODE
-"C:\Users\Kadir\AppData\Local\Temp\s58s.":902 FB clrtext CODE
-"C:\Users\Kadir\AppData\Local\Temp\s58s.":903 FC clrtext CODE
-"C:\Users\Kadir\AppData\Local\Temp\s58s.":904 FD clrtext CODE
-"C:\Users\Kadir\AppData\Local\Temp\s58s.":905 FE clrtext CODE
-"C:\Users\Kadir\AppData\Local\Temp\s58s.":926 FF inittext CODE
-"C:\Users\Kadir\AppData\Local\Temp\s58s.":927 FF inittext CODE
-"C:\Users\Kadir\AppData\Local\Temp\s58s.":928 100 inittext CODE
-"C:\Users\Kadir\AppData\Local\Temp\s58s.":929 100 inittext CODE
-"C:\Users\Kadir\AppData\Local\Temp\s58s.":930 101 inittext CODE
-"C:\Users\Kadir\AppData\Local\Temp\s58s.":931 102 inittext CODE
-"C:\Users\Kadir\AppData\Local\Temp\s58s.":932 103 inittext CODE
-"C:\Users\Kadir\AppData\Local\Temp\s58s.":933 104 inittext CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":110 105 text7 CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":111 105 text7 CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":112 107 text7 CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":113 109 text7 CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":116 10A text7 CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":101 10B text6 CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":102 10B text6 CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":103 10D text6 CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":104 10F text6 CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":80 110 text2 CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":81 110 text2 CODE
-"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":82 111 text2 CODE
+"C:\Users\Kadir\AppData\Local\Temp\s530.":1138 45 cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s530.":1141 45 cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s530.":1217 45 cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s530.":1218 46 cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s530.":1219 47 cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s530.":1220 48 cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s530.":1224 49 cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s530.":1225 4A cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s530.":1226 4B cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s530.":1227 4C cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s530.":1228 4D cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s530.":1229 4E cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s530.":1244 51 cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s530.":1245 52 cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s530.":1246 53 cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s530.":1247 54 cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s530.":1248 55 cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s530.":1249 56 cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s530.":1250 57 cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s530.":1251 58 cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s530.":1252 59 cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s530.":1253 5A cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s530.":1257 5D cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s530.":1258 5E cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s530.":1259 5F cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s530.":1260 60 cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s530.":1261 61 cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s530.":1262 62 cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s530.":1263 63 cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s530.":1264 64 cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s530.":1265 65 cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s530.":1266 66 cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s530.":1272 68 cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s530.":1273 68 cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s530.":1274 69 cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s530.":1275 6A cinit CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":187 6C maintext CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":189 6C maintext CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":190 6F maintext CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":193 72 maintext CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":194 75 maintext CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":196 78 maintext CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":198 7B maintext CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":199 7E maintext CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":200 81 maintext CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":201 85 maintext CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":204 8D maintext CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":205 95 maintext CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":203 99 maintext CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":123 9A text3 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":126 9A text3 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":127 9C text3 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":128 A0 text3 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":132 A1 text3 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":133 A2 text3 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":138 A3 text3 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":139 A5 text3 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":142 A6 text3 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":143 A7 text3 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":146 A8 text3 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":147 A9 text3 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":150 AA text3 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":151 AC text3 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":152 AD text3 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":153 AE text3 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":158 AF text3 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":159 B1 text3 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":160 B2 text3 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":161 B3 text3 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":166 B4 text3 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":167 B6 text3 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":168 BB text3 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":169 BC text3 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":170 BD text3 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":171 BE text3 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":172 BF text3 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":173 C0 text3 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":174 C1 text3 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":175 C2 text3 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":180 C3 text3 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":184 C7 text3 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\utility.c":227 C8 text4 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\utility.c":229 CA text4 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\utility.c":232 CB text4 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\utility.c":233 CF text4 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\utility.c":235 D4 text4 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\utility.c":236 D6 text4 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\utility.c":237 D8 text4 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\utility.c":238 D8 text4 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\utility.c":240 D9 text4 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\utility.c":242 DB text4 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\utility.c":243 DC text4 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\utility.c":244 E3 text4 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\utility.c":245 E5 text4 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\utility.c":233 EC text4 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\utility.c":48 10C text6 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\utility.c":50 10D text6 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\utility.c":53 12B text5 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\utility.c":55 12B text5 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\utility.c":56 12E text5 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\utility.c":57 136 text5 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\utility.c":56 137 text5 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\utility.c":35 138 text7 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\utility.c":38 138 text7 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\utility.c":39 13A text7 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\utility.c":40 13E text7 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\utility.c":41 13F text7 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":87 144 text1 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":90 144 text1 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":91 147 text1 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":94 149 text1 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":95 14B text1 CODE
+"C:\Users\Kadir\AppData\Local\Temp\s530.":1206 14C clrtext CODE
+"C:\Users\Kadir\AppData\Local\Temp\s530.":1207 14C clrtext CODE
+"C:\Users\Kadir\AppData\Local\Temp\s530.":1208 14D clrtext CODE
+"C:\Users\Kadir\AppData\Local\Temp\s530.":1209 14D clrtext CODE
+"C:\Users\Kadir\AppData\Local\Temp\s530.":1210 14E clrtext CODE
+"C:\Users\Kadir\AppData\Local\Temp\s530.":1211 14F clrtext CODE
+"C:\Users\Kadir\AppData\Local\Temp\s530.":1212 150 clrtext CODE
+"C:\Users\Kadir\AppData\Local\Temp\s530.":1213 151 clrtext CODE
+"C:\Users\Kadir\AppData\Local\Temp\s530.":1233 152 inittext CODE
+"C:\Users\Kadir\AppData\Local\Temp\s530.":1234 152 inittext CODE
+"C:\Users\Kadir\AppData\Local\Temp\s530.":1235 153 inittext CODE
+"C:\Users\Kadir\AppData\Local\Temp\s530.":1236 153 inittext CODE
+"C:\Users\Kadir\AppData\Local\Temp\s530.":1237 154 inittext CODE
+"C:\Users\Kadir\AppData\Local\Temp\s530.":1238 155 inittext CODE
+"C:\Users\Kadir\AppData\Local\Temp\s530.":1239 156 inittext CODE
+"C:\Users\Kadir\AppData\Local\Temp\s530.":1240 157 inittext CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":110 158 text9 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":111 158 text9 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":112 15A text9 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":113 15C text9 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":116 15D text9 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":101 15E text8 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":102 15E text8 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":103 160 text8 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":104 162 text8 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":80 163 text2 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":81 163 text2 CODE
+"C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":82 164 text2 CODE
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -270,7 +306,7 @@ _i 79 0 COMMON 1 bssCOMMON dist/default/production\adf7012_pic16lf1825.productio
 __CFG_PLLEN$ON 0 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 __CFG_WRT$OFF 0 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 __S0 8009 0 ABS 0 - -
-__S1 7C 0 ABS 0 - -
+__S1 BA 0 ABS 0 - -
 __S2 0 0 ABS 0 - -
 __S3 0 0 ABS 0 - -
 _PSA 4AB 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
@@ -283,27 +319,28 @@ _ADIE 48E 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 _ADIF 8E 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 _ADFM 4F7 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 _ADON 4E8 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
-_main 16E 0 CODE 0 maintext dist/default/production\adf7012_pic16lf1825.production.obj
-___sp 0 0 STACK 2 stack C:\Users\Kadir\AppData\Local\Temp\s58s.obj
+_main D8 0 CODE 0 maintext dist/default/production\adf7012_pic16lf1825.production.obj
+___sp 0 0 STACK 2 stack C:\Users\Kadir\AppData\Local\Temp\s530.obj
 btemp 7E 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 ltemp 7E 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 ttemp 7E 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 wtemp 7E 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
-start 86 0 CODE 0 init C:\Users\Kadir\AppData\Local\Temp\s58s.obj
+start 86 0 CODE 0 init C:\Users\Kadir\AppData\Local\Temp\s530.obj
 _test 7A 0 COMMON 1 bssCOMMON dist/default/production\adf7012_pic16lf1825.production.obj
 _ANSA1 C61 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 _ADCS0 4F4 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
+__end_of_Gpio_Config 288 0 CODE 0 text7 dist/default/production\adf7012_pic16lf1825.production.obj
 _ADCS1 4F5 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 _ADCS2 4F6 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 _TMR1H 17 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
-_dac_flag 52 0 BANK0 1 bssBANK0 dist/default/production\adf7012_pic16lf1825.production.obj
+_dac_flag 55 0 BANK0 1 bssBANK0 dist/default/production\adf7012_pic16lf1825.production.obj
 _TMR1L 16 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 _DACOE 8C5 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 _TRISA 8C 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 _DACEN 8C7 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
-__end_of_Adc1_Start 216 0 CODE 0 text7 dist/default/production\adf7012_pic16lf1825.production.obj
+__end_of_Adc1_Start 2BC 0 CODE 0 text9 dist/default/production\adf7012_pic16lf1825.production.obj
 _TRISC 8E 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
-reset_vec 0 0 CODE 0 reset_vec C:\Users\Kadir\AppData\Local\Temp\s58s.obj
+reset_vec 0 0 CODE 0 reset_vec C:\Users\Kadir\AppData\Local\Temp\s530.obj
 ltemp0 7E 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 ttemp0 7E 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 wtemp0 7E 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
@@ -324,21 +361,21 @@ wtemp6 7F 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 __Hconfig 10012 0 CONFIG 0 config -
 __Lconfig 1000E 0 CONFIG 0 config -
 __end_of_global_interrupt 86 0 CODE 0 intentry dist/default/production\adf7012_pic16lf1825.production.obj
-_Timer0_Start 220 0 CODE 0 text2 dist/default/production\adf7012_pic16lf1825.production.obj
-_Timer1_Start 1E2 0 CODE 0 text1 dist/default/production\adf7012_pic16lf1825.production.obj
+_Timer0_Start 2C6 0 CODE 0 text2 dist/default/production\adf7012_pic16lf1825.production.obj
+_Timer1_Start 288 0 CODE 0 text1 dist/default/production\adf7012_pic16lf1825.production.obj
 __Hbigram 0 0 ABS 0 bigram -
 __Lbigram 0 0 ABS 0 bigram -
 __Hram 0 0 ABS 0 ram -
 __Lram 0 0 ABS 0 ram -
 __CFG_STVREN$ON 0 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
-__end_of_Timer0_Start 224 0 CODE 0 text2 dist/default/production\adf7012_pic16lf1825.production.obj
+__end_of_Timer0_Start 2CA 0 CODE 0 text2 dist/default/production\adf7012_pic16lf1825.production.obj
 _CCP1M1 1499 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 _CCP1M2 149A 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 _CCP1M3 149B 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 __Hfunctab 0 0 CODE 0 functab -
 __Lfunctab 0 0 CODE 0 functab -
 _ADCON0 9D 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
-__end_of_CheckDelay 1C8 0 CODE 0 text5 dist/default/production\adf7012_pic16lf1825.production.obj
+__end_of_CheckDelay 23A 0 CODE 0 text6 dist/default/production\adf7012_pic16lf1825.production.obj
 __Hcommon 0 0 ABS 0 common -
 __Lcommon 0 0 ABS 0 common -
 __Heeprom_data 0 0 EEDATA 3 eeprom_data -
@@ -347,13 +384,13 @@ _CCPR1H 292 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 _CCP1IE 48A 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 _TMR1GE CF 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 _TMR0IE 5D 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
-_Delay_ms 1C8 0 CODE 0 text4 dist/default/production\adf7012_pic16lf1825.production.obj
-___int_sp 0 0 STACK 2 stack C:\Users\Kadir\AppData\Local\Temp\s58s.obj
+_Delay_ms 256 0 CODE 0 text5 dist/default/production\adf7012_pic16lf1825.production.obj
+___int_sp 0 0 STACK 2 stack C:\Users\Kadir\AppData\Local\Temp\s530.obj
 __CFG_CLKOUTEN$OFF 0 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 _CCPR1L 291 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 _ADNREF 4F2 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 _TMR0CS 4AD 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
-_System_Start C2 0 CODE 0 text3 dist/default/production\adf7012_pic16lf1825.production.obj
+_System_Start 134 0 CODE 0 text3 dist/default/production\adf7012_pic16lf1825.production.obj
 _ADRESH 9C 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 _TMR1ON C0 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 _OSCCON 99 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
@@ -386,24 +423,25 @@ __Lsfr9 0 0 ABS 0 sfr9 -
 __Hcode 0 0 ABS 0 code -
 __Lcode 0 0 ABS 0 code -
 __size_of_Timer1_Start 0 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
-stackhi 231F 0 ABS 0 - C:\Users\Kadir\AppData\Local\Temp\s58s.obj
+stackhi 231F 0 ABS 0 - C:\Users\Kadir\AppData\Local\Temp\s530.obj
 __HcstackBANK0 0 0 ABS 0 cstackBANK0 -
 __LcstackBANK0 0 0 ABS 0 cstackBANK0 -
-__pcstackBANK0 55 0 BANK0 1 cstackBANK0 dist/default/production\adf7012_pic16lf1825.production.obj
-stacklo 2037 0 ABS 0 - C:\Users\Kadir\AppData\Local\Temp\s58s.obj
+__pcstackBANK0 67 0 BANK0 1 cstackBANK0 dist/default/production\adf7012_pic16lf1825.production.obj
+stacklo 206A 0 ABS 0 - C:\Users\Kadir\AppData\Local\Temp\s530.obj
 __Hinit 86 0 CODE 0 init -
 __Linit 86 0 CODE 0 init -
-__end_of_main 1A6 0 CODE 0 maintext dist/default/production\adf7012_pic16lf1825.production.obj
+__end_of_main 134 0 CODE 0 maintext dist/default/production\adf7012_pic16lf1825.production.obj
 __Htext 0 0 ABS 0 text -
 __Ltext 0 0 ABS 0 text -
 __HdataBANK0 0 0 ABS 0 dataBANK0 -
 __LdataBANK0 0 0 ABS 0 dataBANK0 -
-_adc_sonuc_high 77 0 COMMON 1 bssCOMMON dist/default/production\adf7012_pic16lf1825.production.obj
+_adc_sonuc_high 78 0 COMMON 1 bssCOMMON dist/default/production\adf7012_pic16lf1825.production.obj
 __CFG_LVP$ON 0 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
-__pdataBANK0 20 0 BANK0 1 dataBANK0 dist/default/production\adf7012_pic16lf1825.production.obj
-end_of_initialization BA 0 CODE 0 cinit dist/default/production\adf7012_pic16lf1825.production.obj
+__pdataBANK0 59 0 BANK0 1 dataBANK0 dist/default/production\adf7012_pic16lf1825.production.obj
+end_of_initialization D0 0 CODE 0 cinit dist/default/production\adf7012_pic16lf1825.production.obj
 _ADPREF0 4F0 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 _ADPREF1 4F1 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
+__size_of_Spi_Byte_Send 0 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 _TMR1CS0 C6 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 _TMR1CS1 C7 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 _DACCON1 119 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
@@ -441,13 +479,16 @@ __Hsfr25 0 0 ABS 0 sfr25 -
 __Lsfr25 0 0 ABS 0 sfr25 -
 __Hsfr16 0 0 ABS 0 sfr16 -
 __Lsfr16 0 0 ABS 0 sfr16 -
+__HdataBANK1 0 0 ABS 0 dataBANK1 -
 __Hsfr26 0 0 ABS 0 sfr26 -
+__LdataBANK1 0 0 ABS 0 dataBANK1 -
 __Lsfr26 0 0 ABS 0 sfr26 -
 __Hsfr17 0 0 ABS 0 sfr17 -
 __Lsfr17 0 0 ABS 0 sfr17 -
 __Hsfr27 0 0 ABS 0 sfr27 -
 __size_of_Dac0_Start 0 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 __Lsfr27 0 0 ABS 0 sfr27 -
+__pdataBANK1 A0 0 BANK1 1 dataBANK1 dist/default/production\adf7012_pic16lf1825.production.obj
 __Hsfr18 0 0 ABS 0 sfr18 -
 __Lsfr18 0 0 ABS 0 sfr18 -
 __Hsfr28 0 0 ABS 0 sfr28 -
@@ -462,7 +503,7 @@ __Hstrings 0 0 ABS 0 strings -
 __Lstrings 0 0 ABS 0 strings -
 __size_of_CheckDelay 0 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 _OSCTUNE 98 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
-_sine_table 20 0 BANK0 1 dataBANK0 dist/default/production\adf7012_pic16lf1825.production.obj
+_sine_table A0 0 BANK1 1 dataBANK1 dist/default/production\adf7012_pic16lf1825.production.obj
 __Hbank0 0 0 ABS 0 bank0 -
 __Lbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
@@ -487,51 +528,58 @@ __Hbank8 0 0 ABS 0 bank8 -
 __Lbank8 0 0 ABS 0 bank8 -
 __Hbank9 0 0 ABS 0 bank9 -
 __Lbank9 0 0 ABS 0 bank9 -
-__end_of_Delay_ms 1E2 0 CODE 0 text4 dist/default/production\adf7012_pic16lf1825.production.obj
-__ptext1 1E2 0 CODE 0 text1 dist/default/production\adf7012_pic16lf1825.production.obj
-__ptext2 220 0 CODE 0 text2 dist/default/production\adf7012_pic16lf1825.production.obj
-__ptext3 C2 0 CODE 0 text3 dist/default/production\adf7012_pic16lf1825.production.obj
-__ptext4 1C8 0 CODE 0 text4 dist/default/production\adf7012_pic16lf1825.production.obj
+__end_of_Delay_ms 270 0 CODE 0 text5 dist/default/production\adf7012_pic16lf1825.production.obj
+__ptext1 288 0 CODE 0 text1 dist/default/production\adf7012_pic16lf1825.production.obj
+__ptext2 2C6 0 CODE 0 text2 dist/default/production\adf7012_pic16lf1825.production.obj
+__ptext3 134 0 CODE 0 text3 dist/default/production\adf7012_pic16lf1825.production.obj
+__size_of_Gpio_Config 0 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
+__ptext4 190 0 CODE 0 text4 dist/default/production\adf7012_pic16lf1825.production.obj
 ?_CheckDelay 72 0 COMMON 1 cstackCOMMON dist/default/production\adf7012_pic16lf1825.production.obj
-__ptext5 1A6 0 CODE 0 text5 dist/default/production\adf7012_pic16lf1825.production.obj
-__ptext6 216 0 CODE 0 text6 dist/default/production\adf7012_pic16lf1825.production.obj
-__ptext7 20A 0 CODE 0 text7 dist/default/production\adf7012_pic16lf1825.production.obj
+__ptext5 256 0 CODE 0 text5 dist/default/production\adf7012_pic16lf1825.production.obj
+__ptext6 218 0 CODE 0 text6 dist/default/production\adf7012_pic16lf1825.production.obj
+__ptext7 270 0 CODE 0 text7 dist/default/production\adf7012_pic16lf1825.production.obj
+__ptext8 2BC 0 CODE 0 text8 dist/default/production\adf7012_pic16lf1825.production.obj
+__ptext9 2B0 0 CODE 0 text9 dist/default/production\adf7012_pic16lf1825.production.obj
 __Hclrtext 0 0 ABS 0 clrtext -
 __Lclrtext 0 0 ABS 0 clrtext -
-__end_of_Timer1_Start 1F2 0 CODE 0 text1 dist/default/production\adf7012_pic16lf1825.production.obj
-__end_of__initialization BA 0 CODE 0 cinit dist/default/production\adf7012_pic16lf1825.production.obj
+_adf_config 20 0 BANK0 1 bssBANK0 dist/default/production\adf7012_pic16lf1825.production.obj
+__end_of_Timer1_Start 298 0 CODE 0 text1 dist/default/production\adf7012_pic16lf1825.production.obj
+__end_of__initialization D0 0 CODE 0 cinit dist/default/production\adf7012_pic16lf1825.production.obj
 __size_of_global_interrupt 0 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 __Hidloc 0 0 IDLOC 0 idloc -
 __Lidloc 0 0 IDLOC 0 idloc -
 __Hstack 0 0 STACK 2 stack -
 __Lstack 0 0 STACK 2 stack -
-_sine_table2 3A 0 BANK0 1 dataBANK0 dist/default/production\adf7012_pic16lf1825.production.obj
+_sine_table2 59 0 BANK0 1 dataBANK0 dist/default/production\adf7012_pic16lf1825.production.obj
 __Hspace_0 8009 0 ABS 0 - -
 __Lspace_0 0 0 ABS 0 - -
-init_ram 1FE 0 CODE 0 inittext dist/default/production\adf7012_pic16lf1825.production.obj
-Delay_ms@time_to_delay 55 0 BANK0 1 cstackBANK0 dist/default/production\adf7012_pic16lf1825.production.obj
+init_ram 2A4 0 CODE 0 inittext dist/default/production\adf7012_pic16lf1825.production.obj
+Delay_ms@time_to_delay 67 0 BANK0 1 cstackBANK0 dist/default/production\adf7012_pic16lf1825.production.obj
 __CFG_IESO$ON 0 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
-_timeout_flag 54 0 BANK0 1 bssBANK0 dist/default/production\adf7012_pic16lf1825.production.obj
-__Hspace_1 7C 0 ABS 0 - -
+_timeout_flag 58 0 BANK0 1 bssBANK0 dist/default/production\adf7012_pic16lf1825.production.obj
+__Hspace_1 BA 0 ABS 0 - -
 __Lspace_1 0 0 ABS 0 - -
 __Hspace_2 0 0 ABS 0 - -
 __Lspace_2 0 0 ABS 0 - -
 __size_of_Timer0_Start 0 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
-__Hcinit C2 0 CODE 0 cinit -
+__Hcinit D8 0 CODE 0 cinit -
 __Lcinit 8A 0 CODE 0 cinit -
+Spi_Byte_Send@i 6B 0 BANK0 1 cstackBANK0 dist/default/production\adf7012_pic16lf1825.production.obj
 __size_of_Adc1_Start 0 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 __Hspace_3 0 0 ABS 0 - -
 __Lspace_3 0 0 ABS 0 - -
 __size_of_main 0 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
+_powerlevel 4B 0 BANK0 1 bssBANK0 dist/default/production\adf7012_pic16lf1825.production.obj
 __CFG_BORV$LO 0 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
+Spi_Byte_Send@data 69 0 BANK0 1 cstackBANK0 dist/default/production\adf7012_pic16lf1825.production.obj
 __HidataBANK0 0 0 ABS 0 idataBANK0 -
 __LidataBANK0 0 0 ABS 0 idataBANK0 -
-__pidataBANK0 11E 0 CODE 0 idataBANK0 dist/default/production\adf7012_pic16lf1825.production.obj
-clear_ram0 1F2 0 CODE 0 clrtext dist/default/production\adf7012_pic16lf1825.production.obj
+__pidataBANK0 23A 0 CODE 0 idataBANK0 dist/default/production\adf7012_pic16lf1825.production.obj
+clear_ram0 298 0 CODE 0 clrtext dist/default/production\adf7012_pic16lf1825.production.obj
 __HbssBANK0 0 0 ABS 0 bssBANK0 -
 __LbssBANK0 0 0 ABS 0 bssBANK0 -
 __Hbank10 0 0 ABS 0 bank10 -
-__pbssBANK0 48 0 BANK0 1 bssBANK0 dist/default/production\adf7012_pic16lf1825.production.obj
+__pbssBANK0 20 0 BANK0 1 bssBANK0 dist/default/production\adf7012_pic16lf1825.production.obj
 __Lbank10 0 0 ABS 0 bank10 -
 __Hbank20 0 0 BANK20 1 bank20 -
 __Lbank20 0 0 BANK20 1 bank20 -
@@ -547,7 +595,7 @@ __Lbank31 0 0 BANK31 1 bank31 -
 __Lbank12 0 0 ABS 0 bank12 -
 __Hbank22 0 0 BANK22 1 bank22 -
 __Lbank22 0 0 BANK22 1 bank22 -
-_timeout_check 4C 0 BANK0 1 bssBANK0 dist/default/production\adf7012_pic16lf1825.production.obj
+_timeout_check 4F 0 BANK0 1 bssBANK0 dist/default/production\adf7012_pic16lf1825.production.obj
 __Hbank13 0 0 BANK13 1 bank13 -
 __Lbank13 0 0 BANK13 1 bank13 -
 __Hbank23 0 0 BANK23 1 bank23 -
@@ -571,53 +619,60 @@ __Lbank27 0 0 BANK27 1 bank27 -
 __Hbank18 0 0 BANK18 1 bank18 -
 __Lbank18 0 0 BANK18 1 bank18 -
 __Hbank28 0 0 BANK28 1 bank28 -
+__HidataBANK1 0 0 ABS 0 idataBANK1 -
 __Lbank28 0 0 BANK28 1 bank28 -
+__LidataBANK1 0 0 ABS 0 idataBANK1 -
 __Hbank19 0 0 BANK19 1 bank19 -
 __Lbank19 0 0 BANK19 1 bank19 -
+__pidataBANK1 1E4 0 CODE 0 idataBANK1 dist/default/production\adf7012_pic16lf1825.production.obj
 __Hbank29 0 0 BANK29 1 bank29 -
 __Lbank29 0 0 BANK29 1 bank29 -
-_CheckDelay 1A6 0 CODE 0 text5 dist/default/production\adf7012_pic16lf1825.production.obj
+_CheckDelay 218 0 CODE 0 text6 dist/default/production\adf7012_pic16lf1825.production.obj
 CheckDelay@t 76 0 COMMON 1 cstackCOMMON dist/default/production\adf7012_pic16lf1825.production.obj
 __CFG_PWRTE$OFF 0 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 __HbssCOMMON 0 0 ABS 0 bssCOMMON -
 __LbssCOMMON 0 0 ABS 0 bssCOMMON -
-__pbssCOMMON 77 0 COMMON 1 bssCOMMON dist/default/production\adf7012_pic16lf1825.production.obj
+__pbssCOMMON 78 0 COMMON 1 bssCOMMON dist/default/production\adf7012_pic16lf1825.production.obj
 __Hend_init 8A 0 CODE 0 end_init -
 __Lend_init 86 0 CODE 0 end_init -
-_Dac0_Start 216 0 CODE 0 text6 dist/default/production\adf7012_pic16lf1825.production.obj
-_Adc1_Start 20A 0 CODE 0 text7 dist/default/production\adf7012_pic16lf1825.production.obj
-__end_of_System_Start 11E 0 CODE 0 text3 dist/default/production\adf7012_pic16lf1825.production.obj
+_Dac0_Start 2BC 0 CODE 0 text8 dist/default/production\adf7012_pic16lf1825.production.obj
+_Adc1_Start 2B0 0 CODE 0 text9 dist/default/production\adf7012_pic16lf1825.production.obj
+__end_of_System_Start 190 0 CODE 0 text3 dist/default/production\adf7012_pic16lf1825.production.obj
 __Hreset_vec 4 0 CODE 0 reset_vec -
 __Lreset_vec 0 0 CODE 0 reset_vec -
-_Systick_Counter 50 0 BANK0 1 bssBANK0 dist/default/production\adf7012_pic16lf1825.production.obj
+_Systick_Counter 53 0 BANK0 1 bssBANK0 dist/default/production\adf7012_pic16lf1825.production.obj
 _global_interrupt 8 0 CODE 0 intentry dist/default/production\adf7012_pic16lf1825.production.obj
-intlevel0 0 0 CODE 0 functab C:\Users\Kadir\AppData\Local\Temp\s58s.obj
+intlevel0 0 0 CODE 0 functab C:\Users\Kadir\AppData\Local\Temp\s530.obj
 __CFG_WDTE$OFF 0 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
-intlevel1 0 0 CODE 0 functab C:\Users\Kadir\AppData\Local\Temp\s58s.obj
-intlevel2 0 0 CODE 0 functab C:\Users\Kadir\AppData\Local\Temp\s58s.obj
+Spi_Byte_Send@data_to_send 6A 0 BANK0 1 cstackBANK0 dist/default/production\adf7012_pic16lf1825.production.obj
+intlevel1 0 0 CODE 0 functab C:\Users\Kadir\AppData\Local\Temp\s530.obj
+intlevel2 0 0 CODE 0 functab C:\Users\Kadir\AppData\Local\Temp\s530.obj
 __size_of_System_Start 0 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
-intlevel3 0 0 CODE 0 functab C:\Users\Kadir\AppData\Local\Temp\s58s.obj
-intlevel4 0 0 CODE 0 functab C:\Users\Kadir\AppData\Local\Temp\s58s.obj
-intlevel5 0 0 CODE 0 functab C:\Users\Kadir\AppData\Local\Temp\s58s.obj
+intlevel3 0 0 CODE 0 functab C:\Users\Kadir\AppData\Local\Temp\s530.obj
+intlevel4 0 0 CODE 0 functab C:\Users\Kadir\AppData\Local\Temp\s530.obj
+intlevel5 0 0 CODE 0 functab C:\Users\Kadir\AppData\Local\Temp\s530.obj
 __HcstackCOMMON 0 0 ABS 0 cstackCOMMON -
 __LcstackCOMMON 0 0 ABS 0 cstackCOMMON -
 __pcstackCOMMON 70 0 COMMON 1 cstackCOMMON dist/default/production\adf7012_pic16lf1825.production.obj
+_Gpio_Config 270 0 CODE 0 text7 dist/default/production\adf7012_pic16lf1825.production.obj
 __CFG_CPD$OFF 0 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 start_initialization 8A 0 CODE 0 cinit dist/default/production\adf7012_pic16lf1825.production.obj
 __size_of_Delay_ms 0 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 __Hmaintext 0 0 ABS 0 maintext -
 __Lmaintext 0 0 ABS 0 maintext -
-__pmaintext 16E 0 CODE 0 maintext dist/default/production\adf7012_pic16lf1825.production.obj
+__pmaintext D8 0 CODE 0 maintext dist/default/production\adf7012_pic16lf1825.production.obj
 __CFG_MCLRE$ON 0 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 __Hinittext 0 0 ABS 0 inittext -
 __CFG_FOSC$INTOSC 0 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 __Linittext 0 0 ABS 0 inittext -
+_Spi_Byte_Send 190 0 CODE 0 text4 dist/default/production\adf7012_pic16lf1825.production.obj
 __initialization 8A 0 CODE 0 cinit dist/default/production\adf7012_pic16lf1825.production.obj
-_Delay_Counter 48 0 BANK0 1 bssBANK0 dist/default/production\adf7012_pic16lf1825.production.obj
+_Delay_Counter 47 0 BANK0 1 bssBANK0 dist/default/production\adf7012_pic16lf1825.production.obj
+__end_of_Spi_Byte_Send 1E4 0 CODE 0 text4 dist/default/production\adf7012_pic16lf1825.production.obj
 __CFG_CP$OFF 0 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 __CFG_FCMEN$ON 0 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
-_adc_sonuc_low 78 0 COMMON 1 bssCOMMON dist/default/production\adf7012_pic16lf1825.production.obj
-__end_of_Dac0_Start 220 0 CODE 0 text6 dist/default/production\adf7012_pic16lf1825.production.obj
+_adc_sonuc_low 57 0 BANK0 1 bssBANK0 dist/default/production\adf7012_pic16lf1825.production.obj
+__end_of_Dac0_Start 2C6 0 CODE 0 text8 dist/default/production\adf7012_pic16lf1825.production.obj
 # %SPLITSTAB Section
 # This section enumerates all the psect splits performed by the assembler.
 # The beginning of the section is indicated by %SPLITSTAB.
@@ -644,7 +699,8 @@ __end_of_Dac0_Start 220 0 CODE 0 text6 dist/default/production\adf7012_pic16lf18
 # All other numeric quantities are in decimal.
 %SEGMENTS
 reset_vec 0 0 0 2 2
-intentry 0 4 8 10E 2
+intentry 0 4 8 161 2
 config 0 8007 1000E 2 2
 cstackCOMMON 1 70 70 C 1
-dataBANK0 1 20 20 37 1
+bssBANK0 1 20 20 4C 1
+dataBANK1 1 A0 A0 1A 1

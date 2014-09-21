@@ -21,6 +21,7 @@
                    projectFiles="true">
       <itemPath>main.c</itemPath>
       <itemPath>utility.c</itemPath>
+      <itemPath>adf7012.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

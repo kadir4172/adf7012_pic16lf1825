@@ -25,7 +25,7 @@ extern "C" {
 extern void Delay_ms(uint16_t);
 extern bool Write_Adf7012_Reg(uint8_t*, uint8_t);
 extern bool Gpio_Config(void);
-extern bool Read_Adf7012_Muxout(uint32_t*);
+extern bool Read_Adf7012_Muxout(void);
 extern bool Reverse_Array(uint8_t* ,uint8_t);
 extern bool Send_Vcxo_Signal(uint8_t);
 //Hardware Specific Utility Functions
@@ -49,10 +49,10 @@ extern uint16_t Systick_Counter;
 
 //Common Functions
 extern void Radio_Setup(void);
-extern void Ptt_On(void);
+extern bool Ptt_On(void);
 extern void Ptt_Off(void);
-extern int  Get_Powerlevel(void);
 extern void Set_Freq(uint32_t);
+extern bool Spi_Byte_Send(uint8_t);
 //Common Functions
 
 

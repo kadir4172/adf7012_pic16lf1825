@@ -196,12 +196,12 @@ int main(void) {
     Dac0_Start();
     
     Adc1_Start();
-
+   
     Delay_ms(200);
 
      while(1){
          Delay_ms(10);
-      //   Spi_Byte_Send(0x17);
+         //Spi_Byte_Send(0x17);
      }
     return (EXIT_SUCCESS);
 }

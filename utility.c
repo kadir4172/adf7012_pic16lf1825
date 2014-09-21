@@ -66,7 +66,7 @@ void Delay_ms(uint16_t time_to_delay)
 ** Returned value:		returns TRUE if successfull
 **
 ******************************************************************************/
-bool Read_Adf7012_Muxout(uint32_t* read_val){
+bool Read_Adf7012_Muxout(void){
 
   Delay_ms(1);
 
@@ -217,6 +217,13 @@ return true;
 }
 
 
+/******************************************************************************
+** Function name:		Spi_Byte_Send
+**
+** Parameters:			gonderilecek data
+** Returned value:		returns TRUE if successfull
+**
+******************************************************************************/
 bool Spi_Byte_Send(uint8_t data){
 
     PORTAbits.RA2 = 0;

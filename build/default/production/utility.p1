@@ -19,7 +19,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S34 . . ]
 "427
 [v _PORTAbits `VS34 ~T0 @X0 0 e@12 ]
-"27 utility.c
+"55 utility.h
 [v _Spi_Byte_Send `(uc ~T0 @X0 0 ef1`uc ]
 "2417 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16lf1825.h
 [v _DACCON1 `Vuc ~T0 @X0 0 e@281 ]
@@ -199,17 +199,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;utility.h: 25: extern void Delay_ms(uint16_t);
 [; ;utility.h: 26: extern bool Write_Adf7012_Reg(uint8_t*, uint8_t);
 [; ;utility.h: 27: extern bool Gpio_Config(void);
-[; ;utility.h: 28: extern bool Read_Adf7012_Muxout(uint32_t*);
+[; ;utility.h: 28: extern bool Read_Adf7012_Muxout(void);
 [; ;utility.h: 29: extern bool Reverse_Array(uint8_t* ,uint8_t);
 [; ;utility.h: 30: extern bool Send_Vcxo_Signal(uint8_t);
 [; ;utility.h: 45: extern uint32_t timeout_check;
 [; ;utility.h: 46: extern uint8_t timeout_flag;
 [; ;utility.h: 47: extern uint16_t Systick_Counter;
 [; ;utility.h: 51: extern void Radio_Setup(void);
-[; ;utility.h: 52: extern void Ptt_On(void);
+[; ;utility.h: 52: extern bool Ptt_On(void);
 [; ;utility.h: 53: extern void Ptt_Off(void);
-[; ;utility.h: 54: extern int Get_Powerlevel(void);
-[; ;utility.h: 55: extern void Set_Freq(uint32_t);
+[; ;utility.h: 54: extern void Set_Freq(uint32_t);
+[; ;utility.h: 55: extern bool Spi_Byte_Send(uint8_t);
 [; ;string.h: 22: extern void * memcpy(void *, const void *, size_t);
 [; ;string.h: 23: extern void * memmove(void *, const void *, size_t);
 [; ;string.h: 24: extern void * memset(void *, int, size_t);
@@ -2951,11 +2951,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 331 ]
 }
 "69
-[v _Read_Adf7012_Muxout `(uc ~T0 @X0 1 ef1`*ul ]
+[v _Read_Adf7012_Muxout `(uc ~T0 @X0 1 ef ]
 {
-[; ;utility.c: 69: bool Read_Adf7012_Muxout(uint32_t* read_val){
+[; ;utility.c: 69: bool Read_Adf7012_Muxout(void){
 [e :U _Read_Adf7012_Muxout ]
-[v _read_val `*ul ~T0 @X0 1 r1 ]
 [f ]
 [; ;utility.c: 71: Delay_ms(1);
 "71
@@ -3106,76 +3105,76 @@ Version 3.2 HI-TECH Software Intermediate Code
 "217
 [e :UE 344 ]
 }
-"220
+"227
 [v _Spi_Byte_Send `(uc ~T0 @X0 1 ef1`uc ]
 {
-[; ;utility.c: 220: bool Spi_Byte_Send(uint8_t data){
+[; ;utility.c: 227: bool Spi_Byte_Send(uint8_t data){
 [e :U _Spi_Byte_Send ]
 [v _data `uc ~T0 @X0 1 r1 ]
 [f ]
-[; ;utility.c: 222: PORTAbits.RA2 = 0;
-"222
+[; ;utility.c: 229: PORTAbits.RA2 = 0;
+"229
 [e = . . _PORTAbits 0 2 -> -> 0 `i `uc ]
-"223
+"230
 [v _i `uc ~T0 @X0 1 a ]
-"224
+"231
 [v _data_to_send `uc ~T0 @X0 1 a ]
-[; ;utility.c: 223: uint8_t i;
-[; ;utility.c: 224: uint8_t data_to_send;
-[; ;utility.c: 225: data_to_send = data;
-"225
+[; ;utility.c: 230: uint8_t i;
+[; ;utility.c: 231: uint8_t data_to_send;
+[; ;utility.c: 232: data_to_send = data;
+"232
 [e = _data_to_send _data ]
-[; ;utility.c: 226: for(i = 0; i <8; i++){
-"226
+[; ;utility.c: 233: for(i = 0; i <8; i++){
+"233
 {
 [e = _i -> -> 0 `i `uc ]
 [e $ < -> _i `i -> 8 `i 350  ]
 [e $U 351  ]
 [e :U 350 ]
 {
-[; ;utility.c: 228: if(data_to_send & 0x80)
-"228
+[; ;utility.c: 235: if(data_to_send & 0x80)
+"235
 [e $ ! != & -> _data_to_send `i -> 128 `i -> 0 `i 353  ]
-[; ;utility.c: 229: PORTCbits.RC2 = 1;
-"229
+[; ;utility.c: 236: PORTCbits.RC2 = 1;
+"236
 [e = . . _PORTCbits 0 2 -> -> 1 `i `uc ]
 [e $U 354  ]
-"230
+"237
 [e :U 353 ]
-[; ;utility.c: 230: else
-[; ;utility.c: 231: PORTCbits.RC2 = 0;
-"231
+[; ;utility.c: 237: else
+[; ;utility.c: 238: PORTCbits.RC2 = 0;
+"238
 [e = . . _PORTCbits 0 2 -> -> 0 `i `uc ]
 [e :U 354 ]
-[; ;utility.c: 233: data_to_send <<= 1;
-"233
-[e =<< _data_to_send -> 1 `i ]
-[; ;utility.c: 235: PORTAbits.RA2 = 1;
-"235
-[e = . . _PORTAbits 0 2 -> -> 1 `i `uc ]
-[; ;utility.c: 236: Delay_ms(1);
-"236
-[e ( _Delay_ms (1 -> -> 1 `i `ui ]
-[; ;utility.c: 237: PORTAbits.RA2 = 0;
-"237
-[e = . . _PORTAbits 0 2 -> -> 0 `i `uc ]
-[; ;utility.c: 238: Delay_ms(1);
-"238
-[e ( _Delay_ms (1 -> -> 1 `i `ui ]
+[; ;utility.c: 240: data_to_send <<= 1;
 "240
+[e =<< _data_to_send -> 1 `i ]
+[; ;utility.c: 242: PORTAbits.RA2 = 1;
+"242
+[e = . . _PORTAbits 0 2 -> -> 1 `i `uc ]
+[; ;utility.c: 243: Delay_ms(1);
+"243
+[e ( _Delay_ms (1 -> -> 1 `i `ui ]
+[; ;utility.c: 244: PORTAbits.RA2 = 0;
+"244
+[e = . . _PORTAbits 0 2 -> -> 0 `i `uc ]
+[; ;utility.c: 245: Delay_ms(1);
+"245
+[e ( _Delay_ms (1 -> -> 1 `i `ui ]
+"247
 }
-"226
+"233
 [e ++ _i -> -> 1 `i `uc ]
 [e $ < -> _i `i -> 8 `i 350  ]
 [e :U 351 ]
-"240
+"247
 }
-[; ;utility.c: 240: }
-[; ;utility.c: 241: return 1;
-"241
+[; ;utility.c: 247: }
+[; ;utility.c: 248: return 1;
+"248
 [e ) -> -> 1 `i `uc ]
 [e $UE 349  ]
-[; ;utility.c: 242: }
-"242
+[; ;utility.c: 249: }
+"249
 [e :UE 349 ]
 }

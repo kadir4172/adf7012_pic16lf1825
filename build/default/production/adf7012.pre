@@ -1,5 +1,33 @@
 
-# 1 "utility.c"
+# 1 "adf7012.c"
+
+# 3 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\math.h"
+extern double fabs(double);
+extern double floor(double);
+extern double ceil(double);
+extern double modf(double, double *);
+extern double sqrt(double);
+extern double atof(const char *);
+extern double sin(double);
+extern double cos(double);
+extern double tan(double);
+extern double asin(double);
+extern double acos(double);
+extern double atan(double);
+extern double atan2(double, double);
+extern double log(double);
+extern double log10(double);
+extern double pow(double, double);
+extern double exp(double);
+extern double sinh(double);
+extern double cosh(double);
+extern double tanh(double);
+extern double eval_poly(double, const double *, int);
+extern double frexp(double, int *);
+extern double ldexp(double, int);
+extern double fmod(double, double);
+extern double trunc(double);
+extern double round(double);
 
 # 13 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\stdint.h"
 typedef signed char int8_t;
@@ -267,34 +295,6 @@ extern char * ultoa(char * buf, unsigned long val, int base);
 
 extern char * ftoa(float f, int * status);
 
-# 3 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\math.h"
-extern double fabs(double);
-extern double floor(double);
-extern double ceil(double);
-extern double modf(double, double *);
-extern double sqrt(double);
-extern double atof(const char *);
-extern double sin(double);
-extern double cos(double);
-extern double tan(double);
-extern double asin(double);
-extern double acos(double);
-extern double atan(double);
-extern double atan2(double, double);
-extern double log(double);
-extern double log10(double);
-extern double pow(double, double);
-extern double exp(double);
-extern double sinh(double);
-extern double cosh(double);
-extern double tanh(double);
-extern double eval_poly(double, const double *, int);
-extern double frexp(double, int *);
-extern double ldexp(double, int);
-extern double fmod(double, double);
-extern double trunc(double);
-extern double round(double);
-
 # 12 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\stdbool.h"
 typedef unsigned char bool;
 
@@ -355,18 +355,6 @@ extern char * strchr(const char *, int);
 extern char * strichr(const char *, int);
 extern char * strrchr(const char *, int);
 extern char * strrichr(const char *, int);
-
-# 103 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\stdlib.h"
-extern char * itoa(char * buf, int val, int base);
-extern char * utoa(char * buf, unsigned val, int base);
-
-
-
-
-extern char * ltoa(char * buf, long val, int base);
-extern char * ultoa(char * buf, unsigned long val, int base);
-
-extern char * ftoa(float f, int * status);
 
 # 21 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -3895,134 +3883,344 @@ extern void memcpyee(__eeprom unsigned char *to, const unsigned char *from, unsi
 #pragma intrinsic(_delay)
 extern __nonreentrant void _delay(unsigned long);
 
-
-# 28 "configuration.h"
-#pragma config FOSC = INTOSC
-#pragma config WDTE = OFF
-#pragma config PWRTE = OFF
-#pragma config MCLRE = ON
-#pragma config CP = OFF
-#pragma config CPD = OFF
-#pragma config BOREN = ON
-#pragma config CLKOUTEN = OFF
-#pragma config IESO = ON
-#pragma config FCMEN = ON
+# 19 "adf7012.c"
+uint32_t powerlevel;
 
 
-#pragma config WRT = OFF
-#pragma config PLLEN = ON
-#pragma config STVREN = ON
-#pragma config BORV = LO
-#pragma config LVP = ON
-
-# 21 "utility.c"
-uint16_t Systick_Counter = 0;
-uint32_t Delay_Counter = 0;
-uint8_t timeout_flag = 0;
-uint32_t timeout_check;
-
-
-bool Spi_Byte_Send(uint8_t);
-
-# 35
-bool Gpio_Config(void){
+void Adf_Reset_Register_Zero(void);
+void Adf_Reset_Register_One(void);
+void Adf_Reset_Register_Two(void);
+void Adf_Reset_Register_Three(void);
+void Adf_Reset(void);
+void Adf_Write_Register_Zero(void);
+void Adf_Write_Register_One(void);
+void Adf_Write_Register_Two(void);
+void Adf_Write_Register_Three(void);
+void Adf_Write_Register(uint8_t*);
+bool Adf_Locked(void);
+void Ptt_Off(void);
+void Radio_Setup(void);
 
 
-TRISA |= 0b00000010;
-TRISA &= 0b11001011;
-TRISC |= 0b00100000;
-TRISC &= 0b11100000;
 
-return 1;
+typedef struct {
+struct {
+uint32_t frequency_error_correction;
+uint8_t r_divider;
+uint8_t crystal_doubler;
+uint8_t crystal_oscillator_disable;
+uint8_t clock_out_divider;
+uint8_t vco_adjust;
+uint8_t output_divider;
+} r0;
 
-}
+struct {
+uint32_t fractional_n;
+uint8_t integer_n;
+uint8_t prescaler;
+} r1;
+
+struct {
+uint8_t mod_control;
+uint8_t gook;
+uint8_t power_amplifier_level;
+uint32_t modulation_deviation;
+uint8_t gfsk_modulation_control;
+uint8_t index_counter;
+} r2;
+
+struct {
+uint8_t pll_enable;
+uint8_t pa_enable;
+uint8_t clkout_enable;
+uint8_t data_invert;
+uint8_t charge_pump_current;
+uint8_t bleed_up;
+uint8_t bleed_down;
+uint8_t vco_disable;
+uint8_t muxout;
+uint8_t ld_precision;
+uint8_t vco_bias;
+uint8_t pa_bias;
+uint8_t pll_test_mode;
+uint8_t sd_test_mode;
+} r3;
+} Adf_Config;
+
+Adf_Config adf_config;
 
 
-int CheckDelay(uint8_t t)
+
+
+void Adf_Reset_Config(void)
 {
-return((t - Systick_Counter));
+
+Adf_Reset_Register_Zero();
+Adf_Reset_Register_One();
+Adf_Reset_Register_Two();
+Adf_Reset_Register_Three();
+
+Adf_Reset();
 }
 
-void Delay_ms(uint16_t time_to_delay)
+
+void Adf_Reset_Register_Zero(void) {
+adf_config.r0.frequency_error_correction = 0;
+adf_config.r0.r_divider = 15;
+adf_config.r0.crystal_doubler = 0;
+adf_config.r0.crystal_oscillator_disable = 0;
+adf_config.r0.clock_out_divider = 2;
+adf_config.r0.vco_adjust = 0;
+adf_config.r0.output_divider = 2;
+}
+
+void Adf_Reset_Register_One(void) {
+adf_config.r1.integer_n = 109;
+adf_config.r1.fractional_n = 0;
+adf_config.r1.prescaler = 1;
+}
+
+void Adf_Reset_Register_Two(void) {
+adf_config.r2.mod_control = 3;
+adf_config.r2.gook = 0;
+adf_config.r2.power_amplifier_level = 15;
+adf_config.r2.modulation_deviation = 16;
+adf_config.r2.gfsk_modulation_control = 0;
+adf_config.r2.index_counter = 0;
+}
+
+void Adf_Reset_Register_Three(void) {
+adf_config.r3.pll_enable = 0;
+adf_config.r3.pa_enable = 0;
+adf_config.r3.clkout_enable = 1;
+adf_config.r3.data_invert = 1;
+adf_config.r3.charge_pump_current = 3;
+adf_config.r3.bleed_up = 0;
+adf_config.r3.bleed_down = 0;
+adf_config.r3.vco_disable = 0;
+
+adf_config.r3.muxout = 3;
+
+adf_config.r3.ld_precision = 0;
+adf_config.r3.vco_bias = 6;
+adf_config.r3.pa_bias = 4;
+adf_config.r3.pll_test_mode = 0;
+adf_config.r3.sd_test_mode = 0;
+}
+
+void Adf_Reset(void) {
+
+PORTAbits.RA5 = 1;;
+Delay_ms(10);
+
+}
+
+
+void Adf_Write_Config(void) {
+Adf_Write_Register_Zero();
+Adf_Write_Register_One();
+Adf_Write_Register_Two();
+Adf_Write_Register_Three();
+}
+
+void Adf_Write_Register_Zero(void) {
+
+uint32_t reg =
+(0) |
+((uint32_t)(adf_config.r0.frequency_error_correction & 0x7FF) << 2U) |
+((uint32_t)(adf_config.r0.r_divider & 0xF ) << 13U) |
+((uint32_t)(adf_config.r0.crystal_doubler & 0x1 ) << 17U) |
+((uint32_t)(adf_config.r0.crystal_oscillator_disable & 0x1 ) << 18U) |
+((uint32_t)(adf_config.r0.clock_out_divider & 0xF ) << 19U) |
+((uint32_t)(adf_config.r0.vco_adjust & 0x3 ) << 23U) |
+((uint32_t)(adf_config.r0.output_divider & 0x3 ) << 25U);
+
+
+uint8_t reg_ptr[4];
+memcpy(reg_ptr, &reg, 4);
+Reverse_Array(reg_ptr,4);
+Write_Adf7012_Reg(reg_ptr, 4);
+}
+
+void Adf_Write_Register_One(void) {
+uint32_t reg =
+(1) |
+((uint32_t)(adf_config.r1.fractional_n & 0xFFF) << 2) |
+((uint32_t)(adf_config.r1.integer_n & 0xFF ) << 14) |
+((uint32_t)(adf_config.r1.prescaler & 0x1 ) << 22);
+
+uint8_t reg_ptr[3];
+memcpy(reg_ptr, &reg, 3);
+Reverse_Array(reg_ptr,3);
+Write_Adf7012_Reg(reg_ptr, 3);
+}
+
+void Adf_Write_Register_Two(void) {
+uint32_t reg =
+(2) |
+((uint32_t)(adf_config.r2.mod_control & 0x3 ) << 2) |
+((uint32_t)(adf_config.r2.gook & 0x1 ) << 4) |
+((uint32_t)(adf_config.r2.power_amplifier_level & 0x3F ) << 5) |
+((uint32_t)(adf_config.r2.modulation_deviation & 0x1FF) << 11) |
+((uint32_t)(adf_config.r2.gfsk_modulation_control & 0x7 ) << 20) |
+((uint32_t)(adf_config.r2.index_counter & 0x3 ) << 23);
+
+
+uint8_t reg_ptr[4];
+memcpy(reg_ptr, &reg, 4);
+Reverse_Array(reg_ptr,4);
+Write_Adf7012_Reg(reg_ptr, 4);
+}
+
+void Adf_Write_Register_Three(void) {
+uint32_t reg =
+(3) |
+((uint32_t)(adf_config.r3.pll_enable & 0x1 ) << 2) |
+((uint32_t)(adf_config.r3.pa_enable & 0x1 ) << 3) |
+((uint32_t)(adf_config.r3.clkout_enable & 0x1 ) << 4) |
+((uint32_t)(adf_config.r3.data_invert & 0x1 ) << 5) |
+((uint32_t)(adf_config.r3.charge_pump_current & 0x3 ) << 6) |
+((uint32_t)(adf_config.r3.bleed_up & 0x1 ) << 8) |
+((uint32_t)(adf_config.r3.bleed_down & 0x1 ) << 9) |
+((uint32_t)(adf_config.r3.vco_disable & 0x1 ) << 10) |
+((uint32_t)(adf_config.r3.muxout & 0xF ) << 11) |
+((uint32_t)(adf_config.r3.ld_precision & 0x1 ) << 15) |
+((uint32_t)(adf_config.r3.vco_bias & 0xF ) << 16) |
+((uint32_t)(adf_config.r3.pa_bias & 0x7 ) << 20) |
+((uint32_t)(adf_config.r3.pll_test_mode & 0x1F ) << 23) |
+((uint32_t)(adf_config.r3.sd_test_mode & 0xF ) << 28);
+
+
+uint8_t reg_ptr[4];
+memcpy(reg_ptr, &reg, 4);
+Reverse_Array(reg_ptr,4);
+Write_Adf7012_Reg(reg_ptr, 4);
+}
+
+int Adf_Lock(void)
 {
-Systick_Counter = 0;
-while (CheckDelay(time_to_delay));
-}
 
-# 69
-bool Read_Adf7012_Muxout(void){
+Delay_ms(200);
+int adj = adf_config.r0.vco_adjust;
+int bias = adf_config.r3.vco_bias;
 
-Delay_ms(1);
+adf_config.r3.pll_enable = 1;
 
-if(PORTCbits.RC5)
-return 1;
-else
+adf_config.r3.muxout = 5;
+
+Adf_Write_Config();
+Delay_ms(5);
+
+while(!Adf_Locked()) {
+
+adf_config.r0.vco_adjust = adj;
+adf_config.r3.vco_bias = bias;
+
+adf_config.r3.muxout = 5;
+Adf_Write_Config();
+Delay_ms(5);
+if(++bias == 14) {
+bias = 1;
+if(++adj == 4) {
+
+
+adf_config.r0.vco_adjust = 0;
+adf_config.r3.vco_bias = 5;
+
 return 0;
-
+}
+}
 }
 
-# 89
-bool Write_Adf7012_Reg(uint8_t* reg_value, uint8_t size_of_reg){
 
-uint8_t i = 0;
-Delay_ms(1);
-PORTAbits.RA4 = 0;;
-Delay_ms(1);
-
-for (i = 0; i < size_of_reg; i++){
-Spi_Byte_Send(*(reg_value+i));
-}
-
-Delay_ms(1);
-PORTAbits.RA4 = 1;;
-
-Delay_ms(1);
-return 1;
-}
-
-# 115
-bool Send_Vcxo_Signal(uint8_t value){
-
-DACCON1 = value;
-return 1;
-}
-
-# 205
-bool Reverse_Array(uint8_t* input,uint8_t length){
-uint8_t i = 0;
-uint8_t* buffer_array = malloc(sizeof(uint8_t) * length);
-memcpy(buffer_array, input, length);
-
-for(i = 0; i<length; i++){
-*(input+i) = *(buffer_array+(length-1)-i);
-}
-
-free (buffer_array);
 
 return 1;
 }
 
-# 227
-bool Spi_Byte_Send(uint8_t data){
+bool Adf_Locked(void)
+{
+return Read_Adf7012_Muxout();
+}
 
-PORTAbits.RA2 = 0;
-uint8_t i;
-uint8_t data_to_send;
-data_to_send = data;
-for(i = 0; i <8; i++){
 
-if(data_to_send & 0x80)
-PORTCbits.RC2 = 1;
+void Set_Freq(uint32_t freq)
+{
+
+
+
+
+adf_config.r0.output_divider = 0;
+if (freq < 410000000) { adf_config.r0.output_divider = 1; };
+if (freq < 210000000) { adf_config.r0.output_divider = 2; };
+if (freq < 130000000) { adf_config.r0.output_divider = 3; };
+
+uint32_t f_pfd = 20000000L / adf_config.r0.r_divider;
+
+uint32_t n = (uint32_t)(freq / f_pfd);
+
+float ratio = (float)freq / (float)f_pfd;
+float rest = ratio - (float)n;
+
+
+uint32_t m = (uint32_t)(rest * 4096);
+
+adf_config.r1.integer_n = n;
+adf_config.r1.fractional_n = m;
+
+}
+
+
+void Radio_Setup()
+{
+
+Gpio_Config();
+
+
+Adf_Reset_Config();
+Set_Freq(144390000UL);
+Adf_Write_Config();
+
+Delay_ms(10);
+}
+
+
+bool Ptt_On()
+{
+
+
+
+adf_config.r3.pa_enable = 0;
+adf_config.r2.power_amplifier_level = 0;
+adf_config.r3.muxout = 3;
+
+Adf_Write_Config();
+Delay_ms(10);
+
+
+
+if (!Read_Adf7012_Muxout())
+{
+return 0;
+}
 else
-PORTCbits.RC2 = 0;
+{
 
-data_to_send <<= 1;
+Adf_Lock();
+adf_config.r3.pa_enable = 1;
+adf_config.r2.power_amplifier_level = 63;
 
-PORTAbits.RA2 = 1;
+Delay_ms(10);
+Adf_Write_Config();
 Delay_ms(1);
-PORTAbits.RA2 = 0;
-Delay_ms(1);
 
-}
 return 1;
+}
+}
+
+void Ptt_Off()
+{
+adf_config.r3.pa_enable = 0;
+adf_config.r2.power_amplifier_level = 0;
+Adf_Write_Config();
+Delay_ms(10);
 }

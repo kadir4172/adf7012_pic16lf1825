@@ -19,7 +19,7 @@ extern "C" {
 #define RADIO_FREQUENCY   144390000UL //Beacon center frequency
 
 
-#endif /* CONFIG_H_ */
+
 
 
 
