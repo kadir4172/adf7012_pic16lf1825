@@ -137,6 +137,96 @@ extern char * ultoa(char * buf, unsigned long val, int base);
 
 extern char * ftoa(float f, int * status);
 
+# 13 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\stdint.h"
+typedef signed char int8_t;
+
+# 20
+typedef signed int int16_t;
+
+# 28
+typedef signed short long int int24_t;
+
+# 36
+typedef signed long int int32_t;
+
+# 43
+typedef unsigned char uint8_t;
+
+# 49
+typedef unsigned int uint16_t;
+
+# 56
+typedef unsigned short long int uint24_t;
+
+# 63
+typedef unsigned long int uint32_t;
+
+# 71
+typedef signed char int_least8_t;
+
+# 78
+typedef signed int int_least16_t;
+
+# 90
+typedef signed short long int int_least24_t;
+
+# 98
+typedef signed long int int_least32_t;
+
+# 105
+typedef unsigned char uint_least8_t;
+
+# 111
+typedef unsigned int uint_least16_t;
+
+# 121
+typedef unsigned short long int uint_least24_t;
+
+# 128
+typedef unsigned long int uint_least32_t;
+
+# 137
+typedef signed char int_fast8_t;
+
+# 144
+typedef signed int int_fast16_t;
+
+# 156
+typedef signed short long int int_fast24_t;
+
+# 164
+typedef signed long int int_fast32_t;
+
+# 171
+typedef unsigned char uint_fast8_t;
+
+# 177
+typedef unsigned int uint_fast16_t;
+
+# 187
+typedef unsigned short long int uint_fast24_t;
+
+# 194
+typedef unsigned long int uint_fast32_t;
+
+# 200
+typedef int32_t intmax_t;
+
+
+
+
+typedef uint32_t uintmax_t;
+
+
+
+
+typedef int16_t intptr_t;
+
+
+
+
+typedef uint16_t uintptr_t;
+
 # 21 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
 
@@ -3687,24 +3777,24 @@ extern __nonreentrant void _delay(unsigned long);
 # 12 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\stdbool.h"
 typedef unsigned char bool;
 
-# 13 "main.c"
-unsigned char test = 0;
-unsigned char test2 = 0;
-unsigned int systick_counter = 0;
-unsigned int dac_flag = 0;
+# 14 "main.c"
+uint8_t test = 0;
+uint8_t test2 = 0;
+uint16_t systick_counter = 0;
+uint16_t dac_flag = 0;
 
-unsigned char i = 0;
+uint8_t i = 0;
 
-unsigned char sine_table[26] = {0x11,0x14,0x18,0x1b,0x1e,0x20,0x21,0x21,0x20,0x1e,0x1b,0x18,0x14,0x11,0xd,0x9,0x6,0x3,0x1,0x0,0x0,0x1,0x3,0x6,0x9,0xd};
+uint8_t sine_table[26] = {0x11,0x14,0x18,0x1b,0x1e,0x20,0x21,0x21,0x20,0x1e,0x1b,0x18,0x14,0x11,0xd,0x9,0x6,0x3,0x1,0x0,0x0,0x1,0x3,0x6,0x9,0xd};
 
-unsigned char sine_table2[14] = {0x10,0x16,0x1c,0x1f,0x1f,0x1c,0x16,0x10,0x9,0x3,0x0,0x0,0x3,0x9};
+uint8_t sine_table2[14] = {0x10,0x16,0x1c,0x1f,0x1f,0x1c,0x16,0x10,0x9,0x3,0x0,0x0,0x3,0x9};
 
-unsigned char adc_sonuc_high = 0;
-unsigned char adc_sonuc_low = 0;
+uint8_t adc_sonuc_high = 0;
+uint8_t adc_sonuc_low = 0;
 
-bool Spi_Byte_Send(unsigned char);
+bool Spi_Byte_Send(uint8_t);
 
-# 31
+# 32
 void interrupt global_interrupt(){
 
 INTCON &= ~0x80;
@@ -3865,12 +3955,12 @@ TRISC &= 0b11100000;
 
 
 
-int CheckDelay(unsigned int t)
+int CheckDelay(uint8_t t)
 {
 return((t - systick_counter));
 }
 
-void Delay_ms(unsigned int time_to_delay)
+void Delay_ms(uint16_t time_to_delay)
 {
 systick_counter = 0;
 while (CheckDelay(time_to_delay));
@@ -3895,17 +3985,17 @@ Delay_ms(200);
 
 while(1){
 Delay_ms(10);
-Spi_Byte_Send(0x13);
+Spi_Byte_Send(0x17);
 }
 return (0);
 }
 
-# 238
-bool Spi_Byte_Send(unsigned char data){
+# 239
+bool Spi_Byte_Send(uint8_t data){
 
 PORTAbits.RA2 = 0;
-unsigned char i;
-unsigned char data_to_send;
+uint8_t i;
+uint8_t data_to_send;
 data_to_send = data;
 for(i = 0; i <8; i++){
 

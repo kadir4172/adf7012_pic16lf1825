@@ -1,12 +1,12 @@
-_Adc1_Start: CODE, 316 0 6
-_global_interrupt: CODE, 4 0 65
-_Timer0_Start: CODE, 327 0 2
-_CheckDelay: CODE, 287 0 15
-_main: CODE, 233 0 37
-_Delay_ms: CODE, 270 0 17
-_Timer1_Start: CODE, 302 0 8
-__initialization: CODE, 71 0 20
-_System_Start: CODE, 95 0 56
-_Spi_Byte_Send: CODE, 151 0 42
-_Dac0_Start: CODE, 322 0 5
-Total: 273
+_Adc1_Start: CODE, 314 0 6
+_global_interrupt: CODE, 4 0 63
+_Timer0_Start: CODE, 325 0 2
+_CheckDelay: CODE, 270 0 17
+_main: CODE, 231 0 39
+_Delay_ms: CODE, 287 0 13
+_Timer1_Start: CODE, 300 0 8
+__initialization: CODE, 69 0 20
+_System_Start: CODE, 93 0 56
+_Spi_Byte_Send: CODE, 149 0 42
+_Dac0_Start: CODE, 320 0 5
+Total: 271
