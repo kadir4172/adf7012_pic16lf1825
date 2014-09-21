@@ -1,7 +1,11 @@
 
 
 Microchip Technology PIC LITE Macro Assembler V1.33 build 59893 
+<<<<<<< HEAD
                                                                                                Sun Sep 21 17:23:16 2014
+=======
+                                                                                               Sun Sep 21 15:36:16 2014
+>>>>>>> parent of fbf90ed... [header] ax25.h added
 
 Microchip Technology Omniscient Code Generator (Lite mode) build 59893
      1                           	processor	16LF1825
@@ -1155,6 +1159,7 @@ SFR31                0      0       0      32        0.0%
 
 
 Microchip Technology PIC Macro Assembler V1.33 build 59893 
+<<<<<<< HEAD
 Symbol Table                                                                                   Sun Sep 21 17:23:16 2014
 
                         _i 0076                __CFG_CP$OFF 0000                         l97 00A5  
@@ -1173,6 +1178,28 @@ Symbol Table                                                                    
                     _ANSA1 0C61                      i1l903 0024                      i1l915 0039  
                     i1l895 001A                      _TMR1H 0017                      _TMR1L 0016  
                     _TRISA 008C                      _TRISC 008E                      _test2 0078  
+=======
+Symbol Table                                                                                   Sun Sep 21 15:36:16 2014
+
+                        _i 0079                __CFG_CP$OFF 0000             Spi_Byte_Send@i 0051  
+              __CFG_LVP$ON 0000                        l158 00EA                        l169 00A5  
+                      l912 0101                        l874 0122                        l888 00A6  
+             __CFG_CPD$OFF 0000                        _PSA 04AB               __CFG_BORV$LO 0000  
+             __CFG_IESO$ON 0000                 _CheckDelay 010E                       _ADIE 048E  
+                     _ADIF 008E                       _ADFM 04F7                       _ADON 04E8  
+                     _PIR1 0011               __CFG_WRT$OFF 0000              __CFG_FCMEN$ON 0000  
+                     _main 00E7                       _test 007A                       fsr0h 0005  
+                     fsr1h 0007                       fsr0l 0004                       indf1 0001  
+                     fsr1l 0006                       btemp 007E              __CFG_BOREN$ON 0000  
+                     ltemp 007E                       start 0043                       ttemp 007E  
+                     wtemp 007E              __CFG_MCLRE$ON 0000                ?_Adc1_Start 0070  
+            __CFG_PLLEN$ON 0000                      _ADCS0 04F4                      _ADCS1 04F5  
+                    _ADCS2 04F6                      ?_main 0070                      _DACEN 08C7  
+                    _DACOE 08C5              __CFG_WDTE$OFF 0000                      _ANSA1 0C61  
+              ?_Dac0_Start 0070                      i1l832 001A                      i1l844 0028  
+                    i1l856 003D                      _TMR1H 0017                      _TMR1L 0016  
+                    _TRISA 008C                      _TRISC 008E                      _test2 007B  
+>>>>>>> parent of fbf90ed... [header] ax25.h added
                     ltemp0 007E                      ltemp1 0082                      ltemp2 0086  
                     ltemp3 0080                      ttemp0 007E                      ttemp1 0081  
                     ttemp2 0084                      ttemp3 0087                      ttemp4 007F  

@@ -8,8 +8,12 @@
       <itemPath>common_variables.h</itemPath>
       <itemPath>config.h</itemPath>
       <itemPath>adf7012.h</itemPath>
+<<<<<<< HEAD
       <itemPath>ax25.h</itemPath>
       <itemPath>utility.h</itemPath>
+=======
+      <itemPath>audio_tone.h</itemPath>
+>>>>>>> parent of fbf90ed... [header] ax25.h added
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
