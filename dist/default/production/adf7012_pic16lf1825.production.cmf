@@ -11,7 +11,7 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\Kadir\AppData\Local\Temp\sg4.obj
+$C:\Users\Kadir\AppData\Local\Temp\s5vs.obj
 end_init CODE 0 45 45 2 2
 reset_vec CODE 0 0 0 2 2
 config CONFIG 0 8007 8007 2 2
@@ -146,31 +146,31 @@ $dist/default/production\adf7012_pic16lf1825.production.obj
 "C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":70 3B intentry CODE
 "C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":76 3F intentry CODE
 "C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":77 40 intentry CODE
-"C:\Users\Kadir\AppData\Local\Temp\sg4.":545 47 cinit CODE
-"C:\Users\Kadir\AppData\Local\Temp\sg4.":548 47 cinit CODE
-"C:\Users\Kadir\AppData\Local\Temp\sg4.":595 47 cinit CODE
-"C:\Users\Kadir\AppData\Local\Temp\sg4.":596 48 cinit CODE
-"C:\Users\Kadir\AppData\Local\Temp\sg4.":600 49 cinit CODE
-"C:\Users\Kadir\AppData\Local\Temp\sg4.":601 4A cinit CODE
-"C:\Users\Kadir\AppData\Local\Temp\sg4.":602 4B cinit CODE
-"C:\Users\Kadir\AppData\Local\Temp\sg4.":603 4C cinit CODE
-"C:\Users\Kadir\AppData\Local\Temp\sg4.":604 4D cinit CODE
-"C:\Users\Kadir\AppData\Local\Temp\sg4.":605 4E cinit CODE
-"C:\Users\Kadir\AppData\Local\Temp\sg4.":606 4F cinit CODE
-"C:\Users\Kadir\AppData\Local\Temp\sg4.":621 50 cinit CODE
-"C:\Users\Kadir\AppData\Local\Temp\sg4.":622 51 cinit CODE
-"C:\Users\Kadir\AppData\Local\Temp\sg4.":623 52 cinit CODE
-"C:\Users\Kadir\AppData\Local\Temp\sg4.":624 53 cinit CODE
-"C:\Users\Kadir\AppData\Local\Temp\sg4.":625 54 cinit CODE
-"C:\Users\Kadir\AppData\Local\Temp\sg4.":626 55 cinit CODE
-"C:\Users\Kadir\AppData\Local\Temp\sg4.":627 56 cinit CODE
-"C:\Users\Kadir\AppData\Local\Temp\sg4.":628 57 cinit CODE
-"C:\Users\Kadir\AppData\Local\Temp\sg4.":629 58 cinit CODE
-"C:\Users\Kadir\AppData\Local\Temp\sg4.":630 59 cinit CODE
-"C:\Users\Kadir\AppData\Local\Temp\sg4.":636 5B cinit CODE
-"C:\Users\Kadir\AppData\Local\Temp\sg4.":637 5B cinit CODE
-"C:\Users\Kadir\AppData\Local\Temp\sg4.":638 5C cinit CODE
-"C:\Users\Kadir\AppData\Local\Temp\sg4.":639 5D cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s5vs.":545 47 cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s5vs.":548 47 cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s5vs.":595 47 cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s5vs.":596 48 cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s5vs.":600 49 cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s5vs.":601 4A cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s5vs.":602 4B cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s5vs.":603 4C cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s5vs.":604 4D cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s5vs.":605 4E cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s5vs.":606 4F cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s5vs.":621 50 cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s5vs.":622 51 cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s5vs.":623 52 cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s5vs.":624 53 cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s5vs.":625 54 cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s5vs.":626 55 cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s5vs.":627 56 cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s5vs.":628 57 cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s5vs.":629 58 cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s5vs.":630 59 cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s5vs.":636 5B cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s5vs.":637 5B cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s5vs.":638 5C cinit CODE
+"C:\Users\Kadir\AppData\Local\Temp\s5vs.":639 5D cinit CODE
 "C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":122 5F text3 CODE
 "C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":125 5F text3 CODE
 "C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":126 61 text3 CODE
@@ -244,14 +244,14 @@ $dist/default/production\adf7012_pic16lf1825.production.obj
 "C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":90 131 text1 CODE
 "C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":93 133 text1 CODE
 "C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":94 135 text1 CODE
-"C:\Users\Kadir\AppData\Local\Temp\sg4.":610 136 inittext CODE
-"C:\Users\Kadir\AppData\Local\Temp\sg4.":611 136 inittext CODE
-"C:\Users\Kadir\AppData\Local\Temp\sg4.":612 137 inittext CODE
-"C:\Users\Kadir\AppData\Local\Temp\sg4.":613 137 inittext CODE
-"C:\Users\Kadir\AppData\Local\Temp\sg4.":614 138 inittext CODE
-"C:\Users\Kadir\AppData\Local\Temp\sg4.":615 139 inittext CODE
-"C:\Users\Kadir\AppData\Local\Temp\sg4.":616 13A inittext CODE
-"C:\Users\Kadir\AppData\Local\Temp\sg4.":617 13B inittext CODE
+"C:\Users\Kadir\AppData\Local\Temp\s5vs.":610 136 inittext CODE
+"C:\Users\Kadir\AppData\Local\Temp\s5vs.":611 136 inittext CODE
+"C:\Users\Kadir\AppData\Local\Temp\s5vs.":612 137 inittext CODE
+"C:\Users\Kadir\AppData\Local\Temp\s5vs.":613 137 inittext CODE
+"C:\Users\Kadir\AppData\Local\Temp\s5vs.":614 138 inittext CODE
+"C:\Users\Kadir\AppData\Local\Temp\s5vs.":615 139 inittext CODE
+"C:\Users\Kadir\AppData\Local\Temp\s5vs.":616 13A inittext CODE
+"C:\Users\Kadir\AppData\Local\Temp\s5vs.":617 13B inittext CODE
 "C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":109 13C text8 CODE
 "C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":110 13C text8 CODE
 "C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c":111 13E text8 CODE
@@ -294,12 +294,12 @@ _ADIF 8E 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 _ADFM 4F7 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 _ADON 4E8 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 _main 1D2 0 CODE 0 maintext dist/default/production\adf7012_pic16lf1825.production.obj
-___sp 0 0 STACK 2 stack C:\Users\Kadir\AppData\Local\Temp\sg4.obj
+___sp 0 0 STACK 2 stack C:\Users\Kadir\AppData\Local\Temp\s5vs.obj
 btemp 7E 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 ltemp 7E 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 ttemp 7E 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 wtemp 7E 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
-start 8A 0 CODE 0 init C:\Users\Kadir\AppData\Local\Temp\sg4.obj
+start 8A 0 CODE 0 init C:\Users\Kadir\AppData\Local\Temp\s5vs.obj
 _test 7A 0 COMMON 1 bssCOMMON dist/default/production\adf7012_pic16lf1825.production.obj
 _ANSA1 C61 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 _ADCS0 4F4 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
@@ -313,7 +313,7 @@ _TRISA 8C 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 _DACEN 8C7 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 __end_of_Adc1_Start 284 0 CODE 0 text8 dist/default/production\adf7012_pic16lf1825.production.obj
 _TRISC 8E 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
-reset_vec 0 0 CODE 0 reset_vec C:\Users\Kadir\AppData\Local\Temp\sg4.obj
+reset_vec 0 0 CODE 0 reset_vec C:\Users\Kadir\AppData\Local\Temp\s5vs.obj
 ltemp0 7E 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 ttemp0 7E 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 wtemp0 7E 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
@@ -359,7 +359,7 @@ _CCP1IE 48A 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 _TMR1GE CF 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 _TMR0IE 5D 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 _Delay_ms 21C 0 CODE 0 text5 dist/default/production\adf7012_pic16lf1825.production.obj
-___int_sp 0 0 STACK 2 stack C:\Users\Kadir\AppData\Local\Temp\sg4.obj
+___int_sp 0 0 STACK 2 stack C:\Users\Kadir\AppData\Local\Temp\s5vs.obj
 __CFG_CLKOUTEN$OFF 0 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 _CCPR1L 291 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 _ADNREF 4F2 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
@@ -397,11 +397,11 @@ __Lsfr9 0 0 ABS 0 sfr9 -
 __Hcode 0 0 ABS 0 code -
 __Lcode 0 0 ABS 0 code -
 __size_of_Timer1_Start 0 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
-stackhi 231F 0 ABS 0 - C:\Users\Kadir\AppData\Local\Temp\sg4.obj
+stackhi 231F 0 ABS 0 - C:\Users\Kadir\AppData\Local\Temp\s5vs.obj
 __HcstackBANK0 0 0 ABS 0 cstackBANK0 -
 __LcstackBANK0 0 0 ABS 0 cstackBANK0 -
 __pcstackBANK0 4F 0 BANK0 1 cstackBANK0 dist/default/production\adf7012_pic16lf1825.production.obj
-stacklo 2032 0 ABS 0 - C:\Users\Kadir\AppData\Local\Temp\sg4.obj
+stacklo 2032 0 ABS 0 - C:\Users\Kadir\AppData\Local\Temp\s5vs.obj
 __Hinit 8A 0 CODE 0 init -
 __Linit 8A 0 CODE 0 init -
 __end_of_main 21C 0 CODE 0 maintext dist/default/production\adf7012_pic16lf1825.production.obj
@@ -602,15 +602,15 @@ __end_of_System_Start 12E 0 CODE 0 text3 dist/default/production\adf7012_pic16lf
 __Hreset_vec 4 0 CODE 0 reset_vec -
 __Lreset_vec 0 0 CODE 0 reset_vec -
 _global_interrupt 8 0 CODE 0 intentry dist/default/production\adf7012_pic16lf1825.production.obj
-intlevel0 0 0 CODE 0 functab C:\Users\Kadir\AppData\Local\Temp\sg4.obj
+intlevel0 0 0 CODE 0 functab C:\Users\Kadir\AppData\Local\Temp\s5vs.obj
 __CFG_WDTE$OFF 0 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
 Spi_Byte_Send@data_to_send 50 0 BANK0 1 cstackBANK0 dist/default/production\adf7012_pic16lf1825.production.obj
-intlevel1 0 0 CODE 0 functab C:\Users\Kadir\AppData\Local\Temp\sg4.obj
-intlevel2 0 0 CODE 0 functab C:\Users\Kadir\AppData\Local\Temp\sg4.obj
+intlevel1 0 0 CODE 0 functab C:\Users\Kadir\AppData\Local\Temp\s5vs.obj
+intlevel2 0 0 CODE 0 functab C:\Users\Kadir\AppData\Local\Temp\s5vs.obj
 __size_of_System_Start 0 0 ABS 0 - dist/default/production\adf7012_pic16lf1825.production.obj
-intlevel3 0 0 CODE 0 functab C:\Users\Kadir\AppData\Local\Temp\sg4.obj
-intlevel4 0 0 CODE 0 functab C:\Users\Kadir\AppData\Local\Temp\sg4.obj
-intlevel5 0 0 CODE 0 functab C:\Users\Kadir\AppData\Local\Temp\sg4.obj
+intlevel3 0 0 CODE 0 functab C:\Users\Kadir\AppData\Local\Temp\s5vs.obj
+intlevel4 0 0 CODE 0 functab C:\Users\Kadir\AppData\Local\Temp\s5vs.obj
+intlevel5 0 0 CODE 0 functab C:\Users\Kadir\AppData\Local\Temp\s5vs.obj
 __HcstackCOMMON 0 0 ABS 0 cstackCOMMON -
 __LcstackCOMMON 0 0 ABS 0 cstackCOMMON -
 __pcstackCOMMON 70 0 COMMON 1 cstackCOMMON dist/default/production\adf7012_pic16lf1825.production.obj
