@@ -1,10 +1,140 @@
 
-# 1 "main.c"
+# 1 "utility.c"
 
-# 8 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\stdio.h"
+# 13 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\stdint.h"
+typedef signed char int8_t;
+
+# 20
+typedef signed int int16_t;
+
+# 28
+typedef signed short long int int24_t;
+
+# 36
+typedef signed long int int32_t;
+
+# 43
+typedef unsigned char uint8_t;
+
+# 49
+typedef unsigned int uint16_t;
+
+# 56
+typedef unsigned short long int uint24_t;
+
+# 63
+typedef unsigned long int uint32_t;
+
+# 71
+typedef signed char int_least8_t;
+
+# 78
+typedef signed int int_least16_t;
+
+# 90
+typedef signed short long int int_least24_t;
+
+# 98
+typedef signed long int int_least32_t;
+
+# 105
+typedef unsigned char uint_least8_t;
+
+# 111
+typedef unsigned int uint_least16_t;
+
+# 121
+typedef unsigned short long int uint_least24_t;
+
+# 128
+typedef unsigned long int uint_least32_t;
+
+# 137
+typedef signed char int_fast8_t;
+
+# 144
+typedef signed int int_fast16_t;
+
+# 156
+typedef signed short long int int_fast24_t;
+
+# 164
+typedef signed long int int_fast32_t;
+
+# 171
+typedef unsigned char uint_fast8_t;
+
+# 177
+typedef unsigned int uint_fast16_t;
+
+# 187
+typedef unsigned short long int uint_fast24_t;
+
+# 194
+typedef unsigned long int uint_fast32_t;
+
+# 200
+typedef int32_t intmax_t;
+
+
+
+
+typedef uint32_t uintmax_t;
+
+
+
+
+typedef int16_t intptr_t;
+
+
+
+
+typedef uint16_t uintptr_t;
+
+# 4 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\string.h"
 typedef int ptrdiff_t;
 typedef unsigned size_t;
 typedef unsigned short wchar_t;
+
+
+extern int errno;
+
+# 22
+extern void * memcpy(void *, const void *, size_t);
+extern void * memmove(void *, const void *, size_t);
+extern void * memset(void *, int, size_t);
+
+
+
+extern void * __builtin_memcpy(void *, const void *, size_t);
+#pragma intrinsic(__builtin_memcpy)
+
+# 42
+extern char * strcat(char *, const char *);
+extern char * strcpy(char *, const char *);
+extern char * strncat(char *, const char *, size_t);
+extern char * strncpy(char *, const char *, size_t);
+extern char * strdup(const char *);
+extern char * strtok(char *, const char *);
+
+
+extern int memcmp(const void *, const void *, size_t);
+extern int strcmp(const char *, const char *);
+extern int stricmp(const char *, const char *);
+extern int strncmp(const char *, const char *, size_t);
+extern int strnicmp(const char *, const char *, size_t);
+extern void * memchr(const void *, int, size_t);
+extern size_t strcspn(const char *, const char *);
+extern char * strpbrk(const char *, const char *);
+extern size_t strspn(const char *, const char *);
+extern char * strstr(const char *, const char *);
+extern char * stristr(const char *, const char *);
+extern char * strerror(int);
+extern size_t strlen(const char *);
+extern char * strchr(const char *, int);
+extern char * strichr(const char *, int);
+extern char * strrchr(const char *, int);
+extern char * strrichr(const char *, int);
 
 # 7 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\stdarg.h"
 typedef void * va_list[1];
@@ -137,95 +267,106 @@ extern char * ultoa(char * buf, unsigned long val, int base);
 
 extern char * ftoa(float f, int * status);
 
-# 13 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\stdint.h"
-typedef signed char int8_t;
+# 3 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\math.h"
+extern double fabs(double);
+extern double floor(double);
+extern double ceil(double);
+extern double modf(double, double *);
+extern double sqrt(double);
+extern double atof(const char *);
+extern double sin(double);
+extern double cos(double);
+extern double tan(double);
+extern double asin(double);
+extern double acos(double);
+extern double atan(double);
+extern double atan2(double, double);
+extern double log(double);
+extern double log10(double);
+extern double pow(double, double);
+extern double exp(double);
+extern double sinh(double);
+extern double cosh(double);
+extern double tanh(double);
+extern double eval_poly(double, const double *, int);
+extern double frexp(double, int *);
+extern double ldexp(double, int);
+extern double fmod(double, double);
+extern double trunc(double);
+extern double round(double);
 
-# 20
-typedef signed int int16_t;
+# 12 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\stdbool.h"
+typedef unsigned char bool;
 
-# 28
-typedef signed short long int int24_t;
+# 25 "utility.h"
+extern void Delay_ms(uint16_t);
+extern bool Write_Adf7012_Reg(uint8_t*, uint8_t);
+extern bool Gpio_Config(void);
+extern bool Read_Adf7012_Muxout(uint32_t*);
+extern bool Reverse_Array(uint8_t* ,uint8_t);
+extern bool Send_Vcxo_Signal(uint8_t);
 
-# 36
-typedef signed long int int32_t;
-
-# 43
-typedef unsigned char uint8_t;
-
-# 49
-typedef unsigned int uint16_t;
-
-# 56
-typedef unsigned short long int uint24_t;
-
-# 63
-typedef unsigned long int uint32_t;
-
-# 71
-typedef signed char int_least8_t;
-
-# 78
-typedef signed int int_least16_t;
-
-# 90
-typedef signed short long int int_least24_t;
-
-# 98
-typedef signed long int int_least32_t;
-
-# 105
-typedef unsigned char uint_least8_t;
-
-# 111
-typedef unsigned int uint_least16_t;
-
-# 121
-typedef unsigned short long int uint_least24_t;
-
-# 128
-typedef unsigned long int uint_least32_t;
-
-# 137
-typedef signed char int_fast8_t;
-
-# 144
-typedef signed int int_fast16_t;
-
-# 156
-typedef signed short long int int_fast24_t;
-
-# 164
-typedef signed long int int_fast32_t;
-
-# 171
-typedef unsigned char uint_fast8_t;
-
-# 177
-typedef unsigned int uint_fast16_t;
-
-# 187
-typedef unsigned short long int uint_fast24_t;
-
-# 194
-typedef unsigned long int uint_fast32_t;
-
-# 200
-typedef int32_t intmax_t;
+# 45
+extern uint32_t timeout_check;
+extern uint8_t timeout_flag;
+extern uint16_t Systick_Counter;
 
 
 
+extern void Radio_Setup(void);
+extern void Ptt_On(void);
+extern void Ptt_Off(void);
+extern int Get_Powerlevel(void);
+extern void Set_Freq(uint32_t);
 
-typedef uint32_t uintmax_t;
+# 22 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\string.h"
+extern void * memcpy(void *, const void *, size_t);
+extern void * memmove(void *, const void *, size_t);
+extern void * memset(void *, int, size_t);
+
+
+
+extern void * __builtin_memcpy(void *, const void *, size_t);
+#pragma intrinsic(__builtin_memcpy)
+
+# 42
+extern char * strcat(char *, const char *);
+extern char * strcpy(char *, const char *);
+extern char * strncat(char *, const char *, size_t);
+extern char * strncpy(char *, const char *, size_t);
+extern char * strdup(const char *);
+extern char * strtok(char *, const char *);
+
+
+extern int memcmp(const void *, const void *, size_t);
+extern int strcmp(const char *, const char *);
+extern int stricmp(const char *, const char *);
+extern int strncmp(const char *, const char *, size_t);
+extern int strnicmp(const char *, const char *, size_t);
+extern void * memchr(const void *, int, size_t);
+extern size_t strcspn(const char *, const char *);
+extern char * strpbrk(const char *, const char *);
+extern size_t strspn(const char *, const char *);
+extern char * strstr(const char *, const char *);
+extern char * stristr(const char *, const char *);
+extern char * strerror(int);
+extern size_t strlen(const char *);
+extern char * strchr(const char *, int);
+extern char * strichr(const char *, int);
+extern char * strrchr(const char *, int);
+extern char * strrichr(const char *, int);
+
+# 103 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\stdlib.h"
+extern char * itoa(char * buf, int val, int base);
+extern char * utoa(char * buf, unsigned val, int base);
 
 
 
 
-typedef int16_t intptr_t;
+extern char * ltoa(char * buf, long val, int base);
+extern char * ultoa(char * buf, unsigned long val, int base);
 
-
-
-
-typedef uint16_t uintptr_t;
+extern char * ftoa(float f, int * status);
 
 # 21 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -3774,296 +3915,114 @@ extern __nonreentrant void _delay(unsigned long);
 #pragma config BORV = LO
 #pragma config LVP = ON
 
-# 12 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\stdbool.h"
-typedef unsigned char bool;
-
-# 22 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\string.h"
-extern void * memcpy(void *, const void *, size_t);
-extern void * memmove(void *, const void *, size_t);
-extern void * memset(void *, int, size_t);
+# 21 "utility.c"
+uint16_t Systick_Counter = 0;
+uint32_t Delay_Counter = 0;
+uint8_t timeout_flag = 0;
+uint32_t timeout_check;
 
 
+bool Spi_Byte_Send(uint8_t);
 
-extern void * __builtin_memcpy(void *, const void *, size_t);
-#pragma intrinsic(__builtin_memcpy)
-
-# 42
-extern char * strcat(char *, const char *);
-extern char * strcpy(char *, const char *);
-extern char * strncat(char *, const char *, size_t);
-extern char * strncpy(char *, const char *, size_t);
-extern char * strdup(const char *);
-extern char * strtok(char *, const char *);
+# 35
+bool Gpio_Config(void){
 
 
-extern int memcmp(const void *, const void *, size_t);
-extern int strcmp(const char *, const char *);
-extern int stricmp(const char *, const char *);
-extern int strncmp(const char *, const char *, size_t);
-extern int strnicmp(const char *, const char *, size_t);
-extern void * memchr(const void *, int, size_t);
-extern size_t strcspn(const char *, const char *);
-extern char * strpbrk(const char *, const char *);
-extern size_t strspn(const char *, const char *);
-extern char * strstr(const char *, const char *);
-extern char * stristr(const char *, const char *);
-extern char * strerror(int);
-extern size_t strlen(const char *);
-extern char * strchr(const char *, int);
-extern char * strichr(const char *, int);
-extern char * strrchr(const char *, int);
-extern char * strrichr(const char *, int);
+TRISA |= 0b00000010;
+TRISA &= 0b11001011;
+TRISC |= 0b00100000;
+TRISC &= 0b11100000;
 
-# 103 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\stdlib.h"
-extern char * itoa(char * buf, int val, int base);
-extern char * utoa(char * buf, unsigned val, int base);
+return 1;
+
+}
 
 
+int CheckDelay(uint8_t t)
+{
+return((t - Systick_Counter));
+}
 
+void Delay_ms(uint16_t time_to_delay)
+{
+Systick_Counter = 0;
+while (CheckDelay(time_to_delay));
+}
 
-extern char * ltoa(char * buf, long val, int base);
-extern char * ultoa(char * buf, unsigned long val, int base);
+# 69
+bool Read_Adf7012_Muxout(uint32_t* read_val){
 
-extern char * ftoa(float f, int * status);
+Delay_ms(1);
 
-# 3 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\math.h"
-extern double fabs(double);
-extern double floor(double);
-extern double ceil(double);
-extern double modf(double, double *);
-extern double sqrt(double);
-extern double atof(const char *);
-extern double sin(double);
-extern double cos(double);
-extern double tan(double);
-extern double asin(double);
-extern double acos(double);
-extern double atan(double);
-extern double atan2(double, double);
-extern double log(double);
-extern double log10(double);
-extern double pow(double, double);
-extern double exp(double);
-extern double sinh(double);
-extern double cosh(double);
-extern double tanh(double);
-extern double eval_poly(double, const double *, int);
-extern double frexp(double, int *);
-extern double ldexp(double, int);
-extern double fmod(double, double);
-extern double trunc(double);
-extern double round(double);
+if(PORTCbits.RC5)
+return 1;
+else
+return 0;
 
-# 25 "utility.h"
-extern void Delay_ms(uint16_t);
-extern bool Write_Adf7012_Reg(uint8_t*, uint8_t);
-extern bool Gpio_Config(void);
-extern bool Read_Adf7012_Muxout(uint32_t*);
-extern bool Reverse_Array(uint8_t* ,uint8_t);
-extern bool Send_Vcxo_Signal(uint8_t);
+}
 
-# 45
-extern uint32_t timeout_check;
-extern uint8_t timeout_flag;
-extern uint16_t Systick_Counter;
-
-
-
-extern void Radio_Setup(void);
-extern void Ptt_On(void);
-extern void Ptt_Off(void);
-extern int Get_Powerlevel(void);
-extern void Set_Freq(uint32_t);
-
-# 15 "main.c"
-uint8_t test = 0;
-uint8_t test2 = 0;
-uint16_t dac_flag = 0;
+# 89
+bool Write_Adf7012_Reg(uint8_t* reg_value, uint8_t size_of_reg){
 
 uint8_t i = 0;
+Delay_ms(1);
+PORTAbits.RA4 = 0;;
+Delay_ms(1);
 
-uint8_t sine_table[26] = {0x11,0x14,0x18,0x1b,0x1e,0x20,0x21,0x21,0x20,0x1e,0x1b,0x18,0x14,0x11,0xd,0x9,0x6,0x3,0x1,0x0,0x0,0x1,0x3,0x6,0x9,0xd};
+for (i = 0; i < size_of_reg; i++){
+Spi_Byte_Send(*(reg_value+i));
+}
 
-uint8_t sine_table2[14] = {0x10,0x16,0x1c,0x1f,0x1f,0x1c,0x16,0x10,0x9,0x3,0x0,0x0,0x3,0x9};
+Delay_ms(1);
+PORTAbits.RA4 = 1;;
 
-uint8_t adc_sonuc_high = 0;
-uint8_t adc_sonuc_low = 0;
+Delay_ms(1);
+return 1;
+}
 
-# 32
-void interrupt global_interrupt(){
+# 115
+bool Send_Vcxo_Signal(uint8_t value){
 
-INTCON &= ~0x80;
+DACCON1 = value;
+return 1;
+}
 
+# 205
+bool Reverse_Array(uint8_t* input,uint8_t length){
+uint8_t i = 0;
+uint8_t* buffer_array = malloc(sizeof(uint8_t) * length);
+memcpy(buffer_array, input, length);
 
-if(ADIF){
-adc_sonuc_high = ADRESH;
-adc_sonuc_low = ADRESL;
+for(i = 0; i<length; i++){
+*(input+i) = *(buffer_array+(length-1)-i);
+}
 
-ADIF = 0;
+free (buffer_array);
+
+return 1;
 }
 
 
+bool Spi_Byte_Send(uint8_t data){
 
-if(PIR1 & 0x04){
+PORTAbits.RA2 = 0;
+uint8_t i;
+uint8_t data_to_send;
+data_to_send = data;
+for(i = 0; i <8; i++){
 
-Systick_Counter += 1;
+if(data_to_send & 0x80)
+PORTCbits.RC2 = 1;
+else
+PORTCbits.RC2 = 0;
 
+data_to_send <<= 1;
 
-
-TMR1H = 0x00;
-TMR1L = 0x00;
-
-PIR1 &= ~0x04;
-
-ADCON0 |= 0b00000010;
-
-}
-
-
-
-if(INTCON & 0x04){
-
-DACCON1 = sine_table[i++];
-if (i==25)
-i=0;
-
-
-
-INTCON &= ~0x04;
-}
-
-
-
-
-INTCON |= 0x80;
-}
-
-void Timer0_Start(void){
-TMR0IE = 1;
-}
-void Timer0_Stop(void){
-TMR0IE = 0;
-}
-
-void Timer1_Start(void){
-
-
-CCPR1H = 0x03;
-CCPR1L = 0x41;
-
-
-CCP1IE = 1;
-}
-
-void Timer1_Stop(void){
-CCP1IE = 0;
-}
-
-void Dac0_Start(void){
-DACEN = 1;
-DACCON1 = 0x10;
-}
-
-void Dac0_Stop(void){
-DACEN = 0;
-}
-
-void Adc1_Start(void){
-ADIF = 0;
-ADON = 1;
-ADIE = 1;
-
+PORTAbits.RA2 = 1;
+Delay_ms(1);
+PORTAbits.RA2 = 0;
+Delay_ms(1);
 
 }
-
-void Adc1_Stop(void){
-ADON = 0;
-ADIE = 0;
+return 1;
 }
-
-void System_Start(void){
-
-
-OSCCON = 0x00;
-OSCCON |= 0b11110000;
-OSCTUNE = 0x00;
-
-
-
-TMR0CS = 0;
-PSA = 1;
-
-
-
-
-TMR1ON = 1;
-TMR1GE = 0;
-
-
-TMR1CS1 = 0;
-TMR1CS0 = 0;
-
-
-T1CKPS1 = 1;
-T1CKPS0 = 1;
-
-
-CCP1M3 = 1;
-CCP1M2 = 0;
-CCP1M1 = 1;
-CCP1M1 = 0;
-
-
-
-
-DACOE = 1;
-DACPSS1 = 0;
-DACPSS0 = 0;
-DACNSS = 0;
-
-
-
-
-ANSA1 = 1;
-ADCON0 &= 0b10000011;
-ADCON0 |= 0b00000100;
-ADNREF = 0;
-ADPREF1 = 0;
-ADPREF0 = 0;
-ADCS2 = 1;
-ADCS1 = 1;
-ADCS0 = 0;
-ADFM = 1;
-
-
-
-
-INTCON |= 0xC0;
-
-
-
-}
-
-
-int main(void) {
-unsigned int adc_sonuc;
-System_Start();
-while (!(OSCSTAT & (0x01))){}
-
-
-Timer0_Start();
-Timer1_Start();
-
-Dac0_Start();
-
-Adc1_Start();
-
-Delay_ms(200);
-
-while(1){
-Delay_ms(10);
-
-}
-return (0);
-}
-

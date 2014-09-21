@@ -38,11 +38,6 @@ extern void Ptt_Off(void);
 extern int Get_Powerlevel(void);
 extern void Set_Freq(uint32_t);
 
-#define ADF7021_LOAD_REGISTER_ENABLE   PORTAbits.RA4 = 0;
-#define ADF7021_LOAD_REGISTER_DISABLE  PORTAbits.RA4 = 1;
-
-#define ADF7021_CHIP_POWER_UP    PORTAbits.RA5 = 1;
-#define ADF7021_CHIP_POWER_DOWN  PORTAbits.RA5 = 0;
 
 //#define ADC_CHANNEL 7
 
