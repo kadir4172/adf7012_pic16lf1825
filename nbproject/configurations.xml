@@ -7,6 +7,7 @@
       <itemPath>configuration.h</itemPath>
       <itemPath>common_variables.h</itemPath>
       <itemPath>config.h</itemPath>
+      <itemPath>adf7012.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
