@@ -14,9 +14,13 @@
       <itemPath>utility.h</itemPath>
 =======
       <itemPath>audio_tone.h</itemPath>
+<<<<<<< HEAD
 >>>>>>> parent of fbf90ed... [header] ax25.h added
 =======
 >>>>>>> parent of 067f070... [source] utility.c added
+=======
+      <itemPath>ax25.h</itemPath>
+>>>>>>> fbf90ed... [header] ax25.h added
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"

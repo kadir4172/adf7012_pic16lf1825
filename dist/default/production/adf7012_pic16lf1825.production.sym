@@ -686,7 +686,10 @@ dataBANK0 20 51 BANK0 20 1
 %locals
 dist/default/production\adf7012_pic16lf1825.production.obj
 C:\Users\Kadir\AppData\Local\Temp\s6uc.
+<<<<<<< HEAD
 >>>>>>> parent of 067f070... [source] utility.c added
+=======
+>>>>>>> fbf90ed... [header] ax25.h added
 545 45 0 CODE 0
 548 45 0 CODE 0
 595 45 0 CODE 0
