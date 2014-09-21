@@ -5,12 +5,12 @@
  * Created on September 15, 2014, 6:55 PM
  */
 
-#include <stdio.h>
+//#include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
 #include "configuration.h"
 #include <stdbool.h>
-#include "utility.h"
+//#include "utility.h"
 
 uint8_t test  = 0;
 uint8_t test2 = 0;
@@ -18,7 +18,7 @@ uint16_t dac_flag = 0;
 
 uint8_t i = 0;
 //unsigned char sine_table[26] = {0x10,0x14,0x17,0x1b,0x1d,0x1f,0x20,0x20,0x1f,0x1d,0x1b,0x17,0x14,0x10,0xc,0x9,0x5,0x3,0x1,0x0,0x0,0x1,0x3,0x5,0x9,0xc};
-uint8_t sine_table[26] = {0x11,0x14,0x18,0x1b,0x1e,0x20,0x21,0x21,0x20,0x1e,0x1b,0x18,0x14,0x11,0xd,0x9,0x6,0x3,0x1,0x0,0x0,0x1,0x3,0x6,0x9,0xd};
+//uint8_t sine_table[26] = {0x11,0x14,0x18,0x1b,0x1e,0x20,0x21,0x21,0x20,0x1e,0x1b,0x18,0x14,0x11,0xd,0x9,0x6,0x3,0x1,0x0,0x0,0x1,0x3,0x6,0x9,0xd};
 
 uint8_t sine_table2[14] = {0x10,0x16,0x1c,0x1f,0x1f,0x1c,0x16,0x10,0x9,0x3,0x0,0x0,0x3,0x9};
 
@@ -45,7 +45,7 @@ void interrupt global_interrupt(){
     //Timer1 interrupt
     if(PIR1 & 0x04){
        //Timer1 ISR
-        Systick_Counter += 1;
+       // Systick_Counter += 1; //mplab
        //Timer1 ISR
 
        //reset Timer1 registers
@@ -62,8 +62,8 @@ void interrupt global_interrupt(){
     //Timer0 interrupt
     if(INTCON & 0x04){
        //Timer0 ISR
-        DACCON1 = sine_table[i++];
-        if (i==25)
+        DACCON1 = sine_table2[i++];
+        if (i==13)
             i=0;
     
        //Timer0 ISR
@@ -147,17 +147,17 @@ int main(void) {
     while (!(OSCSTAT & (0x01))){} //HFIOFS Osc. stable bit bekle
     /* TODO timeout a bakip software reset verilmeli */
 
-    Timer0_Start(); //32us  lik Timer0 baslatilsin
-    Timer1_Start(); //833us lik Timer1 baslatilsin
+  //  Timer0_Start(); //32us  lik Timer0 baslatilsin
+  //  Timer1_Start(); //833us lik Timer1 baslatilsin
 
-    Dac0_Start();
+  //  Dac0_Start();
     
-    Adc1_Start();
+  //  Adc1_Start();
    
-    Delay_ms(200);
+  //  Delay_ms(200);
 
      while(1){
-         Delay_ms(10);
+   //      Delay_ms(10);
          //Spi_Byte_Send(0x17);
      }
     return (EXIT_SUCCESS);

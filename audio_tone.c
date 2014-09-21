@@ -9,7 +9,7 @@
 //#include "dac.h"
 //#include "timer.h"
 #include "adf7012.h"
-
+/*
 const uint8_t sine_table[512] = {
   127, 129, 130, 132, 133, 135, 136, 138, 139, 141, 143, 144, 146, 147, 149, 150, 152, 153, 155, 156, 158,
   159, 161, 163, 164, 166, 167, 168, 170, 171, 173, 174, 176, 177, 179, 180, 182, 183, 184, 186, 187, 188,
@@ -38,7 +38,7 @@ const uint8_t sine_table[512] = {
   115, 116, 118, 119, 121, 122, 124, 125
 };
 
-
+*/
 // This is a 8% scaled down version of the above
 // in order to operate the PWM not too close to its extreme limits.
 // Trying to prevent distortion this way.
@@ -88,9 +88,10 @@ bool PTT_OFF = false;
 uint32_t modem_packet_size = 0;
 uint8_t modem_packet[MODEM_MAX_PACKET];
 
-
+/*
 // Source-specific
-static const int TABLE_SIZE          = sizeof(sine_table);
+//static const int TABLE_SIZE          = sizeof(sine_table);
+static const int TABLE_SIZE          = 30; //mplab
 static const uint32_t PLAYBACK_RATE   = 100000;    // 100KHz (10us lik timer baslatilacak)
 static const int BAUD_RATE                 = 1200;
 static  uint8_t SAMPLES_PER_BAUD ;
@@ -178,8 +179,9 @@ if (MODEM_TRANSMITTING) {
 
     phase += phase_delta;
 
-    Audio_Signal = *(sine_table + ((phase >> 7) & (TABLE_SIZE - 1)));
-    //LPC_DAC->CR = ((Audio_Signal) << 6) | DAC_BIAS;
+    //Audio_Signal = *(sine_table + ((phase >> 7) & (TABLE_SIZE - 1)));
+    Audio_Signal = 0xCC; //mplab
+    
     Send_Vcxo_Signal(Audio_Signal); //DAC cikisina ornegi yazalim
     if(++current_sample_in_baud == SAMPLES_PER_BAUD) {
       current_sample_in_baud = 0;
@@ -191,3 +193,4 @@ end_generator:
 
   return;
 }
+*/

@@ -8,7 +8,6 @@
       <itemPath>common_variables.h</itemPath>
       <itemPath>config.h</itemPath>
       <itemPath>adf7012.h</itemPath>
-      <itemPath>audio_tone.h</itemPath>
       <itemPath>ax25.h</itemPath>
       <itemPath>utility.h</itemPath>
     </logicalFolder>
@@ -21,8 +20,6 @@
                    projectFiles="true">
       <itemPath>main.c</itemPath>
       <itemPath>utility.c</itemPath>
-      <itemPath>adf7012.c</itemPath>
-      <itemPath>audio_tone.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

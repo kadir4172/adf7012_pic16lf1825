@@ -17,7 +17,7 @@
 #include <xc.h>
 
 uint32_t powerlevel;
-
+/*
 //Function Prototypes
 void Adf_Reset_Register_Zero(void);
 void Adf_Reset_Register_One(void);
@@ -87,12 +87,12 @@ Adf_Config adf_config;
 void Adf_Reset_Config(void)
 {
 
-    Adf_Reset_Register_Zero();
-    Adf_Reset_Register_One();
-    Adf_Reset_Register_Two();
-    Adf_Reset_Register_Three();
+   // Adf_Reset_Register_Zero();
+   // Adf_Reset_Register_One();
+   // Adf_Reset_Register_Two();
+   // Adf_Reset_Register_Three();
 
-    Adf_Reset();
+    //Adf_Reset();
 }
 
 // Power up default settings are defined here:
@@ -149,10 +149,10 @@ void Adf_Reset(void) {
 
 // Configuration writing functions ---------------------------------------
 void Adf_Write_Config(void) {
-    Adf_Write_Register_Zero();
-    Adf_Write_Register_One();
-    Adf_Write_Register_Two();
-    Adf_Write_Register_Three();
+   // Adf_Write_Register_Zero();
+   // Adf_Write_Register_One();
+   // Adf_Write_Register_Two();
+   // Adf_Write_Register_Three();
 }
 
 void Adf_Write_Register_Zero(void) {
@@ -356,3 +356,4 @@ void Ptt_Off()
   Adf_Write_Config();
   Delay_ms(10);
 }
+*/
