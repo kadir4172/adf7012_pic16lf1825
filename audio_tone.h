@@ -14,18 +14,18 @@ extern "C" {
 
 
 #include <stdint.h>
+#include <stdbool.h>
 
 #define MODEM_MAX_PACKET 512
 
 extern uint8_t modem_packet[MODEM_MAX_PACKET];   
 extern uint32_t modem_packet_size;                
 
-void Modem_Setup();
-void Modem_Start();
-void Modem_Flush_Frame();
-void Modem_Set_Tx_Freq(uint32_t freq);
-int Modem_Get_Powerlevel();
-bool Modem_Busy();
+void Modem_Setup(void);
+void Modem_Start(void);
+void Modem_Flush_Frame(void);
+void Modem_Set_Tx_Freq(uint32_t);
+bool Modem_Busy(void);
 
 
 

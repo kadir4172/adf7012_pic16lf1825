@@ -22,6 +22,7 @@
       <itemPath>main.c</itemPath>
       <itemPath>utility.c</itemPath>
       <itemPath>adf7012.c</itemPath>
+      <itemPath>audio_tone.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

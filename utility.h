@@ -57,6 +57,16 @@ extern bool Spi_Byte_Send(uint8_t);
 
 
 
+//Peripheral functions
+extern void Timer0_Start(void);
+extern void Timer0_Stop(void);
+extern void Timer1_Start(void);
+extern void Timer1_Stop(void);
+extern void Dac0_Start(void);
+extern void Dac0_Stop(void);
+extern void Adc1_Start(void);
+extern void Adc1_Stop(void);
+//Peripheral functions
 
 
 #ifdef	__cplusplus

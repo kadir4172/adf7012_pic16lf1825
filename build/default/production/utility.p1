@@ -29,6 +29,30 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _memcpy `(*v ~T0 @X0 0 ef3`*v`*Cv`ui ]
 "88 C:\Program Files (x86)\Microchip\xc8\v1.33\include\stdlib.h
 [v _free `(v ~T0 @X0 0 ef1`*v ]
+"660 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16lf1825.h
+[v _TMR0 `Vuc ~T0 @X0 0 e@21 ]
+"6862
+[v _TMR0IF `Vb ~T0 @X0 0 e@90 ]
+"6860
+[v _TMR0IE `Vb ~T0 @X0 0 e@93 ]
+"704
+[v _TMR1H `Vuc ~T0 @X0 0 e@23 ]
+"685
+[v _TMR1L `Vuc ~T0 @X0 0 e@22 ]
+"4011
+[v _CCPR1H `Vuc ~T0 @X0 0 e@658 ]
+"3992
+[v _CCPR1L `Vuc ~T0 @X0 0 e@657 ]
+"6204
+[v _CCP1IE `Vb ~T0 @X0 0 e@1162 ]
+"6322
+[v _DACEN `Vb ~T0 @X0 0 e@2247 ]
+"6066
+[v _ADIF `Vb ~T0 @X0 0 e@142 ]
+"6070
+[v _ADON `Vb ~T0 @X0 0 e@1256 ]
+"6064
+[v _ADIE `Vb ~T0 @X0 0 e@1166 ]
 [; ;stdint.h: 13: typedef signed char int8_t;
 [; ;stdint.h: 20: typedef signed int int16_t;
 [; ;stdint.h: 28: typedef signed short long int int24_t;
@@ -210,6 +234,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;utility.h: 53: extern void Ptt_Off(void);
 [; ;utility.h: 54: extern void Set_Freq(uint32_t);
 [; ;utility.h: 55: extern bool Spi_Byte_Send(uint8_t);
+[; ;utility.h: 61: extern void Timer0_Start(void);
+[; ;utility.h: 62: extern void Timer0_Stop(void);
+[; ;utility.h: 63: extern void Timer1_Start(void);
+[; ;utility.h: 64: extern void Timer1_Stop(void);
+[; ;utility.h: 65: extern void Dac0_Start(void);
+[; ;utility.h: 66: extern void Dac0_Stop(void);
+[; ;utility.h: 67: extern void Adc1_Start(void);
+[; ;utility.h: 68: extern void Adc1_Stop(void);
 [; ;string.h: 22: extern void * memcpy(void *, const void *, size_t);
 [; ;string.h: 23: extern void * memmove(void *, const void *, size_t);
 [; ;string.h: 24: extern void * memset(void *, int, size_t);
@@ -3177,4 +3209,147 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;utility.c: 249: }
 "249
 [e :UE 349 ]
+}
+"254
+[v _Timer0_Start `(v ~T0 @X0 1 ef ]
+{
+[; ;utility.c: 254: void Timer0_Start(void){
+[e :U _Timer0_Start ]
+[f ]
+[; ;utility.c: 255: TMR0 = 0x00;
+"255
+[e = _TMR0 -> -> 0 `i `uc ]
+[; ;utility.c: 256: TMR0IF = 0;
+"256
+[e = _TMR0IF -> -> 0 `i `b ]
+[; ;utility.c: 257: TMR0IE = 1;
+"257
+[e = _TMR0IE -> -> 1 `i `b ]
+[; ;utility.c: 258: }
+"258
+[e :UE 355 ]
+}
+"259
+[v _Timer0_Stop `(v ~T0 @X0 1 ef ]
+{
+[; ;utility.c: 259: void Timer0_Stop(void){
+[e :U _Timer0_Stop ]
+[f ]
+[; ;utility.c: 260: TMR0IE = 0;
+"260
+[e = _TMR0IE -> -> 0 `i `b ]
+[; ;utility.c: 261: TMR0 = 0x00;
+"261
+[e = _TMR0 -> -> 0 `i `uc ]
+[; ;utility.c: 262: }
+"262
+[e :UE 356 ]
+}
+"264
+[v _Timer1_Start `(v ~T0 @X0 1 ef ]
+{
+[; ;utility.c: 264: void Timer1_Start(void){
+[e :U _Timer1_Start ]
+[f ]
+[; ;utility.c: 266: TMR1H = 0x00;
+"266
+[e = _TMR1H -> -> 0 `i `uc ]
+[; ;utility.c: 267: TMR1L = 0x00;
+"267
+[e = _TMR1L -> -> 0 `i `uc ]
+[; ;utility.c: 270: CCPR1H = 0x03;
+"270
+[e = _CCPR1H -> -> 3 `i `uc ]
+[; ;utility.c: 271: CCPR1L = 0x41;
+"271
+[e = _CCPR1L -> -> 65 `i `uc ]
+[; ;utility.c: 274: CCP1IE = 1;
+"274
+[e = _CCP1IE -> -> 1 `i `b ]
+[; ;utility.c: 275: }
+"275
+[e :UE 357 ]
+}
+"277
+[v _Timer1_Stop `(v ~T0 @X0 1 ef ]
+{
+[; ;utility.c: 277: void Timer1_Stop(void){
+[e :U _Timer1_Stop ]
+[f ]
+[; ;utility.c: 279: TMR1H = 0x00;
+"279
+[e = _TMR1H -> -> 0 `i `uc ]
+[; ;utility.c: 280: TMR1L = 0x00;
+"280
+[e = _TMR1L -> -> 0 `i `uc ]
+[; ;utility.c: 282: CCP1IE = 0;
+"282
+[e = _CCP1IE -> -> 0 `i `b ]
+[; ;utility.c: 283: }
+"283
+[e :UE 358 ]
+}
+"285
+[v _Dac0_Start `(v ~T0 @X0 1 ef ]
+{
+[; ;utility.c: 285: void Dac0_Start(void){
+[e :U _Dac0_Start ]
+[f ]
+[; ;utility.c: 286: DACEN = 1;
+"286
+[e = _DACEN -> -> 1 `i `b ]
+[; ;utility.c: 287: DACCON1 = 0x10;
+"287
+[e = _DACCON1 -> -> 16 `i `uc ]
+[; ;utility.c: 288: }
+"288
+[e :UE 359 ]
+}
+"290
+[v _Dac0_Stop `(v ~T0 @X0 1 ef ]
+{
+[; ;utility.c: 290: void Dac0_Stop(void){
+[e :U _Dac0_Stop ]
+[f ]
+[; ;utility.c: 291: DACEN = 0;
+"291
+[e = _DACEN -> -> 0 `i `b ]
+[; ;utility.c: 292: }
+"292
+[e :UE 360 ]
+}
+"294
+[v _Adc1_Start `(v ~T0 @X0 1 ef ]
+{
+[; ;utility.c: 294: void Adc1_Start(void){
+[e :U _Adc1_Start ]
+[f ]
+[; ;utility.c: 295: ADIF = 0;
+"295
+[e = _ADIF -> -> 0 `i `b ]
+[; ;utility.c: 296: ADON = 1;
+"296
+[e = _ADON -> -> 1 `i `b ]
+[; ;utility.c: 297: ADIE = 1;
+"297
+[e = _ADIE -> -> 1 `i `b ]
+[; ;utility.c: 300: }
+"300
+[e :UE 361 ]
+}
+"302
+[v _Adc1_Stop `(v ~T0 @X0 1 ef ]
+{
+[; ;utility.c: 302: void Adc1_Stop(void){
+[e :U _Adc1_Stop ]
+[f ]
+[; ;utility.c: 303: ADON = 0;
+"303
+[e = _ADON -> -> 0 `i `b ]
+[; ;utility.c: 304: ADIE = 0;
+"304
+[e = _ADIE -> -> 0 `i `b ]
+[; ;utility.c: 305: }
+"305
+[e :UE 362 ]
 }

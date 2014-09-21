@@ -77,49 +77,6 @@ void interrupt global_interrupt(){
     INTCON |= 0x80; //Global interrupt enabled again
 }
 
-void Timer0_Start(void){
-  TMR0IE = 1;  //Timer0 interrupt enable edelim
-}
-void Timer0_Stop(void){
-  TMR0IE = 0;  //Timer0 interrupt disable edelim
-}
-
-void Timer1_Start(void){
-    
-    //833 us lik compare registerlari
-    CCPR1H = 0x03;
-    CCPR1L = 0x41;
-
-    //compare1 modulu interrupt enable
-    CCP1IE = 1;
-}
-
-void Timer1_Stop(void){
-    CCP1IE = 0; // compare1 modulu interrupt disable
-}
-
-void Dac0_Start(void){
-    DACEN = 1;  //DAC output enable
-    DACCON1 = 0x10;//Vdd/2 on DACOUT
-}
-
-void Dac0_Stop(void){
-    DACEN = 0; //DAC output disable
-}
-
-void Adc1_Start(void){
-    ADIF = 0; //clear interrupt flag
-    ADON = 1;
-    ADIE = 1; //ADC interrupt enable
-    //PIR1 &= 0b10111111;
-    //PIE1 |= 0b01000000;
-}
-
-void Adc1_Stop(void){
-    ADON = 0; //ADC disable
-    ADIE = 0; //ADC interrupt disable
-}
-
 void System_Start(void){
     
     //Internal RC osc with 4xPLL operating at 32MHz

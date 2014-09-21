@@ -247,3 +247,59 @@ bool Spi_Byte_Send(uint8_t data){
     }
     return true;
 }
+
+
+
+
+void Timer0_Start(void){
+  TMR0 = 0x00;
+  TMR0IF = 0;
+  TMR0IE = 1;  //Timer0 interrupt enable edelim
+}
+void Timer0_Stop(void){
+  TMR0IE = 0;  //Timer0 interrupt disable edelim
+  TMR0 = 0x00;
+}
+
+void Timer1_Start(void){
+    //reset Timer1 registers
+    TMR1H = 0x00;
+    TMR1L = 0x00;
+
+    //833 us lik compare registerlari
+    CCPR1H = 0x03;
+    CCPR1L = 0x41;
+
+    //compare1 modulu interrupt enable
+    CCP1IE = 1;
+}
+
+void Timer1_Stop(void){
+    //reset Timer1 registers
+    TMR1H = 0x00;
+    TMR1L = 0x00;
+
+    CCP1IE = 0; // compare1 modulu interrupt disable
+}
+
+void Dac0_Start(void){
+    DACEN = 1;  //DAC output enable
+    DACCON1 = 0x10;//Vdd/2 on DACOUT
+}
+
+void Dac0_Stop(void){
+    DACEN = 0; //DAC output disable
+}
+
+void Adc1_Start(void){
+    ADIF = 0; //clear interrupt flag
+    ADON = 1;
+    ADIE = 1; //ADC interrupt enable
+    //PIR1 &= 0b10111111;
+    //PIE1 |= 0b01000000;
+}
+
+void Adc1_Stop(void){
+    ADON = 0; //ADC disable
+    ADIE = 0; //ADC interrupt disable
+}

@@ -319,6 +319,16 @@ extern void Ptt_Off(void);
 extern void Set_Freq(uint32_t);
 extern bool Spi_Byte_Send(uint8_t);
 
+# 61
+extern void Timer0_Start(void);
+extern void Timer0_Stop(void);
+extern void Timer1_Start(void);
+extern void Timer1_Stop(void);
+extern void Dac0_Start(void);
+extern void Dac0_Stop(void);
+extern void Adc1_Start(void);
+extern void Adc1_Stop(void);
+
 # 22 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\string.h"
 extern void * memcpy(void *, const void *, size_t);
 extern void * memmove(void *, const void *, size_t);
@@ -4025,4 +4035,60 @@ Delay_ms(1);
 
 }
 return 1;
+}
+
+
+
+
+void Timer0_Start(void){
+TMR0 = 0x00;
+TMR0IF = 0;
+TMR0IE = 1;
+}
+void Timer0_Stop(void){
+TMR0IE = 0;
+TMR0 = 0x00;
+}
+
+void Timer1_Start(void){
+
+TMR1H = 0x00;
+TMR1L = 0x00;
+
+
+CCPR1H = 0x03;
+CCPR1L = 0x41;
+
+
+CCP1IE = 1;
+}
+
+void Timer1_Stop(void){
+
+TMR1H = 0x00;
+TMR1L = 0x00;
+
+CCP1IE = 0;
+}
+
+void Dac0_Start(void){
+DACEN = 1;
+DACCON1 = 0x10;
+}
+
+void Dac0_Stop(void){
+DACEN = 0;
+}
+
+void Adc1_Start(void){
+ADIF = 0;
+ADON = 1;
+ADIE = 1;
+
+
+}
+
+void Adc1_Stop(void){
+ADON = 0;
+ADIE = 0;
 }

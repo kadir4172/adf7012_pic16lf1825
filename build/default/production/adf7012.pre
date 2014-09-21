@@ -319,6 +319,16 @@ extern void Ptt_Off(void);
 extern void Set_Freq(uint32_t);
 extern bool Spi_Byte_Send(uint8_t);
 
+# 61
+extern void Timer0_Start(void);
+extern void Timer0_Stop(void);
+extern void Timer1_Start(void);
+extern void Timer1_Stop(void);
+extern void Dac0_Start(void);
+extern void Dac0_Stop(void);
+extern void Adc1_Start(void);
+extern void Adc1_Stop(void);
+
 # 22 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\string.h"
 extern void * memcpy(void *, const void *, size_t);
 extern void * memmove(void *, const void *, size_t);

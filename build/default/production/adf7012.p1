@@ -235,6 +235,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;utility.h: 53: extern void Ptt_Off(void);
 [; ;utility.h: 54: extern void Set_Freq(uint32_t);
 [; ;utility.h: 55: extern bool Spi_Byte_Send(uint8_t);
+[; ;utility.h: 61: extern void Timer0_Start(void);
+[; ;utility.h: 62: extern void Timer0_Stop(void);
+[; ;utility.h: 63: extern void Timer1_Start(void);
+[; ;utility.h: 64: extern void Timer1_Stop(void);
+[; ;utility.h: 65: extern void Dac0_Start(void);
+[; ;utility.h: 66: extern void Dac0_Stop(void);
+[; ;utility.h: 67: extern void Adc1_Start(void);
+[; ;utility.h: 68: extern void Adc1_Stop(void);
 [; ;string.h: 22: extern void * memcpy(void *, const void *, size_t);
 [; ;string.h: 23: extern void * memmove(void *, const void *, size_t);
 [; ;string.h: 24: extern void * memset(void *, int, size_t);
