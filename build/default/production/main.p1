@@ -75,6 +75,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "1641
 [v _OSCSTAT `Vuc ~T0 @X0 0 e@154 ]
 <<<<<<< HEAD
+<<<<<<< HEAD
 [; ;stdlib.h: 4: typedef int ptrdiff_t;
 [; ;stdlib.h: 5: typedef unsigned size_t;
 [; ;stdlib.h: 6: typedef unsigned short wchar_t;
@@ -98,6 +99,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S36 . . ]
 "476
 [v _PORTCbits `VS36 ~T0 @X0 0 e@14 ]
+=======
+"61 utility.h
+[v _Timer0_Start `(v ~T0 @X0 0 ef ]
+"63
+[v _Timer1_Start `(v ~T0 @X0 0 ef ]
+"65
+[v _Dac0_Start `(v ~T0 @X0 0 ef ]
+"67
+[v _Adc1_Start `(v ~T0 @X0 0 ef ]
+"25
+[v _Delay_ms `(v ~T0 @X0 0 ef1`ui ]
+>>>>>>> 9eeb4c8... [source] audio_tone.c added
 [; ;stdio.h: 8: typedef int ptrdiff_t;
 [; ;stdio.h: 9: typedef unsigned size_t;
 [; ;stdio.h: 10: typedef unsigned short wchar_t;
@@ -2829,6 +2842,89 @@ Version 3.2 HI-TECH Software Intermediate Code
 [p x LVP=ON ]
 [; ;stdbool.h: 12: typedef unsigned char bool;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+[; ;string.h: 22: extern void * memcpy(void *, const void *, size_t);
+[; ;string.h: 23: extern void * memmove(void *, const void *, size_t);
+[; ;string.h: 24: extern void * memset(void *, int, size_t);
+[; ;string.h: 28: extern void * __builtin_memcpy(void *, const void *, size_t);
+[; ;string.h: 42: extern char * strcat(char *, const char *);
+[; ;string.h: 43: extern char * strcpy(char *, const char *);
+[; ;string.h: 44: extern char * strncat(char *, const char *, size_t);
+[; ;string.h: 45: extern char * strncpy(char *, const char *, size_t);
+[; ;string.h: 46: extern char * strdup(const char *);
+[; ;string.h: 47: extern char * strtok(char *, const char *);
+[; ;string.h: 50: extern int memcmp(const void *, const void *, size_t);
+[; ;string.h: 51: extern int strcmp(const char *, const char *);
+[; ;string.h: 52: extern int stricmp(const char *, const char *);
+[; ;string.h: 53: extern int strncmp(const char *, const char *, size_t);
+[; ;string.h: 54: extern int strnicmp(const char *, const char *, size_t);
+[; ;string.h: 55: extern void * memchr(const void *, int, size_t);
+[; ;string.h: 56: extern size_t strcspn(const char *, const char *);
+[; ;string.h: 57: extern char * strpbrk(const char *, const char *);
+[; ;string.h: 58: extern size_t strspn(const char *, const char *);
+[; ;string.h: 59: extern char * strstr(const char *, const char *);
+[; ;string.h: 60: extern char * stristr(const char *, const char *);
+[; ;string.h: 61: extern char * strerror(int);
+[; ;string.h: 62: extern size_t strlen(const char *);
+[; ;string.h: 63: extern char * strchr(const char *, int);
+[; ;string.h: 64: extern char * strichr(const char *, int);
+[; ;string.h: 65: extern char * strrchr(const char *, int);
+[; ;string.h: 66: extern char * strrichr(const char *, int);
+[; ;stdlib.h: 103: extern char * itoa(char * buf, int val, int base);
+[; ;stdlib.h: 104: extern char * utoa(char * buf, unsigned val, int base);
+[; ;stdlib.h: 109: extern char * ltoa(char * buf, long val, int base);
+[; ;stdlib.h: 110: extern char * ultoa(char * buf, unsigned long val, int base);
+[; ;stdlib.h: 112: extern char * ftoa(float f, int * status);
+[; ;math.h: 3: extern double fabs(double);
+[; ;math.h: 4: extern double floor(double);
+[; ;math.h: 5: extern double ceil(double);
+[; ;math.h: 6: extern double modf(double, double *);
+[; ;math.h: 7: extern double sqrt(double);
+[; ;math.h: 8: extern double atof(const char *);
+[; ;math.h: 9: extern double sin(double);
+[; ;math.h: 10: extern double cos(double);
+[; ;math.h: 11: extern double tan(double);
+[; ;math.h: 12: extern double asin(double);
+[; ;math.h: 13: extern double acos(double);
+[; ;math.h: 14: extern double atan(double);
+[; ;math.h: 15: extern double atan2(double, double);
+[; ;math.h: 16: extern double log(double);
+[; ;math.h: 17: extern double log10(double);
+[; ;math.h: 18: extern double pow(double, double);
+[; ;math.h: 19: extern double exp(double);
+[; ;math.h: 20: extern double sinh(double);
+[; ;math.h: 21: extern double cosh(double);
+[; ;math.h: 22: extern double tanh(double);
+[; ;math.h: 23: extern double eval_poly(double, const double *, int);
+[; ;math.h: 24: extern double frexp(double, int *);
+[; ;math.h: 25: extern double ldexp(double, int);
+[; ;math.h: 26: extern double fmod(double, double);
+[; ;math.h: 27: extern double trunc(double);
+[; ;math.h: 28: extern double round(double);
+[; ;utility.h: 25: extern void Delay_ms(uint16_t);
+[; ;utility.h: 26: extern bool Write_Adf7012_Reg(uint8_t*, uint8_t);
+[; ;utility.h: 27: extern bool Gpio_Config(void);
+[; ;utility.h: 28: extern bool Read_Adf7012_Muxout(void);
+[; ;utility.h: 29: extern bool Reverse_Array(uint8_t* ,uint8_t);
+[; ;utility.h: 30: extern bool Send_Vcxo_Signal(uint8_t);
+[; ;utility.h: 45: extern uint32_t timeout_check;
+[; ;utility.h: 46: extern uint8_t timeout_flag;
+[; ;utility.h: 47: extern uint16_t Systick_Counter;
+[; ;utility.h: 51: extern void Radio_Setup(void);
+[; ;utility.h: 52: extern bool Ptt_On(void);
+[; ;utility.h: 53: extern void Ptt_Off(void);
+[; ;utility.h: 54: extern void Set_Freq(uint32_t);
+[; ;utility.h: 55: extern bool Spi_Byte_Send(uint8_t);
+[; ;utility.h: 61: extern void Timer0_Start(void);
+[; ;utility.h: 62: extern void Timer0_Stop(void);
+[; ;utility.h: 63: extern void Timer1_Start(void);
+[; ;utility.h: 64: extern void Timer1_Stop(void);
+[; ;utility.h: 65: extern void Dac0_Start(void);
+[; ;utility.h: 66: extern void Dac0_Stop(void);
+[; ;utility.h: 67: extern void Adc1_Start(void);
+[; ;utility.h: 68: extern void Adc1_Stop(void);
+>>>>>>> 9eeb4c8... [source] audio_tone.c added
 "15 main.c
 =======
 "14 main.c
@@ -2896,6 +2992,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;main.c: 26: uint8_t adc_sonuc_low = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 [v F2818 `(v ~T0 @X0 1 tf ]
 "32
 [v _global_interrupt `IF2818 ~T0 @X0 1 e ]
@@ -2905,6 +3002,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 "32
 [v _global_interrupt `IF2882 ~T0 @X0 1 e ]
 >>>>>>> parent of 067f070... [source] utility.c added
+=======
+[v F3083 `(v ~T0 @X0 1 tf ]
+"32
+[v _global_interrupt `IF3083 ~T0 @X0 1 e ]
+>>>>>>> 9eeb4c8... [source] audio_tone.c added
 {
 [; ;main.c: 32: void interrupt global_interrupt(){
 [e :U _global_interrupt ]
@@ -3080,9 +3182,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 "137
 [e =| _INTCON -> -> 192 `i `uc ]
 <<<<<<< HEAD
+<<<<<<< HEAD
 [; ;main.c: 141: }
 "141
 [e :UE 333 ]
+=======
+[; ;main.c: 141: }
+"141
+[e :UE 334 ]
+>>>>>>> 9eeb4c8... [source] audio_tone.c added
 }
 "144
 [v _main `(i ~T0 @X0 1 ef ]
@@ -3098,6 +3206,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _System_Start ..  ]
 [; ;main.c: 147: while (!(OSCSTAT & (0x01))){}
 "147
+<<<<<<< HEAD
 [e $U 335  ]
 [e :U 336 ]
 {
@@ -3317,4 +3426,49 @@ Version 3.2 HI-TECH Software Intermediate Code
 "261
 [e :UE 355 ]
 >>>>>>> parent of 067f070... [source] utility.c added
+=======
+[e $U 336  ]
+[e :U 337 ]
+{
+}
+[e :U 336 ]
+[e $ ! != & -> _OSCSTAT `i -> 1 `i -> 0 `i 337  ]
+[e :U 338 ]
+[; ;main.c: 150: Timer0_Start();
+"150
+[e ( _Timer0_Start ..  ]
+[; ;main.c: 151: Timer1_Start();
+"151
+[e ( _Timer1_Start ..  ]
+[; ;main.c: 153: Dac0_Start();
+"153
+[e ( _Dac0_Start ..  ]
+[; ;main.c: 155: Adc1_Start();
+"155
+[e ( _Adc1_Start ..  ]
+[; ;main.c: 157: Delay_ms(200);
+"157
+[e ( _Delay_ms (1 -> -> 200 `i `ui ]
+[; ;main.c: 159: while(1){
+"159
+[e :U 340 ]
+{
+[; ;main.c: 160: Delay_ms(10);
+"160
+[e ( _Delay_ms (1 -> -> 10 `i `ui ]
+"162
+}
+[e :U 339 ]
+"159
+[e $U 340  ]
+[e :U 341 ]
+[; ;main.c: 162: }
+[; ;main.c: 163: return (0);
+"163
+[e ) -> 0 `i ]
+[e $UE 335  ]
+[; ;main.c: 164: }
+"164
+[e :UE 335 ]
+>>>>>>> 9eeb4c8... [source] audio_tone.c added
 }

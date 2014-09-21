@@ -26,6 +26,12 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>main.c</itemPath>
+<<<<<<< HEAD
+=======
+      <itemPath>utility.c</itemPath>
+      <itemPath>adf7012.c</itemPath>
+      <itemPath>audio_tone.c</itemPath>
+>>>>>>> 9eeb4c8... [source] audio_tone.c added
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

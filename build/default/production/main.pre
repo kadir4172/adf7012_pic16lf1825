@@ -3718,6 +3718,117 @@ extern __nonreentrant void _delay(unsigned long);
 typedef unsigned char bool;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+# 22 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\string.h"
+extern void * memcpy(void *, const void *, size_t);
+extern void * memmove(void *, const void *, size_t);
+extern void * memset(void *, int, size_t);
+
+
+
+extern void * __builtin_memcpy(void *, const void *, size_t);
+#pragma intrinsic(__builtin_memcpy)
+
+# 42
+extern char * strcat(char *, const char *);
+extern char * strcpy(char *, const char *);
+extern char * strncat(char *, const char *, size_t);
+extern char * strncpy(char *, const char *, size_t);
+extern char * strdup(const char *);
+extern char * strtok(char *, const char *);
+
+
+extern int memcmp(const void *, const void *, size_t);
+extern int strcmp(const char *, const char *);
+extern int stricmp(const char *, const char *);
+extern int strncmp(const char *, const char *, size_t);
+extern int strnicmp(const char *, const char *, size_t);
+extern void * memchr(const void *, int, size_t);
+extern size_t strcspn(const char *, const char *);
+extern char * strpbrk(const char *, const char *);
+extern size_t strspn(const char *, const char *);
+extern char * strstr(const char *, const char *);
+extern char * stristr(const char *, const char *);
+extern char * strerror(int);
+extern size_t strlen(const char *);
+extern char * strchr(const char *, int);
+extern char * strichr(const char *, int);
+extern char * strrchr(const char *, int);
+extern char * strrichr(const char *, int);
+
+# 103 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\stdlib.h"
+extern char * itoa(char * buf, int val, int base);
+extern char * utoa(char * buf, unsigned val, int base);
+
+
+
+
+extern char * ltoa(char * buf, long val, int base);
+extern char * ultoa(char * buf, unsigned long val, int base);
+
+extern char * ftoa(float f, int * status);
+
+# 3 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\math.h"
+extern double fabs(double);
+extern double floor(double);
+extern double ceil(double);
+extern double modf(double, double *);
+extern double sqrt(double);
+extern double atof(const char *);
+extern double sin(double);
+extern double cos(double);
+extern double tan(double);
+extern double asin(double);
+extern double acos(double);
+extern double atan(double);
+extern double atan2(double, double);
+extern double log(double);
+extern double log10(double);
+extern double pow(double, double);
+extern double exp(double);
+extern double sinh(double);
+extern double cosh(double);
+extern double tanh(double);
+extern double eval_poly(double, const double *, int);
+extern double frexp(double, int *);
+extern double ldexp(double, int);
+extern double fmod(double, double);
+extern double trunc(double);
+extern double round(double);
+
+# 25 "utility.h"
+extern void Delay_ms(uint16_t);
+extern bool Write_Adf7012_Reg(uint8_t*, uint8_t);
+extern bool Gpio_Config(void);
+extern bool Read_Adf7012_Muxout(void);
+extern bool Reverse_Array(uint8_t* ,uint8_t);
+extern bool Send_Vcxo_Signal(uint8_t);
+
+# 45
+extern uint32_t timeout_check;
+extern uint8_t timeout_flag;
+extern uint16_t Systick_Counter;
+
+
+
+extern void Radio_Setup(void);
+extern bool Ptt_On(void);
+extern void Ptt_Off(void);
+extern void Set_Freq(uint32_t);
+extern bool Spi_Byte_Send(uint8_t);
+
+# 61
+extern void Timer0_Start(void);
+extern void Timer0_Stop(void);
+extern void Timer1_Start(void);
+extern void Timer1_Stop(void);
+extern void Dac0_Start(void);
+extern void Dac0_Stop(void);
+extern void Adc1_Start(void);
+extern void Adc1_Stop(void);
+
+>>>>>>> 9eeb4c8... [source] audio_tone.c added
 # 15 "main.c"
 =======
 # 14 "main.c"
@@ -3882,11 +3993,26 @@ while (!(OSCSTAT & (0x01))){}
 while(1){
 <<<<<<< HEAD
 
+<<<<<<< HEAD
+=======
+Timer0_Start();
+Timer1_Start();
+
+Dac0_Start();
+
+Adc1_Start();
+
+Delay_ms(200);
+>>>>>>> 9eeb4c8... [source] audio_tone.c added
 
 =======
 Delay_ms(10);
+<<<<<<< HEAD
 Spi_Byte_Send(0x17);
 >>>>>>> parent of 067f070... [source] utility.c added
+=======
+
+>>>>>>> 9eeb4c8... [source] audio_tone.c added
 }
 return (0);
 }
