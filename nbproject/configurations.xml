@@ -10,10 +10,13 @@
       <itemPath>adf7012.h</itemPath>
 <<<<<<< HEAD
       <itemPath>ax25.h</itemPath>
+<<<<<<< HEAD
       <itemPath>utility.h</itemPath>
 =======
       <itemPath>audio_tone.h</itemPath>
 >>>>>>> parent of fbf90ed... [header] ax25.h added
+=======
+>>>>>>> parent of 067f070... [source] utility.c added
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -23,7 +26,6 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>main.c</itemPath>
-      <itemPath>utility.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

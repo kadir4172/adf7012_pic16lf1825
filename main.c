@@ -10,10 +10,14 @@
 #include <stdint.h>
 #include "configuration.h"
 #include <stdbool.h>
+<<<<<<< HEAD
 //#include "utility.h"
+=======
+>>>>>>> parent of 067f070... [source] utility.c added
 
 uint8_t test  = 0;
 uint8_t test2 = 0;
+uint16_t systick_counter = 0;
 uint16_t dac_flag = 0;
 
 uint8_t i = 0;
@@ -25,7 +29,7 @@ uint8_t sine_table2[14] = {0x10,0x16,0x1c,0x1f,0x1f,0x1c,0x16,0x10,0x9,0x3,0x0,0
 uint8_t adc_sonuc_high = 0;
 uint8_t adc_sonuc_low  = 0;
 
-
+bool Spi_Byte_Send(uint8_t);
 /*
  * 
  */
@@ -45,7 +49,11 @@ void interrupt global_interrupt(){
     //Timer1 interrupt
     if(PIR1 & 0x04){
        //Timer1 ISR
+<<<<<<< HEAD
        // Systick_Counter += 1; //mplab
+=======
+        systick_counter += 1;
+>>>>>>> parent of 067f070... [source] utility.c added
        //Timer1 ISR
 
        //reset Timer1 registers
@@ -136,9 +144,27 @@ void System_Start(void){
     //Global Interrupt ve Peripheral Interrupt Enable
     INTCON |= 0xC0;
 
-  
+    //PortA ve PortC konfigurasyonlari
+    TRISA |= 0b00000010;
+    TRISA &= 0b11001011;
+    TRISC |= 0b00100000;
+    TRISC &= 0b11100000;
     
 }
+
+
+
+int CheckDelay(uint8_t t)
+{
+  return((t - systick_counter));
+}
+
+void Delay_ms(uint16_t time_to_delay)
+{
+  systick_counter = 0;
+  while (CheckDelay(time_to_delay));
+}
+
 
 
 int main(void) {
@@ -157,8 +183,13 @@ int main(void) {
   //  Delay_ms(200);
 
      while(1){
+<<<<<<< HEAD
    //      Delay_ms(10);
          //Spi_Byte_Send(0x17);
+=======
+         Delay_ms(10);
+         Spi_Byte_Send(0x17);
+>>>>>>> parent of 067f070... [source] utility.c added
      }
     return (EXIT_SUCCESS);
 }
@@ -175,6 +206,28 @@ int main(void) {
  * 
 */
 
+bool Spi_Byte_Send(uint8_t data){
+    
+    PORTAbits.RA2 = 0;
+    uint8_t i;
+    uint8_t data_to_send;
+    data_to_send = data;
+    for(i = 0; i <8; i++){
+      
+        if(data_to_send & 0x80)
+            PORTCbits.RC2 = 1;
+        else
+            PORTCbits.RC2 = 0;
 
+          data_to_send <<= 1;
+
+        PORTAbits.RA2 = 1;
+        Delay_ms(1);
+        PORTAbits.RA2 = 0;
+        Delay_ms(1);
+        
+    }
+    return true;
+}
 
 // -----------------------------------------------------------------------

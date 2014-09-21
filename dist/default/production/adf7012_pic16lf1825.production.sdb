@@ -65,8 +65,6 @@
 [v ___lwmod __lwmod `(ui  1 e 2 0 ]
 "28 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwtoft.c
 [v ___lwtoft __lwtoft `(f  1 e 3 0 ]
-"11 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c
-[v _memcpy memcpy `(*.39v  1 e 1 0 ]
 "15 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\Umul16.c
 [v ___wmul __wmul `(ui  1 e 2 0 ]
 "15 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\Umul24.c
@@ -109,23 +107,26 @@
 [v _global_interrupt global_interrupt `II(v  1 e 0 0 ]
 "80
 [v _System_Start System_Start `(v  1 e 0 0 ]
+<<<<<<< HEAD
 "144
 [v _main main `(i  1 e 2 0 ]
 "35 C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\utility.c
 [v _Gpio_Config Gpio_Config `(uc  1 e 1 0 ]
 "48
+=======
+"192
+>>>>>>> parent of 067f070... [source] utility.c added
 [v _CheckDelay CheckDelay `(i  1 e 2 0 ]
-"53
+"197
 [v _Delay_ms Delay_ms `(v  1 e 0 0 ]
-"69
-[v _Read_Adf7012_Muxout Read_Adf7012_Muxout `(uc  1 e 1 0 ]
-"89
-[v _Write_Adf7012_Reg Write_Adf7012_Reg `(uc  1 e 1 0 ]
-"115
-[v _Send_Vcxo_Signal Send_Vcxo_Signal `(uc  1 e 1 0 ]
 "205
+<<<<<<< HEAD
 [v _Reverse_Array Reverse_Array `(uc  1 e 1 0 ]
 "227
+=======
+[v _main main `(i  1 e 2 0 ]
+"239
+>>>>>>> parent of 067f070... [source] utility.c added
 [v _Spi_Byte_Send Spi_Byte_Send `(uc  1 e 1 0 ]
 "254
 [v _Timer0_Start Timer0_Start `(v  1 e 0 0 ]
@@ -145,6 +146,7 @@
 [v _Adc1_Stop Adc1_Stop `(v  1 e 0 0 ]
 "335 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16lf1825.h
 [v _INTCON INTCON `VEuc  1 e 1 @11 ]
+<<<<<<< HEAD
 [s S69 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 `uc 1 RC2 1 0 :1:2 
@@ -157,6 +159,20 @@
 [v _PORTAbits PORTAbits `VES76  1 e 1 @12 ]
 "476
 [v _PORTCbits PORTCbits `VES76  1 e 1 @14 ]
+=======
+[s S68 . 1 `uc 1 RA0 1 0 :1:0 
+`uc 1 RA1 1 0 :1:1 
+`uc 1 RA2 1 0 :1:2 
+`uc 1 RA3 1 0 :1:3 
+`uc 1 RA4 1 0 :1:4 
+`uc 1 RA5 1 0 :1:5 
+]
+"427
+[u S75 . 1 `S68 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES75  1 e 1 @12 ]
+"476
+[v _PORTCbits PORTCbits `VES75  1 e 1 @14 ]
+>>>>>>> parent of 067f070... [source] utility.c added
 "510
 [v _PIR1 PIR1 `VEuc  1 e 1 @17 ]
 "660
@@ -265,10 +281,12 @@
 [v _WR WR `VEb  1 e 0 @3241 ]
 "6994
 [v _WREN WREN `VEb  1 e 0 @3242 ]
-"15 C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c
+"14 C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\main.c
 [v _test test `uc  1 e 1 0 ]
-"16
+"15
 [v _test2 test2 `uc  1 e 1 0 ]
+"16
+[v _systick_counter systick_counter `ui  1 e 2 0 ]
 "17
 [v _dac_flag dac_flag `ui  1 e 2 0 ]
 "19
@@ -279,6 +297,7 @@
 [v _adc_sonuc_high adc_sonuc_high `uc  1 e 1 0 ]
 "26
 [v _adc_sonuc_low adc_sonuc_low `uc  1 e 1 0 ]
+<<<<<<< HEAD
 "21 C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\utility.c
 [v _Systick_Counter Systick_Counter `ui  1 e 2 0 ]
 "22
@@ -291,11 +310,65 @@
 [v _main main `(i  1 e 2 0 ]
 {
 "164
+=======
+"205
+[v _main main `(i  1 e 2 0 ]
+{
+"225
+} 0
+"87
+[v _Timer1_Start Timer1_Start `(v  1 e 0 0 ]
+{
+"95
+>>>>>>> parent of 067f070... [source] utility.c added
 } 0
 "80
 [v _System_Start System_Start `(v  1 e 0 0 ]
 {
+<<<<<<< HEAD
 "141
+=======
+"188
+} 0
+"239
+[v _Spi_Byte_Send Spi_Byte_Send `(uc  1 e 1 0 ]
+{
+[v Spi_Byte_Send@data data `uc  1 a 1 wreg ]
+"241
+[v Spi_Byte_Send@i i `uc  1 a 1 4 ]
+"243
+[v Spi_Byte_Send@data_to_send data_to_send `uc  1 a 1 3 ]
+"239
+[v Spi_Byte_Send@data data `uc  1 a 1 wreg ]
+"241
+[v Spi_Byte_Send@data data `uc  1 a 1 2 ]
+"261
+} 0
+"197
+[v _Delay_ms Delay_ms `(v  1 e 0 0 ]
+{
+[v Delay_ms@time_to_delay time_to_delay `ui  1 p 2 0 ]
+"201
+} 0
+"192
+[v _CheckDelay CheckDelay `(i  1 e 2 0 ]
+{
+[v CheckDelay@t t `uc  1 a 1 wreg ]
+[v CheckDelay@t t `uc  1 a 1 wreg ]
+"194
+[v CheckDelay@t t `uc  1 a 1 6 ]
+"195
+} 0
+"101
+[v _Dac0_Start Dac0_Start `(v  1 e 0 0 ]
+{
+"104
+} 0
+"110
+[v _Adc1_Start Adc1_Start `(v  1 e 0 0 ]
+{
+"116
+>>>>>>> parent of 067f070... [source] utility.c added
 } 0
 "32
 [v _global_interrupt global_interrupt `II(v  1 e 0 0 ]
