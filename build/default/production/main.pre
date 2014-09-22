@@ -3865,7 +3865,7 @@ extern bool Send_Vcxo_Signal(uint8_t);
 # 52
 extern uint32_t timeout_check;
 extern uint8_t timeout_flag;
-extern uint16_t Systick_Counter;
+
 
 
 
@@ -3880,7 +3880,7 @@ extern void Timer0_Start(void);
 extern void Timer0_Stop(void);
 extern void Timer1_Start(void);
 extern void Timer1_Stop(void);
-extern void Dac0_Start(void);
+extern void Dac0_Start_Hold(void);
 extern void Dac0_Stop(void);
 extern void Adc1_Start(void);
 extern void Adc1_Stop(void);
@@ -3962,7 +3962,9 @@ uint8_t sine_table2[14] = {0x10,0x16,0x1c,0x1f,0x1f,0x1c,0x16,0x10,0x9,0x3,0x0,0
 uint8_t adc_sonuc_high = 0;
 uint8_t adc_sonuc_low = 0;
 
-# 41
+uint16_t Systick_Counter = 0;
+
+# 43
 void interrupt global_interrupt(){
 
 INTCON &= ~0x80;
@@ -3996,12 +3998,7 @@ PIR1 &= ~0x04;
 
 if(INTCON & 0x04){
 
-DACCON1 = sine_table2[i++];
-if (i==13)
-i=0;
-
-
-
+# 82
 INTCON &= ~0x04;
 }
 
@@ -4086,7 +4083,7 @@ Gpio_Config();
 Timer0_Start();
 Timer1_Start();
 
-Dac0_Start();
+Dac0_Start_Hold();
 
 Adc1_Start();
 
@@ -4115,6 +4112,7 @@ Delay_ms(100);
 Ptt_On();
 
 while(1){
+
 if(PTT_OFF){
 Ptt_Off();
 PTT_OFF = 0;
@@ -4124,6 +4122,7 @@ PTT_OFF = 0;
 Modem_Flush_Frame();
 Delay_ms(200);
 Delay_ms(10);
+
 
 }
 return (0);

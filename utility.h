@@ -51,7 +51,7 @@ extern bool Send_Vcxo_Signal(uint8_t);
 
 extern uint32_t timeout_check;
 extern uint8_t timeout_flag;
-extern uint16_t Systick_Counter;
+
 //Hardware Specific Variables/Macros
 
 //Common Functions
@@ -69,7 +69,7 @@ extern void Timer0_Start(void);
 extern void Timer0_Stop(void);
 extern void Timer1_Start(void);
 extern void Timer1_Stop(void);
-extern void Dac0_Start(void);
+extern void Dac0_Start_Hold(void);
 extern void Dac0_Stop(void);
 extern void Adc1_Start(void);
 extern void Adc1_Stop(void);

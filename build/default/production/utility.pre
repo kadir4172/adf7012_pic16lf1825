@@ -309,7 +309,7 @@ extern bool Send_Vcxo_Signal(uint8_t);
 # 52
 extern uint32_t timeout_check;
 extern uint8_t timeout_flag;
-extern uint16_t Systick_Counter;
+
 
 
 
@@ -324,7 +324,7 @@ extern void Timer0_Start(void);
 extern void Timer0_Stop(void);
 extern void Timer1_Start(void);
 extern void Timer1_Stop(void);
-extern void Dac0_Start(void);
+extern void Dac0_Start_Hold(void);
 extern void Dac0_Stop(void);
 extern void Adc1_Start(void);
 extern void Adc1_Stop(void);
@@ -3925,8 +3925,7 @@ extern __nonreentrant void _delay(unsigned long);
 #pragma config BORV = LO
 #pragma config LVP = ON
 
-# 21 "utility.c"
-uint16_t Systick_Counter = 0;
+# 24 "utility.c"
 uint32_t Delay_Counter = 0;
 uint8_t timeout_flag = 0;
 uint32_t timeout_check;
@@ -3934,7 +3933,7 @@ uint32_t timeout_check;
 
 bool Spi_Byte_Send(uint8_t);
 
-# 35
+# 37
 bool Gpio_Config(void){
 
 
@@ -3948,18 +3947,18 @@ return 1;
 }
 
 
-int CheckDelay(uint8_t t)
-{
-return((t - Systick_Counter));
-}
-
 void Delay_ms(uint16_t time_to_delay)
 {
-Systick_Counter = 0;
-while (CheckDelay(time_to_delay));
+uint16_t i=0;
+Dac0_Start_Hold();
+INTCON &= ~0x80;
+for(i=0; i<time_to_delay; i++){
+_delay((unsigned long)((1)*(32000000/4000.0)));
+}
+INTCON |= 0xC0;
 }
 
-# 69
+# 71
 bool Read_Adf7012_Muxout(void){
 
 Delay_ms(1);
@@ -3971,7 +3970,7 @@ return 0;
 
 }
 
-# 89
+# 91
 bool Write_Adf7012_Reg(uint8_t* reg_value, uint8_t size_of_reg){
 
 uint8_t i = 0;
@@ -3990,14 +3989,14 @@ Delay_ms(1);
 return 1;
 }
 
-# 115
+# 117
 bool Send_Vcxo_Signal(uint8_t value){
 
 DACCON1 = value;
 return 1;
 }
 
-# 205
+# 207
 bool Reverse_Array(uint8_t* input,uint8_t length){
 uint8_t i = 0;
 uint8_t buffer_array[4];
@@ -4012,7 +4011,7 @@ for(i = 0; i<length; i++){
 return 1;
 }
 
-# 227
+# 229
 bool Spi_Byte_Send(uint8_t data){
 
 PORTAbits.RA2 = 0;
@@ -4071,14 +4070,16 @@ TMR1L = 0x00;
 CCP1IE = 0;
 }
 
-void Dac0_Start(void){
+void Dac0_Start_Hold(void){
 DACEN = 1;
 DACCON1 = 0x10;
 }
 
 void Dac0_Stop(void){
+DACCON1 = 0x00;
 DACEN = 0;
 }
+
 
 void Adc1_Start(void){
 ADIF = 0;

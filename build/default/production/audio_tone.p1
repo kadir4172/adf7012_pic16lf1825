@@ -195,7 +195,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;utility.h: 30: extern bool Send_Vcxo_Signal(uint8_t);
 [; ;utility.h: 52: extern uint32_t timeout_check;
 [; ;utility.h: 53: extern uint8_t timeout_flag;
-[; ;utility.h: 54: extern uint16_t Systick_Counter;
 [; ;utility.h: 58: extern void Radio_Setup(void);
 [; ;utility.h: 59: extern bool Ptt_On(void);
 [; ;utility.h: 60: extern void Ptt_Off(void);
@@ -205,7 +204,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;utility.h: 69: extern void Timer0_Stop(void);
 [; ;utility.h: 70: extern void Timer1_Start(void);
 [; ;utility.h: 71: extern void Timer1_Stop(void);
-[; ;utility.h: 72: extern void Dac0_Start(void);
+[; ;utility.h: 72: extern void Dac0_Start_Hold(void);
 [; ;utility.h: 73: extern void Dac0_Stop(void);
 [; ;utility.h: 74: extern void Adc1_Start(void);
 [; ;utility.h: 75: extern void Adc1_Stop(void);

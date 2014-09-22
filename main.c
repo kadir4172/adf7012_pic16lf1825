@@ -34,6 +34,8 @@ uint8_t sine_table2[14] = {0x10,0x16,0x1c,0x1f,0x1f,0x1c,0x16,0x10,0x9,0x3,0x0,0
 uint8_t adc_sonuc_high = 0;
 uint8_t adc_sonuc_low  = 0;
 
+uint16_t Systick_Counter = 0; //Her 833us de bir tick sayar
+
 
 /*
  * 
@@ -71,9 +73,9 @@ void interrupt global_interrupt(){
     //Timer0 interrupt
     if(INTCON & 0x04){
        //Timer0 ISR
-        DACCON1 = sine_table2[i++];
-        if (i==13)
-            i=0;
+       // DACCON1 = sine_table2[i++];
+       // if (i==13)
+       //     i=0;
     
        //Timer0 ISR
   
@@ -161,7 +163,7 @@ int main(void) {
     Timer0_Start(); //32us  lik Timer0 baslatilsin
     Timer1_Start(); //833us lik Timer1 baslatilsin
 
-    Dac0_Start();
+    Dac0_Start_Hold();
     
     Adc1_Start();
 
@@ -190,7 +192,8 @@ int main(void) {
   Ptt_On();
 
      while(1){
-           if(PTT_OFF){
+         
+         if(PTT_OFF){
 		  Ptt_Off();
 		  PTT_OFF  = false;
 	  }
@@ -199,6 +202,7 @@ int main(void) {
 	  Modem_Flush_Frame();
 	  Delay_ms(200);
           Delay_ms(10);
+       
           //Spi_Byte_Send(0x17);
      }
     return (EXIT_SUCCESS);

@@ -9,14 +9,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _ADRESL `Vuc ~T0 @X0 0 e@155 ]
 "510
 [v _PIR1 `Vuc ~T0 @X0 0 e@17 ]
-"54 utility.h
-[v _Systick_Counter `ui ~T0 @X0 0 e ]
-"704 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16lf1825.h
+"704
 [v _TMR1H `Vuc ~T0 @X0 0 e@23 ]
 "685
 [v _TMR1L `Vuc ~T0 @X0 0 e@22 ]
-"2417
-[v _DACCON1 `Vuc ~T0 @X0 0 e@281 ]
 "1570
 [v _OSCCON `Vuc ~T0 @X0 0 e@153 ]
 "1513
@@ -79,7 +75,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "70
 [v _Timer1_Start `(v ~T0 @X0 0 ef ]
 "72
-[v _Dac0_Start `(v ~T0 @X0 0 ef ]
+[v _Dac0_Start_Hold `(v ~T0 @X0 0 ef ]
 "74
 [v _Adc1_Start `(v ~T0 @X0 0 ef ]
 "418 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16lf1825.h
@@ -2914,7 +2910,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;utility.h: 30: extern bool Send_Vcxo_Signal(uint8_t);
 [; ;utility.h: 52: extern uint32_t timeout_check;
 [; ;utility.h: 53: extern uint8_t timeout_flag;
-[; ;utility.h: 54: extern uint16_t Systick_Counter;
 [; ;utility.h: 58: extern void Radio_Setup(void);
 [; ;utility.h: 59: extern bool Ptt_On(void);
 [; ;utility.h: 60: extern void Ptt_Off(void);
@@ -2924,7 +2919,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;utility.h: 69: extern void Timer0_Stop(void);
 [; ;utility.h: 70: extern void Timer1_Start(void);
 [; ;utility.h: 71: extern void Timer1_Stop(void);
-[; ;utility.h: 72: extern void Dac0_Start(void);
+[; ;utility.h: 72: extern void Dac0_Start_Hold(void);
 [; ;utility.h: 73: extern void Dac0_Stop(void);
 [; ;utility.h: 74: extern void Adc1_Start(void);
 [; ;utility.h: 75: extern void Adc1_Stop(void);
@@ -3031,237 +3026,233 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `uc
 ]
 [; ;main.c: 35: uint8_t adc_sonuc_low = 0;
+"37
+[v _Systick_Counter `ui ~T0 @X0 1 e ]
+[i _Systick_Counter
+-> -> 0 `i `ui
+]
+[; ;main.c: 37: uint16_t Systick_Counter = 0;
 [v F3170 `(v ~T0 @X0 1 tf ]
-"41
+"43
 [v _global_interrupt `IF3170 ~T0 @X0 1 e ]
 {
-[; ;main.c: 41: void interrupt global_interrupt(){
+[; ;main.c: 43: void interrupt global_interrupt(){
 [e :U _global_interrupt ]
 [f ]
-[; ;main.c: 43: INTCON &= ~0x80;
-"43
+[; ;main.c: 45: INTCON &= ~0x80;
+"45
 [e =& _INTCON -> ~ -> 128 `i `uc ]
-[; ;main.c: 46: if(ADIF){
-"46
+[; ;main.c: 48: if(ADIF){
+"48
 [e $ ! _ADIF 331  ]
 {
-[; ;main.c: 47: adc_sonuc_high = ADRESH;
-"47
+[; ;main.c: 49: adc_sonuc_high = ADRESH;
+"49
 [e = _adc_sonuc_high _ADRESH ]
-[; ;main.c: 48: adc_sonuc_low = ADRESL;
-"48
-[e = _adc_sonuc_low _ADRESL ]
-[; ;main.c: 50: ADIF = 0;
+[; ;main.c: 50: adc_sonuc_low = ADRESL;
 "50
+[e = _adc_sonuc_low _ADRESL ]
+[; ;main.c: 52: ADIF = 0;
+"52
 [e = _ADIF -> -> 0 `i `b ]
-"51
+"53
 }
 [e :U 331 ]
-[; ;main.c: 51: }
-[; ;main.c: 55: if(PIR1 & 0x04){
-"55
+[; ;main.c: 53: }
+[; ;main.c: 57: if(PIR1 & 0x04){
+"57
 [e $ ! != & -> _PIR1 `i -> 4 `i -> 0 `i 332  ]
 {
-[; ;main.c: 57: Systick_Counter += 1;
-"57
+[; ;main.c: 59: Systick_Counter += 1;
+"59
 [e =+ _Systick_Counter -> -> 1 `i `ui ]
-[; ;main.c: 61: TMR1H = 0x00;
-"61
+[; ;main.c: 63: TMR1H = 0x00;
+"63
 [e = _TMR1H -> -> 0 `i `uc ]
-[; ;main.c: 62: TMR1L = 0x00;
-"62
-[e = _TMR1L -> -> 0 `i `uc ]
-[; ;main.c: 64: PIR1 &= ~0x04;
+[; ;main.c: 64: TMR1L = 0x00;
 "64
+[e = _TMR1L -> -> 0 `i `uc ]
+[; ;main.c: 66: PIR1 &= ~0x04;
+"66
 [e =& _PIR1 -> ~ -> 4 `i `uc ]
-"68
+"70
 }
 [e :U 332 ]
-[; ;main.c: 68: }
-[; ;main.c: 72: if(INTCON & 0x04){
-"72
+[; ;main.c: 70: }
+[; ;main.c: 74: if(INTCON & 0x04){
+"74
 [e $ ! != & -> _INTCON `i -> 4 `i -> 0 `i 333  ]
 {
-[; ;main.c: 74: DACCON1 = sine_table2[i++];
-"74
-[e = _DACCON1 *U + &U _sine_table2 * -> ++ _i -> -> 1 `i `uc `ux -> -> # *U &U _sine_table2 `ui `ux ]
-[; ;main.c: 75: if (i==13)
-"75
-[e $ ! == -> _i `i -> 13 `i 334  ]
-[; ;main.c: 76: i=0;
-"76
-[e = _i -> -> 0 `i `uc ]
-[e :U 334 ]
-[; ;main.c: 80: INTCON &= ~0x04;
-"80
+[; ;main.c: 82: INTCON &= ~0x04;
+"82
 [e =& _INTCON -> ~ -> 4 `i `uc ]
-"81
+"83
 }
 [e :U 333 ]
-[; ;main.c: 81: }
-[; ;main.c: 86: INTCON |= 0x80;
-"86
+[; ;main.c: 83: }
+[; ;main.c: 88: INTCON |= 0x80;
+"88
 [e =| _INTCON -> -> 128 `i `uc ]
-[; ;main.c: 87: }
-"87
+[; ;main.c: 89: }
+"89
 [e :UE 330 ]
 }
-"89
+"91
 [v _System_Start `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 89: void System_Start(void){
+[; ;main.c: 91: void System_Start(void){
 [e :U _System_Start ]
 [f ]
-[; ;main.c: 92: OSCCON = 0x00;
-"92
-[e = _OSCCON -> -> 0 `i `uc ]
-[; ;main.c: 93: OSCCON |= 0b11110000;
-"93
-[e =| _OSCCON -> -> 240 `i `uc ]
-[; ;main.c: 94: OSCTUNE = 0x00;
+[; ;main.c: 94: OSCCON = 0x00;
 "94
+[e = _OSCCON -> -> 0 `i `uc ]
+[; ;main.c: 95: OSCCON |= 0b11110000;
+"95
+[e =| _OSCCON -> -> 240 `i `uc ]
+[; ;main.c: 96: OSCTUNE = 0x00;
+"96
 [e = _OSCTUNE -> -> 0 `i `uc ]
-[; ;main.c: 98: TMR0CS = 0;
-"98
+[; ;main.c: 100: TMR0CS = 0;
+"100
 [e = _TMR0CS -> -> 0 `i `b ]
-[; ;main.c: 99: PSA = 1;
-"99
+[; ;main.c: 101: PSA = 1;
+"101
 [e = _PSA -> -> 1 `i `b ]
-[; ;main.c: 104: TMR1ON = 1;
-"104
+[; ;main.c: 106: TMR1ON = 1;
+"106
 [e = _TMR1ON -> -> 1 `i `b ]
-[; ;main.c: 105: TMR1GE = 0;
-"105
+[; ;main.c: 107: TMR1GE = 0;
+"107
 [e = _TMR1GE -> -> 0 `i `b ]
-[; ;main.c: 108: TMR1CS1 = 0;
-"108
+[; ;main.c: 110: TMR1CS1 = 0;
+"110
 [e = _TMR1CS1 -> -> 0 `i `b ]
-[; ;main.c: 109: TMR1CS0 = 0;
-"109
+[; ;main.c: 111: TMR1CS0 = 0;
+"111
 [e = _TMR1CS0 -> -> 0 `i `b ]
-[; ;main.c: 112: T1CKPS1 = 1;
-"112
+[; ;main.c: 114: T1CKPS1 = 1;
+"114
 [e = _T1CKPS1 -> -> 1 `i `b ]
-[; ;main.c: 113: T1CKPS0 = 1;
-"113
+[; ;main.c: 115: T1CKPS0 = 1;
+"115
 [e = _T1CKPS0 -> -> 1 `i `b ]
-[; ;main.c: 116: CCP1M3 = 1;
-"116
-[e = _CCP1M3 -> -> 1 `i `b ]
-[; ;main.c: 117: CCP1M2 = 0;
-"117
-[e = _CCP1M2 -> -> 0 `i `b ]
-[; ;main.c: 118: CCP1M1 = 1;
+[; ;main.c: 118: CCP1M3 = 1;
 "118
-[e = _CCP1M1 -> -> 1 `i `b ]
-[; ;main.c: 119: CCP1M1 = 0;
+[e = _CCP1M3 -> -> 1 `i `b ]
+[; ;main.c: 119: CCP1M2 = 0;
 "119
+[e = _CCP1M2 -> -> 0 `i `b ]
+[; ;main.c: 120: CCP1M1 = 1;
+"120
+[e = _CCP1M1 -> -> 1 `i `b ]
+[; ;main.c: 121: CCP1M1 = 0;
+"121
 [e = _CCP1M1 -> -> 0 `i `b ]
-[; ;main.c: 124: DACOE = 1;
-"124
-[e = _DACOE -> -> 1 `i `b ]
-[; ;main.c: 125: DACPSS1 = 0;
-"125
-[e = _DACPSS1 -> -> 0 `i `b ]
-[; ;main.c: 126: DACPSS0 = 0;
+[; ;main.c: 126: DACOE = 1;
 "126
-[e = _DACPSS0 -> -> 0 `i `b ]
-[; ;main.c: 127: DACNSS = 0;
+[e = _DACOE -> -> 1 `i `b ]
+[; ;main.c: 127: DACPSS1 = 0;
 "127
+[e = _DACPSS1 -> -> 0 `i `b ]
+[; ;main.c: 128: DACPSS0 = 0;
+"128
+[e = _DACPSS0 -> -> 0 `i `b ]
+[; ;main.c: 129: DACNSS = 0;
+"129
 [e = _DACNSS -> -> 0 `i `b ]
-[; ;main.c: 132: ANSA1 = 1;
-"132
-[e = _ANSA1 -> -> 1 `i `b ]
-[; ;main.c: 133: ADCON0 &= 0b10000011;
-"133
-[e =& _ADCON0 -> -> 131 `i `uc ]
-[; ;main.c: 134: ADCON0 |= 0b00000100;
+[; ;main.c: 134: ANSA1 = 1;
 "134
-[e =| _ADCON0 -> -> 4 `i `uc ]
-[; ;main.c: 135: ADNREF = 0;
+[e = _ANSA1 -> -> 1 `i `b ]
+[; ;main.c: 135: ADCON0 &= 0b10000011;
 "135
-[e = _ADNREF -> -> 0 `i `b ]
-[; ;main.c: 136: ADPREF1 = 0;
+[e =& _ADCON0 -> -> 131 `i `uc ]
+[; ;main.c: 136: ADCON0 |= 0b00000100;
 "136
-[e = _ADPREF1 -> -> 0 `i `b ]
-[; ;main.c: 137: ADPREF0 = 0;
+[e =| _ADCON0 -> -> 4 `i `uc ]
+[; ;main.c: 137: ADNREF = 0;
 "137
-[e = _ADPREF0 -> -> 0 `i `b ]
-[; ;main.c: 138: ADCS2 = 1;
+[e = _ADNREF -> -> 0 `i `b ]
+[; ;main.c: 138: ADPREF1 = 0;
 "138
-[e = _ADCS2 -> -> 1 `i `b ]
-[; ;main.c: 139: ADCS1 = 1;
+[e = _ADPREF1 -> -> 0 `i `b ]
+[; ;main.c: 139: ADPREF0 = 0;
 "139
-[e = _ADCS1 -> -> 1 `i `b ]
-[; ;main.c: 140: ADCS0 = 0;
+[e = _ADPREF0 -> -> 0 `i `b ]
+[; ;main.c: 140: ADCS2 = 1;
 "140
-[e = _ADCS0 -> -> 0 `i `b ]
-[; ;main.c: 141: ADFM = 1;
+[e = _ADCS2 -> -> 1 `i `b ]
+[; ;main.c: 141: ADCS1 = 1;
 "141
+[e = _ADCS1 -> -> 1 `i `b ]
+[; ;main.c: 142: ADCS0 = 0;
+"142
+[e = _ADCS0 -> -> 0 `i `b ]
+[; ;main.c: 143: ADFM = 1;
+"143
 [e = _ADFM -> -> 1 `i `b ]
-[; ;main.c: 146: INTCON |= 0xC0;
-"146
+[; ;main.c: 148: INTCON |= 0xC0;
+"148
 [e =| _INTCON -> -> 192 `i `uc ]
-[; ;main.c: 150: }
-"150
-[e :UE 335 ]
+[; ;main.c: 152: }
+"152
+[e :UE 334 ]
 }
-"153
+"155
 [v _main `(i ~T0 @X0 1 ef ]
 {
-[; ;main.c: 153: int main(void) {
+[; ;main.c: 155: int main(void) {
 [e :U _main ]
 [f ]
-"154
-[v _adc_sonuc `ui ~T0 @X0 1 a ]
-[; ;main.c: 154: unsigned int adc_sonuc;
-[; ;main.c: 155: System_Start();
-"155
-[e ( _System_Start ..  ]
-[; ;main.c: 156: while (!(OSCSTAT & (0x01))){}
 "156
-[e $U 337  ]
-[e :U 338 ]
+[v _adc_sonuc `ui ~T0 @X0 1 a ]
+[; ;main.c: 156: unsigned int adc_sonuc;
+[; ;main.c: 157: System_Start();
+"157
+[e ( _System_Start ..  ]
+[; ;main.c: 158: while (!(OSCSTAT & (0x01))){}
+"158
+[e $U 336  ]
+[e :U 337 ]
 {
 }
-[e :U 337 ]
-[e $ ! != & -> _OSCSTAT `i -> 1 `i -> 0 `i 338  ]
-[e :U 339 ]
-[; ;main.c: 159: Gpio_Config();
-"159
-[e ( _Gpio_Config ..  ]
-[; ;main.c: 161: Timer0_Start();
+[e :U 336 ]
+[e $ ! != & -> _OSCSTAT `i -> 1 `i -> 0 `i 337  ]
+[e :U 338 ]
+[; ;main.c: 161: Gpio_Config();
 "161
+[e ( _Gpio_Config ..  ]
+[; ;main.c: 163: Timer0_Start();
+"163
 [e ( _Timer0_Start ..  ]
-[; ;main.c: 162: Timer1_Start();
-"162
-[e ( _Timer1_Start ..  ]
-[; ;main.c: 164: Dac0_Start();
+[; ;main.c: 164: Timer1_Start();
 "164
-[e ( _Dac0_Start ..  ]
-[; ;main.c: 166: Adc1_Start();
+[e ( _Timer1_Start ..  ]
+[; ;main.c: 166: Dac0_Start_Hold();
 "166
-[e ( _Adc1_Start ..  ]
-[; ;main.c: 168: PORTAbits.RA5 = 0;;
+[e ( _Dac0_Start_Hold ..  ]
+[; ;main.c: 168: Adc1_Start();
 "168
-[e = . . _PORTAbits 0 5 -> -> 0 `i `uc ]
-[; ;main.c: 169: Delay_ms(10);
-"169
-[e ( _Delay_ms (1 -> -> 10 `i `ui ]
-[; ;main.c: 170: PORTAbits.RA4 = 1;;
+[e ( _Adc1_Start ..  ]
+[; ;main.c: 170: PORTAbits.RA5 = 0;;
 "170
-[e = . . _PORTAbits 0 4 -> -> 1 `i `uc ]
+[e = . . _PORTAbits 0 5 -> -> 0 `i `uc ]
 [; ;main.c: 171: Delay_ms(10);
 "171
 [e ( _Delay_ms (1 -> -> 10 `i `ui ]
-[; ;main.c: 172: PORTAbits.RA5 = 1;;
+[; ;main.c: 172: PORTAbits.RA4 = 1;;
 "172
-[e = . . _PORTAbits 0 5 -> -> 1 `i `uc ]
+[e = . . _PORTAbits 0 4 -> -> 1 `i `uc ]
 [; ;main.c: 173: Delay_ms(10);
 "173
 [e ( _Delay_ms (1 -> -> 10 `i `ui ]
-[; ;main.c: 175: Delay_ms(200);
+[; ;main.c: 174: PORTAbits.RA5 = 1;;
+"174
+[e = . . _PORTAbits 0 5 -> -> 1 `i `uc ]
+[; ;main.c: 175: Delay_ms(10);
 "175
+[e ( _Delay_ms (1 -> -> 10 `i `ui ]
+[; ;main.c: 177: Delay_ms(200);
+"177
 [e ( _Delay_ms (1 -> -> 200 `i `ui ]
 [v F3177 `S329 ~T0 @X0 -> 2 `i s ]
 [i F3177
@@ -3276,7 +3267,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> 89 `c
 -> 0 `c
 ..
-"178
+"180
 -> -> 5 `i `uc
 ..
 :U ..
@@ -3294,73 +3285,73 @@ Version 3.2 HI-TECH Software Intermediate Code
 ..
 ]
 [v _beacon_address `S329 ~T0 @X0 -> 2 `i a ]
-[; ;main.c: 178: s_address beacon_address[2] = {{"CUBEYY", 5},{"CUBEXX", 7}};
+[; ;main.c: 180: s_address beacon_address[2] = {{"CUBEYY", 5},{"CUBEXX", 7}};
 [e = _beacon_address F3177 ]
-[; ;main.c: 180: Ax25_Send_Header(beacon_address,2);
-"180
-[e ( _Ax25_Send_Header (2 , &U _beacon_address -> 2 `i ]
-[; ;main.c: 181: Ax25_Send_String("HELLO");
-"181
-[e ( _Ax25_Send_String (1 :s 1C ]
-[; ;main.c: 182: Ax25_Send_Footer();
+[; ;main.c: 182: Ax25_Send_Header(beacon_address,2);
 "182
+[e ( _Ax25_Send_Header (2 , &U _beacon_address -> 2 `i ]
+[; ;main.c: 183: Ax25_Send_String("HELLO");
+"183
+[e ( _Ax25_Send_String (1 :s 1C ]
+[; ;main.c: 184: Ax25_Send_Footer();
+"184
 [e ( _Ax25_Send_Footer ..  ]
-[; ;main.c: 186: Modem_Setup();
-"186
-[e ( _Modem_Setup ..  ]
-[; ;main.c: 187: Delay_ms(100);
-"187
-[e ( _Delay_ms (1 -> -> 100 `i `ui ]
-[; ;main.c: 188: PORTCbits.RC3 = 0; ;
+[; ;main.c: 188: Modem_Setup();
 "188
-[e = . . _PORTCbits 0 3 -> -> 0 `i `uc ]
+[e ( _Modem_Setup ..  ]
 [; ;main.c: 189: Delay_ms(100);
 "189
 [e ( _Delay_ms (1 -> -> 100 `i `ui ]
-[; ;main.c: 190: Ptt_On();
+[; ;main.c: 190: PORTCbits.RC3 = 0; ;
 "190
+[e = . . _PORTCbits 0 3 -> -> 0 `i `uc ]
+[; ;main.c: 191: Delay_ms(100);
+"191
+[e ( _Delay_ms (1 -> -> 100 `i `ui ]
+[; ;main.c: 192: Ptt_On();
+"192
 [e ( _Ptt_On ..  ]
-[; ;main.c: 192: while(1){
-"192
-[e :U 341 ]
-{
-[; ;main.c: 193: if(PTT_OFF){
-"193
-[e $ ! != -> _PTT_OFF `i -> -> -> 0 `i `uc `i 343  ]
-{
-[; ;main.c: 194: Ptt_Off();
+[; ;main.c: 194: while(1){
 "194
-[e ( _Ptt_Off ..  ]
-[; ;main.c: 195: PTT_OFF = 0;
-"195
-[e = _PTT_OFF -> -> 0 `i `uc ]
-"196
-}
-[e :U 343 ]
-[; ;main.c: 196: }
-[; ;main.c: 199: Modem_Flush_Frame();
-"199
-[e ( _Modem_Flush_Frame ..  ]
-[; ;main.c: 200: Delay_ms(200);
-"200
-[e ( _Delay_ms (1 -> -> 200 `i `ui ]
-[; ;main.c: 201: Delay_ms(10);
-"201
-[e ( _Delay_ms (1 -> -> 10 `i `ui ]
-"203
-}
 [e :U 340 ]
-"192
-[e $U 341  ]
+{
+[; ;main.c: 196: if(PTT_OFF){
+"196
+[e $ ! != -> _PTT_OFF `i -> -> -> 0 `i `uc `i 342  ]
+{
+[; ;main.c: 197: Ptt_Off();
+"197
+[e ( _Ptt_Off ..  ]
+[; ;main.c: 198: PTT_OFF = 0;
+"198
+[e = _PTT_OFF -> -> 0 `i `uc ]
+"199
+}
 [e :U 342 ]
-[; ;main.c: 203: }
-[; ;main.c: 204: return (0);
+[; ;main.c: 199: }
+[; ;main.c: 202: Modem_Flush_Frame();
+"202
+[e ( _Modem_Flush_Frame ..  ]
+[; ;main.c: 203: Delay_ms(200);
+"203
+[e ( _Delay_ms (1 -> -> 200 `i `ui ]
+[; ;main.c: 204: Delay_ms(10);
 "204
+[e ( _Delay_ms (1 -> -> 10 `i `ui ]
+"207
+}
+[e :U 339 ]
+"194
+[e $U 340  ]
+[e :U 341 ]
+[; ;main.c: 207: }
+[; ;main.c: 208: return (0);
+"208
 [e ) -> 0 `i ]
-[e $UE 336  ]
-[; ;main.c: 205: }
-"205
-[e :UE 336 ]
+[e $UE 335  ]
+[; ;main.c: 209: }
+"209
+[e :UE 335 ]
 }
 [a 1C 72 69 76 76 79 0 ]
 

@@ -18,7 +18,9 @@
 #include <stdbool.h>
 #include "configuration.h"
 
-uint16_t Systick_Counter = 0; //Her 10 ms de bir tick sayar
+
+#define _XTAL_FREQ 32000000 //aslinda Xtal freq degil CPU clock (dummy delay fonksiyonu icin)
+
 uint32_t Delay_Counter   = 0; //Delay_ms fonksiyonunda kullanilacak counter, 10ms de bir tick sayar
 uint8_t  timeout_flag = 0;
 uint32_t timeout_check;
@@ -45,15 +47,15 @@ bool Gpio_Config(void){
 }
 
 
-int CheckDelay(uint8_t t)
-{
-  return((t - Systick_Counter));
-}
-
 void Delay_ms(uint16_t time_to_delay)
 {
-  Systick_Counter = 0;
-  while (CheckDelay(time_to_delay));
+    uint16_t i=0;
+   Dac0_Start_Hold();         //Dac0 cikisini nominal degerde birakalim
+   INTCON &= ~0x80;           //Global interrupt disable
+   for(i=0; i<time_to_delay; i++){
+   __delay_ms(1);             //inline fonksiyon dinamik arguman kabul etmiyor
+   }
+   INTCON |= 0xC0;            //Global interrupt enable
 }
 
 
@@ -282,14 +284,16 @@ void Timer1_Stop(void){
     CCP1IE = 0; // compare1 modulu interrupt disable
 }
 
-void Dac0_Start(void){
+void Dac0_Start_Hold(void){
     DACEN = 1;  //DAC output enable
     DACCON1 = 0x10;//Vdd/2 on DACOUT
 }
 
 void Dac0_Stop(void){
+    DACCON1 = 0x00; //0Vdc on DACOUT
     DACEN = 0; //DAC output disable
 }
+
 
 void Adc1_Start(void){
     ADIF = 0; //clear interrupt flag
