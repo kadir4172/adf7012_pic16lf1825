@@ -20,6 +20,7 @@
 extern  bool PTT_OFF;
 extern void Ptt_Off(void);
 extern uint8_t modem_packet[MODEM_MAX_PACKET];
+void Sinus_Generator(void);
 
 uint8_t test  = 0;
 uint8_t test2 = 0;
@@ -76,7 +77,7 @@ void interrupt global_interrupt(){
        // DACCON1 = sine_table2[i++];
        // if (i==13)
        //     i=0;
-    
+     Sinus_Generator();
        //Timer0 ISR
   
        INTCON &= ~0x04; //Clear Timer0 interrupt flag
