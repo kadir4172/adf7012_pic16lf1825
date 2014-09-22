@@ -316,7 +316,7 @@ extern bool Read_Adf7012_Muxout(void);
 extern bool Reverse_Array(uint8_t* ,uint8_t);
 extern bool Send_Vcxo_Signal(uint8_t);
 
-# 45
+# 52
 extern uint32_t timeout_check;
 extern uint8_t timeout_flag;
 extern uint16_t Systick_Counter;
@@ -329,7 +329,7 @@ extern void Ptt_Off(void);
 extern void Set_Freq(uint32_t);
 extern bool Spi_Byte_Send(uint8_t);
 
-# 61
+# 68
 extern void Timer0_Start(void);
 extern void Timer0_Stop(void);
 extern void Timer1_Start(void);

@@ -23,6 +23,8 @@
       <itemPath>utility.c</itemPath>
       <itemPath>adf7012.c</itemPath>
       <itemPath>audio_tone.c</itemPath>
+      <itemPath>beacon_adf7012.c</itemPath>
+      <itemPath>ax25.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

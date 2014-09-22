@@ -19,16 +19,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S34 . . ]
 "427
 [v _PORTAbits `VS34 ~T0 @X0 0 e@12 ]
-"55 utility.h
+"62 utility.h
 [v _Spi_Byte_Send `(uc ~T0 @X0 0 ef1`uc ]
 "2417 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16lf1825.h
 [v _DACCON1 `Vuc ~T0 @X0 0 e@281 ]
-"87 C:\Program Files (x86)\Microchip\xc8\v1.33\include\stdlib.h
-[v _malloc `(*v ~T0 @X0 0 ef1`ui ]
 "22 C:\Program Files (x86)\Microchip\xc8\v1.33\include\string.h
 [v _memcpy `(*v ~T0 @X0 0 ef3`*v`*Cv`ui ]
-"88 C:\Program Files (x86)\Microchip\xc8\v1.33\include\stdlib.h
-[v _free `(v ~T0 @X0 0 ef1`*v ]
 "660 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16lf1825.h
 [v _TMR0 `Vuc ~T0 @X0 0 e@21 ]
 "6862
@@ -226,22 +222,22 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;utility.h: 28: extern bool Read_Adf7012_Muxout(void);
 [; ;utility.h: 29: extern bool Reverse_Array(uint8_t* ,uint8_t);
 [; ;utility.h: 30: extern bool Send_Vcxo_Signal(uint8_t);
-[; ;utility.h: 45: extern uint32_t timeout_check;
-[; ;utility.h: 46: extern uint8_t timeout_flag;
-[; ;utility.h: 47: extern uint16_t Systick_Counter;
-[; ;utility.h: 51: extern void Radio_Setup(void);
-[; ;utility.h: 52: extern bool Ptt_On(void);
-[; ;utility.h: 53: extern void Ptt_Off(void);
-[; ;utility.h: 54: extern void Set_Freq(uint32_t);
-[; ;utility.h: 55: extern bool Spi_Byte_Send(uint8_t);
-[; ;utility.h: 61: extern void Timer0_Start(void);
-[; ;utility.h: 62: extern void Timer0_Stop(void);
-[; ;utility.h: 63: extern void Timer1_Start(void);
-[; ;utility.h: 64: extern void Timer1_Stop(void);
-[; ;utility.h: 65: extern void Dac0_Start(void);
-[; ;utility.h: 66: extern void Dac0_Stop(void);
-[; ;utility.h: 67: extern void Adc1_Start(void);
-[; ;utility.h: 68: extern void Adc1_Stop(void);
+[; ;utility.h: 52: extern uint32_t timeout_check;
+[; ;utility.h: 53: extern uint8_t timeout_flag;
+[; ;utility.h: 54: extern uint16_t Systick_Counter;
+[; ;utility.h: 58: extern void Radio_Setup(void);
+[; ;utility.h: 59: extern bool Ptt_On(void);
+[; ;utility.h: 60: extern void Ptt_Off(void);
+[; ;utility.h: 61: extern void Set_Freq(uint32_t);
+[; ;utility.h: 62: extern bool Spi_Byte_Send(uint8_t);
+[; ;utility.h: 68: extern void Timer0_Start(void);
+[; ;utility.h: 69: extern void Timer0_Stop(void);
+[; ;utility.h: 70: extern void Timer1_Start(void);
+[; ;utility.h: 71: extern void Timer1_Stop(void);
+[; ;utility.h: 72: extern void Dac0_Start(void);
+[; ;utility.h: 73: extern void Dac0_Stop(void);
+[; ;utility.h: 74: extern void Adc1_Start(void);
+[; ;utility.h: 75: extern void Adc1_Stop(void);
 [; ;string.h: 22: extern void * memcpy(void *, const void *, size_t);
 [; ;string.h: 23: extern void * memmove(void *, const void *, size_t);
 [; ;string.h: 24: extern void * memset(void *, int, size_t);
@@ -3100,12 +3096,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;utility.c: 206: uint8_t i = 0;
 [e = _i -> -> 0 `i `uc ]
 "207
-[v _buffer_array `*uc ~T0 @X0 1 a ]
-[; ;utility.c: 207: uint8_t* buffer_array = malloc(sizeof(uint8_t) * length);
-[e = _buffer_array -> ( _malloc (1 * -> # `uc `ui -> _length `ui `*uc ]
+[v _buffer_array `uc ~T0 @X0 -> 4 `i a ]
+[; ;utility.c: 207: uint8_t buffer_array[4];
 [; ;utility.c: 208: memcpy(buffer_array, input, length);
 "208
-[e ( _memcpy (3 , , -> _buffer_array `*v -> _input `*Cv -> _length `ui ]
+[e ( _memcpy (3 , , -> &U _buffer_array `*v -> _input `*Cv -> _length `ui ]
 [; ;utility.c: 210: for(i = 0; i<length; i++){
 "210
 {
@@ -3115,7 +3110,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;utility.c: 211: *(input+i) = *(buffer_array+(length-1)-i);
 "211
-[e = *U + _input * -> _i `ux -> -> # *U _input `ui `ux *U - + _buffer_array * -> - -> _length `i -> 1 `i `x -> -> # *U _buffer_array `i `x * -> _i `ux -> -> # *U + _buffer_array * -> - -> _length `i -> 1 `i `x -> -> # *U _buffer_array `i `x `ui `ux ]
+[e = *U + _input * -> _i `ux -> -> # *U _input `ui `ux *U - + &U _buffer_array * -> - -> _length `i -> 1 `i `x -> -> # *U &U _buffer_array `i `x * -> _i `ux -> -> # *U + &U _buffer_array * -> - -> _length `i -> 1 `i `x -> -> # *U &U _buffer_array `i `x `ui `ux ]
 "212
 }
 "210
@@ -3126,9 +3121,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 "212
 }
 [; ;utility.c: 212: }
-[; ;utility.c: 214: free (buffer_array);
-"214
-[e ( _free (1 -> _buffer_array `*v ]
 [; ;utility.c: 216: return 1;
 "216
 [e ) -> -> 1 `i `uc ]

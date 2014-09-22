@@ -3862,7 +3862,7 @@ extern bool Read_Adf7012_Muxout(void);
 extern bool Reverse_Array(uint8_t* ,uint8_t);
 extern bool Send_Vcxo_Signal(uint8_t);
 
-# 45
+# 52
 extern uint32_t timeout_check;
 extern uint8_t timeout_flag;
 extern uint16_t Systick_Counter;
@@ -3875,7 +3875,7 @@ extern void Ptt_Off(void);
 extern void Set_Freq(uint32_t);
 extern bool Spi_Byte_Send(uint8_t);
 
-# 61
+# 68
 extern void Timer0_Start(void);
 extern void Timer0_Stop(void);
 extern void Timer1_Start(void);
@@ -3885,7 +3885,70 @@ extern void Dac0_Stop(void);
 extern void Adc1_Start(void);
 extern void Adc1_Stop(void);
 
-# 15 "main.c"
+# 22 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\string.h"
+extern void * memcpy(void *, const void *, size_t);
+extern void * memmove(void *, const void *, size_t);
+extern void * memset(void *, int, size_t);
+
+
+
+extern void * __builtin_memcpy(void *, const void *, size_t);
+#pragma intrinsic(__builtin_memcpy)
+
+# 42
+extern char * strcat(char *, const char *);
+extern char * strcpy(char *, const char *);
+extern char * strncat(char *, const char *, size_t);
+extern char * strncpy(char *, const char *, size_t);
+extern char * strdup(const char *);
+extern char * strtok(char *, const char *);
+
+
+extern int memcmp(const void *, const void *, size_t);
+extern int strcmp(const char *, const char *);
+extern int stricmp(const char *, const char *);
+extern int strncmp(const char *, const char *, size_t);
+extern int strnicmp(const char *, const char *, size_t);
+extern void * memchr(const void *, int, size_t);
+extern size_t strcspn(const char *, const char *);
+extern char * strpbrk(const char *, const char *);
+extern size_t strspn(const char *, const char *);
+extern char * strstr(const char *, const char *);
+extern char * stristr(const char *, const char *);
+extern char * strerror(int);
+extern size_t strlen(const char *);
+extern char * strchr(const char *, int);
+extern char * strichr(const char *, int);
+extern char * strrchr(const char *, int);
+extern char * strrichr(const char *, int);
+
+# 18 "ax25.h"
+typedef struct {
+uint8_t callsign[7];
+uint8_t ssid;
+} s_address;
+
+extern void Ax25_Send_Header(s_address addresses[], int num_addresses);
+void Ax25_Send_Byte(uint8_t byte);
+extern void Ax25_Send_String(const char *string);
+extern void Ax25_Send_Footer();
+void Ax25_Flush_Frame();
+
+# 21 "audio_tone.h"
+extern uint8_t modem_packet[512];
+extern uint32_t modem_packet_size;
+
+void Modem_Setup(void);
+void Modem_Start(void);
+void Modem_Flush_Frame(void);
+void Modem_Set_Tx_Freq(uint32_t);
+bool Modem_Busy(void);
+
+# 20 "main.c"
+extern bool PTT_OFF;
+extern void Ptt_Off(void);
+extern uint8_t modem_packet[512];
+
 uint8_t test = 0;
 uint8_t test2 = 0;
 uint16_t dac_flag = 0;
@@ -3899,7 +3962,7 @@ uint8_t sine_table2[14] = {0x10,0x16,0x1c,0x1f,0x1f,0x1c,0x16,0x10,0x9,0x3,0x0,0
 uint8_t adc_sonuc_high = 0;
 uint8_t adc_sonuc_low = 0;
 
-# 32
+# 41
 void interrupt global_interrupt(){
 
 INTCON &= ~0x80;
@@ -4018,6 +4081,8 @@ System_Start();
 while (!(OSCSTAT & (0x01))){}
 
 
+Gpio_Config();
+
 Timer0_Start();
 Timer1_Start();
 
@@ -4025,9 +4090,39 @@ Dac0_Start();
 
 Adc1_Start();
 
+PORTAbits.RA5 = 0;;
+Delay_ms(10);
+PORTAbits.RA4 = 1;;
+Delay_ms(10);
+PORTAbits.RA5 = 1;;
+Delay_ms(10);
+
 Delay_ms(200);
 
+
+s_address beacon_address[2] = {{"CUBEYY", 5},{"CUBEXX", 7}};
+
+Ax25_Send_Header(beacon_address,2);
+Ax25_Send_String("HELLO");
+Ax25_Send_Footer();
+
+
+
+Modem_Setup();
+Delay_ms(100);
+PORTCbits.RC3 = 0; ;
+Delay_ms(100);
+Ptt_On();
+
 while(1){
+if(PTT_OFF){
+Ptt_Off();
+PTT_OFF = 0;
+}
+
+
+Modem_Flush_Frame();
+Delay_ms(200);
 Delay_ms(10);
 
 }

@@ -39,6 +39,13 @@ extern bool Send_Vcxo_Signal(uint8_t);
 #define ADF7021_CHIP_POWER_UP    PORTAbits.RA5 = 1;
 #define ADF7021_CHIP_POWER_DOWN  PORTAbits.RA5 = 0;
 
+#define ADF7012_CLEAR_DATA_PIN PORTCbits.RC3 = 0;
+#define ADF7012_SET_DATA_PIN   PORTCbits.RC3 = 1;
+
+
+#define ADF7012_CLEAR_CLK_PIN  PORTCbits.RC4 = 0;
+#define ADF7012_SET_CLK_PIN    PORTCbits.RC4 = 1;
+
 //#define ADC_CHANNEL 7 //Muxout pini ADC cevrimi 7.kanaldan yapilacak
 //#define PORTNUM  1  //SSP1 portu Spi icin kullanilacak
 

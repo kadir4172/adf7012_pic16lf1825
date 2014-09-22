@@ -11,6 +11,15 @@
 #include "configuration.h"
 #include <stdbool.h>
 #include "utility.h"
+#include <string.h>
+#include <math.h>
+#include "ax25.h"
+#include "audio_tone.h"
+
+
+extern  bool PTT_OFF;
+extern void Ptt_Off(void);
+extern uint8_t modem_packet[MODEM_MAX_PACKET];
 
 uint8_t test  = 0;
 uint8_t test2 = 0;
@@ -147,18 +156,50 @@ int main(void) {
     while (!(OSCSTAT & (0x01))){} //HFIOFS Osc. stable bit bekle
     /* TODO timeout a bakip software reset verilmeli */
 
+    Gpio_Config();
+    
     Timer0_Start(); //32us  lik Timer0 baslatilsin
     Timer1_Start(); //833us lik Timer1 baslatilsin
 
     Dac0_Start();
     
     Adc1_Start();
+
+    ADF7021_CHIP_POWER_DOWN;        //CE pini asagi cek
+    Delay_ms(10);
+    ADF7021_LOAD_REGISTER_DISABLE;  //LE pinini yukari cek, load register disable olsun
+    Delay_ms(10);
+    ADF7021_CHIP_POWER_UP;          //CE pinini yukari cek, ADF7012 enable olsun
+    Delay_ms(10);
    
     Delay_ms(200);
 
+
+  s_address beacon_address[2] = {{"CUBEYY", 5},{"CUBEXX", 7}};
+
+  Ax25_Send_Header(beacon_address,2);
+  Ax25_Send_String("HELLO");
+  Ax25_Send_Footer();
+
+
+
+  Modem_Setup();
+  Delay_ms(100);
+  ADF7012_CLEAR_DATA_PIN ;
+  Delay_ms(100);
+  Ptt_On();
+
      while(1){
-         Delay_ms(10);
-         //Spi_Byte_Send(0x17);
+           if(PTT_OFF){
+		  Ptt_Off();
+		  PTT_OFF  = false;
+	  }
+
+
+	  Modem_Flush_Frame();
+	  Delay_ms(200);
+          Delay_ms(10);
+          //Spi_Byte_Send(0x17);
      }
     return (EXIT_SUCCESS);
 }
@@ -178,3 +219,5 @@ int main(void) {
 
 
 // -----------------------------------------------------------------------
+
+

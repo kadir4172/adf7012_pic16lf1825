@@ -20,10 +20,10 @@ typedef struct  {
 	uint8_t ssid;
 } s_address;
 
-void Ax25_Send_Header(s_address addresses[], int num_addresses);
+extern void Ax25_Send_Header(s_address addresses[], int num_addresses);
 void Ax25_Send_Byte(uint8_t byte);
-void Ax25_Send_String(const char *string);
-void Ax25_Send_Footer();
+extern void Ax25_Send_String(const char *string);
+extern void Ax25_Send_Footer();
 void Ax25_Flush_Frame();
 
 

@@ -306,7 +306,7 @@ extern bool Read_Adf7012_Muxout(void);
 extern bool Reverse_Array(uint8_t* ,uint8_t);
 extern bool Send_Vcxo_Signal(uint8_t);
 
-# 45
+# 52
 extern uint32_t timeout_check;
 extern uint8_t timeout_flag;
 extern uint16_t Systick_Counter;
@@ -319,7 +319,7 @@ extern void Ptt_Off(void);
 extern void Set_Freq(uint32_t);
 extern bool Spi_Byte_Send(uint8_t);
 
-# 61
+# 68
 extern void Timer0_Start(void);
 extern void Timer0_Stop(void);
 extern void Timer1_Start(void);
@@ -4000,14 +4000,14 @@ return 1;
 # 205
 bool Reverse_Array(uint8_t* input,uint8_t length){
 uint8_t i = 0;
-uint8_t* buffer_array = malloc(sizeof(uint8_t) * length);
+uint8_t buffer_array[4];
 memcpy(buffer_array, input, length);
 
 for(i = 0; i<length; i++){
 *(input+i) = *(buffer_array+(length-1)-i);
 }
 
-free (buffer_array);
+
 
 return 1;
 }
