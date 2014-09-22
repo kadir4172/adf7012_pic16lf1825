@@ -3935,7 +3935,7 @@ extern void Ax25_Send_Footer();
 void Ax25_Flush_Frame();
 
 # 21 "audio_tone.h"
-extern uint8_t modem_packet[512];
+extern uint8_t modem_packet[64];
 extern uint32_t modem_packet_size;
 
 void Modem_Setup(void);
@@ -3947,7 +3947,7 @@ bool Modem_Busy(void);
 # 20 "main.c"
 extern bool PTT_OFF;
 extern void Ptt_Off(void);
-extern uint8_t modem_packet[512];
+extern uint8_t modem_packet[64];
 
 uint8_t test = 0;
 uint8_t test2 = 0;
@@ -3955,7 +3955,7 @@ uint16_t dac_flag = 0;
 
 uint8_t i = 0;
 
-uint8_t sine_table[26] = {0x11,0x14,0x18,0x1b,0x1e,0x20,0x21,0x21,0x20,0x1e,0x1b,0x18,0x14,0x11,0xd,0x9,0x6,0x3,0x1,0x0,0x0,0x1,0x3,0x6,0x9,0xd};
+
 
 uint8_t sine_table2[14] = {0x10,0x16,0x1c,0x1f,0x1f,0x1c,0x16,0x10,0x9,0x3,0x0,0x0,0x3,0x9};
 
@@ -3988,7 +3988,7 @@ TMR1L = 0x00;
 
 PIR1 &= ~0x04;
 
-ADCON0 |= 0b00000010;
+
 
 }
 
@@ -3996,8 +3996,8 @@ ADCON0 |= 0b00000010;
 
 if(INTCON & 0x04){
 
-DACCON1 = sine_table[i++];
-if (i==25)
+DACCON1 = sine_table2[i++];
+if (i==13)
 i=0;
 
 

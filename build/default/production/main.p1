@@ -15,8 +15,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _TMR1H `Vuc ~T0 @X0 0 e@23 ]
 "685
 [v _TMR1L `Vuc ~T0 @X0 0 e@22 ]
-"1746
-[v _ADCON0 `Vuc ~T0 @X0 0 e@157 ]
 "2417
 [v _DACCON1 `Vuc ~T0 @X0 0 e@281 ]
 "1570
@@ -55,6 +53,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _DACNSS `Vb ~T0 @X0 0 e@2240 ]
 "6080
 [v _ANSA1 `Vb ~T0 @X0 0 e@3169 ]
+"1746
+[v _ADCON0 `Vuc ~T0 @X0 0 e@157 ]
 "6068
 [v _ADNREF `Vb ~T0 @X0 0 e@1266 ]
 "6074
@@ -2964,7 +2964,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ax25.h: 25: extern void Ax25_Send_String(const char *string);
 [; ;ax25.h: 26: extern void Ax25_Send_Footer();
 [; ;ax25.h: 27: void Ax25_Flush_Frame();
-[; ;audio_tone.h: 21: extern uint8_t modem_packet[512];
+[; ;audio_tone.h: 21: extern uint8_t modem_packet[64];
 [; ;audio_tone.h: 22: extern uint32_t modem_packet_size;
 [; ;audio_tone.h: 24: void Modem_Setup(void);
 [; ;audio_tone.h: 25: void Modem_Start(void);
@@ -2973,7 +2973,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;audio_tone.h: 28: bool Modem_Busy(void);
 [; ;main.c: 20: extern bool PTT_OFF;
 [; ;main.c: 21: extern void Ptt_Off(void);
-[; ;main.c: 22: extern uint8_t modem_packet[512];
+[; ;main.c: 22: extern uint8_t modem_packet[64];
 "24 main.c
 [v _test `uc ~T0 @X0 1 e ]
 [i _test
@@ -2998,39 +2998,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `uc
 ]
 [; ;main.c: 28: uint8_t i = 0;
-"30
-[v _sine_table `uc ~T0 @X0 -> 26 `i e ]
-[i _sine_table
-:U ..
--> -> 17 `i `uc
--> -> 20 `i `uc
--> -> 24 `i `uc
--> -> 27 `i `uc
--> -> 30 `i `uc
--> -> 32 `i `uc
--> -> 33 `i `uc
--> -> 33 `i `uc
--> -> 32 `i `uc
--> -> 30 `i `uc
--> -> 27 `i `uc
--> -> 24 `i `uc
--> -> 20 `i `uc
--> -> 17 `i `uc
--> -> 13 `i `uc
--> -> 9 `i `uc
--> -> 6 `i `uc
--> -> 3 `i `uc
--> -> 1 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 1 `i `uc
--> -> 3 `i `uc
--> -> 6 `i `uc
--> -> 9 `i `uc
--> -> 13 `i `uc
-..
-]
-[; ;main.c: 30: uint8_t sine_table[26] = {0x11,0x14,0x18,0x1b,0x1e,0x20,0x21,0x21,0x20,0x1e,0x1b,0x18,0x14,0x11,0xd,0x9,0x6,0x3,0x1,0x0,0x0,0x1,0x3,0x6,0x9,0xd};
 "32
 [v _sine_table2 `uc ~T0 @X0 -> 14 `i e ]
 [i _sine_table2
@@ -3064,9 +3031,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `uc
 ]
 [; ;main.c: 35: uint8_t adc_sonuc_low = 0;
-[v F3171 `(v ~T0 @X0 1 tf ]
+[v F3170 `(v ~T0 @X0 1 tf ]
 "41
-[v _global_interrupt `IF3171 ~T0 @X0 1 e ]
+[v _global_interrupt `IF3170 ~T0 @X0 1 e ]
 {
 [; ;main.c: 41: void interrupt global_interrupt(){
 [e :U _global_interrupt ]
@@ -3107,9 +3074,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 64: PIR1 &= ~0x04;
 "64
 [e =& _PIR1 -> ~ -> 4 `i `uc ]
-[; ;main.c: 66: ADCON0 |= 0b00000010;
-"66
-[e =| _ADCON0 -> -> 2 `i `uc ]
 "68
 }
 [e :U 332 ]
@@ -3118,12 +3082,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 "72
 [e $ ! != & -> _INTCON `i -> 4 `i -> 0 `i 333  ]
 {
-[; ;main.c: 74: DACCON1 = sine_table[i++];
+[; ;main.c: 74: DACCON1 = sine_table2[i++];
 "74
-[e = _DACCON1 *U + &U _sine_table * -> ++ _i -> -> 1 `i `uc `ux -> -> # *U &U _sine_table `ui `ux ]
-[; ;main.c: 75: if (i==25)
+[e = _DACCON1 *U + &U _sine_table2 * -> ++ _i -> -> 1 `i `uc `ux -> -> # *U &U _sine_table2 `ui `ux ]
+[; ;main.c: 75: if (i==13)
 "75
-[e $ ! == -> _i `i -> 25 `i 334  ]
+[e $ ! == -> _i `i -> 13 `i 334  ]
 [; ;main.c: 76: i=0;
 "76
 [e = _i -> -> 0 `i `uc ]
@@ -3299,8 +3263,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 175: Delay_ms(200);
 "175
 [e ( _Delay_ms (1 -> -> 200 `i `ui ]
-[v F3178 `S329 ~T0 @X0 -> 2 `i s ]
-[i F3178
+[v F3177 `S329 ~T0 @X0 -> 2 `i s ]
+[i F3177
 :U ..
 :U ..
 :U ..
@@ -3331,7 +3295,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [v _beacon_address `S329 ~T0 @X0 -> 2 `i a ]
 [; ;main.c: 178: s_address beacon_address[2] = {{"CUBEYY", 5},{"CUBEXX", 7}};
-[e = _beacon_address F3178 ]
+[e = _beacon_address F3177 ]
 [; ;main.c: 180: Ax25_Send_Header(beacon_address,2);
 "180
 [e ( _Ax25_Send_Header (2 , &U _beacon_address -> 2 `i ]

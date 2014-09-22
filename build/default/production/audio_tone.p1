@@ -42,7 +42,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdint.h: 210: typedef int16_t intptr_t;
 [; ;stdint.h: 215: typedef uint16_t uintptr_t;
 [; ;stdbool.h: 12: typedef unsigned char bool;
-[; ;audio_tone.h: 21: extern uint8_t modem_packet[512];
+[; ;audio_tone.h: 21: extern uint8_t modem_packet[64];
 [; ;audio_tone.h: 22: extern uint32_t modem_packet_size;
 [; ;audio_tone.h: 24: void Modem_Setup(void);
 [; ;audio_tone.h: 25: void Modem_Start(void);
@@ -825,8 +825,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;audio_tone.c: 88: uint32_t modem_packet_size = 0;
 "89
-[v _modem_packet `uc ~T0 @X0 -> 512 `i e ]
-[; ;audio_tone.c: 89: uint8_t modem_packet[512];
+[v _modem_packet `uc ~T0 @X0 -> 64 `i e ]
+[; ;audio_tone.c: 89: uint8_t modem_packet[64];
 "93
 [v _TABLE_SIZE `Ci ~T0 @X0 1 s ]
 [i _TABLE_SIZE

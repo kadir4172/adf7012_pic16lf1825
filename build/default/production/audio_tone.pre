@@ -95,7 +95,7 @@ typedef uint16_t uintptr_t;
 typedef unsigned char bool;
 
 # 21 "audio_tone.h"
-extern uint8_t modem_packet[512];
+extern uint8_t modem_packet[64];
 extern uint32_t modem_packet_size;
 
 void Modem_Setup(void);
@@ -420,7 +420,7 @@ const uint8_t sine_table[512] = {
 # 87
 bool PTT_OFF = 0;
 uint32_t modem_packet_size = 0;
-uint8_t modem_packet[512];
+uint8_t modem_packet[64];
 
 
 

@@ -16,7 +16,7 @@ extern "C" {
 #include <stdint.h>
 #include <stdbool.h>
 
-#define MODEM_MAX_PACKET 512
+#define MODEM_MAX_PACKET 64
 
 extern uint8_t modem_packet[MODEM_MAX_PACKET];   
 extern uint32_t modem_packet_size;                
