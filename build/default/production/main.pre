@@ -3862,13 +3862,7 @@ extern bool Read_Adf7012_Muxout(void);
 extern bool Reverse_Array(uint8_t* ,uint8_t);
 extern bool Send_Vcxo_Signal(uint8_t);
 
-# 52
-extern uint32_t timeout_check;
-extern uint8_t timeout_flag;
-
-
-
-
+# 58
 extern void Radio_Setup(void);
 extern bool Ptt_On(void);
 extern void Ptt_Off(void);
@@ -3948,23 +3942,22 @@ bool Modem_Busy(void);
 extern bool PTT_OFF;
 extern void Ptt_Off(void);
 extern uint8_t modem_packet[64];
+void Sinus_Generator(void);
+extern bool MODEM_TRANSMITTING;
 
 uint8_t test = 0;
 uint8_t test2 = 0;
 uint16_t dac_flag = 0;
 
-uint8_t i = 0;
 
 
-
-uint8_t sine_table2[14] = {0x10,0x16,0x1c,0x1f,0x1f,0x1c,0x16,0x10,0x9,0x3,0x0,0x0,0x3,0x9};
 
 uint8_t adc_sonuc_high = 0;
 uint8_t adc_sonuc_low = 0;
 
 uint16_t Systick_Counter = 0;
 
-# 43
+# 42
 void interrupt global_interrupt(){
 
 INTCON &= ~0x80;
@@ -3975,6 +3968,7 @@ adc_sonuc_high = ADRESH;
 adc_sonuc_low = ADRESL;
 
 ADIF = 0;
+return;
 }
 
 
@@ -3991,15 +3985,18 @@ TMR1L = 0x00;
 PIR1 &= ~0x04;
 
 
-
+return;
 }
 
 
 
 if(INTCON & 0x04){
 
-# 82
+Sinus_Generator();
+
+
 INTCON &= ~0x04;
+return;
 }
 
 
@@ -4065,6 +4062,13 @@ ADFM = 1;
 
 
 
+TMR0IF = 0;
+TMR1IF = 0;
+CCP1IF = 0;
+ADIF = 0;
+
+
+
 INTCON |= 0xC0;
 
 
@@ -4080,7 +4084,6 @@ while (!(OSCSTAT & (0x01))){}
 
 Gpio_Config();
 
-Timer0_Start();
 Timer1_Start();
 
 Dac0_Start_Hold();
@@ -4120,9 +4123,8 @@ PTT_OFF = 0;
 
 
 Modem_Flush_Frame();
-Delay_ms(200);
-Delay_ms(10);
-
+while(MODEM_TRANSMITTING);
+Delay_ms(2000);
 
 }
 return (0);

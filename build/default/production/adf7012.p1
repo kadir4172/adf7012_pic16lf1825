@@ -227,8 +227,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;utility.h: 28: extern bool Read_Adf7012_Muxout(void);
 [; ;utility.h: 29: extern bool Reverse_Array(uint8_t* ,uint8_t);
 [; ;utility.h: 30: extern bool Send_Vcxo_Signal(uint8_t);
-[; ;utility.h: 52: extern uint32_t timeout_check;
-[; ;utility.h: 53: extern uint8_t timeout_flag;
 [; ;utility.h: 58: extern void Radio_Setup(void);
 [; ;utility.h: 59: extern bool Ptt_On(void);
 [; ;utility.h: 60: extern void Ptt_Off(void);

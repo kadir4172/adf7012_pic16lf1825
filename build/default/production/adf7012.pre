@@ -306,13 +306,7 @@ extern bool Read_Adf7012_Muxout(void);
 extern bool Reverse_Array(uint8_t* ,uint8_t);
 extern bool Send_Vcxo_Signal(uint8_t);
 
-# 52
-extern uint32_t timeout_check;
-extern uint8_t timeout_flag;
-
-
-
-
+# 58
 extern void Radio_Setup(void);
 extern bool Ptt_On(void);
 extern void Ptt_Off(void);

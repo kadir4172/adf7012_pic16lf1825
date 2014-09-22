@@ -104,7 +104,7 @@ void Ax25_Send_Header(s_address addresses[], int num_addresses)
   crc = 0xffff;
 
   // Send sync ("a bunch of 0s")
-  for (i = 0; i < 100; i++)
+  for (i = 0; i < 10; i++)
   {
     Ax25_Send_Sync();
   }

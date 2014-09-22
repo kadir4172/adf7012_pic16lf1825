@@ -16,14 +16,14 @@
 #include <math.h>
 #include <stdint.h>
 #include <stdbool.h>
-#include "configuration.h"
+#include <xc.h>
 
 
 #define _XTAL_FREQ 32000000 //aslinda Xtal freq degil CPU clock (dummy delay fonksiyonu icin)
 
-uint32_t Delay_Counter   = 0; //Delay_ms fonksiyonunda kullanilacak counter, 10ms de bir tick sayar
-uint8_t  timeout_flag = 0;
-uint32_t timeout_check;
+// Delay_Counter   = 0; //Delay_ms fonksiyonunda kullanilacak counter, 10ms de bir tick sayar
+//uint8_t  timeout_flag = 0;
+//uint32_t timeout_check;
 
 
 bool Spi_Byte_Send(uint8_t);
@@ -50,8 +50,9 @@ bool Gpio_Config(void){
 void Delay_ms(uint16_t time_to_delay)
 {
     uint16_t i=0;
+   
+   INTCON &= ~0xC0;           //Global interrupt disable
    Dac0_Start_Hold();         //Dac0 cikisini nominal degerde birakalim
-   INTCON &= ~0x80;           //Global interrupt disable
    for(i=0; i<time_to_delay; i++){
    __delay_ms(1);             //inline fonksiyon dinamik arguman kabul etmiyor
    }
@@ -268,10 +269,13 @@ void Timer1_Start(void){
     TMR1H = 0x00;
     TMR1L = 0x00;
 
+    TMR1IE = 0; //Timer1 interrupt almayacagiz
+
     //833 us lik compare registerlari
     CCPR1H = 0x03;
     CCPR1L = 0x41;
 
+    CCP1IF = 0;
     //compare1 modulu interrupt enable
     CCP1IE = 1;
 }

@@ -21,16 +21,14 @@ extern  bool PTT_OFF;
 extern void Ptt_Off(void);
 extern uint8_t modem_packet[MODEM_MAX_PACKET];
 void Sinus_Generator(void);
+extern bool MODEM_TRANSMITTING;
 
 uint8_t test  = 0;
 uint8_t test2 = 0;
 uint16_t dac_flag = 0;
 
-uint8_t i = 0;
-//unsigned char sine_table[26] = {0x10,0x14,0x17,0x1b,0x1d,0x1f,0x20,0x20,0x1f,0x1d,0x1b,0x17,0x14,0x10,0xc,0x9,0x5,0x3,0x1,0x0,0x0,0x1,0x3,0x5,0x9,0xc};
-//uint8_t sine_table[26] = {0x11,0x14,0x18,0x1b,0x1e,0x20,0x21,0x21,0x20,0x1e,0x1b,0x18,0x14,0x11,0xd,0x9,0x6,0x3,0x1,0x0,0x0,0x1,0x3,0x6,0x9,0xd};
 
-uint8_t sine_table2[14] = {0x10,0x16,0x1c,0x1f,0x1f,0x1c,0x16,0x10,0x9,0x3,0x0,0x0,0x3,0x9};
+
 
 uint8_t adc_sonuc_high = 0;
 uint8_t adc_sonuc_low  = 0;
@@ -51,6 +49,7 @@ void interrupt global_interrupt(){
         adc_sonuc_low  = ADRESL;
 
         ADIF = 0;
+        return;
     }
     //ADC1 interrupt
 
@@ -67,20 +66,18 @@ void interrupt global_interrupt(){
        PIR1 &= ~0x04; //Clear Timer1 interrupt flag
 
        //ADCON0 |= 0b00000010; //ADC Go
-      
+       return;
     }
     //Timer1 interrupt
 
     //Timer0 interrupt
     if(INTCON & 0x04){
        //Timer0 ISR
-       // DACCON1 = sine_table2[i++];
-       // if (i==13)
-       //     i=0;
-     Sinus_Generator();
+       Sinus_Generator();
        //Timer0 ISR
   
        INTCON &= ~0x04; //Clear Timer0 interrupt flag
+       return;
     }
 
  
@@ -143,7 +140,14 @@ void System_Start(void){
     ADCS0  = 0;  //Fosc/64 for conversion clock
     ADFM = 1; // output on right hand side
     //ADC1 icin gerekli konfigurasyonlar
-    
+
+
+    //reset interrupt flags
+    TMR0IF = 0;
+    TMR1IF = 0;
+    CCP1IF = 0;
+    ADIF = 0; //clear interrupt flag
+    //reset interrupt flags
 
     //Global Interrupt ve Peripheral Interrupt Enable
     INTCON |= 0xC0;
@@ -160,8 +164,7 @@ int main(void) {
     /* TODO timeout a bakip software reset verilmeli */
 
     Gpio_Config();
-    
-    Timer0_Start(); //32us  lik Timer0 baslatilsin
+ 
     Timer1_Start(); //833us lik Timer1 baslatilsin
 
     Dac0_Start_Hold();
@@ -201,27 +204,12 @@ int main(void) {
 
 
 	  Modem_Flush_Frame();
-	  Delay_ms(200);
-          Delay_ms(10);
-       
-          //Spi_Byte_Send(0x17);
-     }
+          while(MODEM_TRANSMITTING);
+	  Delay_ms(2000);
+                
+         }
     return (EXIT_SUCCESS);
 }
-
-
-/*TEST RUTIN
-
- * if(PORTCbits.RC5)
-         {
-             PORTAbits.RA1 = 1;
-         }
-         else
-             PORTAbits.RA1 = 0;
- * 
-*/
-
-
 
 // -----------------------------------------------------------------------
 
