@@ -3887,7 +3887,7 @@ extern void memcpyee(__eeprom unsigned char *to, const unsigned char *from, unsi
 #pragma intrinsic(_delay)
 extern __nonreentrant void _delay(unsigned long);
 
-# 19 "adf7012.c"
+# 18 "adf7012.c"
 uint32_t powerlevel;
 
 

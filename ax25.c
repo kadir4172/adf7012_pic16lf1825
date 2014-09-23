@@ -37,16 +37,19 @@ static void Send_Byte(uint8_t byte)
     Update_Crc((byte >> i) & 1);
     if ((byte >> i) & 1) {
       // Next bit is a '1'
-      if (modem_packet_size >= MODEM_MAX_PACKET * 8)  // Prevent buffer overrun
+      if (modem_packet_size >= (MODEM_MAX_PACKET * 8))  // Prevent buffer overrun
         return;
+     
       modem_packet[modem_packet_size >> 3] |= (1 << (modem_packet_size & 7));
+   
       modem_packet_size++;
       if (++ones_in_a_row < 5) continue;
     }
     // Next bit is a '0' or a zero padding after 5 ones in a row
-    if (modem_packet_size >= MODEM_MAX_PACKET * 8)    // Prevent buffer overrun
+    if (modem_packet_size >= (MODEM_MAX_PACKET * 8))    // Prevent buffer overrun
       return;
     modem_packet[modem_packet_size >> 3] &= ~(1 << (modem_packet_size & 7));
+   
     modem_packet_size++;
     ones_in_a_row = 0;
   }
@@ -98,6 +101,7 @@ void Ax25_Send_String(const char *string)
 
 void Ax25_Send_Header(s_address addresses[], int num_addresses)
 {
+ 
   int i, j;
   modem_packet_size = 0;
   ones_in_a_row = 0;
@@ -117,16 +121,14 @@ void Ax25_Send_Header(s_address addresses[], int num_addresses)
 
   for (i = 0; i < num_addresses; i++) {
     // Transmit callsign
-    //for (j = 0; addresses[i].callsign[j]; j++)
-	  for (j = 0; j < 6; j++)
-      Send_Byte(addresses[i].callsign[j] << 1);
-    // Transmit pad
-    //for ( ; j < 6; j++)
-      //Send_Byte(' ' << 1);
-    // Transmit SSID. Termination signaled with last bit = 1
-    if (i == num_addresses - 1)
-      Send_Byte(('0' + addresses[i].ssid) << 1 | 1);
-
+  	  for (j = 0; j < 6; j++)
+           Send_Byte(addresses[i].callsign[j] << 1);
+    
+   // Transmit SSID. Termination signaled with last bit = 1
+    if (i == num_addresses - 1){
+      Send_Byte((('0' + addresses[i].ssid) << 1) | 0x01);
+      
+    }
     else
       Send_Byte(('0' + addresses[i].ssid) << 1);
   }
@@ -136,6 +138,7 @@ void Ax25_Send_Header(s_address addresses[], int num_addresses)
 
   // Protocol ID: 0xf0 = no layer 3 data
   Send_Byte(0xf0);
+
 }
 
 void Ax25_Send_Footer()

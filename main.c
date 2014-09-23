@@ -16,6 +16,7 @@
 #include "ax25.h"
 #include "audio_tone.h"
 
+//#define Debug_Modem_Packet
 
 extern  bool PTT_OFF;
 extern void Ptt_Off(void);
@@ -35,6 +36,10 @@ uint8_t adc_sonuc_low  = 0;
 
 uint16_t Systick_Counter = 0; //Her 833us de bir tick sayar
 
+#ifdef Debug_Modem_Packet
+extern uint8_t modem_packet[MODEM_MAX_PACKET];
+uint8_t k = 0;
+#endif
 
 /*
  * 
@@ -181,7 +186,7 @@ int main(void) {
     Delay_ms(200);
 
 
-  s_address beacon_address[2] = {{"CUBEYY", 5},{"CUBEXX", 7}};
+  s_address beacon_address[2] = {{"CUBEYY", 5},{"CUBEXX", 6}};
 
   Ax25_Send_Header(beacon_address,2);
   Ax25_Send_String("HELLO");
@@ -196,7 +201,7 @@ int main(void) {
   Ptt_On();
 
      while(1){
-         
+       
          if(PTT_OFF){
 		  Ptt_Off();
 		  PTT_OFF  = false;
@@ -206,7 +211,15 @@ int main(void) {
 	  Modem_Flush_Frame();
           while(MODEM_TRANSMITTING);
 	  Delay_ms(2000);
-                
+
+
+#ifdef Debug_Modem_Packet
+        
+          for (k=0; k< MODEM_MAX_PACKET; k++){
+          Spi_Byte_Send(modem_packet[k]);
+          }
+          Delay_ms(3000);
+#endif
          }
     return (EXIT_SUCCESS);
 }

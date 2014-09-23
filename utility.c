@@ -5,10 +5,6 @@
  *      Author: kadir
  */
 
-//#include "LPC17xx.h"                        /* LPC17xx definitions */
-//#include "ssp.h"
-//#include "dac.h"
-//#include "adc.h"
 #include "utility.h"
 #include <string.h>
 #include <stdio.h>

@@ -35,8 +35,8 @@ static uint8_t current_sample_in_baud;    // 1 bit = SAMPLES_PER_BAUD samples
 
 bool MODEM_TRANSMITTING = false;
 
-static uint32_t phase_delta;                // 1200/2200 for standard AX.25
-static uint32_t phase;                      // Fixed point 9.7 (2PI = TABLE_SIZE)
+static uint8_t phase_delta;                // 1200/2200 for standard AX.25
+static uint8_t phase;                      // Fixed point 9.7 (2PI = TABLE_SIZE)
 static uint32_t packet_pos;                 // Next bit to be sent out
 
 void Modem_Init(void){
@@ -74,7 +74,6 @@ void Modem_Flush_Frame(void)
   Ptt_On();
 
   Delay_ms(100);
-
   Timer0_Start();
 }
 
@@ -86,8 +85,8 @@ void Sinus_Generator(void) {
 if (MODEM_TRANSMITTING == true) {
 
     // If done sending packet
-    //if (packet_pos == modem_packet_size) { //mplab
-    if (packet_pos == 50) {
+    if (packet_pos == modem_packet_size) { //mplab
+    //if (packet_pos == 50) {
       MODEM_TRANSMITTING = false;             // End of transmission
       Timer0_Stop();
       
@@ -104,7 +103,7 @@ if (MODEM_TRANSMITTING == true) {
         current_byte = modem_packet[packet_pos >> 3];
       else
         current_byte = current_byte >> 1 ; 
-      if ((current_byte & 1) == 0) {
+      if ((current_byte & 0x01) == 0) {
         // Toggle tone (1200 <> 2200)
          if(tone_index){
             phase_delta = PHASE_DELTA_1200;

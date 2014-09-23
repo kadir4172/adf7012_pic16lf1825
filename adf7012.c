@@ -12,7 +12,6 @@
 #include "adf7012.h"
 #include <stdint.h>
 #include "utility.h"
-//#include "LPC17xx.h"
 #include <string.h>
 #include <xc.h>
 

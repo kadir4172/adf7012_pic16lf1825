@@ -3934,8 +3934,8 @@ static uint8_t current_sample_in_baud;
 
 bool MODEM_TRANSMITTING = 0;
 
-static uint32_t phase_delta;
-static uint32_t phase;
+static uint8_t phase_delta;
+static uint8_t phase;
 static uint32_t packet_pos;
 
 void Modem_Init(void){
@@ -3973,7 +3973,6 @@ MODEM_TRANSMITTING = 1;
 Ptt_On();
 
 Delay_ms(100);
-
 Timer0_Start();
 }
 
@@ -3985,8 +3984,8 @@ static uint8_t tone_index = 0;
 if (MODEM_TRANSMITTING == 1) {
 
 
+if (packet_pos == modem_packet_size) {
 
-if (packet_pos == 50) {
 MODEM_TRANSMITTING = 0;
 Timer0_Stop();
 
@@ -4003,7 +4002,7 @@ if ((packet_pos & 7) == 0)
 current_byte = modem_packet[packet_pos >> 3];
 else
 current_byte = current_byte >> 1 ;
-if ((current_byte & 1) == 0) {
+if ((current_byte & 0x01) == 0) {
 
 if(tone_index){
 phase_delta = PHASE_DELTA_1200;

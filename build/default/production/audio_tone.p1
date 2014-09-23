@@ -3070,11 +3070,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;audio_tone.c: 36: bool MODEM_TRANSMITTING = 0;
 "38
-[v _phase_delta `ul ~T0 @X0 1 s ]
-[; ;audio_tone.c: 38: static uint32_t phase_delta;
+[v _phase_delta `uc ~T0 @X0 1 s ]
+[; ;audio_tone.c: 38: static uint8_t phase_delta;
 "39
-[v _phase `ul ~T0 @X0 1 s ]
-[; ;audio_tone.c: 39: static uint32_t phase;
+[v _phase `uc ~T0 @X0 1 s ]
+[; ;audio_tone.c: 39: static uint8_t phase;
 "40
 [v _packet_pos `ul ~T0 @X0 1 s ]
 [; ;audio_tone.c: 40: static uint32_t packet_pos;
@@ -3159,10 +3159,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 [; ;audio_tone.c: 67: phase_delta = PHASE_DELTA_1200;
 "67
-[e = _phase_delta _PHASE_DELTA_1200 ]
+[e = _phase_delta -> _PHASE_DELTA_1200 `uc ]
 [; ;audio_tone.c: 68: phase = 0;
 "68
-[e = _phase -> -> -> 0 `i `l `ul ]
+[e = _phase -> -> 0 `i `uc ]
 [; ;audio_tone.c: 69: packet_pos = 0;
 "69
 [e = _packet_pos -> -> -> 0 `i `l `ul ]
@@ -3178,154 +3178,154 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;audio_tone.c: 76: Delay_ms(100);
 "76
 [e ( _Delay_ms (1 -> -> 100 `i `ui ]
-[; ;audio_tone.c: 78: Timer0_Start();
-"78
+[; ;audio_tone.c: 77: Timer0_Start();
+"77
 [e ( _Timer0_Start ..  ]
-[; ;audio_tone.c: 79: }
-"79
+[; ;audio_tone.c: 78: }
+"78
 [e :UE 333 ]
 }
-"82
+"81
 [v _Sinus_Generator `(v ~T0 @X0 1 ef ]
 {
-[; ;audio_tone.c: 82: void Sinus_Generator(void) {
+[; ;audio_tone.c: 81: void Sinus_Generator(void) {
 [e :U _Sinus_Generator ]
 [f ]
-"84
+"83
 [v _Audio_Signal `uc ~T0 @X0 1 a ]
-"85
+"84
 [v F3167 `uc ~T0 @X0 1 s tone_index ]
 [i F3167
 -> -> 0 `i `uc
 ]
-[; ;audio_tone.c: 84: uint8_t Audio_Signal;
-[; ;audio_tone.c: 85: static uint8_t tone_index = 0;
-[; ;audio_tone.c: 86: if (MODEM_TRANSMITTING == 1) {
-"86
+[; ;audio_tone.c: 83: uint8_t Audio_Signal;
+[; ;audio_tone.c: 84: static uint8_t tone_index = 0;
+[; ;audio_tone.c: 85: if (MODEM_TRANSMITTING == 1) {
+"85
 [e $ ! == -> _MODEM_TRANSMITTING `i -> 1 `i 335  ]
 {
-[; ;audio_tone.c: 90: if (packet_pos == 50) {
-"90
-[e $ ! == _packet_pos -> -> -> 50 `i `l `ul 336  ]
+[; ;audio_tone.c: 88: if (packet_pos == modem_packet_size) {
+"88
+[e $ ! == _packet_pos _modem_packet_size 336  ]
 {
-[; ;audio_tone.c: 91: MODEM_TRANSMITTING = 0;
-"91
+[; ;audio_tone.c: 90: MODEM_TRANSMITTING = 0;
+"90
 [e = _MODEM_TRANSMITTING -> -> 0 `i `uc ]
-[; ;audio_tone.c: 92: Timer0_Stop();
-"92
+[; ;audio_tone.c: 91: Timer0_Stop();
+"91
 [e ( _Timer0_Stop ..  ]
-[; ;audio_tone.c: 94: Send_Vcxo_Signal(0x10);
-"94
+[; ;audio_tone.c: 93: Send_Vcxo_Signal(0x10);
+"93
 [e ( _Send_Vcxo_Signal (1 -> -> 16 `i `uc ]
-[; ;audio_tone.c: 96: PTT_OFF = 1;
-"96
+[; ;audio_tone.c: 95: PTT_OFF = 1;
+"95
 [e = _PTT_OFF -> -> 1 `i `uc ]
-[; ;audio_tone.c: 98: goto end_generator;
-"98
+[; ;audio_tone.c: 97: goto end_generator;
+"97
 [e $U 337  ]
-"99
+"98
 }
 [e :U 336 ]
-[; ;audio_tone.c: 99: }
-[; ;audio_tone.c: 102: if (current_sample_in_baud == 0) {
-"102
+[; ;audio_tone.c: 98: }
+[; ;audio_tone.c: 101: if (current_sample_in_baud == 0) {
+"101
 [e $ ! == -> _current_sample_in_baud `i -> 0 `i 338  ]
 {
-[; ;audio_tone.c: 103: if ((packet_pos & 7) == 0)
-"103
+[; ;audio_tone.c: 102: if ((packet_pos & 7) == 0)
+"102
 [e $ ! == & _packet_pos -> -> -> 7 `i `l `ul -> -> -> 0 `i `l `ul 339  ]
-[; ;audio_tone.c: 104: current_byte = modem_packet[packet_pos >> 3];
-"104
+[; ;audio_tone.c: 103: current_byte = modem_packet[packet_pos >> 3];
+"103
 [e = _current_byte *U + &U _modem_packet * -> >> _packet_pos -> 3 `i `ux -> -> # *U &U _modem_packet `ui `ux ]
 [e $U 340  ]
-"105
+"104
 [e :U 339 ]
-[; ;audio_tone.c: 105: else
-[; ;audio_tone.c: 106: current_byte = current_byte >> 1 ;
-"106
+[; ;audio_tone.c: 104: else
+[; ;audio_tone.c: 105: current_byte = current_byte >> 1 ;
+"105
 [e = _current_byte -> >> -> _current_byte `i -> 1 `i `uc ]
 [e :U 340 ]
-[; ;audio_tone.c: 107: if ((current_byte & 1) == 0) {
-"107
+[; ;audio_tone.c: 106: if ((current_byte & 0x01) == 0) {
+"106
 [e $ ! == & -> _current_byte `i -> 1 `i -> 0 `i 341  ]
 {
-[; ;audio_tone.c: 109: if(tone_index){
-"109
+[; ;audio_tone.c: 108: if(tone_index){
+"108
 [e $ ! != -> F3167 `i -> -> -> 0 `i `uc `i 342  ]
 {
-[; ;audio_tone.c: 110: phase_delta = PHASE_DELTA_1200;
+[; ;audio_tone.c: 109: phase_delta = PHASE_DELTA_1200;
+"109
+[e = _phase_delta -> _PHASE_DELTA_1200 `uc ]
+[; ;audio_tone.c: 110: tone_index = 0;
 "110
-[e = _phase_delta _PHASE_DELTA_1200 ]
-[; ;audio_tone.c: 111: tone_index = 0;
-"111
 [e = F3167 -> -> 0 `i `uc ]
-"112
+"111
 }
-[; ;audio_tone.c: 112: }
+[; ;audio_tone.c: 111: }
 [e $U 343  ]
-"113
+"112
 [e :U 342 ]
-[; ;audio_tone.c: 113: else{
+[; ;audio_tone.c: 112: else{
 {
-[; ;audio_tone.c: 114: phase_delta = PHASE_DELTA_2200;
+[; ;audio_tone.c: 113: phase_delta = PHASE_DELTA_2200;
+"113
+[e = _phase_delta -> _PHASE_DELTA_2200 `uc ]
+[; ;audio_tone.c: 114: tone_index = 1;
 "114
-[e = _phase_delta _PHASE_DELTA_2200 ]
-[; ;audio_tone.c: 115: tone_index = 1;
-"115
 [e = F3167 -> -> 1 `i `uc ]
-"116
+"115
 }
 [e :U 343 ]
-"117
+"116
 }
 [e :U 341 ]
-"118
+"117
 }
 [e :U 338 ]
+[; ;audio_tone.c: 115: }
 [; ;audio_tone.c: 116: }
 [; ;audio_tone.c: 117: }
-[; ;audio_tone.c: 118: }
-[; ;audio_tone.c: 120: phase += phase_delta;
-"120
+[; ;audio_tone.c: 119: phase += phase_delta;
+"119
 [e =+ _phase _phase_delta ]
-[; ;audio_tone.c: 121: if(phase > 181)
+[; ;audio_tone.c: 120: if(phase > 181)
+"120
+[e $ ! > -> _phase `i -> 181 `i 344  ]
+[; ;audio_tone.c: 121: phase = phase - 182;
 "121
-[e $ ! > _phase -> -> -> 181 `i `l `ul 344  ]
-[; ;audio_tone.c: 122: phase = phase - 182;
-"122
-[e = _phase - _phase -> -> -> 182 `i `l `ul ]
+[e = _phase -> - -> _phase `i -> 182 `i `uc ]
 [e :U 344 ]
-[; ;audio_tone.c: 125: Audio_Signal = *(sine_table2 + phase);
-"125
+[; ;audio_tone.c: 124: Audio_Signal = *(sine_table2 + phase);
+"124
 [e = _Audio_Signal *U + &U _sine_table2 * -> _phase `ux -> -> # *U &U _sine_table2 `ui `ux ]
-[; ;audio_tone.c: 126: Send_Vcxo_Signal(Audio_Signal);
-"126
+[; ;audio_tone.c: 125: Send_Vcxo_Signal(Audio_Signal);
+"125
 [e ( _Send_Vcxo_Signal (1 _Audio_Signal ]
-[; ;audio_tone.c: 128: if(++current_sample_in_baud == SAMPLES_PER_BAUD) {
-"128
+[; ;audio_tone.c: 127: if(++current_sample_in_baud == SAMPLES_PER_BAUD) {
+"127
 [e $ ! == -> =+ _current_sample_in_baud -> -> 1 `i `uc `i -> _SAMPLES_PER_BAUD `i 345  ]
 {
-[; ;audio_tone.c: 129: current_sample_in_baud = 0;
-"129
+[; ;audio_tone.c: 128: current_sample_in_baud = 0;
+"128
 [e = _current_sample_in_baud -> -> 0 `i `uc ]
-[; ;audio_tone.c: 130: packet_pos++;
-"130
+[; ;audio_tone.c: 129: packet_pos++;
+"129
 [e ++ _packet_pos -> -> -> 1 `i `l `ul ]
-"132
+"131
 }
 [e :U 345 ]
-"133
+"132
 }
 [e :U 335 ]
+[; ;audio_tone.c: 131: }
 [; ;audio_tone.c: 132: }
-[; ;audio_tone.c: 133: }
-[; ;audio_tone.c: 135: end_generator:
-"135
+[; ;audio_tone.c: 134: end_generator:
+"134
 [e :U 337 ]
-[; ;audio_tone.c: 137: return;
-"137
+[; ;audio_tone.c: 136: return;
+"136
 [e $UE 334  ]
-[; ;audio_tone.c: 139: }
-"139
+[; ;audio_tone.c: 138: }
+"138
 [e :UE 334 ]
 }

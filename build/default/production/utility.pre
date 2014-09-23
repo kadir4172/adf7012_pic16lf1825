@@ -3899,10 +3899,10 @@ extern void memcpyee(__eeprom unsigned char *to, const unsigned char *from, unsi
 #pragma intrinsic(_delay)
 extern __nonreentrant void _delay(unsigned long);
 
-# 29 "utility.c"
+# 25 "utility.c"
 bool Spi_Byte_Send(uint8_t);
 
-# 37
+# 33
 bool Gpio_Config(void){
 
 
@@ -3928,7 +3928,7 @@ _delay((unsigned long)((1)*(32000000/4000.0)));
 INTCON |= 0xC0;
 }
 
-# 72
+# 68
 bool Read_Adf7012_Muxout(void){
 
 Delay_ms(1);
@@ -3940,7 +3940,7 @@ return 0;
 
 }
 
-# 92
+# 88
 bool Write_Adf7012_Reg(uint8_t* reg_value, uint8_t size_of_reg){
 
 uint8_t i = 0;
@@ -3959,14 +3959,14 @@ Delay_ms(1);
 return 1;
 }
 
-# 118
+# 114
 bool Send_Vcxo_Signal(uint8_t value){
 
 DACCON1 = value;
 return 1;
 }
 
-# 208
+# 204
 bool Reverse_Array(uint8_t* input,uint8_t length){
 uint8_t i = 0;
 uint8_t buffer_array[4];
@@ -3981,7 +3981,7 @@ for(i = 0; i<length; i++){
 return 1;
 }
 
-# 230
+# 226
 bool Spi_Byte_Send(uint8_t data){
 
 PORTAbits.RA2 = 0;
