@@ -123,7 +123,7 @@ void Adf_Reset_Register_Two(void) {
 void Adf_Reset_Register_Three(void) {
     adf_config.r3.pll_enable = 0;                               // Switch off PLL (will be switched on after Ureg is checked and confirmed ok)
     adf_config.r3.pa_enable = 0;                                // Switch off PA  (will be switched on when PLL lock is confirmed)
-	adf_config.r3.clkout_enable = 1;                            // Clock out enable
+    adf_config.r3.clkout_enable = 1;                            // Clock out enable
     adf_config.r3.data_invert = 1;                              // Results in a TX signal when TXDATA input is low
     adf_config.r3.charge_pump_current = ADF_CP_CURRENT_2_1;     // 2.1 mA. This is the maximum
     adf_config.r3.bleed_up = 0;                                 // Don't worry, be happy...
@@ -141,6 +141,8 @@ void Adf_Reset_Register_Three(void) {
 
 void Adf_Reset(void) {
 
+        ADF7021_CHIP_POWER_DOWN;
+        Delay_ms(10);
 	ADF7021_CHIP_POWER_UP;
   	Delay_ms(10);
 
@@ -228,7 +230,7 @@ void Adf_Write_Register_Three(void) {
     Write_Adf7012_Reg(reg_ptr, 4);
 }
 
-int Adf_Lock(void)
+bool Adf_Lock(void)
 {
     // fiddle around with bias and adjust capacity until the vco locks
     Delay_ms(200);
@@ -258,14 +260,14 @@ int Adf_Lock(void)
                 adf_config.r0.vco_adjust = 0;
                 adf_config.r3.vco_bias = 5;
 
-                return 0;
+                return false;
             }
         }
     }
 
 
 
-    return 1;
+    return true;
 }
 
 bool Adf_Locked(void)
@@ -304,11 +306,8 @@ void Set_Freq(uint32_t freq)
 void Radio_Setup()
 {
   
-  Gpio_Config();
-
-
   Adf_Reset_Config();
-  Set_Freq(RADIO_FREQUENCY); // Set the default frequency
+  //Set_Freq(RADIO_FREQUENCY); // Set the default frequency
   Adf_Write_Config();
 
   Delay_ms(10);
@@ -335,8 +334,7 @@ bool Ptt_On()
   }
   else              // Power is good apparently
   {
-
-    Adf_Lock();
+    
     adf_config.r3.pa_enable = 1;
     adf_config.r2.power_amplifier_level = 63; //63 is max power
 

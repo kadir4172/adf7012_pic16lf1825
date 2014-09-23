@@ -312,8 +312,9 @@ extern bool Ptt_On(void);
 extern void Ptt_Off(void);
 extern void Set_Freq(uint32_t);
 extern bool Spi_Byte_Send(uint8_t);
+extern bool Adf_Lock(void);
 
-# 68
+# 69
 extern void Timer0_Start(void);
 extern void Timer0_Stop(void);
 extern void Timer1_Start(void);
@@ -4014,6 +4015,8 @@ adf_config.r3.sd_test_mode = 0;
 
 void Adf_Reset(void) {
 
+PORTAbits.RA5 = 0;;
+Delay_ms(10);
 PORTAbits.RA5 = 1;;
 Delay_ms(10);
 
@@ -4101,7 +4104,7 @@ Reverse_Array(reg_ptr,4);
 Write_Adf7012_Reg(reg_ptr, 4);
 }
 
-int Adf_Lock(void)
+bool Adf_Lock(void)
 {
 
 Delay_ms(200);
@@ -4177,11 +4180,8 @@ adf_config.r1.fractional_n = m;
 void Radio_Setup()
 {
 
-Gpio_Config();
-
-
 Adf_Reset_Config();
-Set_Freq(144390000UL);
+
 Adf_Write_Config();
 
 Delay_ms(10);
@@ -4209,7 +4209,6 @@ return 0;
 else
 {
 
-Adf_Lock();
 adf_config.r3.pa_enable = 1;
 adf_config.r2.power_amplifier_level = 63;
 

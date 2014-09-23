@@ -3868,8 +3868,9 @@ extern bool Ptt_On(void);
 extern void Ptt_Off(void);
 extern void Set_Freq(uint32_t);
 extern bool Spi_Byte_Send(uint8_t);
+extern bool Adf_Lock(void);
 
-# 68
+# 69
 extern void Timer0_Start(void);
 extern void Timer0_Stop(void);
 extern void Timer1_Start(void);
@@ -4110,9 +4111,13 @@ Ax25_Send_Footer();
 
 Modem_Setup();
 Delay_ms(100);
-PORTCbits.RC3 = 0; ;
+Adf_Lock();
+
 Delay_ms(100);
+
+# 210
 Ptt_On();
+
 
 while(1){
 
@@ -4126,7 +4131,7 @@ Modem_Flush_Frame();
 while(MODEM_TRANSMITTING);
 Delay_ms(2000);
 
-# 223
+# 234
 }
 return (0);
 }

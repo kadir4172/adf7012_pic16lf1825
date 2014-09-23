@@ -70,7 +70,14 @@ void Modem_Flush_Frame(void)
   current_sample_in_baud = 0;
   MODEM_TRANSMITTING = true;
 
-  // Key the radio
+/*
+    try_to_push_button:
+    if(!Ptt_On()){     //means power is bad
+        Modem_Setup(); //try to reconfigure adf7012
+        Delay_ms(200);
+        goto try_to_push_button;
+    }
+*/
   Ptt_On();
 
   Delay_ms(100);

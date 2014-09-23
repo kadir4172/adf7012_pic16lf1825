@@ -322,8 +322,9 @@ extern bool Ptt_On(void);
 extern void Ptt_Off(void);
 extern void Set_Freq(uint32_t);
 extern bool Spi_Byte_Send(uint8_t);
+extern bool Adf_Lock(void);
 
-# 68
+# 69
 extern void Timer0_Start(void);
 extern void Timer0_Stop(void);
 extern void Timer1_Start(void);
@@ -3969,7 +3970,7 @@ packet_pos = 0;
 current_sample_in_baud = 0;
 MODEM_TRANSMITTING = 1;
 
-
+# 81
 Ptt_On();
 
 Delay_ms(100);

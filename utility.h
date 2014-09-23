@@ -60,6 +60,7 @@ extern bool Ptt_On(void);
 extern void Ptt_Off(void);
 extern void Set_Freq(uint32_t);
 extern bool Spi_Byte_Send(uint8_t);
+extern bool Adf_Lock(void);
 //Common Functions
 
 

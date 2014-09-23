@@ -203,7 +203,7 @@ return TRUE;
 ******************************************************************************/
 bool Reverse_Array(uint8_t* input,uint8_t length){
   uint8_t i = 0;
-  uint8_t buffer_array[4];
+  uint8_t buffer_array[4] = {0};
   memcpy(buffer_array, input, length);
 
   for(i = 0; i<length; i++){

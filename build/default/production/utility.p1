@@ -5,11 +5,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _TRISC `Vuc ~T0 @X0 0 e@142 ]
 "335
 [v _INTCON `Vuc ~T0 @X0 0 e@11 ]
-"72 utility.h
+"73 utility.h
 [v _Dac0_Start_Hold `(v ~T0 @X0 0 ef ]
-[v F3131 `(v ~T0 @X0 1 tf1`ul ]
+[v F3133 `(v ~T0 @X0 1 tf1`ul ]
 "154 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic.h
-[v __delay `JF3131 ~T0 @X0 0 e ]
+[v __delay `JF3133 ~T0 @X0 0 e ]
 [p i __delay ]
 "467 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16lf1825.h
 [s S37 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -239,14 +239,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;utility.h: 60: extern void Ptt_Off(void);
 [; ;utility.h: 61: extern void Set_Freq(uint32_t);
 [; ;utility.h: 62: extern bool Spi_Byte_Send(uint8_t);
-[; ;utility.h: 68: extern void Timer0_Start(void);
-[; ;utility.h: 69: extern void Timer0_Stop(void);
-[; ;utility.h: 70: extern void Timer1_Start(void);
-[; ;utility.h: 71: extern void Timer1_Stop(void);
-[; ;utility.h: 72: extern void Dac0_Start_Hold(void);
-[; ;utility.h: 73: extern void Dac0_Stop(void);
-[; ;utility.h: 74: extern void Adc1_Start(void);
-[; ;utility.h: 75: extern void Adc1_Stop(void);
+[; ;utility.h: 63: extern bool Adf_Lock(void);
+[; ;utility.h: 69: extern void Timer0_Start(void);
+[; ;utility.h: 70: extern void Timer0_Stop(void);
+[; ;utility.h: 71: extern void Timer1_Start(void);
+[; ;utility.h: 72: extern void Timer1_Stop(void);
+[; ;utility.h: 73: extern void Dac0_Start_Hold(void);
+[; ;utility.h: 74: extern void Dac0_Stop(void);
+[; ;utility.h: 75: extern void Adc1_Start(void);
+[; ;utility.h: 76: extern void Adc1_Stop(void);
 [; ;string.h: 22: extern void * memcpy(void *, const void *, size_t);
 [; ;string.h: 23: extern void * memmove(void *, const void *, size_t);
 [; ;string.h: 24: extern void * memset(void *, int, size_t);
@@ -3057,9 +3058,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _i `uc ~T0 @X0 1 a ]
 [; ;utility.c: 205: uint8_t i = 0;
 [e = _i -> -> 0 `i `uc ]
+[v F3148 `uc ~T0 @X0 -> 4 `i s ]
+[i F3148
+:U ..
 "206
+-> -> 0 `i `uc
+..
+]
 [v _buffer_array `uc ~T0 @X0 -> 4 `i a ]
-[; ;utility.c: 206: uint8_t buffer_array[4];
+[; ;utility.c: 206: uint8_t buffer_array[4] = {0};
+[e = _buffer_array F3148 ]
 [; ;utility.c: 207: memcpy(buffer_array, input, length);
 "207
 [e ( _memcpy (3 , , -> &U _buffer_array `*v -> _input `*Cv -> _length `ui ]

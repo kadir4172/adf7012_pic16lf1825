@@ -194,15 +194,25 @@ int main(void) {
 
 
 
-  Modem_Setup();
-  Delay_ms(100);
-  ADF7012_CLEAR_DATA_PIN ;
-  Delay_ms(100);
-  Ptt_On();
-
+    Modem_Setup();
+    Delay_ms(100);
+    Adf_Lock(); //try to achieve a good PLL lock, otherwise use default vco configuration
+    //ADF7012_CLEAR_DATA_PIN ;
+    Delay_ms(100);
+/*
+    try_to_push_button:
+    if(!Ptt_On()){     //means power is bad
+        Modem_Setup(); //try to reconfigure adf7012
+        Delay_ms(200);
+        goto try_to_push_button;
+    }
+*/
+     Ptt_On();
+     
+     
      while(1){
        
-         if(PTT_OFF){
+           if(PTT_OFF){
 		  Ptt_Off();
 		  PTT_OFF  = false;
 	  }
@@ -212,6 +222,7 @@ int main(void) {
           while(MODEM_TRANSMITTING);
 	  Delay_ms(2000);
 
+    
 
 #ifdef Debug_Modem_Packet
         

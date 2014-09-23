@@ -15,27 +15,27 @@
 [v _Adf_Reset_Register_Three Adf_Reset_Register_Three `(v  1 e 0 0 ]
 "142
 [v _Adf_Reset Adf_Reset `(v  1 e 0 0 ]
-"150
+"152
 [v _Adf_Write_Config Adf_Write_Config `(v  1 e 0 0 ]
-"157
+"159
 [v _Adf_Write_Register_Zero Adf_Write_Register_Zero `(v  1 e 0 0 ]
-"176
+"178
 [v _Adf_Write_Register_One Adf_Write_Register_One `(v  1 e 0 0 ]
-"189
+"191
 [v _Adf_Write_Register_Two Adf_Write_Register_Two `(v  1 e 0 0 ]
-"206
+"208
 [v _Adf_Write_Register_Three Adf_Write_Register_Three `(v  1 e 0 0 ]
-"231
-[v _Adf_Lock Adf_Lock `(i  1 e 2 0 ]
-"271
+"233
+[v _Adf_Lock Adf_Lock `(uc  1 e 1 0 ]
+"273
 [v _Adf_Locked Adf_Locked `(uc  1 e 1 0 ]
-"277
+"279
 [v _Set_Freq Set_Freq `(v  1 e 0 0 ]
-"304
+"306
 [v _Radio_Setup Radio_Setup `(v  1 e 0 0 ]
-"318
+"317
 [v _Ptt_On Ptt_On `(uc  1 e 1 0 ]
-"351
+"349
 [v _Ptt_Off Ptt_Off `(v  1 e 0 0 ]
 "42 C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\audio_tone.c
 [v _Modem_Init Modem_Init `(v  1 e 0 0 ]
@@ -47,7 +47,7 @@
 [v _Modem_Set_Tx_Freq Modem_Set_Tx_Freq `(v  1 e 0 0 ]
 "65
 [v _Modem_Flush_Frame Modem_Flush_Frame `(v  1 e 0 0 ]
-"81
+"88
 [v _Sinus_Generator Sinus_Generator `(v  1 e 0 0 ]
 "24 C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\ax25.c
 [v _Update_Crc Update_Crc `(v  1 s 0 Update_Crc ]
@@ -207,13 +207,13 @@
 [v _Adc1_Stop Adc1_Stop `(v  1 e 0 0 ]
 "18 C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\adf7012.c
 [v _powerlevel powerlevel `ul  1 e 4 0 ]
-[s S265 . 10 `ul 1 frequency_error_correction 4 0 `uc 1 r_divider 1 4 `uc 1 crystal_doubler 1 5 `uc 1 crystal_oscillator_disable 1 6 `uc 1 clock_out_divider 1 7 `uc 1 vco_adjust 1 8 `uc 1 output_divider 1 9 ]
+[s S260 . 10 `ul 1 frequency_error_correction 4 0 `uc 1 r_divider 1 4 `uc 1 crystal_doubler 1 5 `uc 1 crystal_oscillator_disable 1 6 `uc 1 clock_out_divider 1 7 `uc 1 vco_adjust 1 8 `uc 1 output_divider 1 9 ]
 "81
-[s S273 . 6 `ul 1 fractional_n 4 0 `uc 1 integer_n 1 4 `uc 1 prescaler 1 5 ]
-[s S277 . 9 `uc 1 mod_control 1 0 `uc 1 gook 1 1 `uc 1 power_amplifier_level 1 2 `ul 1 modulation_deviation 4 3 `uc 1 gfsk_modulation_control 1 7 `uc 1 index_counter 1 8 ]
-[s S284 . 14 `uc 1 pll_enable 1 0 `uc 1 pa_enable 1 1 `uc 1 clkout_enable 1 2 `uc 1 data_invert 1 3 `uc 1 charge_pump_current 1 4 `uc 1 bleed_up 1 5 `uc 1 bleed_down 1 6 `uc 1 vco_disable 1 7 `uc 1 muxout 1 8 `uc 1 ld_precision 1 9 `uc 1 vco_bias 1 10 `uc 1 pa_bias 1 11 `uc 1 pll_test_mode 1 12 `uc 1 sd_test_mode 1 13 ]
-[s S299 . 39 `S265 1 r0 10 0 `S273 1 r1 6 10 `S277 1 r2 9 16 `S284 1 r3 14 25 ]
-[v _adf_config adf_config `S299  1 e 39 0 ]
+[s S268 . 6 `ul 1 fractional_n 4 0 `uc 1 integer_n 1 4 `uc 1 prescaler 1 5 ]
+[s S272 . 9 `uc 1 mod_control 1 0 `uc 1 gook 1 1 `uc 1 power_amplifier_level 1 2 `ul 1 modulation_deviation 4 3 `uc 1 gfsk_modulation_control 1 7 `uc 1 index_counter 1 8 ]
+[s S279 . 14 `uc 1 pll_enable 1 0 `uc 1 pa_enable 1 1 `uc 1 clkout_enable 1 2 `uc 1 data_invert 1 3 `uc 1 charge_pump_current 1 4 `uc 1 bleed_up 1 5 `uc 1 bleed_down 1 6 `uc 1 vco_disable 1 7 `uc 1 muxout 1 8 `uc 1 ld_precision 1 9 `uc 1 vco_bias 1 10 `uc 1 pa_bias 1 11 `uc 1 pll_test_mode 1 12 `uc 1 sd_test_mode 1 13 ]
+[s S294 . 39 `S260 1 r0 10 0 `S268 1 r1 6 10 `S272 1 r2 9 16 `S279 1 r3 14 25 ]
+[v _adf_config adf_config `S294  1 e 39 0 ]
 "14 C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\audio_tone.c
 [v _sine_table2 sine_table2 `DCC[182]uc  1 e 182 0 ]
 "19
@@ -397,8 +397,8 @@
 "189
 [v main@beacon_address beacon_address `[2]S98  1 a 16 12 ]
 "186
-[v main@F3176 F3176 `[2]S98  1 s 16 F3176 ]
-"225
+[v main@F3178 F3178 `[2]S98  1 s 16 F3178 ]
+"236
 } 0
 "263 C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\utility.c
 [v _Timer1_Start Timer1_Start `(v  1 e 0 0 ]
@@ -410,144 +410,22 @@
 {
 "162
 } 0
-"351 C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\adf7012.c
+"349 C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\adf7012.c
 [v _Ptt_Off Ptt_Off `(v  1 e 0 0 ]
 {
-"357
+"355
 } 0
 "48 C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\audio_tone.c
 [v _Modem_Setup Modem_Setup `(v  1 e 0 0 ]
 {
 "52
 } 0
-"304 C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\adf7012.c
+"306 C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\adf7012.c
 [v _Radio_Setup Radio_Setup `(v  1 e 0 0 ]
 {
-"315
+"314
 } 0
-"277
-[v _Set_Freq Set_Freq `(v  1 e 0 0 ]
-{
-"290
-[v Set_Freq@n n `ul  1 a 4 60 ]
-"288
-[v Set_Freq@f_pfd f_pfd `ul  1 a 4 56 ]
-"296
-[v Set_Freq@m m `ul  1 a 4 46 ]
-"293
-[v Set_Freq@rest rest `f  1 a 3 53 ]
-"292
-[v Set_Freq@ratio ratio `f  1 a 3 50 ]
-"277
-[v Set_Freq@freq freq `ul  1 p 4 38 ]
-"301
-} 0
-"35 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lltoft.c
-[v ___lltoft __lltoft `(f  1 e 3 0 ]
-{
-"37
-[v ___lltoft@exp exp `uc  1 a 1 13 ]
-"35
-[v ___lltoft@c c `ul  1 p 4 8 ]
-"46
-} 0
-"6 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lldiv.c
-[v ___lldiv __lldiv `(ul  1 e 4 0 ]
-{
-"11
-[v ___lldiv@quotient quotient `ul  1 a 4 9 ]
-"12
-[v ___lldiv@counter counter `uc  1 a 1 13 ]
-"6
-[v ___lldiv@divisor divisor `ul  1 p 4 0 ]
-[v ___lldiv@dividend dividend `ul  1 p 4 4 ]
-"31
-} 0
-"44 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\fttol.c
-[v ___fttol __fttol `(l  1 e 4 0 ]
-{
-"47
-[v ___fttol@lval lval `ul  1 a 4 33 ]
-"46
-[v ___fttol@exp1 exp1 `uc  1 a 1 37 ]
-[v ___fttol@sign1 sign1 `uc  1 a 1 32 ]
-"44
-[v ___fttol@f1 f1 `f  1 p 3 24 ]
-"73
-} 0
-"15 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\ftneg.c
-[v ___ftneg __ftneg `(f  1 e 3 0 ]
-{
-[v ___ftneg@f1 f1 `f  1 p 3 14 ]
-"20
-} 0
-"62 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\ftmul.c
-[v ___ftmul __ftmul `(f  1 e 3 0 ]
-{
-"65
-[v ___ftmul@f3_as_product f3_as_product `um  1 a 3 19 ]
-"64
-[v ___ftmul@sign sign `uc  1 a 1 23 ]
-[v ___ftmul@cntr cntr `uc  1 a 1 22 ]
-[v ___ftmul@exp exp `uc  1 a 1 18 ]
-"62
-[v ___ftmul@f1 f1 `f  1 p 3 8 ]
-[v ___ftmul@f2 f2 `f  1 p 3 11 ]
-"157
-} 0
-"49 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic\ftdiv.c
-[v ___ftdiv __ftdiv `(f  1 e 3 0 ]
-{
-"52
-[v ___ftdiv@f3 f3 `f  1 a 3 25 ]
-"51
-[v ___ftdiv@sign sign `uc  1 a 1 29 ]
-[v ___ftdiv@exp exp `uc  1 a 1 28 ]
-[v ___ftdiv@cntr cntr `uc  1 a 1 24 ]
-"49
-[v ___ftdiv@f2 f2 `f  1 p 3 14 ]
-[v ___ftdiv@f1 f1 `f  1 p 3 17 ]
-"78
-} 0
-"86 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\ftadd.c
-[v ___ftadd __ftadd `(f  1 e 3 0 ]
-{
-"88
-[v ___ftadd@exp1 exp1 `uc  1 a 1 29 ]
-[v ___ftadd@exp2 exp2 `uc  1 a 1 28 ]
-[v ___ftadd@sign sign `uc  1 a 1 27 ]
 "86
-[v ___ftadd@f1 f1 `f  1 p 3 17 ]
-[v ___ftadd@f2 f2 `f  1 p 3 20 ]
-"148
-} 0
-"62 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\float.c
-[v ___ftpack __ftpack `(f  1 e 3 0 ]
-{
-[v ___ftpack@arg arg `um  1 p 3 0 ]
-[v ___ftpack@exp exp `uc  1 p 1 3 ]
-[v ___ftpack@sign sign `uc  1 p 1 4 ]
-"86
-} 0
-"6 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\aldiv.c
-[v ___aldiv __aldiv `(l  1 e 4 0 ]
-{
-"11
-[v ___aldiv@quotient quotient `l  1 a 4 11 ]
-"12
-[v ___aldiv@sign sign `uc  1 a 1 10 ]
-[v ___aldiv@counter counter `uc  1 a 1 9 ]
-"6
-[v ___aldiv@divisor divisor `l  1 p 4 0 ]
-[v ___aldiv@dividend dividend `l  1 p 4 4 ]
-"42
-} 0
-"33 C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\utility.c
-[v _Gpio_Config Gpio_Config `(uc  1 e 1 0 ]
-{
-"43
-} 0
-"86 C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\adf7012.c
 [v _Adf_Reset_Config Adf_Reset_Config `(v  1 e 0 0 ]
 {
 "95
@@ -575,7 +453,7 @@
 "142
 [v _Adf_Reset Adf_Reset `(v  1 e 0 0 ]
 {
-"147
+"149
 } 0
 "42 C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\audio_tone.c
 [v _Modem_Init Modem_Init `(v  1 e 0 0 ]
@@ -585,148 +463,22 @@
 "65
 [v _Modem_Flush_Frame Modem_Flush_Frame `(v  1 e 0 0 ]
 {
-"78
+"85
 } 0
 "253 C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\utility.c
 [v _Timer0_Start Timer0_Start `(v  1 e 0 0 ]
 {
 "257
 } 0
-"318 C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\adf7012.c
+"317 C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\adf7012.c
 [v _Ptt_On Ptt_On `(uc  1 e 1 0 ]
 {
-"349
+"347
 } 0
-"231
-[v _Adf_Lock Adf_Lock `(i  1 e 2 0 ]
+"33 C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\utility.c
+[v _Gpio_Config Gpio_Config `(uc  1 e 1 0 ]
 {
-"236
-[v Adf_Lock@bias bias `i  1 a 2 10 ]
-"235
-[v Adf_Lock@adj adj `i  1 a 2 8 ]
-"269
-} 0
-"150
-[v _Adf_Write_Config Adf_Write_Config `(v  1 e 0 0 ]
-{
-"155
-} 0
-"157
-[v _Adf_Write_Register_Zero Adf_Write_Register_Zero `(v  1 e 0 0 ]
-{
-"170
-[v Adf_Write_Register_Zero@reg_ptr reg_ptr `[4]uc  1 a 4 47 ]
-"159
-[v Adf_Write_Register_Zero@reg reg `ul  1 a 4 51 ]
-"174
-} 0
-"189
-[v _Adf_Write_Register_Two Adf_Write_Register_Two `(v  1 e 0 0 ]
-{
-"200
-[v Adf_Write_Register_Two@reg_ptr reg_ptr `[4]uc  1 a 4 43 ]
-"190
-[v Adf_Write_Register_Two@reg reg `ul  1 a 4 47 ]
-"204
-} 0
-"206
-[v _Adf_Write_Register_Three Adf_Write_Register_Three `(v  1 e 0 0 ]
-{
-"225
-[v Adf_Write_Register_Three@reg_ptr reg_ptr `[4]uc  1 a 4 0 ]
-"207
-[v Adf_Write_Register_Three@reg reg `ul  1 a 4 4 ]
-"229
-} 0
-"176
-[v _Adf_Write_Register_One Adf_Write_Register_One `(v  1 e 0 0 ]
-{
-"177
-[v Adf_Write_Register_One@reg reg `ul  1 a 4 31 ]
-"183
-[v Adf_Write_Register_One@reg_ptr reg_ptr `[3]uc  1 a 3 35 ]
-"187
-} 0
-"88 C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\utility.c
-[v _Write_Adf7012_Reg Write_Adf7012_Reg `(uc  1 e 1 0 ]
-{
-[v Write_Adf7012_Reg@reg_value reg_value `*.4uc  1 a 1 wreg ]
-"90
-[v Write_Adf7012_Reg@i i `uc  1 a 1 13 ]
-"88
-[v Write_Adf7012_Reg@reg_value reg_value `*.4uc  1 a 1 wreg ]
-[v Write_Adf7012_Reg@size_of_reg size_of_reg `uc  1 p 1 10 ]
-"90
-[v Write_Adf7012_Reg@reg_value reg_value `*.4uc  1 a 1 12 ]
-"104
-} 0
-"226
-[v _Spi_Byte_Send Spi_Byte_Send `(uc  1 e 1 0 ]
-{
-[v Spi_Byte_Send@data data `uc  1 a 1 wreg ]
-"229
-[v Spi_Byte_Send@i i `uc  1 a 1 9 ]
-"230
-[v Spi_Byte_Send@data_to_send data_to_send `uc  1 a 1 8 ]
-"226
-[v Spi_Byte_Send@data data `uc  1 a 1 wreg ]
-"228
-[v Spi_Byte_Send@data data `uc  1 a 1 7 ]
-"248
-} 0
-"204
-[v _Reverse_Array Reverse_Array `(uc  1 e 1 0 ]
-{
-[v Reverse_Array@input input `*.4uc  1 a 1 wreg ]
-"206
-[v Reverse_Array@buffer_array buffer_array `[4]uc  1 a 4 13 ]
-"205
-[v Reverse_Array@i i `uc  1 a 1 18 ]
-"204
-[v Reverse_Array@input input `*.4uc  1 a 1 wreg ]
-[v Reverse_Array@length length `uc  1 p 1 7 ]
-[v Reverse_Array@input input `*.4uc  1 a 1 17 ]
-"216
-} 0
-"11 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c
-[v _memcpy memcpy `(*.4v  1 e 1 0 ]
-{
-[v memcpy@d1 d1 `*.4v  1 a 1 wreg ]
-"20
-[v memcpy@s s `*.4DCCuc  1 a 1 5 ]
-"18
-[v memcpy@d d `*.4uc  1 a 1 4 ]
-"11
-[v memcpy@d1 d1 `*.4v  1 a 1 wreg ]
-[v memcpy@s1 s1 `*.4DCCv  1 p 1 0 ]
-[v memcpy@n n `ui  1 p 2 1 ]
-"24
-[v memcpy@d1 d1 `*.4v  1 a 1 6 ]
-"32
-} 0
-"271 C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\adf7012.c
-[v _Adf_Locked Adf_Locked `(uc  1 e 1 0 ]
-{
-"274
-} 0
-"68 C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\utility.c
-[v _Read_Adf7012_Muxout Read_Adf7012_Muxout `(uc  1 e 1 0 ]
-{
-"77
-} 0
-"46
-[v _Delay_ms Delay_ms `(v  1 e 0 0 ]
-{
-"48
-[v Delay_ms@i i `ui  1 a 2 4 ]
-"46
-[v Delay_ms@time_to_delay time_to_delay `ui  1 p 2 0 ]
-"56
-} 0
-"287
-[v _Dac0_Start_Hold Dac0_Start_Hold `(v  1 e 0 0 ]
-{
-"290
+"43
 } 0
 "94 C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\ax25.c
 [v _Ax25_Send_String Ax25_Send_String `(v  1 e 0 0 ]
@@ -808,7 +560,140 @@
 [v Ax25_Send_Flag@byte byte `uc  1 a 1 6 ]
 "92
 } 0
-"298 C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\utility.c
+"233 C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\adf7012.c
+[v _Adf_Lock Adf_Lock `(uc  1 e 1 0 ]
+{
+"238
+[v Adf_Lock@bias bias `i  1 a 2 10 ]
+"237
+[v Adf_Lock@adj adj `i  1 a 2 8 ]
+"271
+} 0
+"152
+[v _Adf_Write_Config Adf_Write_Config `(v  1 e 0 0 ]
+{
+"157
+} 0
+"159
+[v _Adf_Write_Register_Zero Adf_Write_Register_Zero `(v  1 e 0 0 ]
+{
+"172
+[v Adf_Write_Register_Zero@reg_ptr reg_ptr `[4]uc  1 a 4 47 ]
+"161
+[v Adf_Write_Register_Zero@reg reg `ul  1 a 4 51 ]
+"176
+} 0
+"191
+[v _Adf_Write_Register_Two Adf_Write_Register_Two `(v  1 e 0 0 ]
+{
+"202
+[v Adf_Write_Register_Two@reg_ptr reg_ptr `[4]uc  1 a 4 43 ]
+"192
+[v Adf_Write_Register_Two@reg reg `ul  1 a 4 47 ]
+"206
+} 0
+"208
+[v _Adf_Write_Register_Three Adf_Write_Register_Three `(v  1 e 0 0 ]
+{
+"227
+[v Adf_Write_Register_Three@reg_ptr reg_ptr `[4]uc  1 a 4 0 ]
+"209
+[v Adf_Write_Register_Three@reg reg `ul  1 a 4 4 ]
+"231
+} 0
+"178
+[v _Adf_Write_Register_One Adf_Write_Register_One `(v  1 e 0 0 ]
+{
+"179
+[v Adf_Write_Register_One@reg reg `ul  1 a 4 31 ]
+"185
+[v Adf_Write_Register_One@reg_ptr reg_ptr `[3]uc  1 a 3 35 ]
+"189
+} 0
+"88 C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\utility.c
+[v _Write_Adf7012_Reg Write_Adf7012_Reg `(uc  1 e 1 0 ]
+{
+[v Write_Adf7012_Reg@reg_value reg_value `*.4uc  1 a 1 wreg ]
+"90
+[v Write_Adf7012_Reg@i i `uc  1 a 1 13 ]
+"88
+[v Write_Adf7012_Reg@reg_value reg_value `*.4uc  1 a 1 wreg ]
+[v Write_Adf7012_Reg@size_of_reg size_of_reg `uc  1 p 1 10 ]
+"90
+[v Write_Adf7012_Reg@reg_value reg_value `*.4uc  1 a 1 12 ]
+"104
+} 0
+"226
+[v _Spi_Byte_Send Spi_Byte_Send `(uc  1 e 1 0 ]
+{
+[v Spi_Byte_Send@data data `uc  1 a 1 wreg ]
+"229
+[v Spi_Byte_Send@i i `uc  1 a 1 9 ]
+"230
+[v Spi_Byte_Send@data_to_send data_to_send `uc  1 a 1 8 ]
+"226
+[v Spi_Byte_Send@data data `uc  1 a 1 wreg ]
+"228
+[v Spi_Byte_Send@data data `uc  1 a 1 7 ]
+"248
+} 0
+"204
+[v _Reverse_Array Reverse_Array `(uc  1 e 1 0 ]
+{
+[v Reverse_Array@input input `*.4uc  1 a 1 wreg ]
+"206
+[v Reverse_Array@buffer_array buffer_array `[4]uc  1 a 4 13 ]
+"205
+[v Reverse_Array@i i `uc  1 a 1 18 ]
+"204
+[v Reverse_Array@input input `*.4uc  1 a 1 wreg ]
+[v Reverse_Array@length length `uc  1 p 1 7 ]
+"205
+[v Reverse_Array@F3148 F3148 `[4]uc  1 s 4 F3148 ]
+[v Reverse_Array@input input `*.4uc  1 a 1 17 ]
+"216
+} 0
+"11 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c
+[v _memcpy memcpy `(*.4v  1 e 1 0 ]
+{
+[v memcpy@d1 d1 `*.4v  1 a 1 wreg ]
+"20
+[v memcpy@s s `*.4DCCuc  1 a 1 5 ]
+"18
+[v memcpy@d d `*.4uc  1 a 1 4 ]
+"11
+[v memcpy@d1 d1 `*.4v  1 a 1 wreg ]
+[v memcpy@s1 s1 `*.4DCCv  1 p 1 0 ]
+[v memcpy@n n `ui  1 p 2 1 ]
+"24
+[v memcpy@d1 d1 `*.4v  1 a 1 6 ]
+"32
+} 0
+"273 C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\adf7012.c
+[v _Adf_Locked Adf_Locked `(uc  1 e 1 0 ]
+{
+"276
+} 0
+"68 C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\utility.c
+[v _Read_Adf7012_Muxout Read_Adf7012_Muxout `(uc  1 e 1 0 ]
+{
+"77
+} 0
+"46
+[v _Delay_ms Delay_ms `(v  1 e 0 0 ]
+{
+"48
+[v Delay_ms@i i `ui  1 a 2 4 ]
+"46
+[v Delay_ms@time_to_delay time_to_delay `ui  1 p 2 0 ]
+"56
+} 0
+"287
+[v _Dac0_Start_Hold Dac0_Start_Hold `(v  1 e 0 0 ]
+{
+"290
+} 0
+"298
 [v _Adc1_Start Adc1_Start `(v  1 e 0 0 ]
 {
 "304
@@ -818,14 +703,14 @@
 {
 "92
 } 0
-"81 C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\audio_tone.c
+"88 C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\audio_tone.c
 [v _Sinus_Generator Sinus_Generator `(v  1 e 0 0 ]
 {
-"83
+"90
 [v Sinus_Generator@Audio_Signal Audio_Signal `uc  1 a 1 6 ]
-"84
+"91
 [v Sinus_Generator@tone_index tone_index `uc  1 s 1 tone_index ]
-"138
+"145
 } 0
 "258 C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\utility.c
 [v _Timer0_Stop Timer0_Stop `(v  1 e 0 0 ]
