@@ -20,6 +20,7 @@ bool PTT_OFF = false;
 uint32_t modem_packet_size = 0;
 uint8_t modem_packet[MODEM_MAX_PACKET];
 
+extern bool Change_to_New_Baud;
 
 // Source-specific
 static const int TABLE_SIZE                = 182;
@@ -92,8 +93,7 @@ void Sinus_Generator(void) {
 if (MODEM_TRANSMITTING == true) {
 
     // If done sending packet
-    if (packet_pos == modem_packet_size) { //mplab
-    //if (packet_pos == 50) {
+    if (packet_pos == modem_packet_size) {
       MODEM_TRANSMITTING = false;             // End of transmission
       Timer0_Stop();
       
@@ -124,18 +124,21 @@ if (MODEM_TRANSMITTING == true) {
     }
 
     phase += phase_delta;
-    if(phase > 181)    //mod alma instruction yok, software versiyonu yavas calisiyor
-        phase = phase - 182;
+    if(phase >= TABLE_SIZE)    //mod alma instruction yok, software versiyonu yavas calisiyor
+        phase = phase - TABLE_SIZE;
 
    
     Audio_Signal = *(sine_table2 + phase);
     Send_Vcxo_Signal(Audio_Signal); //DAC cikisina ornegi yazalim
+
+    current_sample_in_baud++;
     
-    if(++current_sample_in_baud == SAMPLES_PER_BAUD) {
+    if(Change_to_New_Baud == true) { //change to new baud if the the required time for a single baud is spent
       current_sample_in_baud = 0;
       packet_pos++;
-     
+      Change_to_New_Baud = false;
     }
+     
   }
 
 end_generator:

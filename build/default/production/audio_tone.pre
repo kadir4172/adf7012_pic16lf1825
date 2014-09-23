@@ -3920,6 +3920,7 @@ bool PTT_OFF = 0;
 uint32_t modem_packet_size = 0;
 uint8_t modem_packet[64];
 
+extern bool Change_to_New_Baud;
 
 
 static const int TABLE_SIZE = 182;
@@ -3970,7 +3971,7 @@ packet_pos = 0;
 current_sample_in_baud = 0;
 MODEM_TRANSMITTING = 1;
 
-# 81
+# 82
 Ptt_On();
 
 Delay_ms(100);
@@ -3986,7 +3987,6 @@ if (MODEM_TRANSMITTING == 1) {
 
 
 if (packet_pos == modem_packet_size) {
-
 MODEM_TRANSMITTING = 0;
 Timer0_Stop();
 
@@ -4017,18 +4017,21 @@ tone_index = 1;
 }
 
 phase += phase_delta;
-if(phase > 181)
-phase = phase - 182;
+if(phase >= TABLE_SIZE)
+phase = phase - TABLE_SIZE;
 
 
 Audio_Signal = *(sine_table2 + phase);
 Send_Vcxo_Signal(Audio_Signal);
 
-if(++current_sample_in_baud == SAMPLES_PER_BAUD) {
+current_sample_in_baud++;
+
+if(Change_to_New_Baud == 1) {
 current_sample_in_baud = 0;
 packet_pos++;
-
+Change_to_New_Baud = 0;
 }
+
 }
 
 end_generator:

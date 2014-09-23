@@ -47,12 +47,12 @@ void Delay_ms(uint16_t time_to_delay)
 {
     uint16_t i=0;
    
-   INTCON &= ~0xC0;           //Global interrupt disable
+   //INTCON &= ~0xC0;           //Global interrupt disable
    Dac0_Start_Hold();         //Dac0 cikisini nominal degerde birakalim
    for(i=0; i<time_to_delay; i++){
    __delay_ms(1);             //inline fonksiyon dinamik arguman kabul etmiyor
    }
-   INTCON |= 0xC0;            //Global interrupt enable
+  // INTCON |= 0xC0;            //Global interrupt enable
 }
 
 

@@ -3,8 +3,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _TRISA `Vuc ~T0 @X0 0 e@140 ]
 "1124
 [v _TRISC `Vuc ~T0 @X0 0 e@142 ]
-"335
-[v _INTCON `Vuc ~T0 @X0 0 e@11 ]
 "73 utility.h
 [v _Dac0_Start_Hold `(v ~T0 @X0 0 ef ]
 [v F3133 `(v ~T0 @X0 1 tf1`ul ]
@@ -2908,9 +2906,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _i `ui ~T0 @X0 1 a ]
 [; ;utility.c: 48: uint16_t i=0;
 [e = _i -> -> 0 `i `ui ]
-[; ;utility.c: 50: INTCON &= ~0xC0;
-"50
-[e =& _INTCON -> ~ -> 192 `i `uc ]
 [; ;utility.c: 51: Dac0_Start_Hold();
 "51
 [e ( _Dac0_Start_Hold ..  ]
@@ -2934,9 +2929,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 "54
 }
 [; ;utility.c: 54: }
-[; ;utility.c: 55: INTCON |= 0xC0;
-"55
-[e =| _INTCON -> -> 192 `i `uc ]
 [; ;utility.c: 56: }
 "56
 [e :UE 330 ]

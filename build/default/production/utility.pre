@@ -3921,12 +3921,12 @@ void Delay_ms(uint16_t time_to_delay)
 {
 uint16_t i=0;
 
-INTCON &= ~0xC0;
+
 Dac0_Start_Hold();
 for(i=0; i<time_to_delay; i++){
 _delay((unsigned long)((1)*(32000000/4000.0)));
 }
-INTCON |= 0xC0;
+
 }
 
 # 68

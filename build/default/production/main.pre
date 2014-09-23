@@ -3939,44 +3939,39 @@ void Modem_Flush_Frame(void);
 void Modem_Set_Tx_Freq(uint32_t);
 bool Modem_Busy(void);
 
-# 21 "main.c"
+# 22 "main.c"
 extern bool PTT_OFF;
 extern void Ptt_Off(void);
 extern uint8_t modem_packet[64];
-void Sinus_Generator(void);
+extern void Sinus_Generator(void);
 extern bool MODEM_TRANSMITTING;
-
-uint8_t test = 0;
-uint8_t test2 = 0;
-uint16_t dac_flag = 0;
-
-
-
 
 uint8_t adc_sonuc_high = 0;
 uint8_t adc_sonuc_low = 0;
 
-uint16_t Systick_Counter = 0;
+uint32_t Systick_Counter = 0;
+bool Change_to_New_Baud = 0;
 
-# 47
+# 42
 void interrupt global_interrupt(){
 
 INTCON &= ~0x80;
 
 
 if(ADIF){
+
 adc_sonuc_high = ADRESH;
 adc_sonuc_low = ADRESL;
 
 ADIF = 0;
+
 return;
 }
 
 
-
 if(PIR1 & 0x04){
 
-Systick_Counter += 1;
+Change_to_New_Baud = 1;
 
 
 
@@ -3985,6 +3980,11 @@ TMR1L = 0x00;
 
 PIR1 &= ~0x04;
 
+Systick_Counter += 1;
+if(Systick_Counter > 10000){
+Systick_Counter = 0;
+ADCON0 |= 0b00000010;
+}
 
 return;
 }
@@ -3995,8 +3995,8 @@ if(INTCON & 0x04){
 
 Sinus_Generator();
 
-
 INTCON &= ~0x04;
+
 return;
 }
 
@@ -4115,7 +4115,7 @@ Adf_Lock();
 
 Delay_ms(100);
 
-# 210
+# 211
 Ptt_On();
 
 
@@ -4131,7 +4131,7 @@ Modem_Flush_Frame();
 while(MODEM_TRANSMITTING);
 Delay_ms(2000);
 
-# 234
+# 235
 }
 return (0);
 }

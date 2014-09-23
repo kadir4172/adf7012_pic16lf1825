@@ -13,6 +13,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _Timer0_Stop `(v ~T0 @X0 0 ef ]
 "30
 [v _Send_Vcxo_Signal `(uc ~T0 @X0 0 ef1`uc ]
+"23 audio_tone.c
+[v _Change_to_New_Baud `uc ~T0 @X0 0 e ]
 [; ;stdint.h: 13: typedef signed char int8_t;
 [; ;stdint.h: 20: typedef signed int int16_t;
 [; ;stdint.h: 28: typedef signed short long int int24_t;
@@ -3031,182 +3033,183 @@ Version 3.2 HI-TECH Software Intermediate Code
 "21
 [v _modem_packet `uc ~T0 @X0 -> 64 `i e ]
 [; ;audio_tone.c: 21: uint8_t modem_packet[64];
-"25
+[; ;audio_tone.c: 23: extern bool Change_to_New_Baud;
+"26
 [v _TABLE_SIZE `Ci ~T0 @X0 1 s ]
 [i _TABLE_SIZE
 -> 182 `i
 ]
-[; ;audio_tone.c: 25: static const int TABLE_SIZE = 182;
-"26
+[; ;audio_tone.c: 26: static const int TABLE_SIZE = 182;
+"27
 [v _PLAYBACK_RATE `Cul ~T0 @X0 1 s ]
 [i _PLAYBACK_RATE
 -> -> -> 31250 `i `l `ul
 ]
-[; ;audio_tone.c: 26: static const uint32_t PLAYBACK_RATE = 31250;
-"27
+[; ;audio_tone.c: 27: static const uint32_t PLAYBACK_RATE = 31250;
+"28
 [v _BAUD_RATE `Ci ~T0 @X0 1 s ]
 [i _BAUD_RATE
 -> 1200 `i
 ]
-[; ;audio_tone.c: 27: static const int BAUD_RATE = 1200;
-"28
+[; ;audio_tone.c: 28: static const int BAUD_RATE = 1200;
+"29
 [v _SAMPLES_PER_BAUD `uc ~T0 @X0 1 s ]
-[; ;audio_tone.c: 28: static uint8_t SAMPLES_PER_BAUD ;
-"30
-[v _PHASE_DELTA_1200 `ul ~T0 @X0 1 s ]
-[; ;audio_tone.c: 30: static uint32_t PHASE_DELTA_1200;
+[; ;audio_tone.c: 29: static uint8_t SAMPLES_PER_BAUD ;
 "31
+[v _PHASE_DELTA_1200 `ul ~T0 @X0 1 s ]
+[; ;audio_tone.c: 31: static uint32_t PHASE_DELTA_1200;
+"32
 [v _PHASE_DELTA_2200 `ul ~T0 @X0 1 s ]
-[; ;audio_tone.c: 31: static uint32_t PHASE_DELTA_2200;
-"33
-[v _current_byte `uc ~T0 @X0 1 s ]
-[; ;audio_tone.c: 33: static uint8_t current_byte;
+[; ;audio_tone.c: 32: static uint32_t PHASE_DELTA_2200;
 "34
+[v _current_byte `uc ~T0 @X0 1 s ]
+[; ;audio_tone.c: 34: static uint8_t current_byte;
+"35
 [v _current_sample_in_baud `uc ~T0 @X0 1 s ]
-[; ;audio_tone.c: 34: static uint8_t current_sample_in_baud;
-"36
+[; ;audio_tone.c: 35: static uint8_t current_sample_in_baud;
+"37
 [v _MODEM_TRANSMITTING `uc ~T0 @X0 1 e ]
 [i _MODEM_TRANSMITTING
 -> -> 0 `i `uc
 ]
-[; ;audio_tone.c: 36: bool MODEM_TRANSMITTING = 0;
-"38
-[v _phase_delta `uc ~T0 @X0 1 s ]
-[; ;audio_tone.c: 38: static uint8_t phase_delta;
+[; ;audio_tone.c: 37: bool MODEM_TRANSMITTING = 0;
 "39
-[v _phase `uc ~T0 @X0 1 s ]
-[; ;audio_tone.c: 39: static uint8_t phase;
+[v _phase_delta `uc ~T0 @X0 1 s ]
+[; ;audio_tone.c: 39: static uint8_t phase_delta;
 "40
+[v _phase `uc ~T0 @X0 1 s ]
+[; ;audio_tone.c: 40: static uint8_t phase;
+"41
 [v _packet_pos `ul ~T0 @X0 1 s ]
-[; ;audio_tone.c: 40: static uint32_t packet_pos;
-"42
+[; ;audio_tone.c: 41: static uint32_t packet_pos;
+"43
 [v _Modem_Init `(v ~T0 @X0 1 ef ]
 {
-[; ;audio_tone.c: 42: void Modem_Init(void){
+[; ;audio_tone.c: 43: void Modem_Init(void){
 [e :U _Modem_Init ]
 [f ]
-[; ;audio_tone.c: 43: SAMPLES_PER_BAUD = 26;
-"43
-[e = _SAMPLES_PER_BAUD -> -> 26 `i `uc ]
-[; ;audio_tone.c: 44: PHASE_DELTA_1200 = 7;
+[; ;audio_tone.c: 44: SAMPLES_PER_BAUD = 26;
 "44
-[e = _PHASE_DELTA_1200 -> -> -> 7 `i `l `ul ]
-[; ;audio_tone.c: 45: PHASE_DELTA_2200 = 13;
+[e = _SAMPLES_PER_BAUD -> -> 26 `i `uc ]
+[; ;audio_tone.c: 45: PHASE_DELTA_1200 = 7;
 "45
-[e = _PHASE_DELTA_2200 -> -> -> 13 `i `l `ul ]
-[; ;audio_tone.c: 46: }
+[e = _PHASE_DELTA_1200 -> -> -> 7 `i `l `ul ]
+[; ;audio_tone.c: 46: PHASE_DELTA_2200 = 13;
 "46
+[e = _PHASE_DELTA_2200 -> -> -> 13 `i `l `ul ]
+[; ;audio_tone.c: 47: }
+"47
 [e :UE 329 ]
 }
-"48
-[v _Modem_Setup `(v ~T0 @X0 1 ef ]
 "49
+[v _Modem_Setup `(v ~T0 @X0 1 ef ]
+"50
 {
-[; ;audio_tone.c: 48: void Modem_Setup(void)
-[; ;audio_tone.c: 49: {
+[; ;audio_tone.c: 49: void Modem_Setup(void)
+[; ;audio_tone.c: 50: {
 [e :U _Modem_Setup ]
 [f ]
-[; ;audio_tone.c: 50: Modem_Init();
-"50
-[e ( _Modem_Init ..  ]
-[; ;audio_tone.c: 51: Radio_Setup();
+[; ;audio_tone.c: 51: Modem_Init();
 "51
-[e ( _Radio_Setup ..  ]
-[; ;audio_tone.c: 52: }
+[e ( _Modem_Init ..  ]
+[; ;audio_tone.c: 52: Radio_Setup();
 "52
+[e ( _Radio_Setup ..  ]
+[; ;audio_tone.c: 53: }
+"53
 [e :UE 330 ]
 }
-"54
-[v _Modem_Busy `(uc ~T0 @X0 1 ef ]
 "55
+[v _Modem_Busy `(uc ~T0 @X0 1 ef ]
+"56
 {
-[; ;audio_tone.c: 54: bool Modem_Busy(void)
-[; ;audio_tone.c: 55: {
+[; ;audio_tone.c: 55: bool Modem_Busy(void)
+[; ;audio_tone.c: 56: {
 [e :U _Modem_Busy ]
 [f ]
-[; ;audio_tone.c: 56: return MODEM_TRANSMITTING;
-"56
+[; ;audio_tone.c: 57: return MODEM_TRANSMITTING;
+"57
 [e ) _MODEM_TRANSMITTING ]
 [e $UE 331  ]
-[; ;audio_tone.c: 57: }
-"57
+[; ;audio_tone.c: 58: }
+"58
 [e :UE 331 ]
 }
-"60
+"61
 [v _Modem_Set_Tx_Freq `(v ~T0 @X0 1 ef1`ul ]
-"61
-{
-[; ;audio_tone.c: 60: void Modem_Set_Tx_Freq(uint32_t freq)
-[; ;audio_tone.c: 61: {
-[e :U _Modem_Set_Tx_Freq ]
-"60
-[v _freq `ul ~T0 @X0 1 r1 ]
-"61
-[f ]
-[; ;audio_tone.c: 62: Set_Freq(freq);
 "62
-[e ( _Set_Freq (1 _freq ]
-[; ;audio_tone.c: 63: }
+{
+[; ;audio_tone.c: 61: void Modem_Set_Tx_Freq(uint32_t freq)
+[; ;audio_tone.c: 62: {
+[e :U _Modem_Set_Tx_Freq ]
+"61
+[v _freq `ul ~T0 @X0 1 r1 ]
+"62
+[f ]
+[; ;audio_tone.c: 63: Set_Freq(freq);
 "63
+[e ( _Set_Freq (1 _freq ]
+[; ;audio_tone.c: 64: }
+"64
 [e :UE 332 ]
 }
-"65
-[v _Modem_Flush_Frame `(v ~T0 @X0 1 ef ]
 "66
+[v _Modem_Flush_Frame `(v ~T0 @X0 1 ef ]
+"67
 {
-[; ;audio_tone.c: 65: void Modem_Flush_Frame(void)
-[; ;audio_tone.c: 66: {
+[; ;audio_tone.c: 66: void Modem_Flush_Frame(void)
+[; ;audio_tone.c: 67: {
 [e :U _Modem_Flush_Frame ]
 [f ]
-[; ;audio_tone.c: 67: phase_delta = PHASE_DELTA_1200;
-"67
-[e = _phase_delta -> _PHASE_DELTA_1200 `uc ]
-[; ;audio_tone.c: 68: phase = 0;
+[; ;audio_tone.c: 68: phase_delta = PHASE_DELTA_1200;
 "68
-[e = _phase -> -> 0 `i `uc ]
-[; ;audio_tone.c: 69: packet_pos = 0;
+[e = _phase_delta -> _PHASE_DELTA_1200 `uc ]
+[; ;audio_tone.c: 69: phase = 0;
 "69
-[e = _packet_pos -> -> -> 0 `i `l `ul ]
-[; ;audio_tone.c: 70: current_sample_in_baud = 0;
+[e = _phase -> -> 0 `i `uc ]
+[; ;audio_tone.c: 70: packet_pos = 0;
 "70
-[e = _current_sample_in_baud -> -> 0 `i `uc ]
-[; ;audio_tone.c: 71: MODEM_TRANSMITTING = 1;
+[e = _packet_pos -> -> -> 0 `i `l `ul ]
+[; ;audio_tone.c: 71: current_sample_in_baud = 0;
 "71
+[e = _current_sample_in_baud -> -> 0 `i `uc ]
+[; ;audio_tone.c: 72: MODEM_TRANSMITTING = 1;
+"72
 [e = _MODEM_TRANSMITTING -> -> 1 `i `uc ]
-[; ;audio_tone.c: 81: Ptt_On();
-"81
+[; ;audio_tone.c: 82: Ptt_On();
+"82
 [e ( _Ptt_On ..  ]
-[; ;audio_tone.c: 83: Delay_ms(100);
-"83
-[e ( _Delay_ms (1 -> -> 100 `i `ui ]
-[; ;audio_tone.c: 84: Timer0_Start();
+[; ;audio_tone.c: 84: Delay_ms(100);
 "84
-[e ( _Timer0_Start ..  ]
-[; ;audio_tone.c: 85: }
+[e ( _Delay_ms (1 -> -> 100 `i `ui ]
+[; ;audio_tone.c: 85: Timer0_Start();
 "85
+[e ( _Timer0_Start ..  ]
+[; ;audio_tone.c: 86: }
+"86
 [e :UE 333 ]
 }
-"88
+"89
 [v _Sinus_Generator `(v ~T0 @X0 1 ef ]
 {
-[; ;audio_tone.c: 88: void Sinus_Generator(void) {
+[; ;audio_tone.c: 89: void Sinus_Generator(void) {
 [e :U _Sinus_Generator ]
 [f ]
-"90
-[v _Audio_Signal `uc ~T0 @X0 1 a ]
 "91
-[v F3169 `uc ~T0 @X0 1 s tone_index ]
-[i F3169
+[v _Audio_Signal `uc ~T0 @X0 1 a ]
+"92
+[v F3170 `uc ~T0 @X0 1 s tone_index ]
+[i F3170
 -> -> 0 `i `uc
 ]
-[; ;audio_tone.c: 90: uint8_t Audio_Signal;
-[; ;audio_tone.c: 91: static uint8_t tone_index = 0;
-[; ;audio_tone.c: 92: if (MODEM_TRANSMITTING == 1) {
-"92
+[; ;audio_tone.c: 91: uint8_t Audio_Signal;
+[; ;audio_tone.c: 92: static uint8_t tone_index = 0;
+[; ;audio_tone.c: 93: if (MODEM_TRANSMITTING == 1) {
+"93
 [e $ ! == -> _MODEM_TRANSMITTING `i -> 1 `i 335  ]
 {
-[; ;audio_tone.c: 95: if (packet_pos == modem_packet_size) {
-"95
+[; ;audio_tone.c: 96: if (packet_pos == modem_packet_size) {
+"96
 [e $ ! == _packet_pos _modem_packet_size 336  ]
 {
 [; ;audio_tone.c: 97: MODEM_TRANSMITTING = 0;
@@ -3252,14 +3255,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;audio_tone.c: 115: if(tone_index){
 "115
-[e $ ! != -> F3169 `i -> -> -> 0 `i `uc `i 342  ]
+[e $ ! != -> F3170 `i -> -> -> 0 `i `uc `i 342  ]
 {
 [; ;audio_tone.c: 116: phase_delta = PHASE_DELTA_1200;
 "116
 [e = _phase_delta -> _PHASE_DELTA_1200 `uc ]
 [; ;audio_tone.c: 117: tone_index = 0;
 "117
-[e = F3169 -> -> 0 `i `uc ]
+[e = F3170 -> -> 0 `i `uc ]
 "118
 }
 [; ;audio_tone.c: 118: }
@@ -3273,7 +3276,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _phase_delta -> _PHASE_DELTA_2200 `uc ]
 [; ;audio_tone.c: 121: tone_index = 1;
 "121
-[e = F3169 -> -> 1 `i `uc ]
+[e = F3170 -> -> 1 `i `uc ]
 "122
 }
 [e :U 343 ]
@@ -3289,12 +3292,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;audio_tone.c: 126: phase += phase_delta;
 "126
 [e =+ _phase _phase_delta ]
-[; ;audio_tone.c: 127: if(phase > 181)
+[; ;audio_tone.c: 127: if(phase >= TABLE_SIZE)
 "127
-[e $ ! > -> _phase `i -> 181 `i 344  ]
-[; ;audio_tone.c: 128: phase = phase - 182;
+[e $ ! >= -> _phase `i _TABLE_SIZE 344  ]
+[; ;audio_tone.c: 128: phase = phase - TABLE_SIZE;
 "128
-[e = _phase -> - -> _phase `i -> 182 `i `uc ]
+[e = _phase -> - -> _phase `i _TABLE_SIZE `uc ]
 [e :U 344 ]
 [; ;audio_tone.c: 131: Audio_Signal = *(sine_table2 + phase);
 "131
@@ -3302,31 +3305,37 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;audio_tone.c: 132: Send_Vcxo_Signal(Audio_Signal);
 "132
 [e ( _Send_Vcxo_Signal (1 _Audio_Signal ]
-[; ;audio_tone.c: 134: if(++current_sample_in_baud == SAMPLES_PER_BAUD) {
+[; ;audio_tone.c: 134: current_sample_in_baud++;
 "134
-[e $ ! == -> =+ _current_sample_in_baud -> -> 1 `i `uc `i -> _SAMPLES_PER_BAUD `i 345  ]
-{
-[; ;audio_tone.c: 135: current_sample_in_baud = 0;
-"135
-[e = _current_sample_in_baud -> -> 0 `i `uc ]
-[; ;audio_tone.c: 136: packet_pos++;
+[e ++ _current_sample_in_baud -> -> 1 `i `uc ]
+[; ;audio_tone.c: 136: if(Change_to_New_Baud == 1) {
 "136
-[e ++ _packet_pos -> -> -> 1 `i `l `ul ]
+[e $ ! == -> _Change_to_New_Baud `i -> 1 `i 345  ]
+{
+[; ;audio_tone.c: 137: current_sample_in_baud = 0;
+"137
+[e = _current_sample_in_baud -> -> 0 `i `uc ]
+[; ;audio_tone.c: 138: packet_pos++;
 "138
+[e ++ _packet_pos -> -> -> 1 `i `l `ul ]
+[; ;audio_tone.c: 139: Change_to_New_Baud = 0;
+"139
+[e = _Change_to_New_Baud -> -> 0 `i `uc ]
+"140
 }
 [e :U 345 ]
-"139
+"142
 }
 [e :U 335 ]
-[; ;audio_tone.c: 138: }
-[; ;audio_tone.c: 139: }
-[; ;audio_tone.c: 141: end_generator:
-"141
+[; ;audio_tone.c: 140: }
+[; ;audio_tone.c: 142: }
+[; ;audio_tone.c: 144: end_generator:
+"144
 [e :U 337 ]
-[; ;audio_tone.c: 143: return;
-"143
+[; ;audio_tone.c: 146: return;
+"146
 [e $UE 334  ]
-[; ;audio_tone.c: 145: }
-"145
+[; ;audio_tone.c: 148: }
+"148
 [e :UE 334 ]
 }

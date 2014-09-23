@@ -17,24 +17,19 @@
 #include "audio_tone.h"
 
 //#define Debug_Modem_Packet
+#define BATTERY_MEAS_EVERY_MILISECOND 100000 //100 saniyede bir batarya olcelim
 
 extern  bool PTT_OFF;
 extern void Ptt_Off(void);
 extern uint8_t modem_packet[MODEM_MAX_PACKET];
-void Sinus_Generator(void);
+extern void Sinus_Generator(void);
 extern bool MODEM_TRANSMITTING;
-
-uint8_t test  = 0;
-uint8_t test2 = 0;
-uint16_t dac_flag = 0;
-
-
-
 
 uint8_t adc_sonuc_high = 0;
 uint8_t adc_sonuc_low  = 0;
 
-uint16_t Systick_Counter = 0; //Her 833us de bir tick sayar
+uint32_t Systick_Counter = 0; //Her 833us de bir tick sayar
+bool Change_to_New_Baud = false;
 
 #ifdef Debug_Modem_Packet
 extern uint8_t modem_packet[MODEM_MAX_PACKET];
@@ -48,21 +43,22 @@ void interrupt global_interrupt(){
     
     INTCON &= ~0x80; //Global interrupt disable in ISR
 
-    //ADC1 interrupt
+    
     if(ADIF){
+        //ADC1 ISR
         adc_sonuc_high = ADRESH;
         adc_sonuc_low  = ADRESL;
 
         ADIF = 0;
+        //ADC1 ISR
         return;
     }
-    //ADC1 interrupt
 
     //Timer1 interrupt
     if(PIR1 & 0x04){
        //Timer1 ISR
-        Systick_Counter += 1;
-       //Timer1 ISR
+        Change_to_New_Baud = true;
+       
 
        //reset Timer1 registers
        TMR1H = 0x00;
@@ -70,7 +66,12 @@ void interrupt global_interrupt(){
        
        PIR1 &= ~0x04; //Clear Timer1 interrupt flag
 
-       //ADCON0 |= 0b00000010; //ADC Go
+       Systick_Counter += 1;
+       if(Systick_Counter > BATTERY_MEAS_EVERY_MILISECOND){
+            Systick_Counter = 0;
+            ADCON0 |= 0b00000010; //ADC Go
+        }
+       //Timer1 ISR
        return;
     }
     //Timer1 interrupt
@@ -79,9 +80,9 @@ void interrupt global_interrupt(){
     if(INTCON & 0x04){
        //Timer0 ISR
        Sinus_Generator();
-       //Timer0 ISR
-  
+        
        INTCON &= ~0x04; //Clear Timer0 interrupt flag
+        //Timer0 ISR
        return;
     }
 
