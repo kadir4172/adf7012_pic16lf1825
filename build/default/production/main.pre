@@ -3755,9 +3755,9 @@ extern void memcpyee(__eeprom unsigned char *to, const unsigned char *from, unsi
 extern __nonreentrant void _delay(unsigned long);
 
 
-# 28 "configuration.h"
+# 12 "configuration.h"
 #pragma config FOSC = INTOSC
-#pragma config WDTE = OFF
+#pragma config WDTE = ON
 #pragma config PWRTE = OFF
 #pragma config MCLRE = ON
 #pragma config CP = OFF
@@ -4007,6 +4007,14 @@ INTCON |= 0x80;
 void System_Start(void){
 
 
+WDTPS4 = 1;
+WDTPS3 = 0;
+WDTPS2 = 0;
+WDTPS1 = 0;
+WDTPS0 = 1;
+
+
+
 OSCCON = 0x00;
 OSCCON |= 0b11110000;
 OSCTUNE = 0x00;
@@ -4100,11 +4108,10 @@ Ax25_Send_Footer();
 
 Modem_Setup();
 Delay_ms(100);
-
-
+Adf_Lock();
 Delay_ms(100);
 
-# 204
+# 211
 Ptt_On();
 
 
@@ -4119,7 +4126,8 @@ Modem_Flush_Frame();
 while(MODEM_TRANSMITTING);
 Delay_ms(2000);
 
-# 227
+# 235
+asm("clrwdt");
 }
 return (0);
 }

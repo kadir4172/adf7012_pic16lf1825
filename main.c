@@ -95,7 +95,15 @@ void interrupt global_interrupt(){          //single interrupt vector to handle 
 }
 
 void System_Start(void){
-    
+
+    //Watchdog timer configuration for 128 seconds
+      WDTPS4 = 1;
+      WDTPS3 = 0;
+      WDTPS2 = 0;
+      WDTPS1 = 0;
+      WDTPS0 = 1;
+    //Watchdog timer configuration for 128 seconds
+
     //Internal RC osc with 4xPLL operating at 32MHz
       OSCCON  = 0x00;
       OSCCON |= 0b11110000;
@@ -104,7 +112,7 @@ void System_Start(void){
     
     //Configurations for Timer0
       TMR0CS = 0;                 //Internal clock source (Fosc/4)
-      PSA = 1;                    //Do not use Prescaler
+      PSA    = 1;                    //Do not use Prescaler
     //Configurations for Timer0
 
     //Configurations for Timer1
@@ -124,24 +132,24 @@ void System_Start(void){
     //Configurations for Timer1
       
     //Configurations for Dac0
-      DACOE = 1;
+      DACOE   = 1;
       DACPSS1 = 0;
       DACPSS0 = 0;
-      DACNSS = 0;
+      DACNSS  = 0;
     //Configurations for Dac0
 
    
     //Configurations for Adc1
-      ANSA1 = 1;                //RA1 analog input
+      ANSA1   = 1;                //RA1 analog input
       ADCON0 &= 0b10000011;
       ADCON0 |= 0b00000100;     //AN1 channel select
       ADNREF  = 0;              //Vref- = GND
       ADPREF1 = 0;
       ADPREF0 = 0;              //Vref+ = Vdd
-      ADCS2  = 1;
-      ADCS1  = 1;
-      ADCS0  = 0;               //Fosc/64 for conversion clock
-      ADFM = 1;                 //Output on right hand side
+      ADCS2   = 1;
+      ADCS1   = 1;
+      ADCS0   = 0;               //Fosc/64 for conversion clock
+      ADFM    = 1;                 //Output on right hand side
     //Configurations for Adc1
 
 
@@ -149,7 +157,7 @@ void System_Start(void){
       TMR0IF = 0;
       TMR1IF = 0;
       CCP1IF = 0;
-      ADIF = 0;
+      ADIF   = 0;
     //Reset Interrupt Flags
 
     //Global Interrupt ve Peripheral Interrupt Enable
@@ -223,6 +231,8 @@ int main(void) {
           }
           Delay_ms(3000);
 #endif
+
+          CLRWDT();
          }
     return (EXIT_SUCCESS);
 }
