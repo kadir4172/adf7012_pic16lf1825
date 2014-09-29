@@ -1,10 +1,9 @@
 /*
- * ax25.c
+ * File:   ax25.c
+ * Author: Kadir
  *
- *  Created on: Jun 28, 2014
- *      Author: kadir
+ * Created on September 21, 2014, 3:35 PM
  */
-
 
 #include "ax25.h"
 #include "config.h"
@@ -58,9 +57,7 @@ static void Send_Byte(uint8_t byte)
 // Exported functions
 void Ax25_Send_Byte(uint8_t byte)
 {
-  // Wrap around send_byte, but prints debug info
-  Send_Byte(byte);
-
+   Send_Byte(byte);
 }
 
 void Ax25_Send_Sync()
@@ -107,7 +104,7 @@ void Ax25_Send_Header(s_address addresses[], int num_addresses)
   ones_in_a_row = 0;
   crc = 0xffff;
 
-  // Send sync ("a bunch of 0s")
+  // Send sync ("10 bytes of zeros")
   for (i = 0; i < 10; i++)
   {
     Ax25_Send_Sync();
@@ -155,11 +152,3 @@ void Ax25_Send_Footer()
   Ax25_Send_Flag();
 
 }
-
-void Ax25_Flush_Frame()
-{
-  // Key the transmitter and send the frame
-  Modem_Flush_Frame();
-}
-
-

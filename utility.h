@@ -45,13 +45,6 @@ extern bool Send_Vcxo_Signal(uint8_t);
 
 #define ADF7012_CLEAR_CLK_PIN  PORTCbits.RC4 = 0;
 #define ADF7012_SET_CLK_PIN    PORTCbits.RC4 = 1;
-
-//#define ADC_CHANNEL 7 //Muxout pini ADC cevrimi 7.kanaldan yapilacak
-//#define PORTNUM  1  //SSP1 portu Spi icin kullanilacak
-
-//extern uint32_t timeout_check;
-//extern uint8_t timeout_flag;
-
 //Hardware Specific Variables/Macros
 
 //Common Functions

@@ -1,8 +1,8 @@
 /*
- * utility.c
+ * File:   utility.c
+ * Author: Kadir
  *
- *  Created on: Jun 28, 2014
- *      Author: kadir
+ * Created on September 17, 2014, 7:55 PM
  */
 
 #include "utility.h"
@@ -15,24 +15,22 @@
 #include <xc.h>
 
 
-#define _XTAL_FREQ 32000000 //aslinda Xtal freq degil CPU clock (dummy delay fonksiyonu icin)
-
-// Delay_Counter   = 0; //Delay_ms fonksiyonunda kullanilacak counter, 10ms de bir tick sayar
-//uint8_t  timeout_flag = 0;
-//uint32_t timeout_check;
+#define _XTAL_FREQ 32000000    //for '_delay' function, in fact it is the CPU freq rather than crystal frequency
 
 
 bool Spi_Byte_Send(uint8_t);
+
+
 /******************************************************************************
 ** Function name:		Gpio_Config
 **
-** Descriptions:		Beacon MCU nun ilgili pinlerini konfigure eder
+** Descriptions:		Configures the GPIO pins
 ** Returned value:		returns TRUE if successful
 **
 ******************************************************************************/
 bool Gpio_Config(void){
 
-   //PortA ve PortC konfigurasyonlari
+   //PortA and PortC configurations
     TRISA |= 0b00000010;
     TRISA &= 0b11001011;
     TRISC |= 0b00100000;
@@ -47,12 +45,10 @@ void Delay_ms(uint16_t time_to_delay)
 {
     uint16_t i=0;
    
-   //INTCON &= ~0xC0;           //Global interrupt disable
-   Dac0_Start_Hold();         //Dac0 cikisini nominal degerde birakalim
+   Dac0_Start_Hold();         //Dac output with nominal value, while Delaying
    for(i=0; i<time_to_delay; i++){
-   __delay_ms(1);             //inline fonksiyon dinamik arguman kabul etmiyor
+   __delay_ms(1);             //This inline function does not accept dynamical argument
    }
-  // INTCON |= 0xC0;            //Global interrupt enable
 }
 
 
@@ -61,13 +57,11 @@ void Delay_ms(uint16_t time_to_delay)
 /******************************************************************************
 ** Function name:		Read_Adf7012_Muxout
 **
-** Descriptions:		adf7012 entegresinin muxout pinini okur
+** Descriptions:		Read the Muxout pin of ADF7012
 ** Returned value:		returns TRUE if successfull
 **
 ******************************************************************************/
 bool Read_Adf7012_Muxout(void){
-
-  Delay_ms(1);
 
   if(PORTCbits.RC5)
       return true;
@@ -80,8 +74,8 @@ bool Read_Adf7012_Muxout(void){
 /******************************************************************************
 ** Function name:		Write_Adf7012_Reg
 **
-** Descriptions:		adf7012 entegresine istenen register degerini yazar
-** Parameters:			reg_value , yazilacak byte dizisinin ilk karaketerine pointer
+** Descriptions:		Writes the required value to the ADF7012
+** Parameters:			reg_value ,a pointer to the first address of the register array
 ** Returned value:		returns TRUE if successfull
 **
 ******************************************************************************/
@@ -106,20 +100,20 @@ bool Write_Adf7012_Reg(uint8_t* reg_value, uint8_t size_of_reg){
 /******************************************************************************
 ** Function name:		Send_Vcxo_Signal
 **
-** Descriptions:		Analog output pinine istenilen degeri yazar
-** Parameters:			DAC cikisina yazilacak 32 bit veri
+** Descriptions:		Outputs the input argument to the DAC pin
+** Parameters:			
 ** Returned value:		returns TRUE if successfull
 **
 ******************************************************************************/
 bool Send_Vcxo_Signal(uint8_t value){
 
-  DACCON1 = value;   //DAC cikisina value degerini yaz
+  DACCON1 = value;              //Output the value to the DAC pin
   return true;
 }
 /******************************************************************************
 ** Function name:		Init_Adf7012
 **
-** Descriptions:		adf7012 entegresini OOK modunda istenen konfigurasyonda baslatir
+** Descriptions:		Starts the ADF7012 with hardcoded configuration
 ** Returned value:		returns TRUE if successfull
 **
 ******************************************************************************/
@@ -197,13 +191,13 @@ return TRUE;
 /******************************************************************************
 ** Function name:		Reverse_Array
 **
-** Parameters:			sirasi degistirilecek array ve uzunlugu
+** Parameters:			Array which wanted to reversed, length of the array
 ** Returned value:		returns TRUE if successfull
 **
 ******************************************************************************/
 bool Reverse_Array(uint8_t* input,uint8_t length){
   uint8_t i = 0;
-  uint8_t buffer_array[4] = {0};
+  uint8_t buffer_array[4] = {0};             //Dynamic memory allocation not allowed for 8 bit MCUs, simply create the largest array as hardcoded
   memcpy(buffer_array, input, length);
 
   for(i = 0; i<length; i++){
@@ -219,7 +213,7 @@ return true;
 /******************************************************************************
 ** Function name:		Spi_Byte_Send
 **
-** Parameters:			gonderilecek data
+** Parameters:			Data to send
 ** Returned value:		returns TRUE if successfull
 **
 ******************************************************************************/
@@ -247,63 +241,55 @@ bool Spi_Byte_Send(uint8_t data){
     return true;
 }
 
-
-
-
 void Timer0_Start(void){
   TMR0 = 0x00;
   TMR0IF = 0;
-  TMR0IE = 1;  //Timer0 interrupt enable edelim
+  TMR0IE = 1;            //Timer0 interrupt enable
 }
 void Timer0_Stop(void){
-  TMR0IE = 0;  //Timer0 interrupt disable edelim
+  TMR0IE = 0;            //Timer0 interrupt disable
   TMR0 = 0x00;
 }
 
 void Timer1_Start(void){
-    //reset Timer1 registers
     TMR1H = 0x00;
-    TMR1L = 0x00;
+    TMR1L = 0x00;       //Reset Timer1 registers
 
-    TMR1IE = 0; //Timer1 interrupt almayacagiz
+    TMR1IE = 0;         //Do not take Timer1 interrupt
 
-    //833 us lik compare registerlari
-    CCPR1H = 0x03;
+    
+    CCPR1H = 0x03;      //Compare Registers for 833us
     CCPR1L = 0x41;
 
     CCP1IF = 0;
-    //compare1 modulu interrupt enable
-    CCP1IE = 1;
+    CCP1IE = 1;         //compare1 modulu interrupt enable
 }
 
 void Timer1_Stop(void){
-    //reset Timer1 registers
     TMR1H = 0x00;
-    TMR1L = 0x00;
+    TMR1L = 0x00;      //Reset Timer1 registers
 
-    CCP1IE = 0; // compare1 modulu interrupt disable
+    CCP1IE = 0;        // Compare1 module interrupt disable
 }
 
 void Dac0_Start_Hold(void){
-    DACEN = 1;  //DAC output enable
-    DACCON1 = 0x10;//Vdd/2 on DACOUT
+    DACEN = 1;          //DAC output enable
+    DACCON1 = 0x10;     //Vdd/2 on DACOUT
 }
 
 void Dac0_Stop(void){
-    DACCON1 = 0x00; //0Vdc on DACOUT
-    DACEN = 0; //DAC output disable
+    DACCON1 = 0x00;     //Gnd on DACOUT
+    DACEN = 0;          //DAC output disable
 }
 
 
 void Adc1_Start(void){
-    ADIF = 0; //clear interrupt flag
+    ADIF = 0;           //Clear interrupt flag
     ADON = 1;
-    ADIE = 1; //ADC interrupt enable
-    //PIR1 &= 0b10111111;
-    //PIE1 |= 0b01000000;
+    ADIE = 1;           //ADC interrupt enable
 }
 
 void Adc1_Stop(void){
-    ADON = 0; //ADC disable
-    ADIE = 0; //ADC interrupt disable
+    ADON = 0;          //ADC disable
+    ADIE = 0;          //ADC interrupt disable
 }

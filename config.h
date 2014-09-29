@@ -13,13 +13,9 @@ extern "C" {
 #endif
 
 
-#define VCXO_FREQ 20000000L    //VCO 20Mhz
-#define ADF7012_CRYSTAL_DIVIDER 15 //PFD = 20/15 Mhz
-#define RADIO_FREQUENCY   144390000UL //Beacon center frequency
-
-
-
-
+#define VCXO_FREQ 40000000L            //VCO 40Mhz
+#define ADF7012_CRYSTAL_DIVIDER 15     //PFD = 20/15 Mhz
+#define RADIO_FREQUENCY   144390000UL  //Beacon center frequency
 
 
 #ifdef	__cplusplus

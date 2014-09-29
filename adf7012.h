@@ -56,15 +56,7 @@ extern "C" {
 #define ADF_MUXOUT_SD_TEST_MODE 15
 #define ADF_LD_PRECISION_3_CYCLES 0
 #define ADF_LD_PRECISION_5_CYCLES 1
-
-// PIN Definitions:
-//  #define SCKpin  13   // SCK
-//  #define SSpin  10    // SS
-//  #define MOSIpin 11   // MOSI
-
 #define ADF7012_CRYSTAL_FREQ VCXO_FREQ
-
-
 
 
 #ifdef	__cplusplus

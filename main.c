@@ -16,20 +16,20 @@
 #include "ax25.h"
 #include "audio_tone.h"
 
-//#define Debug_Modem_Packet
-#define BATTERY_MEAS_EVERY_MILISECOND 100000 //100 saniyede bir batarya olcelim
+//#define Debug_Modem_Packet                 //uncomment this line to debug the data encoded with AX25
 
-extern  bool PTT_OFF;
-extern void Ptt_Off(void);
-extern uint8_t modem_packet[MODEM_MAX_PACKET];
-extern void Sinus_Generator(void);
-extern bool MODEM_TRANSMITTING;
+#define BATTERY_MEAS_EVERY_MILISECOND 100000 //batarya olcme periyodu [ms]
 
-uint8_t adc_sonuc_high = 0;
-uint8_t adc_sonuc_low  = 0;
+extern  bool PTT_OFF;                        // PTT_OFF flag, not to pull Ptt_Off function within an interrupt
 
-uint32_t Systick_Counter = 0; //Her 833us de bir tick sayar
-bool Change_to_New_Baud = false;
+extern void Sinus_Generator(void);           //function which generates audio signal
+extern bool MODEM_TRANSMITTING;              //flag to check whether modem_packet is fully transmitted
+
+uint8_t adc__high = 0;                       //Adc return values
+uint8_t adc__low  = 0;
+
+uint32_t Systick_Counter = 0;                //Counter with period of 833 us
+bool Change_to_New_Baud = false;             //Flag to check for changing to new baud
 
 #ifdef Debug_Modem_Packet
 extern uint8_t modem_packet[MODEM_MAX_PACKET];
@@ -39,25 +39,27 @@ uint8_t k = 0;
 /*
  * 
  */
-void interrupt global_interrupt(){
+void interrupt global_interrupt(){          //single interrupt vector to handle all of ISR's
     
-    INTCON &= ~0x80; //Global interrupt disable in ISR
+    INTCON &= ~0x80;                        //Global interrupt disable in ISR
 
-    
+    //ADC interrupt
     if(ADIF){
         //ADC1 ISR
-        adc_sonuc_high = ADRESH;
-        adc_sonuc_low  = ADRESL;
+        adc__high = ADRESH;
+        adc__low  = ADRESL;
 
         ADIF = 0;
         //ADC1 ISR
         return;
     }
+    //ADC interrupt
+    
 
     //Timer1 interrupt
     if(PIR1 & 0x04){
        //Timer1 ISR
-        Change_to_New_Baud = true;
+        Change_to_New_Baud = true;         //Change to new baud in Sinus_Generator()
        
 
        //reset Timer1 registers
@@ -69,7 +71,7 @@ void interrupt global_interrupt(){
        Systick_Counter += 1;
        if(Systick_Counter > BATTERY_MEAS_EVERY_MILISECOND){
             Systick_Counter = 0;
-            ADCON0 |= 0b00000010; //ADC Go
+            ADCON0 |= 0b00000010;         //If period overruns for battery reading start the ADC conversion
         }
        //Timer1 ISR
        return;
@@ -79,126 +81,116 @@ void interrupt global_interrupt(){
     //Timer0 interrupt
     if(INTCON & 0x04){
        //Timer0 ISR
-       Sinus_Generator();
+       Sinus_Generator();                //Call Sinus_Generator() with Playback_Rate
         
-       INTCON &= ~0x04; //Clear Timer0 interrupt flag
+       INTCON &= ~0x04;                  //Clear Timer0 interrupt flag
         //Timer0 ISR
        return;
     }
-
+    //Timer0 interrupt
  
 
 
-    INTCON |= 0x80; //Global interrupt enabled again
+    INTCON |= 0x80;                       //Global interrupt enabled again
 }
 
 void System_Start(void){
     
     //Internal RC osc with 4xPLL operating at 32MHz
-    OSCCON  = 0x00;
-    OSCCON |= 0b11110000;
-    OSCTUNE = 0x00;
-
+      OSCCON  = 0x00;
+      OSCCON |= 0b11110000;
+      OSCTUNE = 0x00;
+    //Internal RC osc with 4xPLL operating at 32MHz
     
-    //Timer0 icin gerekli konfigurasyonlar
-    TMR0CS = 0; //Internal clock source (Fosc/4)
-    PSA = 1;    // Prescaler kullanmiyoruz
-    //Timer0 icin gerekli konfigurasyonlar
+    //Configurations for Timer0
+      TMR0CS = 0;                 //Internal clock source (Fosc/4)
+      PSA = 1;                    //Do not use Prescaler
+    //Configurations for Timer0
 
-    //Timer1 icin gerekli konfigurasyonlar
-    //Timer1 always count
-    TMR1ON = 1;
-    TMR1GE = 0;
+    //Configurations for Timer1
+      TMR1ON = 1;                //Timer1 always count
+      TMR1GE = 0;
 
-    //Fosc/4
-    TMR1CS1 = 0;
-    TMR1CS0 = 0;
+      TMR1CS1 = 0;               //Fosc/4
+      TMR1CS0 = 0;
 
-    // 1/8 prescaler
-    T1CKPS1 = 1;
-    T1CKPS0 = 1;
+      T1CKPS1 = 1;               //1/8 prescaler
+      T1CKPS0 = 1;
 
-    //software interrupt on compare event
-    CCP1M3 = 1;
-    CCP1M2 = 0;
-    CCP1M1 = 1;
-    CCP1M1 = 0;
-    //Timer1 icin gerekli konfigurasyonlar
-
-
-    //Dac0 icin gerekli konfigurasyonlar
-    DACOE = 1;
-    DACPSS1 = 0;
-    DACPSS0 = 0;
-    DACNSS = 0;
-    //Dac0 icin gerekli konfigurasyonlar
+      CCP1M3 = 1;               //Software interrupt on compare event
+      CCP1M2 = 0;
+      CCP1M1 = 1;
+      CCP1M1 = 0;
+    //Configurations for Timer1
+      
+    //Configurations for Dac0
+      DACOE = 1;
+      DACPSS1 = 0;
+      DACPSS0 = 0;
+      DACNSS = 0;
+    //Configurations for Dac0
 
    
-    //ADC1 icin gerekli konfigurasyonlar
-    ANSA1 = 1; //RA1 analog input
-    ADCON0 &= 0b10000011;
-    ADCON0 |= 0b00000100; //AN1 channel select
-    ADNREF  = 0; //Vref- = GND
-    ADPREF1 = 0;
-    ADPREF0 = 0; //Vref+ = Vdd
-    ADCS2  = 1;
-    ADCS1  = 1;
-    ADCS0  = 0;  //Fosc/64 for conversion clock
-    ADFM = 1; // output on right hand side
-    //ADC1 icin gerekli konfigurasyonlar
+    //Configurations for Adc1
+      ANSA1 = 1;                //RA1 analog input
+      ADCON0 &= 0b10000011;
+      ADCON0 |= 0b00000100;     //AN1 channel select
+      ADNREF  = 0;              //Vref- = GND
+      ADPREF1 = 0;
+      ADPREF0 = 0;              //Vref+ = Vdd
+      ADCS2  = 1;
+      ADCS1  = 1;
+      ADCS0  = 0;               //Fosc/64 for conversion clock
+      ADFM = 1;                 //Output on right hand side
+    //Configurations for Adc1
 
 
-    //reset interrupt flags
-    TMR0IF = 0;
-    TMR1IF = 0;
-    CCP1IF = 0;
-    ADIF = 0; //clear interrupt flag
-    //reset interrupt flags
+    //Reset Interrupt Flags
+      TMR0IF = 0;
+      TMR1IF = 0;
+      CCP1IF = 0;
+      ADIF = 0;
+    //Reset Interrupt Flags
 
     //Global Interrupt ve Peripheral Interrupt Enable
-    INTCON |= 0xC0;
-
-  
-    
+      INTCON |= 0xC0;
 }
 
 
 int main(void) {
-    unsigned int adc_sonuc;
     System_Start();
-    while (!(OSCSTAT & (0x01))){} //HFIOFS Osc. stable bit bekle
-    /* TODO timeout a bakip software reset verilmeli */
+    while (!(OSCSTAT & (0x01))){}    //Wait for HFIOFS Osc. stable bit
+    /* TODO check the timeout somehow, CPU clock is not stable, implement a dummy counter or WDT will handle this */
 
-    Gpio_Config();
+    Gpio_Config();                   //Gpio configuration
  
-    Timer1_Start(); //833us lik Timer1 baslatilsin
+    Timer1_Start();                  //Timer1 with 833 us period
 
-    Dac0_Start_Hold();
+    Dac0_Start_Hold();               //Start Dac output and make the output Vdd/2
     
-    Adc1_Start();
+    Adc1_Start();                    //Just configure Adc1 peripheral, conversion will be started within Timer1 ISR
 
-    ADF7021_CHIP_POWER_DOWN;        //CE pini asagi cek
+    ADF7021_CHIP_POWER_DOWN;         //CE pin low , to reset the configuration on ADF7012
     Delay_ms(10);
-    ADF7021_LOAD_REGISTER_DISABLE;  //LE pinini yukari cek, load register disable olsun
+    ADF7021_LOAD_REGISTER_DISABLE;   //LE pin high, to disable loading registers
     Delay_ms(10);
-    ADF7021_CHIP_POWER_UP;          //CE pinini yukari cek, ADF7012 enable olsun
+    ADF7021_CHIP_POWER_UP;           //CE pin high, to enable ADF7012
     Delay_ms(10);
    
     Delay_ms(200);
 
 
-  s_address beacon_address[2] = {{"CUBEYY", 5},{"CUBEXX", 6}};
+    s_address beacon_address[2] = {{"CUBEYY", 5},{"CUBEXX", 6}};  //Source and destination adresses with callsigns
 
-  Ax25_Send_Header(beacon_address,2);
-  Ax25_Send_String("HELLO");
-  Ax25_Send_Footer();
+    Ax25_Send_Header(beacon_address,2);                           //Header with 2 adresses
+    Ax25_Send_String("HELLO");                                    //Send string
+    Ax25_Send_Footer();                                           //Send Footer
 
 
 
-    Modem_Setup();
+    Modem_Setup();                                               //Set modem reset configurations to ADF7012
     Delay_ms(100);
-    Adf_Lock(); //try to achieve a good PLL lock, otherwise use default vco configuration
-    //ADF7012_CLEAR_DATA_PIN ;
+    Adf_Lock();                                                  //Try to achieve a good PLL lock, otherwise use default vco configuration
     Delay_ms(100);
 /*
     try_to_push_button:
@@ -208,18 +200,17 @@ int main(void) {
         goto try_to_push_button;
     }
 */
-     Ptt_On();
+     Ptt_On(); /* TODO remove this line when working on real hardware */
      
      
      while(1){
-       
-           if(PTT_OFF){
-		  Ptt_Off();
+          if(PTT_OFF){
+		  Ptt_Off();                                    //Turn of PTT
 		  PTT_OFF  = false;
 	  }
 
 
-	  Modem_Flush_Frame();
+	  Modem_Flush_Frame();                                 //Transmit modem_packet[]
           while(MODEM_TRANSMITTING);
 	  Delay_ms(2000);
 

@@ -1,19 +1,3 @@
-/* 
- * File:   configuration.h
- * Author: Kadir
- *
- * Created on September 15, 2014, 6:55 PM
- */
-
-#ifndef CONFIGURATION_H
-#define	CONFIGURATION_H
-
-#ifdef	__cplusplus
-extern "C" {
-#endif
-
-
-
 
 // PIC16LF1825 Configuration Bit Settings
 
@@ -26,7 +10,7 @@ extern "C" {
 
 // CONFIG1
 #pragma config FOSC = INTOSC    // Oscillator Selection (INTOSC oscillator: I/O function on CLKIN pin)
-#pragma config WDTE = OFF       // Watchdog Timer Enable (WDT disabled)
+#pragma config WDTE = ON        // Watchdog Timer Enable (WDT enabled)
 #pragma config PWRTE = OFF      // Power-up Timer Enable (PWRT disabled)
 #pragma config MCLRE = ON       // MCLR Pin Function Select (MCLR/VPP pin function is MCLR)
 #pragma config CP = OFF         // Flash Program Memory Code Protection (Program memory code protection is disabled)
@@ -43,10 +27,4 @@ extern "C" {
 #pragma config BORV = LO        // Brown-out Reset Voltage Selection (Brown-out Reset Voltage (Vbor), low trip point selected.)
 #pragma config LVP = ON         // Low-Voltage Programming Enable (Low-voltage programming enabled)
 
-    
-#ifdef	__cplusplus
-}
-#endif
-
-#endif	/* CONFIGURATION_H */
 

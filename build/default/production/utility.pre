@@ -306,7 +306,7 @@ extern bool Read_Adf7012_Muxout(void);
 extern bool Reverse_Array(uint8_t* ,uint8_t);
 extern bool Send_Vcxo_Signal(uint8_t);
 
-# 58
+# 51
 extern void Radio_Setup(void);
 extern bool Ptt_On(void);
 extern void Ptt_Off(void);
@@ -314,7 +314,7 @@ extern void Set_Freq(uint32_t);
 extern bool Spi_Byte_Send(uint8_t);
 extern bool Adf_Lock(void);
 
-# 69
+# 62
 extern void Timer0_Start(void);
 extern void Timer0_Stop(void);
 extern void Timer1_Start(void);
@@ -3900,10 +3900,10 @@ extern void memcpyee(__eeprom unsigned char *to, const unsigned char *from, unsi
 #pragma intrinsic(_delay)
 extern __nonreentrant void _delay(unsigned long);
 
-# 25 "utility.c"
+# 21 "utility.c"
 bool Spi_Byte_Send(uint8_t);
 
-# 33
+# 31
 bool Gpio_Config(void){
 
 
@@ -3921,18 +3921,14 @@ void Delay_ms(uint16_t time_to_delay)
 {
 uint16_t i=0;
 
-
 Dac0_Start_Hold();
 for(i=0; i<time_to_delay; i++){
 _delay((unsigned long)((1)*(32000000/4000.0)));
 }
-
 }
 
-# 68
+# 64
 bool Read_Adf7012_Muxout(void){
-
-Delay_ms(1);
 
 if(PORTCbits.RC5)
 return 1;
@@ -3941,7 +3937,7 @@ return 0;
 
 }
 
-# 88
+# 82
 bool Write_Adf7012_Reg(uint8_t* reg_value, uint8_t size_of_reg){
 
 uint8_t i = 0;
@@ -3960,14 +3956,14 @@ Delay_ms(1);
 return 1;
 }
 
-# 114
+# 108
 bool Send_Vcxo_Signal(uint8_t value){
 
 DACCON1 = value;
 return 1;
 }
 
-# 204
+# 198
 bool Reverse_Array(uint8_t* input,uint8_t length){
 uint8_t i = 0;
 uint8_t buffer_array[4] = {0};
@@ -3982,7 +3978,7 @@ for(i = 0; i<length; i++){
 return 1;
 }
 
-# 226
+# 220
 bool Spi_Byte_Send(uint8_t data){
 
 PORTAbits.RA2 = 0;
@@ -4007,9 +4003,6 @@ Delay_ms(1);
 return 1;
 }
 
-
-
-
 void Timer0_Start(void){
 TMR0 = 0x00;
 TMR0IF = 0;
@@ -4021,7 +4014,6 @@ TMR0 = 0x00;
 }
 
 void Timer1_Start(void){
-
 TMR1H = 0x00;
 TMR1L = 0x00;
 
@@ -4032,12 +4024,10 @@ CCPR1H = 0x03;
 CCPR1L = 0x41;
 
 CCP1IF = 0;
-
 CCP1IE = 1;
 }
 
 void Timer1_Stop(void){
-
 TMR1H = 0x00;
 TMR1L = 0x00;
 
@@ -4059,8 +4049,6 @@ void Adc1_Start(void){
 ADIF = 0;
 ADON = 1;
 ADIE = 1;
-
-
 }
 
 void Adc1_Stop(void){

@@ -24,11 +24,6 @@ extern uint32_t modem_packet_size;
 void Modem_Setup(void);
 void Modem_Start(void);
 void Modem_Flush_Frame(void);
-void Modem_Set_Tx_Freq(uint32_t);
-bool Modem_Busy(void);
-
-
-
 
 
 #ifdef	__cplusplus

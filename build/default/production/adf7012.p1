@@ -1,28 +1,28 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"38 adf7012.c
+"36 adf7012.c
 [s S330 `ul 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
 [n S330 . frequency_error_correction r_divider crystal_doubler crystal_oscillator_disable clock_out_divider vco_adjust output_divider ]
-"48
+"46
 [s S331 `ul 1 `uc 1 `uc 1 ]
 [n S331 . fractional_n integer_n prescaler ]
-"54
+"52
 [s S332 `uc 1 `uc 1 `uc 1 `ul 1 `uc 1 `uc 1 ]
 [n S332 . mod_control gook power_amplifier_level modulation_deviation gfsk_modulation_control index_counter ]
-"63
+"61
 [s S333 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
 [n S333 . pll_enable pa_enable clkout_enable data_invert charge_pump_current bleed_up bleed_down vco_disable muxout ld_precision vco_bias pa_bias pll_test_mode sd_test_mode ]
-"37
+"35
 [s S329 `S330 1 `S331 1 `S332 1 `S333 1 ]
 [n S329 . r0 r1 r2 r3 ]
-"21
+"19
 [v _Adf_Reset_Register_Zero `(v ~T0 @X0 0 ef ]
-"22
+"20
 [v _Adf_Reset_Register_One `(v ~T0 @X0 0 ef ]
-"23
+"21
 [v _Adf_Reset_Register_Two `(v ~T0 @X0 0 ef ]
-"24
+"22
 [v _Adf_Reset_Register_Three `(v ~T0 @X0 0 ef ]
-"25
+"23
 [v _Adf_Reset `(v ~T0 @X0 0 ef ]
 "418 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16lf1825.h
 [s S35 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -34,13 +34,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _PORTAbits `VS34 ~T0 @X0 0 e@12 ]
 "25 utility.h
 [v _Delay_ms `(v ~T0 @X0 0 ef1`ui ]
-"26 adf7012.c
+"24 adf7012.c
 [v _Adf_Write_Register_Zero `(v ~T0 @X0 0 ef ]
-"27
+"25
 [v _Adf_Write_Register_One `(v ~T0 @X0 0 ef ]
-"28
+"26
 [v _Adf_Write_Register_Two `(v ~T0 @X0 0 ef ]
-"29
+"27
 [v _Adf_Write_Register_Three `(v ~T0 @X0 0 ef ]
 "22 C:\Program Files (x86)\Microchip\xc8\v1.33\include\string.h
 [v _memcpy `(*v ~T0 @X0 0 ef3`*v`*Cv`ui ]
@@ -48,7 +48,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _Reverse_Array `(uc ~T0 @X0 0 ef2`*uc`uc ]
 "26
 [v _Write_Adf7012_Reg `(uc ~T0 @X0 0 ef2`*uc`uc ]
-"31 adf7012.c
+"29 adf7012.c
 [v _Adf_Locked `(uc ~T0 @X0 0 ef ]
 "28 utility.h
 [v _Read_Adf7012_Muxout `(uc ~T0 @X0 0 ef ]
@@ -225,20 +225,20 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;utility.h: 28: extern bool Read_Adf7012_Muxout(void);
 [; ;utility.h: 29: extern bool Reverse_Array(uint8_t* ,uint8_t);
 [; ;utility.h: 30: extern bool Send_Vcxo_Signal(uint8_t);
-[; ;utility.h: 58: extern void Radio_Setup(void);
-[; ;utility.h: 59: extern bool Ptt_On(void);
-[; ;utility.h: 60: extern void Ptt_Off(void);
-[; ;utility.h: 61: extern void Set_Freq(uint32_t);
-[; ;utility.h: 62: extern bool Spi_Byte_Send(uint8_t);
-[; ;utility.h: 63: extern bool Adf_Lock(void);
-[; ;utility.h: 69: extern void Timer0_Start(void);
-[; ;utility.h: 70: extern void Timer0_Stop(void);
-[; ;utility.h: 71: extern void Timer1_Start(void);
-[; ;utility.h: 72: extern void Timer1_Stop(void);
-[; ;utility.h: 73: extern void Dac0_Start_Hold(void);
-[; ;utility.h: 74: extern void Dac0_Stop(void);
-[; ;utility.h: 75: extern void Adc1_Start(void);
-[; ;utility.h: 76: extern void Adc1_Stop(void);
+[; ;utility.h: 51: extern void Radio_Setup(void);
+[; ;utility.h: 52: extern bool Ptt_On(void);
+[; ;utility.h: 53: extern void Ptt_Off(void);
+[; ;utility.h: 54: extern void Set_Freq(uint32_t);
+[; ;utility.h: 55: extern bool Spi_Byte_Send(uint8_t);
+[; ;utility.h: 56: extern bool Adf_Lock(void);
+[; ;utility.h: 62: extern void Timer0_Start(void);
+[; ;utility.h: 63: extern void Timer0_Stop(void);
+[; ;utility.h: 64: extern void Timer1_Start(void);
+[; ;utility.h: 65: extern void Timer1_Stop(void);
+[; ;utility.h: 66: extern void Dac0_Start_Hold(void);
+[; ;utility.h: 67: extern void Dac0_Stop(void);
+[; ;utility.h: 68: extern void Adc1_Start(void);
+[; ;utility.h: 69: extern void Adc1_Stop(void);
 [; ;string.h: 22: extern void * memcpy(void *, const void *, size_t);
 [; ;string.h: 23: extern void * memmove(void *, const void *, size_t);
 [; ;string.h: 24: extern void * memset(void *, int, size_t);
@@ -2852,696 +2852,693 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;eeprom_routines.h: 43: extern void eecpymem(volatile unsigned char *to, __eeprom unsigned char *from, unsigned char size);
 [; ;eeprom_routines.h: 44: extern void memcpyee(__eeprom unsigned char *to, const unsigned char *from, unsigned char size);
 [; ;pic.h: 154: extern __nonreentrant void _delay(unsigned long);
-"18 adf7012.c
-[v _powerlevel `ul ~T0 @X0 1 e ]
-[; ;adf7012.c: 18: uint32_t powerlevel;
-[; ;adf7012.c: 21: void Adf_Reset_Register_Zero(void);
-[; ;adf7012.c: 22: void Adf_Reset_Register_One(void);
-[; ;adf7012.c: 23: void Adf_Reset_Register_Two(void);
-[; ;adf7012.c: 24: void Adf_Reset_Register_Three(void);
-[; ;adf7012.c: 25: void Adf_Reset(void);
-[; ;adf7012.c: 26: void Adf_Write_Register_Zero(void);
-[; ;adf7012.c: 27: void Adf_Write_Register_One(void);
-[; ;adf7012.c: 28: void Adf_Write_Register_Two(void);
-[; ;adf7012.c: 29: void Adf_Write_Register_Three(void);
-[; ;adf7012.c: 30: void Adf_Write_Register(uint8_t*);
-[; ;adf7012.c: 31: bool Adf_Locked(void);
-[; ;adf7012.c: 32: void Ptt_Off(void);
-[; ;adf7012.c: 33: void Radio_Setup(void);
-[; ;adf7012.c: 37: typedef struct {
-[; ;adf7012.c: 38: struct {
-[; ;adf7012.c: 39: uint32_t frequency_error_correction;
-[; ;adf7012.c: 40: uint8_t r_divider;
-[; ;adf7012.c: 41: uint8_t crystal_doubler;
-[; ;adf7012.c: 42: uint8_t crystal_oscillator_disable;
-[; ;adf7012.c: 43: uint8_t clock_out_divider;
-[; ;adf7012.c: 44: uint8_t vco_adjust;
-[; ;adf7012.c: 45: uint8_t output_divider;
-[; ;adf7012.c: 46: } r0;
-[; ;adf7012.c: 48: struct {
-[; ;adf7012.c: 49: uint32_t fractional_n;
-[; ;adf7012.c: 50: uint8_t integer_n;
-[; ;adf7012.c: 51: uint8_t prescaler;
-[; ;adf7012.c: 52: } r1;
-[; ;adf7012.c: 54: struct {
-[; ;adf7012.c: 55: uint8_t mod_control;
-[; ;adf7012.c: 56: uint8_t gook;
-[; ;adf7012.c: 57: uint8_t power_amplifier_level;
-[; ;adf7012.c: 58: uint32_t modulation_deviation;
-[; ;adf7012.c: 59: uint8_t gfsk_modulation_control;
-[; ;adf7012.c: 60: uint8_t index_counter;
-[; ;adf7012.c: 61: } r2;
-[; ;adf7012.c: 63: struct {
-[; ;adf7012.c: 64: uint8_t pll_enable;
-[; ;adf7012.c: 65: uint8_t pa_enable;
-[; ;adf7012.c: 66: uint8_t clkout_enable;
-[; ;adf7012.c: 67: uint8_t data_invert;
-[; ;adf7012.c: 68: uint8_t charge_pump_current;
-[; ;adf7012.c: 69: uint8_t bleed_up;
-[; ;adf7012.c: 70: uint8_t bleed_down;
-[; ;adf7012.c: 71: uint8_t vco_disable;
-[; ;adf7012.c: 72: uint8_t muxout;
-[; ;adf7012.c: 73: uint8_t ld_precision;
-[; ;adf7012.c: 74: uint8_t vco_bias;
-[; ;adf7012.c: 75: uint8_t pa_bias;
-[; ;adf7012.c: 76: uint8_t pll_test_mode;
-[; ;adf7012.c: 77: uint8_t sd_test_mode;
-[; ;adf7012.c: 78: } r3;
-[; ;adf7012.c: 79: } Adf_Config;
-"81
+[; ;adf7012.c: 19: void Adf_Reset_Register_Zero(void);
+[; ;adf7012.c: 20: void Adf_Reset_Register_One(void);
+[; ;adf7012.c: 21: void Adf_Reset_Register_Two(void);
+[; ;adf7012.c: 22: void Adf_Reset_Register_Three(void);
+[; ;adf7012.c: 23: void Adf_Reset(void);
+[; ;adf7012.c: 24: void Adf_Write_Register_Zero(void);
+[; ;adf7012.c: 25: void Adf_Write_Register_One(void);
+[; ;adf7012.c: 26: void Adf_Write_Register_Two(void);
+[; ;adf7012.c: 27: void Adf_Write_Register_Three(void);
+[; ;adf7012.c: 28: void Adf_Write_Register(uint8_t*);
+[; ;adf7012.c: 29: bool Adf_Locked(void);
+[; ;adf7012.c: 30: void Ptt_Off(void);
+[; ;adf7012.c: 31: void Radio_Setup(void);
+[; ;adf7012.c: 35: typedef struct {
+[; ;adf7012.c: 36: struct {
+[; ;adf7012.c: 37: uint32_t frequency_error_correction;
+[; ;adf7012.c: 38: uint8_t r_divider;
+[; ;adf7012.c: 39: uint8_t crystal_doubler;
+[; ;adf7012.c: 40: uint8_t crystal_oscillator_disable;
+[; ;adf7012.c: 41: uint8_t clock_out_divider;
+[; ;adf7012.c: 42: uint8_t vco_adjust;
+[; ;adf7012.c: 43: uint8_t output_divider;
+[; ;adf7012.c: 44: } r0;
+[; ;adf7012.c: 46: struct {
+[; ;adf7012.c: 47: uint32_t fractional_n;
+[; ;adf7012.c: 48: uint8_t integer_n;
+[; ;adf7012.c: 49: uint8_t prescaler;
+[; ;adf7012.c: 50: } r1;
+[; ;adf7012.c: 52: struct {
+[; ;adf7012.c: 53: uint8_t mod_control;
+[; ;adf7012.c: 54: uint8_t gook;
+[; ;adf7012.c: 55: uint8_t power_amplifier_level;
+[; ;adf7012.c: 56: uint32_t modulation_deviation;
+[; ;adf7012.c: 57: uint8_t gfsk_modulation_control;
+[; ;adf7012.c: 58: uint8_t index_counter;
+[; ;adf7012.c: 59: } r2;
+[; ;adf7012.c: 61: struct {
+[; ;adf7012.c: 62: uint8_t pll_enable;
+[; ;adf7012.c: 63: uint8_t pa_enable;
+[; ;adf7012.c: 64: uint8_t clkout_enable;
+[; ;adf7012.c: 65: uint8_t data_invert;
+[; ;adf7012.c: 66: uint8_t charge_pump_current;
+[; ;adf7012.c: 67: uint8_t bleed_up;
+[; ;adf7012.c: 68: uint8_t bleed_down;
+[; ;adf7012.c: 69: uint8_t vco_disable;
+[; ;adf7012.c: 70: uint8_t muxout;
+[; ;adf7012.c: 71: uint8_t ld_precision;
+[; ;adf7012.c: 72: uint8_t vco_bias;
+[; ;adf7012.c: 73: uint8_t pa_bias;
+[; ;adf7012.c: 74: uint8_t pll_test_mode;
+[; ;adf7012.c: 75: uint8_t sd_test_mode;
+[; ;adf7012.c: 76: } r3;
+[; ;adf7012.c: 77: } Adf_Config;
+"79 adf7012.c
 [v _adf_config `S329 ~T0 @X0 1 e ]
-[; ;adf7012.c: 81: Adf_Config adf_config;
-"86
+[; ;adf7012.c: 79: Adf_Config adf_config;
+"84
 [v _Adf_Reset_Config `(v ~T0 @X0 1 ef ]
-"87
+"85
 {
-[; ;adf7012.c: 86: void Adf_Reset_Config(void)
-[; ;adf7012.c: 87: {
+[; ;adf7012.c: 84: void Adf_Reset_Config(void)
+[; ;adf7012.c: 85: {
 [e :U _Adf_Reset_Config ]
 [f ]
-[; ;adf7012.c: 89: Adf_Reset_Register_Zero();
-"89
+[; ;adf7012.c: 87: Adf_Reset_Register_Zero();
+"87
 [e ( _Adf_Reset_Register_Zero ..  ]
-[; ;adf7012.c: 90: Adf_Reset_Register_One();
-"90
+[; ;adf7012.c: 88: Adf_Reset_Register_One();
+"88
 [e ( _Adf_Reset_Register_One ..  ]
-[; ;adf7012.c: 91: Adf_Reset_Register_Two();
-"91
+[; ;adf7012.c: 89: Adf_Reset_Register_Two();
+"89
 [e ( _Adf_Reset_Register_Two ..  ]
-[; ;adf7012.c: 92: Adf_Reset_Register_Three();
-"92
+[; ;adf7012.c: 90: Adf_Reset_Register_Three();
+"90
 [e ( _Adf_Reset_Register_Three ..  ]
-[; ;adf7012.c: 94: Adf_Reset();
-"94
+[; ;adf7012.c: 92: Adf_Reset();
+"92
 [e ( _Adf_Reset ..  ]
-[; ;adf7012.c: 95: }
-"95
+[; ;adf7012.c: 93: }
+"93
 [e :UE 334 ]
 }
-"98
+"96
 [v _Adf_Reset_Register_Zero `(v ~T0 @X0 1 ef ]
 {
-[; ;adf7012.c: 98: void Adf_Reset_Register_Zero(void) {
+[; ;adf7012.c: 96: void Adf_Reset_Register_Zero(void) {
 [e :U _Adf_Reset_Register_Zero ]
 [f ]
-[; ;adf7012.c: 99: adf_config.r0.frequency_error_correction = 0;
-"99
+[; ;adf7012.c: 97: adf_config.r0.frequency_error_correction = 0;
+"97
 [e = . . _adf_config 0 0 -> -> -> 0 `i `l `ul ]
-[; ;adf7012.c: 100: adf_config.r0.r_divider = 15;
-"100
+[; ;adf7012.c: 98: adf_config.r0.r_divider = 15;
+"98
 [e = . . _adf_config 0 1 -> -> 15 `i `uc ]
-[; ;adf7012.c: 101: adf_config.r0.crystal_doubler = 0;
-"101
+[; ;adf7012.c: 99: adf_config.r0.crystal_doubler = 0;
+"99
 [e = . . _adf_config 0 2 -> -> 0 `i `uc ]
-[; ;adf7012.c: 102: adf_config.r0.crystal_oscillator_disable = 0;
-"102
+[; ;adf7012.c: 100: adf_config.r0.crystal_oscillator_disable = 0;
+"100
 [e = . . _adf_config 0 3 -> -> 0 `i `uc ]
-[; ;adf7012.c: 103: adf_config.r0.clock_out_divider = 2;
-"103
+[; ;adf7012.c: 101: adf_config.r0.clock_out_divider = 2;
+"101
 [e = . . _adf_config 0 4 -> -> 2 `i `uc ]
-[; ;adf7012.c: 104: adf_config.r0.vco_adjust = 0;
-"104
+[; ;adf7012.c: 102: adf_config.r0.vco_adjust = 0;
+"102
 [e = . . _adf_config 0 5 -> -> 0 `i `uc ]
-[; ;adf7012.c: 105: adf_config.r0.output_divider = 2;
-"105
+[; ;adf7012.c: 103: adf_config.r0.output_divider = 2;
+"103
 [e = . . _adf_config 0 6 -> -> 2 `i `uc ]
-[; ;adf7012.c: 106: }
-"106
+[; ;adf7012.c: 104: }
+"104
 [e :UE 335 ]
 }
-"108
+"106
 [v _Adf_Reset_Register_One `(v ~T0 @X0 1 ef ]
 {
-[; ;adf7012.c: 108: void Adf_Reset_Register_One(void) {
+[; ;adf7012.c: 106: void Adf_Reset_Register_One(void) {
 [e :U _Adf_Reset_Register_One ]
 [f ]
-[; ;adf7012.c: 109: adf_config.r1.integer_n = 109;
-"109
+[; ;adf7012.c: 107: adf_config.r1.integer_n = 109;
+"107
 [e = . . _adf_config 1 1 -> -> 109 `i `uc ]
-[; ;adf7012.c: 110: adf_config.r1.fractional_n = 0;
-"110
+[; ;adf7012.c: 108: adf_config.r1.fractional_n = 0;
+"108
 [e = . . _adf_config 1 0 -> -> -> 0 `i `l `ul ]
-[; ;adf7012.c: 111: adf_config.r1.prescaler = 1;
-"111
+[; ;adf7012.c: 109: adf_config.r1.prescaler = 1;
+"109
 [e = . . _adf_config 1 2 -> -> 1 `i `uc ]
-[; ;adf7012.c: 112: }
-"112
+[; ;adf7012.c: 110: }
+"110
 [e :UE 336 ]
 }
-"114
+"112
 [v _Adf_Reset_Register_Two `(v ~T0 @X0 1 ef ]
 {
-[; ;adf7012.c: 114: void Adf_Reset_Register_Two(void) {
+[; ;adf7012.c: 112: void Adf_Reset_Register_Two(void) {
 [e :U _Adf_Reset_Register_Two ]
 [f ]
-[; ;adf7012.c: 115: adf_config.r2.mod_control = 3;
-"115
+[; ;adf7012.c: 113: adf_config.r2.mod_control = 3;
+"113
 [e = . . _adf_config 2 0 -> -> 3 `i `uc ]
-[; ;adf7012.c: 116: adf_config.r2.gook = 0;
-"116
+[; ;adf7012.c: 114: adf_config.r2.gook = 0;
+"114
 [e = . . _adf_config 2 1 -> -> 0 `i `uc ]
-[; ;adf7012.c: 117: adf_config.r2.power_amplifier_level = 15;
-"117
+[; ;adf7012.c: 115: adf_config.r2.power_amplifier_level = 15;
+"115
 [e = . . _adf_config 2 2 -> -> 15 `i `uc ]
-[; ;adf7012.c: 118: adf_config.r2.modulation_deviation = 16;
-"118
+[; ;adf7012.c: 116: adf_config.r2.modulation_deviation = 16;
+"116
 [e = . . _adf_config 2 3 -> -> -> 16 `i `l `ul ]
-[; ;adf7012.c: 119: adf_config.r2.gfsk_modulation_control = 0;
-"119
+[; ;adf7012.c: 117: adf_config.r2.gfsk_modulation_control = 0;
+"117
 [e = . . _adf_config 2 4 -> -> 0 `i `uc ]
-[; ;adf7012.c: 120: adf_config.r2.index_counter = 0;
-"120
+[; ;adf7012.c: 118: adf_config.r2.index_counter = 0;
+"118
 [e = . . _adf_config 2 5 -> -> 0 `i `uc ]
-[; ;adf7012.c: 121: }
-"121
+[; ;adf7012.c: 119: }
+"119
 [e :UE 337 ]
 }
-"123
+"121
 [v _Adf_Reset_Register_Three `(v ~T0 @X0 1 ef ]
 {
-[; ;adf7012.c: 123: void Adf_Reset_Register_Three(void) {
+[; ;adf7012.c: 121: void Adf_Reset_Register_Three(void) {
 [e :U _Adf_Reset_Register_Three ]
 [f ]
-[; ;adf7012.c: 124: adf_config.r3.pll_enable = 0;
-"124
+[; ;adf7012.c: 122: adf_config.r3.pll_enable = 0;
+"122
 [e = . . _adf_config 3 0 -> -> 0 `i `uc ]
-[; ;adf7012.c: 125: adf_config.r3.pa_enable = 0;
-"125
+[; ;adf7012.c: 123: adf_config.r3.pa_enable = 0;
+"123
 [e = . . _adf_config 3 1 -> -> 0 `i `uc ]
-[; ;adf7012.c: 126: adf_config.r3.clkout_enable = 1;
-"126
+[; ;adf7012.c: 124: adf_config.r3.clkout_enable = 1;
+"124
 [e = . . _adf_config 3 2 -> -> 1 `i `uc ]
-[; ;adf7012.c: 127: adf_config.r3.data_invert = 1;
-"127
+[; ;adf7012.c: 125: adf_config.r3.data_invert = 1;
+"125
 [e = . . _adf_config 3 3 -> -> 1 `i `uc ]
-[; ;adf7012.c: 128: adf_config.r3.charge_pump_current = 3;
-"128
+[; ;adf7012.c: 126: adf_config.r3.charge_pump_current = 3;
+"126
 [e = . . _adf_config 3 4 -> -> 3 `i `uc ]
-[; ;adf7012.c: 129: adf_config.r3.bleed_up = 0;
-"129
+[; ;adf7012.c: 127: adf_config.r3.bleed_up = 0;
+"127
 [e = . . _adf_config 3 5 -> -> 0 `i `uc ]
-[; ;adf7012.c: 130: adf_config.r3.bleed_down = 0;
-"130
+[; ;adf7012.c: 128: adf_config.r3.bleed_down = 0;
+"128
 [e = . . _adf_config 3 6 -> -> 0 `i `uc ]
-[; ;adf7012.c: 131: adf_config.r3.vco_disable = 0;
-"131
+[; ;adf7012.c: 129: adf_config.r3.vco_disable = 0;
+"129
 [e = . . _adf_config 3 7 -> -> 0 `i `uc ]
-[; ;adf7012.c: 133: adf_config.r3.muxout = 3;
-"133
+[; ;adf7012.c: 131: adf_config.r3.muxout = 3;
+"131
 [e = . . _adf_config 3 8 -> -> 3 `i `uc ]
-[; ;adf7012.c: 135: adf_config.r3.ld_precision = 0;
-"135
+[; ;adf7012.c: 133: adf_config.r3.ld_precision = 0;
+"133
 [e = . . _adf_config 3 9 -> -> 0 `i `uc ]
-[; ;adf7012.c: 136: adf_config.r3.vco_bias = 6;
-"136
+[; ;adf7012.c: 134: adf_config.r3.vco_bias = 6;
+"134
 [e = . . _adf_config 3 10 -> -> 6 `i `uc ]
-[; ;adf7012.c: 137: adf_config.r3.pa_bias = 4;
-"137
+[; ;adf7012.c: 135: adf_config.r3.pa_bias = 4;
+"135
 [e = . . _adf_config 3 11 -> -> 4 `i `uc ]
-[; ;adf7012.c: 138: adf_config.r3.pll_test_mode = 0;
-"138
+[; ;adf7012.c: 136: adf_config.r3.pll_test_mode = 0;
+"136
 [e = . . _adf_config 3 12 -> -> 0 `i `uc ]
-[; ;adf7012.c: 139: adf_config.r3.sd_test_mode = 0;
-"139
+[; ;adf7012.c: 137: adf_config.r3.sd_test_mode = 0;
+"137
 [e = . . _adf_config 3 13 -> -> 0 `i `uc ]
-[; ;adf7012.c: 140: }
-"140
+[; ;adf7012.c: 138: }
+"138
 [e :UE 338 ]
 }
-"142
+"140
 [v _Adf_Reset `(v ~T0 @X0 1 ef ]
 {
-[; ;adf7012.c: 142: void Adf_Reset(void) {
+[; ;adf7012.c: 140: void Adf_Reset(void) {
 [e :U _Adf_Reset ]
 [f ]
-[; ;adf7012.c: 144: PORTAbits.RA5 = 0;;
-"144
+[; ;adf7012.c: 142: PORTAbits.RA5 = 0;;
+"142
 [e = . . _PORTAbits 0 5 -> -> 0 `i `uc ]
+[; ;adf7012.c: 143: Delay_ms(10);
+"143
+[e ( _Delay_ms (1 -> -> 10 `i `ui ]
+[; ;adf7012.c: 144: PORTAbits.RA5 = 1;;
+"144
+[e = . . _PORTAbits 0 5 -> -> 1 `i `uc ]
 [; ;adf7012.c: 145: Delay_ms(10);
 "145
 [e ( _Delay_ms (1 -> -> 10 `i `ui ]
-[; ;adf7012.c: 146: PORTAbits.RA5 = 1;;
-"146
-[e = . . _PORTAbits 0 5 -> -> 1 `i `uc ]
-[; ;adf7012.c: 147: Delay_ms(10);
+[; ;adf7012.c: 147: }
 "147
-[e ( _Delay_ms (1 -> -> 10 `i `ui ]
-[; ;adf7012.c: 149: }
-"149
 [e :UE 339 ]
 }
-"152
+"150
 [v _Adf_Write_Config `(v ~T0 @X0 1 ef ]
 {
-[; ;adf7012.c: 152: void Adf_Write_Config(void) {
+[; ;adf7012.c: 150: void Adf_Write_Config(void) {
 [e :U _Adf_Write_Config ]
 [f ]
-[; ;adf7012.c: 153: Adf_Write_Register_Zero();
-"153
+[; ;adf7012.c: 151: Adf_Write_Register_Zero();
+"151
 [e ( _Adf_Write_Register_Zero ..  ]
-[; ;adf7012.c: 154: Adf_Write_Register_One();
-"154
+[; ;adf7012.c: 152: Adf_Write_Register_One();
+"152
 [e ( _Adf_Write_Register_One ..  ]
-[; ;adf7012.c: 155: Adf_Write_Register_Two();
-"155
+[; ;adf7012.c: 153: Adf_Write_Register_Two();
+"153
 [e ( _Adf_Write_Register_Two ..  ]
-[; ;adf7012.c: 156: Adf_Write_Register_Three();
-"156
+[; ;adf7012.c: 154: Adf_Write_Register_Three();
+"154
 [e ( _Adf_Write_Register_Three ..  ]
-[; ;adf7012.c: 157: }
-"157
+[; ;adf7012.c: 155: }
+"155
 [e :UE 340 ]
 }
-"159
+"157
 [v _Adf_Write_Register_Zero `(v ~T0 @X0 1 ef ]
 {
-[; ;adf7012.c: 159: void Adf_Write_Register_Zero(void) {
+[; ;adf7012.c: 157: void Adf_Write_Register_Zero(void) {
 [e :U _Adf_Write_Register_Zero ]
 [f ]
-"161
+"159
 [v _reg `ul ~T0 @X0 1 a ]
-[; ;adf7012.c: 161: uint32_t reg =
-[; ;adf7012.c: 162: (0) |
-[; ;adf7012.c: 163: ((uint32_t)(adf_config.r0.frequency_error_correction & 0x7FF) << 2U) |
-[; ;adf7012.c: 164: ((uint32_t)(adf_config.r0.r_divider & 0xF ) << 13U) |
-[; ;adf7012.c: 165: ((uint32_t)(adf_config.r0.crystal_doubler & 0x1 ) << 17U) |
-[; ;adf7012.c: 166: ((uint32_t)(adf_config.r0.crystal_oscillator_disable & 0x1 ) << 18U) |
-[; ;adf7012.c: 167: ((uint32_t)(adf_config.r0.clock_out_divider & 0xF ) << 19U) |
-[; ;adf7012.c: 168: ((uint32_t)(adf_config.r0.vco_adjust & 0x3 ) << 23U) |
-[; ;adf7012.c: 169: ((uint32_t)(adf_config.r0.output_divider & 0x3 ) << 25U);
-"169
+[; ;adf7012.c: 159: uint32_t reg =
+[; ;adf7012.c: 160: (0) |
+[; ;adf7012.c: 161: ((uint32_t)(adf_config.r0.frequency_error_correction & 0x7FF) << 2U) |
+[; ;adf7012.c: 162: ((uint32_t)(adf_config.r0.r_divider & 0xF ) << 13U) |
+[; ;adf7012.c: 163: ((uint32_t)(adf_config.r0.crystal_doubler & 0x1 ) << 17U) |
+[; ;adf7012.c: 164: ((uint32_t)(adf_config.r0.crystal_oscillator_disable & 0x1 ) << 18U) |
+[; ;adf7012.c: 165: ((uint32_t)(adf_config.r0.clock_out_divider & 0xF ) << 19U) |
+[; ;adf7012.c: 166: ((uint32_t)(adf_config.r0.vco_adjust & 0x3 ) << 23U) |
+[; ;adf7012.c: 167: ((uint32_t)(adf_config.r0.output_divider & 0x3 ) << 25U);
+"167
 [e = _reg | | | | | | | -> -> -> 0 `i `l `ul << & . . _adf_config 0 0 -> -> -> 2047 `i `l `ul -> 2 `ui << -> & -> . . _adf_config 0 1 `i -> 15 `i `ul -> 13 `ui << -> & -> . . _adf_config 0 2 `i -> 1 `i `ul -> 17 `ui << -> & -> . . _adf_config 0 3 `i -> 1 `i `ul -> 18 `ui << -> & -> . . _adf_config 0 4 `i -> 15 `i `ul -> 19 `ui << -> & -> . . _adf_config 0 5 `i -> 3 `i `ul -> 23 `ui << -> & -> . . _adf_config 0 6 `i -> 3 `i `ul -> 25 `ui ]
-"172
+"170
 [v _reg_ptr `uc ~T0 @X0 -> 4 `i a ]
-[; ;adf7012.c: 172: uint8_t reg_ptr[4];
-[; ;adf7012.c: 173: memcpy(reg_ptr, &reg, 4);
-"173
+[; ;adf7012.c: 170: uint8_t reg_ptr[4];
+[; ;adf7012.c: 171: memcpy(reg_ptr, &reg, 4);
+"171
 [e ( _memcpy (3 , , -> &U _reg_ptr `*v -> &U _reg `*Cv -> -> 4 `i `ui ]
-[; ;adf7012.c: 174: Reverse_Array(reg_ptr,4);
-"174
+[; ;adf7012.c: 172: Reverse_Array(reg_ptr,4);
+"172
 [e ( _Reverse_Array (2 , &U _reg_ptr -> -> 4 `i `uc ]
-[; ;adf7012.c: 175: Write_Adf7012_Reg(reg_ptr, 4);
-"175
+[; ;adf7012.c: 173: Write_Adf7012_Reg(reg_ptr, 4);
+"173
 [e ( _Write_Adf7012_Reg (2 , &U _reg_ptr -> -> 4 `i `uc ]
-[; ;adf7012.c: 176: }
-"176
+[; ;adf7012.c: 174: }
+"174
 [e :UE 341 ]
 }
-"178
+"176
 [v _Adf_Write_Register_One `(v ~T0 @X0 1 ef ]
 {
-[; ;adf7012.c: 178: void Adf_Write_Register_One(void) {
+[; ;adf7012.c: 176: void Adf_Write_Register_One(void) {
 [e :U _Adf_Write_Register_One ]
 [f ]
-"179
+"177
 [v _reg `ul ~T0 @X0 1 a ]
-[; ;adf7012.c: 179: uint32_t reg =
-[; ;adf7012.c: 180: (1) |
-[; ;adf7012.c: 181: ((uint32_t)(adf_config.r1.fractional_n & 0xFFF) << 2) |
-[; ;adf7012.c: 182: ((uint32_t)(adf_config.r1.integer_n & 0xFF ) << 14) |
-[; ;adf7012.c: 183: ((uint32_t)(adf_config.r1.prescaler & 0x1 ) << 22);
-"183
+[; ;adf7012.c: 177: uint32_t reg =
+[; ;adf7012.c: 178: (1) |
+[; ;adf7012.c: 179: ((uint32_t)(adf_config.r1.fractional_n & 0xFFF) << 2) |
+[; ;adf7012.c: 180: ((uint32_t)(adf_config.r1.integer_n & 0xFF ) << 14) |
+[; ;adf7012.c: 181: ((uint32_t)(adf_config.r1.prescaler & 0x1 ) << 22);
+"181
 [e = _reg | | | -> -> -> 1 `i `l `ul << & . . _adf_config 1 0 -> -> -> 4095 `i `l `ul -> 2 `i << -> & -> . . _adf_config 1 1 `i -> 255 `i `ul -> 14 `i << -> & -> . . _adf_config 1 2 `i -> 1 `i `ul -> 22 `i ]
-"185
+"183
 [v _reg_ptr `uc ~T0 @X0 -> 3 `i a ]
-[; ;adf7012.c: 185: uint8_t reg_ptr[3];
-[; ;adf7012.c: 186: memcpy(reg_ptr, &reg, 3);
-"186
+[; ;adf7012.c: 183: uint8_t reg_ptr[3];
+[; ;adf7012.c: 184: memcpy(reg_ptr, &reg, 3);
+"184
 [e ( _memcpy (3 , , -> &U _reg_ptr `*v -> &U _reg `*Cv -> -> 3 `i `ui ]
-[; ;adf7012.c: 187: Reverse_Array(reg_ptr,3);
-"187
+[; ;adf7012.c: 185: Reverse_Array(reg_ptr,3);
+"185
 [e ( _Reverse_Array (2 , &U _reg_ptr -> -> 3 `i `uc ]
-[; ;adf7012.c: 188: Write_Adf7012_Reg(reg_ptr, 3);
-"188
+[; ;adf7012.c: 186: Write_Adf7012_Reg(reg_ptr, 3);
+"186
 [e ( _Write_Adf7012_Reg (2 , &U _reg_ptr -> -> 3 `i `uc ]
-[; ;adf7012.c: 189: }
-"189
+[; ;adf7012.c: 187: }
+"187
 [e :UE 342 ]
 }
-"191
+"189
 [v _Adf_Write_Register_Two `(v ~T0 @X0 1 ef ]
 {
-[; ;adf7012.c: 191: void Adf_Write_Register_Two(void) {
+[; ;adf7012.c: 189: void Adf_Write_Register_Two(void) {
 [e :U _Adf_Write_Register_Two ]
 [f ]
-"192
+"190
 [v _reg `ul ~T0 @X0 1 a ]
-[; ;adf7012.c: 192: uint32_t reg =
-[; ;adf7012.c: 193: (2) |
-[; ;adf7012.c: 194: ((uint32_t)(adf_config.r2.mod_control & 0x3 ) << 2) |
-[; ;adf7012.c: 195: ((uint32_t)(adf_config.r2.gook & 0x1 ) << 4) |
-[; ;adf7012.c: 196: ((uint32_t)(adf_config.r2.power_amplifier_level & 0x3F ) << 5) |
-[; ;adf7012.c: 197: ((uint32_t)(adf_config.r2.modulation_deviation & 0x1FF) << 11) |
-[; ;adf7012.c: 198: ((uint32_t)(adf_config.r2.gfsk_modulation_control & 0x7 ) << 20) |
-[; ;adf7012.c: 199: ((uint32_t)(adf_config.r2.index_counter & 0x3 ) << 23);
-"199
+[; ;adf7012.c: 190: uint32_t reg =
+[; ;adf7012.c: 191: (2) |
+[; ;adf7012.c: 192: ((uint32_t)(adf_config.r2.mod_control & 0x3 ) << 2) |
+[; ;adf7012.c: 193: ((uint32_t)(adf_config.r2.gook & 0x1 ) << 4) |
+[; ;adf7012.c: 194: ((uint32_t)(adf_config.r2.power_amplifier_level & 0x3F ) << 5) |
+[; ;adf7012.c: 195: ((uint32_t)(adf_config.r2.modulation_deviation & 0x1FF) << 11) |
+[; ;adf7012.c: 196: ((uint32_t)(adf_config.r2.gfsk_modulation_control & 0x7 ) << 20) |
+[; ;adf7012.c: 197: ((uint32_t)(adf_config.r2.index_counter & 0x3 ) << 23);
+"197
 [e = _reg | | | | | | -> -> -> 2 `i `l `ul << -> & -> . . _adf_config 2 0 `i -> 3 `i `ul -> 2 `i << -> & -> . . _adf_config 2 1 `i -> 1 `i `ul -> 4 `i << -> & -> . . _adf_config 2 2 `i -> 63 `i `ul -> 5 `i << & . . _adf_config 2 3 -> -> -> 511 `i `l `ul -> 11 `i << -> & -> . . _adf_config 2 4 `i -> 7 `i `ul -> 20 `i << -> & -> . . _adf_config 2 5 `i -> 3 `i `ul -> 23 `i ]
-"202
+"200
 [v _reg_ptr `uc ~T0 @X0 -> 4 `i a ]
-[; ;adf7012.c: 202: uint8_t reg_ptr[4];
-[; ;adf7012.c: 203: memcpy(reg_ptr, &reg, 4);
-"203
+[; ;adf7012.c: 200: uint8_t reg_ptr[4];
+[; ;adf7012.c: 201: memcpy(reg_ptr, &reg, 4);
+"201
 [e ( _memcpy (3 , , -> &U _reg_ptr `*v -> &U _reg `*Cv -> -> 4 `i `ui ]
-[; ;adf7012.c: 204: Reverse_Array(reg_ptr,4);
-"204
+[; ;adf7012.c: 202: Reverse_Array(reg_ptr,4);
+"202
 [e ( _Reverse_Array (2 , &U _reg_ptr -> -> 4 `i `uc ]
-[; ;adf7012.c: 205: Write_Adf7012_Reg(reg_ptr, 4);
-"205
+[; ;adf7012.c: 203: Write_Adf7012_Reg(reg_ptr, 4);
+"203
 [e ( _Write_Adf7012_Reg (2 , &U _reg_ptr -> -> 4 `i `uc ]
-[; ;adf7012.c: 206: }
-"206
+[; ;adf7012.c: 204: }
+"204
 [e :UE 343 ]
 }
-"208
+"206
 [v _Adf_Write_Register_Three `(v ~T0 @X0 1 ef ]
 {
-[; ;adf7012.c: 208: void Adf_Write_Register_Three(void) {
+[; ;adf7012.c: 206: void Adf_Write_Register_Three(void) {
 [e :U _Adf_Write_Register_Three ]
 [f ]
-"209
+"207
 [v _reg `ul ~T0 @X0 1 a ]
-[; ;adf7012.c: 209: uint32_t reg =
-[; ;adf7012.c: 210: (3) |
-[; ;adf7012.c: 211: ((uint32_t)(adf_config.r3.pll_enable & 0x1 ) << 2) |
-[; ;adf7012.c: 212: ((uint32_t)(adf_config.r3.pa_enable & 0x1 ) << 3) |
-[; ;adf7012.c: 213: ((uint32_t)(adf_config.r3.clkout_enable & 0x1 ) << 4) |
-[; ;adf7012.c: 214: ((uint32_t)(adf_config.r3.data_invert & 0x1 ) << 5) |
-[; ;adf7012.c: 215: ((uint32_t)(adf_config.r3.charge_pump_current & 0x3 ) << 6) |
-[; ;adf7012.c: 216: ((uint32_t)(adf_config.r3.bleed_up & 0x1 ) << 8) |
-[; ;adf7012.c: 217: ((uint32_t)(adf_config.r3.bleed_down & 0x1 ) << 9) |
-[; ;adf7012.c: 218: ((uint32_t)(adf_config.r3.vco_disable & 0x1 ) << 10) |
-[; ;adf7012.c: 219: ((uint32_t)(adf_config.r3.muxout & 0xF ) << 11) |
-[; ;adf7012.c: 220: ((uint32_t)(adf_config.r3.ld_precision & 0x1 ) << 15) |
-[; ;adf7012.c: 221: ((uint32_t)(adf_config.r3.vco_bias & 0xF ) << 16) |
-[; ;adf7012.c: 222: ((uint32_t)(adf_config.r3.pa_bias & 0x7 ) << 20) |
-[; ;adf7012.c: 223: ((uint32_t)(adf_config.r3.pll_test_mode & 0x1F ) << 23) |
-[; ;adf7012.c: 224: ((uint32_t)(adf_config.r3.sd_test_mode & 0xF ) << 28);
-"224
+[; ;adf7012.c: 207: uint32_t reg =
+[; ;adf7012.c: 208: (3) |
+[; ;adf7012.c: 209: ((uint32_t)(adf_config.r3.pll_enable & 0x1 ) << 2) |
+[; ;adf7012.c: 210: ((uint32_t)(adf_config.r3.pa_enable & 0x1 ) << 3) |
+[; ;adf7012.c: 211: ((uint32_t)(adf_config.r3.clkout_enable & 0x1 ) << 4) |
+[; ;adf7012.c: 212: ((uint32_t)(adf_config.r3.data_invert & 0x1 ) << 5) |
+[; ;adf7012.c: 213: ((uint32_t)(adf_config.r3.charge_pump_current & 0x3 ) << 6) |
+[; ;adf7012.c: 214: ((uint32_t)(adf_config.r3.bleed_up & 0x1 ) << 8) |
+[; ;adf7012.c: 215: ((uint32_t)(adf_config.r3.bleed_down & 0x1 ) << 9) |
+[; ;adf7012.c: 216: ((uint32_t)(adf_config.r3.vco_disable & 0x1 ) << 10) |
+[; ;adf7012.c: 217: ((uint32_t)(adf_config.r3.muxout & 0xF ) << 11) |
+[; ;adf7012.c: 218: ((uint32_t)(adf_config.r3.ld_precision & 0x1 ) << 15) |
+[; ;adf7012.c: 219: ((uint32_t)(adf_config.r3.vco_bias & 0xF ) << 16) |
+[; ;adf7012.c: 220: ((uint32_t)(adf_config.r3.pa_bias & 0x7 ) << 20) |
+[; ;adf7012.c: 221: ((uint32_t)(adf_config.r3.pll_test_mode & 0x1F ) << 23) |
+[; ;adf7012.c: 222: ((uint32_t)(adf_config.r3.sd_test_mode & 0xF ) << 28);
+"222
 [e = _reg | | | | | | | | | | | | | | -> -> -> 3 `i `l `ul << -> & -> . . _adf_config 3 0 `i -> 1 `i `ul -> 2 `i << -> & -> . . _adf_config 3 1 `i -> 1 `i `ul -> 3 `i << -> & -> . . _adf_config 3 2 `i -> 1 `i `ul -> 4 `i << -> & -> . . _adf_config 3 3 `i -> 1 `i `ul -> 5 `i << -> & -> . . _adf_config 3 4 `i -> 3 `i `ul -> 6 `i << -> & -> . . _adf_config 3 5 `i -> 1 `i `ul -> 8 `i << -> & -> . . _adf_config 3 6 `i -> 1 `i `ul -> 9 `i << -> & -> . . _adf_config 3 7 `i -> 1 `i `ul -> 10 `i << -> & -> . . _adf_config 3 8 `i -> 15 `i `ul -> 11 `i << -> & -> . . _adf_config 3 9 `i -> 1 `i `ul -> 15 `i << -> & -> . . _adf_config 3 10 `i -> 15 `i `ul -> 16 `i << -> & -> . . _adf_config 3 11 `i -> 7 `i `ul -> 20 `i << -> & -> . . _adf_config 3 12 `i -> 31 `i `ul -> 23 `i << -> & -> . . _adf_config 3 13 `i -> 15 `i `ul -> 28 `i ]
-"227
+"225
 [v _reg_ptr `uc ~T0 @X0 -> 4 `i a ]
-[; ;adf7012.c: 227: uint8_t reg_ptr[4];
-[; ;adf7012.c: 228: memcpy(reg_ptr, &reg, 4);
-"228
+[; ;adf7012.c: 225: uint8_t reg_ptr[4];
+[; ;adf7012.c: 226: memcpy(reg_ptr, &reg, 4);
+"226
 [e ( _memcpy (3 , , -> &U _reg_ptr `*v -> &U _reg `*Cv -> -> 4 `i `ui ]
-[; ;adf7012.c: 229: Reverse_Array(reg_ptr,4);
-"229
+[; ;adf7012.c: 227: Reverse_Array(reg_ptr,4);
+"227
 [e ( _Reverse_Array (2 , &U _reg_ptr -> -> 4 `i `uc ]
-[; ;adf7012.c: 230: Write_Adf7012_Reg(reg_ptr, 4);
-"230
+[; ;adf7012.c: 228: Write_Adf7012_Reg(reg_ptr, 4);
+"228
 [e ( _Write_Adf7012_Reg (2 , &U _reg_ptr -> -> 4 `i `uc ]
-[; ;adf7012.c: 231: }
-"231
+[; ;adf7012.c: 229: }
+"229
 [e :UE 344 ]
 }
-"233
+"231
 [v _Adf_Lock `(uc ~T0 @X0 1 ef ]
-"234
+"232
 {
-[; ;adf7012.c: 233: bool Adf_Lock(void)
-[; ;adf7012.c: 234: {
+[; ;adf7012.c: 231: bool Adf_Lock(void)
+[; ;adf7012.c: 232: {
 [e :U _Adf_Lock ]
 [f ]
-[; ;adf7012.c: 236: Delay_ms(200);
-"236
+[; ;adf7012.c: 234: Delay_ms(200);
+"234
 [e ( _Delay_ms (1 -> -> 200 `i `ui ]
-"237
+"235
 [v _adj `i ~T0 @X0 1 a ]
-[; ;adf7012.c: 237: int adj = adf_config.r0.vco_adjust;
+[; ;adf7012.c: 235: int adj = adf_config.r0.vco_adjust;
 [e = _adj -> . . _adf_config 0 5 `i ]
-"238
+"236
 [v _bias `i ~T0 @X0 1 a ]
-[; ;adf7012.c: 238: int bias = adf_config.r3.vco_bias;
+[; ;adf7012.c: 236: int bias = adf_config.r3.vco_bias;
 [e = _bias -> . . _adf_config 3 10 `i ]
-[; ;adf7012.c: 240: adf_config.r3.pll_enable = 1;
-"240
+[; ;adf7012.c: 238: adf_config.r3.pll_enable = 1;
+"238
 [e = . . _adf_config 3 0 -> -> 1 `i `uc ]
-[; ;adf7012.c: 242: adf_config.r3.muxout = 5;
-"242
+[; ;adf7012.c: 240: adf_config.r3.muxout = 5;
+"240
 [e = . . _adf_config 3 8 -> -> 5 `i `uc ]
-[; ;adf7012.c: 244: Adf_Write_Config();
-"244
+[; ;adf7012.c: 242: Adf_Write_Config();
+"242
 [e ( _Adf_Write_Config ..  ]
-[; ;adf7012.c: 245: Delay_ms(5);
-"245
+[; ;adf7012.c: 243: Delay_ms(5);
+"243
 [e ( _Delay_ms (1 -> -> 5 `i `ui ]
-[; ;adf7012.c: 247: while(!Adf_Locked()) {
-"247
+[; ;adf7012.c: 245: while(!Adf_Locked()) {
+"245
 [e $U 346  ]
 [e :U 347 ]
 {
-[; ;adf7012.c: 249: adf_config.r0.vco_adjust = adj;
-"249
+[; ;adf7012.c: 247: adf_config.r0.vco_adjust = adj;
+"247
 [e = . . _adf_config 0 5 -> _adj `uc ]
-[; ;adf7012.c: 250: adf_config.r3.vco_bias = bias;
-"250
+[; ;adf7012.c: 248: adf_config.r3.vco_bias = bias;
+"248
 [e = . . _adf_config 3 10 -> _bias `uc ]
-[; ;adf7012.c: 252: adf_config.r3.muxout = 5;
-"252
+[; ;adf7012.c: 250: adf_config.r3.muxout = 5;
+"250
 [e = . . _adf_config 3 8 -> -> 5 `i `uc ]
-[; ;adf7012.c: 253: Adf_Write_Config();
-"253
+[; ;adf7012.c: 251: Adf_Write_Config();
+"251
 [e ( _Adf_Write_Config ..  ]
-[; ;adf7012.c: 254: Delay_ms(5);
-"254
+[; ;adf7012.c: 252: Delay_ms(5);
+"252
 [e ( _Delay_ms (1 -> -> 5 `i `ui ]
-[; ;adf7012.c: 255: if(++bias == 14) {
-"255
+[; ;adf7012.c: 253: if(++bias == 14) {
+"253
 [e $ ! == =+ _bias -> 1 `i -> 14 `i 349  ]
 {
-[; ;adf7012.c: 256: bias = 1;
-"256
+[; ;adf7012.c: 254: bias = 1;
+"254
 [e = _bias -> 1 `i ]
-[; ;adf7012.c: 257: if(++adj == 4) {
-"257
+[; ;adf7012.c: 255: if(++adj == 4) {
+"255
 [e $ ! == =+ _adj -> 1 `i -> 4 `i 350  ]
 {
-[; ;adf7012.c: 260: adf_config.r0.vco_adjust = 0;
-"260
+[; ;adf7012.c: 257: adf_config.r0.vco_adjust = 0;
+"257
 [e = . . _adf_config 0 5 -> -> 0 `i `uc ]
-[; ;adf7012.c: 261: adf_config.r3.vco_bias = 5;
-"261
+[; ;adf7012.c: 258: adf_config.r3.vco_bias = 5;
+"258
 [e = . . _adf_config 3 10 -> -> 5 `i `uc ]
-[; ;adf7012.c: 263: return 0;
-"263
+[; ;adf7012.c: 260: return 0;
+"260
 [e ) -> -> 0 `i `uc ]
 [e $UE 345  ]
-"264
+"261
 }
 [e :U 350 ]
-"265
+"262
 }
 [e :U 349 ]
-"266
+"263
 }
 [e :U 346 ]
-"247
+"245
 [e $ ! != -> ( _Adf_Locked ..  `i -> -> -> 0 `i `uc `i 347  ]
 [e :U 348 ]
-[; ;adf7012.c: 264: }
-[; ;adf7012.c: 265: }
-[; ;adf7012.c: 266: }
-[; ;adf7012.c: 270: return 1;
-"270
+[; ;adf7012.c: 261: }
+[; ;adf7012.c: 262: }
+[; ;adf7012.c: 263: }
+[; ;adf7012.c: 267: return 1;
+"267
 [e ) -> -> 1 `i `uc ]
 [e $UE 345  ]
-[; ;adf7012.c: 271: }
-"271
+[; ;adf7012.c: 268: }
+"268
 [e :UE 345 ]
 }
-"273
+"270
 [v _Adf_Locked `(uc ~T0 @X0 1 ef ]
-"274
+"271
 {
-[; ;adf7012.c: 273: bool Adf_Locked(void)
-[; ;adf7012.c: 274: {
+[; ;adf7012.c: 270: bool Adf_Locked(void)
+[; ;adf7012.c: 271: {
 [e :U _Adf_Locked ]
 [f ]
-[; ;adf7012.c: 275: return Read_Adf7012_Muxout();
-"275
+[; ;adf7012.c: 272: return Read_Adf7012_Muxout();
+"272
 [e ) ( _Read_Adf7012_Muxout ..  ]
 [e $UE 351  ]
-[; ;adf7012.c: 276: }
-"276
+[; ;adf7012.c: 273: }
+"273
 [e :UE 351 ]
 }
-"279
+"276
 [v _Set_Freq `(v ~T0 @X0 1 ef1`ul ]
-"280
+"277
 {
-[; ;adf7012.c: 279: void Set_Freq(uint32_t freq)
-[; ;adf7012.c: 280: {
+[; ;adf7012.c: 276: void Set_Freq(uint32_t freq)
+[; ;adf7012.c: 277: {
 [e :U _Set_Freq ]
-"279
+"276
 [v _freq `ul ~T0 @X0 1 r1 ]
-"280
+"277
 [f ]
-[; ;adf7012.c: 285: adf_config.r0.output_divider = 0;
-"285
+[; ;adf7012.c: 278: adf_config.r0.output_divider = 0;
+"278
 [e = . . _adf_config 0 6 -> -> 0 `i `uc ]
-[; ;adf7012.c: 286: if (freq < 410000000) { adf_config.r0.output_divider = 1; };
-"286
+[; ;adf7012.c: 279: if (freq < 410000000) { adf_config.r0.output_divider = 1; };
+"279
 [e $ ! < _freq -> -> 410000000 `l `ul 353  ]
 {
 [e = . . _adf_config 0 6 -> -> 1 `i `uc ]
 }
 [e :U 353 ]
-[; ;adf7012.c: 287: if (freq < 210000000) { adf_config.r0.output_divider = 2; };
-"287
+[; ;adf7012.c: 280: if (freq < 210000000) { adf_config.r0.output_divider = 2; };
+"280
 [e $ ! < _freq -> -> 210000000 `l `ul 354  ]
 {
 [e = . . _adf_config 0 6 -> -> 2 `i `uc ]
 }
 [e :U 354 ]
-[; ;adf7012.c: 288: if (freq < 130000000) { adf_config.r0.output_divider = 3; };
-"288
+[; ;adf7012.c: 281: if (freq < 130000000) { adf_config.r0.output_divider = 3; };
+"281
 [e $ ! < _freq -> -> 130000000 `l `ul 355  ]
 {
 [e = . . _adf_config 0 6 -> -> 3 `i `uc ]
 }
 [e :U 355 ]
-"290
+"283
 [v _f_pfd `ul ~T0 @X0 1 a ]
-[; ;adf7012.c: 290: uint32_t f_pfd = 20000000L / adf_config.r0.r_divider;
-[e = _f_pfd -> / -> 20000000 `l -> . . _adf_config 0 1 `l `ul ]
-"292
+[; ;adf7012.c: 283: uint32_t f_pfd = 40000000L / adf_config.r0.r_divider;
+[e = _f_pfd -> / -> 40000000 `l -> . . _adf_config 0 1 `l `ul ]
+"285
 [v _n `ul ~T0 @X0 1 a ]
-[; ;adf7012.c: 292: uint32_t n = (uint32_t)(freq / f_pfd);
+[; ;adf7012.c: 285: uint32_t n = (uint32_t)(freq / f_pfd);
 [e = _n / _freq _f_pfd ]
-"294
+"287
 [v _ratio `f ~T0 @X0 1 a ]
-[; ;adf7012.c: 294: float ratio = (float)freq / (float)f_pfd;
+[; ;adf7012.c: 287: float ratio = (float)freq / (float)f_pfd;
 [e = _ratio / -> _freq `f -> _f_pfd `f ]
-"295
+"288
 [v _rest `f ~T0 @X0 1 a ]
-[; ;adf7012.c: 295: float rest = ratio - (float)n;
+[; ;adf7012.c: 288: float rest = ratio - (float)n;
 [e = _rest - _ratio -> _n `f ]
-"298
+"291
 [v _m `ul ~T0 @X0 1 a ]
-[; ;adf7012.c: 298: uint32_t m = (uint32_t)(rest * 4096);
+[; ;adf7012.c: 291: uint32_t m = (uint32_t)(rest * 4096);
 [e = _m -> * _rest -> -> 4096 `i `f `ul ]
-[; ;adf7012.c: 300: adf_config.r1.integer_n = n;
-"300
+[; ;adf7012.c: 293: adf_config.r1.integer_n = n;
+"293
 [e = . . _adf_config 1 1 -> _n `uc ]
-[; ;adf7012.c: 301: adf_config.r1.fractional_n = m;
-"301
+[; ;adf7012.c: 294: adf_config.r1.fractional_n = m;
+"294
 [e = . . _adf_config 1 0 _m ]
-[; ;adf7012.c: 303: }
-"303
+[; ;adf7012.c: 296: }
+"296
 [e :UE 352 ]
 }
-"306
+"299
 [v _Radio_Setup `(v ~T0 @X0 1 ef ]
-"307
+"300
 {
-[; ;adf7012.c: 306: void Radio_Setup()
-[; ;adf7012.c: 307: {
+[; ;adf7012.c: 299: void Radio_Setup()
+[; ;adf7012.c: 300: {
 [e :U _Radio_Setup ]
 [f ]
-[; ;adf7012.c: 309: Adf_Reset_Config();
-"309
+[; ;adf7012.c: 302: Adf_Reset_Config();
+"302
 [e ( _Adf_Reset_Config ..  ]
-[; ;adf7012.c: 311: Adf_Write_Config();
-"311
+[; ;adf7012.c: 304: Adf_Write_Config();
+"304
 [e ( _Adf_Write_Config ..  ]
-[; ;adf7012.c: 313: Delay_ms(10);
-"313
+[; ;adf7012.c: 306: Delay_ms(10);
+"306
 [e ( _Delay_ms (1 -> -> 10 `i `ui ]
-[; ;adf7012.c: 314: }
-"314
+[; ;adf7012.c: 307: }
+"307
 [e :UE 356 ]
 }
-"317
+"310
 [v _Ptt_On `(uc ~T0 @X0 1 ef ]
-"318
+"311
 {
-[; ;adf7012.c: 317: bool Ptt_On()
-[; ;adf7012.c: 318: {
+[; ;adf7012.c: 310: bool Ptt_On()
+[; ;adf7012.c: 311: {
 [e :U _Ptt_On ]
 [f ]
-[; ;adf7012.c: 322: adf_config.r3.pa_enable = 0;
-"322
+[; ;adf7012.c: 312: adf_config.r3.pa_enable = 0;
+"312
 [e = . . _adf_config 3 1 -> -> 0 `i `uc ]
-[; ;adf7012.c: 323: adf_config.r2.power_amplifier_level = 0;
-"323
+[; ;adf7012.c: 313: adf_config.r2.power_amplifier_level = 0;
+"313
 [e = . . _adf_config 2 2 -> -> 0 `i `uc ]
-[; ;adf7012.c: 324: adf_config.r3.muxout = 3;
-"324
+[; ;adf7012.c: 314: adf_config.r3.muxout = 3;
+"314
 [e = . . _adf_config 3 8 -> -> 3 `i `uc ]
-[; ;adf7012.c: 326: Adf_Write_Config();
-"326
+[; ;adf7012.c: 316: Adf_Write_Config();
+"316
 [e ( _Adf_Write_Config ..  ]
-[; ;adf7012.c: 327: Delay_ms(10);
-"327
+[; ;adf7012.c: 317: Delay_ms(10);
+"317
 [e ( _Delay_ms (1 -> -> 10 `i `ui ]
-[; ;adf7012.c: 331: if (!Read_Adf7012_Muxout())
-"331
+[; ;adf7012.c: 321: if (!Read_Adf7012_Muxout())
+"321
 [e $ ! ! != -> ( _Read_Adf7012_Muxout ..  `i -> -> -> 0 `i `uc `i 358  ]
-[; ;adf7012.c: 332: {
-"332
+[; ;adf7012.c: 322: {
+"322
 {
-[; ;adf7012.c: 333: return 0;
-"333
+[; ;adf7012.c: 323: return 0;
+"323
 [e ) -> -> 0 `i `uc ]
 [e $UE 357  ]
-"334
+"324
 }
-[; ;adf7012.c: 334: }
+[; ;adf7012.c: 324: }
 [e $U 359  ]
-"335
+"325
 [e :U 358 ]
-[; ;adf7012.c: 335: else
-[; ;adf7012.c: 336: {
-"336
+[; ;adf7012.c: 325: else
+[; ;adf7012.c: 326: {
+"326
 {
-[; ;adf7012.c: 338: adf_config.r3.pa_enable = 1;
-"338
+[; ;adf7012.c: 328: adf_config.r3.pa_enable = 1;
+"328
 [e = . . _adf_config 3 1 -> -> 1 `i `uc ]
-[; ;adf7012.c: 339: adf_config.r2.power_amplifier_level = 63;
-"339
+[; ;adf7012.c: 329: adf_config.r2.power_amplifier_level = 63;
+"329
 [e = . . _adf_config 2 2 -> -> 63 `i `uc ]
-[; ;adf7012.c: 341: Delay_ms(10);
-"341
+[; ;adf7012.c: 331: Delay_ms(10);
+"331
 [e ( _Delay_ms (1 -> -> 10 `i `ui ]
-[; ;adf7012.c: 342: Adf_Write_Config();
-"342
+[; ;adf7012.c: 332: Adf_Write_Config();
+"332
 [e ( _Adf_Write_Config ..  ]
-[; ;adf7012.c: 343: Delay_ms(1);
-"343
+[; ;adf7012.c: 333: Delay_ms(1);
+"333
 [e ( _Delay_ms (1 -> -> 1 `i `ui ]
-[; ;adf7012.c: 345: return 1;
-"345
+[; ;adf7012.c: 335: return 1;
+"335
 [e ) -> -> 1 `i `uc ]
 [e $UE 357  ]
-"346
+"336
 }
 [e :U 359 ]
-[; ;adf7012.c: 346: }
-[; ;adf7012.c: 347: }
-"347
+[; ;adf7012.c: 336: }
+[; ;adf7012.c: 337: }
+"337
 [e :UE 357 ]
 }
-"349
+"339
 [v _Ptt_Off `(v ~T0 @X0 1 ef ]
-"350
+"340
 {
-[; ;adf7012.c: 349: void Ptt_Off()
-[; ;adf7012.c: 350: {
+[; ;adf7012.c: 339: void Ptt_Off()
+[; ;adf7012.c: 340: {
 [e :U _Ptt_Off ]
 [f ]
-[; ;adf7012.c: 351: adf_config.r3.pa_enable = 0;
-"351
+[; ;adf7012.c: 341: adf_config.r3.pa_enable = 0;
+"341
 [e = . . _adf_config 3 1 -> -> 0 `i `uc ]
-[; ;adf7012.c: 352: adf_config.r2.power_amplifier_level = 0;
-"352
+[; ;adf7012.c: 342: adf_config.r2.power_amplifier_level = 0;
+"342
 [e = . . _adf_config 2 2 -> -> 0 `i `uc ]
-[; ;adf7012.c: 353: Adf_Write_Config();
-"353
+[; ;adf7012.c: 343: Adf_Write_Config();
+"343
 [e ( _Adf_Write_Config ..  ]
-[; ;adf7012.c: 354: Delay_ms(10);
-"354
+[; ;adf7012.c: 344: Delay_ms(10);
+"344
 [e ( _Delay_ms (1 -> -> 10 `i `ui ]
-[; ;adf7012.c: 355: }
-"355
+[; ;adf7012.c: 345: }
+"345
 [e :UE 360 ]
 }

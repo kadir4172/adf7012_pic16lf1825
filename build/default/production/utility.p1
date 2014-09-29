@@ -3,7 +3,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _TRISA `Vuc ~T0 @X0 0 e@140 ]
 "1124
 [v _TRISC `Vuc ~T0 @X0 0 e@142 ]
-"73 utility.h
+"66 utility.h
 [v _Dac0_Start_Hold `(v ~T0 @X0 0 ef ]
 [v F3133 `(v ~T0 @X0 1 tf1`ul ]
 "154 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic.h
@@ -25,7 +25,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S34 . . ]
 "427
 [v _PORTAbits `VS34 ~T0 @X0 0 e@12 ]
-"62 utility.h
+"55 utility.h
 [v _Spi_Byte_Send `(uc ~T0 @X0 0 ef1`uc ]
 "2417 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16lf1825.h
 [v _DACCON1 `Vuc ~T0 @X0 0 e@281 ]
@@ -232,20 +232,20 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;utility.h: 28: extern bool Read_Adf7012_Muxout(void);
 [; ;utility.h: 29: extern bool Reverse_Array(uint8_t* ,uint8_t);
 [; ;utility.h: 30: extern bool Send_Vcxo_Signal(uint8_t);
-[; ;utility.h: 58: extern void Radio_Setup(void);
-[; ;utility.h: 59: extern bool Ptt_On(void);
-[; ;utility.h: 60: extern void Ptt_Off(void);
-[; ;utility.h: 61: extern void Set_Freq(uint32_t);
-[; ;utility.h: 62: extern bool Spi_Byte_Send(uint8_t);
-[; ;utility.h: 63: extern bool Adf_Lock(void);
-[; ;utility.h: 69: extern void Timer0_Start(void);
-[; ;utility.h: 70: extern void Timer0_Stop(void);
-[; ;utility.h: 71: extern void Timer1_Start(void);
-[; ;utility.h: 72: extern void Timer1_Stop(void);
-[; ;utility.h: 73: extern void Dac0_Start_Hold(void);
-[; ;utility.h: 74: extern void Dac0_Stop(void);
-[; ;utility.h: 75: extern void Adc1_Start(void);
-[; ;utility.h: 76: extern void Adc1_Stop(void);
+[; ;utility.h: 51: extern void Radio_Setup(void);
+[; ;utility.h: 52: extern bool Ptt_On(void);
+[; ;utility.h: 53: extern void Ptt_Off(void);
+[; ;utility.h: 54: extern void Set_Freq(uint32_t);
+[; ;utility.h: 55: extern bool Spi_Byte_Send(uint8_t);
+[; ;utility.h: 56: extern bool Adf_Lock(void);
+[; ;utility.h: 62: extern void Timer0_Start(void);
+[; ;utility.h: 63: extern void Timer0_Stop(void);
+[; ;utility.h: 64: extern void Timer1_Start(void);
+[; ;utility.h: 65: extern void Timer1_Stop(void);
+[; ;utility.h: 66: extern void Dac0_Start_Hold(void);
+[; ;utility.h: 67: extern void Dac0_Stop(void);
+[; ;utility.h: 68: extern void Adc1_Start(void);
+[; ;utility.h: 69: extern void Adc1_Stop(void);
 [; ;string.h: 22: extern void * memcpy(void *, const void *, size_t);
 [; ;string.h: 23: extern void * memmove(void *, const void *, size_t);
 [; ;string.h: 24: extern void * memset(void *, int, size_t);
@@ -2864,455 +2864,452 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;eeprom_routines.h: 43: extern void eecpymem(volatile unsigned char *to, __eeprom unsigned char *from, unsigned char size);
 [; ;eeprom_routines.h: 44: extern void memcpyee(__eeprom unsigned char *to, const unsigned char *from, unsigned char size);
 [; ;pic.h: 154: extern __nonreentrant void _delay(unsigned long);
-[; ;utility.c: 25: bool Spi_Byte_Send(uint8_t);
-"33 utility.c
+[; ;utility.c: 21: bool Spi_Byte_Send(uint8_t);
+"31 utility.c
 [v _Gpio_Config `(uc ~T0 @X0 1 ef ]
 {
-[; ;utility.c: 33: bool Gpio_Config(void){
+[; ;utility.c: 31: bool Gpio_Config(void){
 [e :U _Gpio_Config ]
 [f ]
-[; ;utility.c: 36: TRISA |= 0b00000010;
-"36
+[; ;utility.c: 34: TRISA |= 0b00000010;
+"34
 [e =| _TRISA -> -> 2 `i `uc ]
-[; ;utility.c: 37: TRISA &= 0b11001011;
-"37
+[; ;utility.c: 35: TRISA &= 0b11001011;
+"35
 [e =& _TRISA -> -> 203 `i `uc ]
-[; ;utility.c: 38: TRISC |= 0b00100000;
-"38
+[; ;utility.c: 36: TRISC |= 0b00100000;
+"36
 [e =| _TRISC -> -> 32 `i `uc ]
-[; ;utility.c: 39: TRISC &= 0b11100000;
-"39
+[; ;utility.c: 37: TRISC &= 0b11100000;
+"37
 [e =& _TRISC -> -> 224 `i `uc ]
-[; ;utility.c: 41: return 1;
-"41
+[; ;utility.c: 39: return 1;
+"39
 [e ) -> -> 1 `i `uc ]
 [e $UE 329  ]
-[; ;utility.c: 43: }
-"43
+[; ;utility.c: 41: }
+"41
 [e :UE 329 ]
 }
-"46
+"44
 [v _Delay_ms `(v ~T0 @X0 1 ef1`ui ]
-"47
+"45
 {
-[; ;utility.c: 46: void Delay_ms(uint16_t time_to_delay)
-[; ;utility.c: 47: {
+[; ;utility.c: 44: void Delay_ms(uint16_t time_to_delay)
+[; ;utility.c: 45: {
 [e :U _Delay_ms ]
-"46
+"44
 [v _time_to_delay `ui ~T0 @X0 1 r1 ]
-"47
+"45
 [f ]
-"48
+"46
 [v _i `ui ~T0 @X0 1 a ]
-[; ;utility.c: 48: uint16_t i=0;
+[; ;utility.c: 46: uint16_t i=0;
 [e = _i -> -> 0 `i `ui ]
-[; ;utility.c: 51: Dac0_Start_Hold();
-"51
+[; ;utility.c: 48: Dac0_Start_Hold();
+"48
 [e ( _Dac0_Start_Hold ..  ]
-[; ;utility.c: 52: for(i=0; i<time_to_delay; i++){
-"52
+[; ;utility.c: 49: for(i=0; i<time_to_delay; i++){
+"49
 {
 [e = _i -> -> 0 `i `ui ]
 [e $U 334  ]
 [e :U 331 ]
 {
-[; ;utility.c: 53: _delay((unsigned long)((1)*(32000000/4000.0)));
-"53
+[; ;utility.c: 50: _delay((unsigned long)((1)*(32000000/4000.0)));
+"50
 [e ( __delay (1 -> * -> -> 1 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
-"54
+"51
 }
-"52
+"49
 [e ++ _i -> -> 1 `i `ui ]
 [e :U 334 ]
 [e $ < _i _time_to_delay 331  ]
 [e :U 332 ]
-"54
+"51
 }
-[; ;utility.c: 54: }
-[; ;utility.c: 56: }
-"56
+[; ;utility.c: 51: }
+[; ;utility.c: 52: }
+"52
 [e :UE 330 ]
 }
-"68
+"64
 [v _Read_Adf7012_Muxout `(uc ~T0 @X0 1 ef ]
 {
-[; ;utility.c: 68: bool Read_Adf7012_Muxout(void){
+[; ;utility.c: 64: bool Read_Adf7012_Muxout(void){
 [e :U _Read_Adf7012_Muxout ]
 [f ]
-[; ;utility.c: 70: Delay_ms(1);
-"70
-[e ( _Delay_ms (1 -> -> 1 `i `ui ]
-[; ;utility.c: 72: if(PORTCbits.RC5)
-"72
+[; ;utility.c: 66: if(PORTCbits.RC5)
+"66
 [e $ ! != -> . . _PORTCbits 0 5 `i -> -> -> 0 `i `Vuc `i 336  ]
-[; ;utility.c: 73: return 1;
-"73
+[; ;utility.c: 67: return 1;
+"67
 [e ) -> -> 1 `i `uc ]
 [e $UE 335  ]
 [e $U 337  ]
-"74
+"68
 [e :U 336 ]
-[; ;utility.c: 74: else
-[; ;utility.c: 75: return 0;
-"75
+[; ;utility.c: 68: else
+[; ;utility.c: 69: return 0;
+"69
 [e ) -> -> 0 `i `uc ]
 [e $UE 335  ]
 [e :U 337 ]
-[; ;utility.c: 77: }
-"77
+[; ;utility.c: 71: }
+"71
 [e :UE 335 ]
 }
-"88
+"82
 [v _Write_Adf7012_Reg `(uc ~T0 @X0 1 ef2`*uc`uc ]
 {
-[; ;utility.c: 88: bool Write_Adf7012_Reg(uint8_t* reg_value, uint8_t size_of_reg){
+[; ;utility.c: 82: bool Write_Adf7012_Reg(uint8_t* reg_value, uint8_t size_of_reg){
 [e :U _Write_Adf7012_Reg ]
 [v _reg_value `*uc ~T0 @X0 1 r1 ]
 [v _size_of_reg `uc ~T0 @X0 1 r2 ]
 [f ]
-"90
+"84
 [v _i `uc ~T0 @X0 1 a ]
-[; ;utility.c: 90: uint8_t i = 0;
+[; ;utility.c: 84: uint8_t i = 0;
 [e = _i -> -> 0 `i `uc ]
-[; ;utility.c: 91: Delay_ms(1);
-"91
+[; ;utility.c: 85: Delay_ms(1);
+"85
 [e ( _Delay_ms (1 -> -> 1 `i `ui ]
-[; ;utility.c: 92: PORTAbits.RA4 = 0;;
-"92
+[; ;utility.c: 86: PORTAbits.RA4 = 0;;
+"86
 [e = . . _PORTAbits 0 4 -> -> 0 `i `uc ]
-[; ;utility.c: 93: Delay_ms(1);
-"93
+[; ;utility.c: 87: Delay_ms(1);
+"87
 [e ( _Delay_ms (1 -> -> 1 `i `ui ]
-[; ;utility.c: 95: for (i = 0; i < size_of_reg; i++){
-"95
+[; ;utility.c: 89: for (i = 0; i < size_of_reg; i++){
+"89
 {
 [e = _i -> -> 0 `i `uc ]
 [e $U 342  ]
 [e :U 339 ]
 {
-[; ;utility.c: 96: Spi_Byte_Send(*(reg_value+i));
-"96
+[; ;utility.c: 90: Spi_Byte_Send(*(reg_value+i));
+"90
 [e ( _Spi_Byte_Send (1 *U + _reg_value * -> _i `ux -> -> # *U _reg_value `ui `ux ]
-"97
+"91
 }
-"95
+"89
 [e ++ _i -> -> 1 `i `uc ]
 [e :U 342 ]
 [e $ < -> _i `i -> _size_of_reg `i 339  ]
 [e :U 340 ]
-"97
+"91
 }
-[; ;utility.c: 97: }
-[; ;utility.c: 99: Delay_ms(1);
-"99
+[; ;utility.c: 91: }
+[; ;utility.c: 93: Delay_ms(1);
+"93
 [e ( _Delay_ms (1 -> -> 1 `i `ui ]
-[; ;utility.c: 100: PORTAbits.RA4 = 1;;
-"100
+[; ;utility.c: 94: PORTAbits.RA4 = 1;;
+"94
 [e = . . _PORTAbits 0 4 -> -> 1 `i `uc ]
-[; ;utility.c: 102: Delay_ms(1);
-"102
+[; ;utility.c: 96: Delay_ms(1);
+"96
 [e ( _Delay_ms (1 -> -> 1 `i `ui ]
-[; ;utility.c: 103: return 1;
-"103
+[; ;utility.c: 97: return 1;
+"97
 [e ) -> -> 1 `i `uc ]
 [e $UE 338  ]
-[; ;utility.c: 104: }
-"104
+[; ;utility.c: 98: }
+"98
 [e :UE 338 ]
 }
-"114
+"108
 [v _Send_Vcxo_Signal `(uc ~T0 @X0 1 ef1`uc ]
 {
-[; ;utility.c: 114: bool Send_Vcxo_Signal(uint8_t value){
+[; ;utility.c: 108: bool Send_Vcxo_Signal(uint8_t value){
 [e :U _Send_Vcxo_Signal ]
 [v _value `uc ~T0 @X0 1 r1 ]
 [f ]
-[; ;utility.c: 116: DACCON1 = value;
-"116
+[; ;utility.c: 110: DACCON1 = value;
+"110
 [e = _DACCON1 _value ]
-[; ;utility.c: 117: return 1;
-"117
+[; ;utility.c: 111: return 1;
+"111
 [e ) -> -> 1 `i `uc ]
 [e $UE 343  ]
-[; ;utility.c: 118: }
-"118
+[; ;utility.c: 112: }
+"112
 [e :UE 343 ]
 }
-"204
+"198
 [v _Reverse_Array `(uc ~T0 @X0 1 ef2`*uc`uc ]
 {
-[; ;utility.c: 204: bool Reverse_Array(uint8_t* input,uint8_t length){
+[; ;utility.c: 198: bool Reverse_Array(uint8_t* input,uint8_t length){
 [e :U _Reverse_Array ]
 [v _input `*uc ~T0 @X0 1 r1 ]
 [v _length `uc ~T0 @X0 1 r2 ]
 [f ]
-"205
+"199
 [v _i `uc ~T0 @X0 1 a ]
-[; ;utility.c: 205: uint8_t i = 0;
+[; ;utility.c: 199: uint8_t i = 0;
 [e = _i -> -> 0 `i `uc ]
 [v F3148 `uc ~T0 @X0 -> 4 `i s ]
 [i F3148
 :U ..
-"206
+"200
 -> -> 0 `i `uc
 ..
 ]
 [v _buffer_array `uc ~T0 @X0 -> 4 `i a ]
-[; ;utility.c: 206: uint8_t buffer_array[4] = {0};
+[; ;utility.c: 200: uint8_t buffer_array[4] = {0};
 [e = _buffer_array F3148 ]
-[; ;utility.c: 207: memcpy(buffer_array, input, length);
-"207
+[; ;utility.c: 201: memcpy(buffer_array, input, length);
+"201
 [e ( _memcpy (3 , , -> &U _buffer_array `*v -> _input `*Cv -> _length `ui ]
-[; ;utility.c: 209: for(i = 0; i<length; i++){
-"209
+[; ;utility.c: 203: for(i = 0; i<length; i++){
+"203
 {
 [e = _i -> -> 0 `i `uc ]
 [e $U 348  ]
 [e :U 345 ]
 {
-[; ;utility.c: 210: *(input+i) = *(buffer_array+(length-1)-i);
-"210
+[; ;utility.c: 204: *(input+i) = *(buffer_array+(length-1)-i);
+"204
 [e = *U + _input * -> _i `ux -> -> # *U _input `ui `ux *U - + &U _buffer_array * -> - -> _length `i -> 1 `i `x -> -> # *U &U _buffer_array `i `x * -> _i `ux -> -> # *U + &U _buffer_array * -> - -> _length `i -> 1 `i `x -> -> # *U &U _buffer_array `i `x `ui `ux ]
-"211
+"205
 }
-"209
+"203
 [e ++ _i -> -> 1 `i `uc ]
 [e :U 348 ]
 [e $ < -> _i `i -> _length `i 345  ]
 [e :U 346 ]
-"211
+"205
 }
-[; ;utility.c: 211: }
-[; ;utility.c: 215: return 1;
-"215
+[; ;utility.c: 205: }
+[; ;utility.c: 209: return 1;
+"209
 [e ) -> -> 1 `i `uc ]
 [e $UE 344  ]
-[; ;utility.c: 216: }
-"216
+[; ;utility.c: 210: }
+"210
 [e :UE 344 ]
 }
-"226
+"220
 [v _Spi_Byte_Send `(uc ~T0 @X0 1 ef1`uc ]
 {
-[; ;utility.c: 226: bool Spi_Byte_Send(uint8_t data){
+[; ;utility.c: 220: bool Spi_Byte_Send(uint8_t data){
 [e :U _Spi_Byte_Send ]
 [v _data `uc ~T0 @X0 1 r1 ]
 [f ]
-[; ;utility.c: 228: PORTAbits.RA2 = 0;
-"228
+[; ;utility.c: 222: PORTAbits.RA2 = 0;
+"222
 [e = . . _PORTAbits 0 2 -> -> 0 `i `uc ]
-"229
+"223
 [v _i `uc ~T0 @X0 1 a ]
-"230
+"224
 [v _data_to_send `uc ~T0 @X0 1 a ]
-[; ;utility.c: 229: uint8_t i;
-[; ;utility.c: 230: uint8_t data_to_send;
-[; ;utility.c: 231: data_to_send = data;
-"231
+[; ;utility.c: 223: uint8_t i;
+[; ;utility.c: 224: uint8_t data_to_send;
+[; ;utility.c: 225: data_to_send = data;
+"225
 [e = _data_to_send _data ]
-[; ;utility.c: 232: for(i = 0; i <8; i++){
-"232
+[; ;utility.c: 226: for(i = 0; i <8; i++){
+"226
 {
 [e = _i -> -> 0 `i `uc ]
 [e $ < -> _i `i -> 8 `i 350  ]
 [e $U 351  ]
 [e :U 350 ]
 {
-[; ;utility.c: 234: if(data_to_send & 0x80)
-"234
+[; ;utility.c: 228: if(data_to_send & 0x80)
+"228
 [e $ ! != & -> _data_to_send `i -> 128 `i -> 0 `i 353  ]
-[; ;utility.c: 235: PORTCbits.RC2 = 1;
-"235
+[; ;utility.c: 229: PORTCbits.RC2 = 1;
+"229
 [e = . . _PORTCbits 0 2 -> -> 1 `i `uc ]
 [e $U 354  ]
-"236
+"230
 [e :U 353 ]
-[; ;utility.c: 236: else
-[; ;utility.c: 237: PORTCbits.RC2 = 0;
-"237
+[; ;utility.c: 230: else
+[; ;utility.c: 231: PORTCbits.RC2 = 0;
+"231
 [e = . . _PORTCbits 0 2 -> -> 0 `i `uc ]
 [e :U 354 ]
-[; ;utility.c: 239: data_to_send <<= 1;
-"239
+[; ;utility.c: 233: data_to_send <<= 1;
+"233
 [e =<< _data_to_send -> 1 `i ]
-[; ;utility.c: 241: PORTAbits.RA2 = 1;
-"241
+[; ;utility.c: 235: PORTAbits.RA2 = 1;
+"235
 [e = . . _PORTAbits 0 2 -> -> 1 `i `uc ]
-[; ;utility.c: 242: Delay_ms(1);
-"242
+[; ;utility.c: 236: Delay_ms(1);
+"236
 [e ( _Delay_ms (1 -> -> 1 `i `ui ]
-[; ;utility.c: 243: PORTAbits.RA2 = 0;
-"243
+[; ;utility.c: 237: PORTAbits.RA2 = 0;
+"237
 [e = . . _PORTAbits 0 2 -> -> 0 `i `uc ]
-[; ;utility.c: 244: Delay_ms(1);
-"244
+[; ;utility.c: 238: Delay_ms(1);
+"238
 [e ( _Delay_ms (1 -> -> 1 `i `ui ]
-"246
+"240
 }
-"232
+"226
 [e ++ _i -> -> 1 `i `uc ]
 [e $ < -> _i `i -> 8 `i 350  ]
 [e :U 351 ]
-"246
+"240
 }
-[; ;utility.c: 246: }
-[; ;utility.c: 247: return 1;
-"247
+[; ;utility.c: 240: }
+[; ;utility.c: 241: return 1;
+"241
 [e ) -> -> 1 `i `uc ]
 [e $UE 349  ]
-[; ;utility.c: 248: }
-"248
+[; ;utility.c: 242: }
+"242
 [e :UE 349 ]
 }
-"253
+"244
 [v _Timer0_Start `(v ~T0 @X0 1 ef ]
 {
-[; ;utility.c: 253: void Timer0_Start(void){
+[; ;utility.c: 244: void Timer0_Start(void){
 [e :U _Timer0_Start ]
 [f ]
-[; ;utility.c: 254: TMR0 = 0x00;
-"254
+[; ;utility.c: 245: TMR0 = 0x00;
+"245
 [e = _TMR0 -> -> 0 `i `uc ]
-[; ;utility.c: 255: TMR0IF = 0;
-"255
+[; ;utility.c: 246: TMR0IF = 0;
+"246
 [e = _TMR0IF -> -> 0 `i `b ]
-[; ;utility.c: 256: TMR0IE = 1;
-"256
+[; ;utility.c: 247: TMR0IE = 1;
+"247
 [e = _TMR0IE -> -> 1 `i `b ]
-[; ;utility.c: 257: }
-"257
+[; ;utility.c: 248: }
+"248
 [e :UE 355 ]
 }
-"258
+"249
 [v _Timer0_Stop `(v ~T0 @X0 1 ef ]
 {
-[; ;utility.c: 258: void Timer0_Stop(void){
+[; ;utility.c: 249: void Timer0_Stop(void){
 [e :U _Timer0_Stop ]
 [f ]
-[; ;utility.c: 259: TMR0IE = 0;
-"259
+[; ;utility.c: 250: TMR0IE = 0;
+"250
 [e = _TMR0IE -> -> 0 `i `b ]
-[; ;utility.c: 260: TMR0 = 0x00;
-"260
+[; ;utility.c: 251: TMR0 = 0x00;
+"251
 [e = _TMR0 -> -> 0 `i `uc ]
-[; ;utility.c: 261: }
-"261
+[; ;utility.c: 252: }
+"252
 [e :UE 356 ]
 }
-"263
+"254
 [v _Timer1_Start `(v ~T0 @X0 1 ef ]
 {
-[; ;utility.c: 263: void Timer1_Start(void){
+[; ;utility.c: 254: void Timer1_Start(void){
 [e :U _Timer1_Start ]
 [f ]
-[; ;utility.c: 265: TMR1H = 0x00;
-"265
+[; ;utility.c: 255: TMR1H = 0x00;
+"255
 [e = _TMR1H -> -> 0 `i `uc ]
-[; ;utility.c: 266: TMR1L = 0x00;
-"266
+[; ;utility.c: 256: TMR1L = 0x00;
+"256
 [e = _TMR1L -> -> 0 `i `uc ]
-[; ;utility.c: 268: TMR1IE = 0;
-"268
+[; ;utility.c: 258: TMR1IE = 0;
+"258
 [e = _TMR1IE -> -> 0 `i `b ]
-[; ;utility.c: 271: CCPR1H = 0x03;
-"271
+[; ;utility.c: 261: CCPR1H = 0x03;
+"261
 [e = _CCPR1H -> -> 3 `i `uc ]
-[; ;utility.c: 272: CCPR1L = 0x41;
-"272
+[; ;utility.c: 262: CCPR1L = 0x41;
+"262
 [e = _CCPR1L -> -> 65 `i `uc ]
-[; ;utility.c: 274: CCP1IF = 0;
-"274
+[; ;utility.c: 264: CCP1IF = 0;
+"264
 [e = _CCP1IF -> -> 0 `i `b ]
-[; ;utility.c: 276: CCP1IE = 1;
-"276
+[; ;utility.c: 265: CCP1IE = 1;
+"265
 [e = _CCP1IE -> -> 1 `i `b ]
-[; ;utility.c: 277: }
-"277
+[; ;utility.c: 266: }
+"266
 [e :UE 357 ]
 }
-"279
+"268
 [v _Timer1_Stop `(v ~T0 @X0 1 ef ]
 {
-[; ;utility.c: 279: void Timer1_Stop(void){
+[; ;utility.c: 268: void Timer1_Stop(void){
 [e :U _Timer1_Stop ]
 [f ]
-[; ;utility.c: 281: TMR1H = 0x00;
-"281
+[; ;utility.c: 269: TMR1H = 0x00;
+"269
 [e = _TMR1H -> -> 0 `i `uc ]
-[; ;utility.c: 282: TMR1L = 0x00;
-"282
+[; ;utility.c: 270: TMR1L = 0x00;
+"270
 [e = _TMR1L -> -> 0 `i `uc ]
-[; ;utility.c: 284: CCP1IE = 0;
-"284
+[; ;utility.c: 272: CCP1IE = 0;
+"272
 [e = _CCP1IE -> -> 0 `i `b ]
-[; ;utility.c: 285: }
-"285
+[; ;utility.c: 273: }
+"273
 [e :UE 358 ]
 }
-"287
+"275
 [v _Dac0_Start_Hold `(v ~T0 @X0 1 ef ]
 {
-[; ;utility.c: 287: void Dac0_Start_Hold(void){
+[; ;utility.c: 275: void Dac0_Start_Hold(void){
 [e :U _Dac0_Start_Hold ]
 [f ]
-[; ;utility.c: 288: DACEN = 1;
-"288
+[; ;utility.c: 276: DACEN = 1;
+"276
 [e = _DACEN -> -> 1 `i `b ]
-[; ;utility.c: 289: DACCON1 = 0x10;
-"289
+[; ;utility.c: 277: DACCON1 = 0x10;
+"277
 [e = _DACCON1 -> -> 16 `i `uc ]
-[; ;utility.c: 290: }
-"290
+[; ;utility.c: 278: }
+"278
 [e :UE 359 ]
 }
-"292
+"280
 [v _Dac0_Stop `(v ~T0 @X0 1 ef ]
 {
-[; ;utility.c: 292: void Dac0_Stop(void){
+[; ;utility.c: 280: void Dac0_Stop(void){
 [e :U _Dac0_Stop ]
 [f ]
-[; ;utility.c: 293: DACCON1 = 0x00;
-"293
+[; ;utility.c: 281: DACCON1 = 0x00;
+"281
 [e = _DACCON1 -> -> 0 `i `uc ]
-[; ;utility.c: 294: DACEN = 0;
-"294
+[; ;utility.c: 282: DACEN = 0;
+"282
 [e = _DACEN -> -> 0 `i `b ]
-[; ;utility.c: 295: }
-"295
+[; ;utility.c: 283: }
+"283
 [e :UE 360 ]
 }
-"298
+"286
 [v _Adc1_Start `(v ~T0 @X0 1 ef ]
 {
-[; ;utility.c: 298: void Adc1_Start(void){
+[; ;utility.c: 286: void Adc1_Start(void){
 [e :U _Adc1_Start ]
 [f ]
-[; ;utility.c: 299: ADIF = 0;
-"299
+[; ;utility.c: 287: ADIF = 0;
+"287
 [e = _ADIF -> -> 0 `i `b ]
-[; ;utility.c: 300: ADON = 1;
-"300
+[; ;utility.c: 288: ADON = 1;
+"288
 [e = _ADON -> -> 1 `i `b ]
-[; ;utility.c: 301: ADIE = 1;
-"301
+[; ;utility.c: 289: ADIE = 1;
+"289
 [e = _ADIE -> -> 1 `i `b ]
-[; ;utility.c: 304: }
-"304
+[; ;utility.c: 290: }
+"290
 [e :UE 361 ]
 }
-"306
+"292
 [v _Adc1_Stop `(v ~T0 @X0 1 ef ]
 {
-[; ;utility.c: 306: void Adc1_Stop(void){
+[; ;utility.c: 292: void Adc1_Stop(void){
 [e :U _Adc1_Stop ]
 [f ]
-[; ;utility.c: 307: ADON = 0;
-"307
+[; ;utility.c: 293: ADON = 0;
+"293
 [e = _ADON -> -> 0 `i `b ]
-[; ;utility.c: 308: ADIE = 0;
-"308
+[; ;utility.c: 294: ADIE = 0;
+"294
 [e = _ADIE -> -> 0 `i `b ]
-[; ;utility.c: 309: }
-"309
+[; ;utility.c: 295: }
+"295
 [e :UE 362 ]
 }

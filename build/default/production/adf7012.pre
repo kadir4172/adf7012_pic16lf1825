@@ -306,7 +306,7 @@ extern bool Read_Adf7012_Muxout(void);
 extern bool Reverse_Array(uint8_t* ,uint8_t);
 extern bool Send_Vcxo_Signal(uint8_t);
 
-# 58
+# 51
 extern void Radio_Setup(void);
 extern bool Ptt_On(void);
 extern void Ptt_Off(void);
@@ -314,7 +314,7 @@ extern void Set_Freq(uint32_t);
 extern bool Spi_Byte_Send(uint8_t);
 extern bool Adf_Lock(void);
 
-# 69
+# 62
 extern void Timer0_Start(void);
 extern void Timer0_Stop(void);
 extern void Timer1_Start(void);
@@ -3888,10 +3888,7 @@ extern void memcpyee(__eeprom unsigned char *to, const unsigned char *from, unsi
 #pragma intrinsic(_delay)
 extern __nonreentrant void _delay(unsigned long);
 
-# 18 "adf7012.c"
-uint32_t powerlevel;
-
-
+# 19 "adf7012.c"
 void Adf_Reset_Register_Zero(void);
 void Adf_Reset_Register_One(void);
 void Adf_Reset_Register_Two(void);
@@ -4130,7 +4127,6 @@ if(++bias == 14) {
 bias = 1;
 if(++adj == 4) {
 
-
 adf_config.r0.vco_adjust = 0;
 adf_config.r3.vco_bias = 5;
 
@@ -4152,16 +4148,12 @@ return Read_Adf7012_Muxout();
 
 void Set_Freq(uint32_t freq)
 {
-
-
-
-
 adf_config.r0.output_divider = 0;
 if (freq < 410000000) { adf_config.r0.output_divider = 1; };
 if (freq < 210000000) { adf_config.r0.output_divider = 2; };
 if (freq < 130000000) { adf_config.r0.output_divider = 3; };
 
-uint32_t f_pfd = 20000000L / adf_config.r0.r_divider;
+uint32_t f_pfd = 40000000L / adf_config.r0.r_divider;
 
 uint32_t n = (uint32_t)(freq / f_pfd);
 
@@ -4190,9 +4182,6 @@ Delay_ms(10);
 
 bool Ptt_On()
 {
-
-
-
 adf_config.r3.pa_enable = 0;
 adf_config.r2.power_amplifier_level = 0;
 adf_config.r3.muxout = 3;

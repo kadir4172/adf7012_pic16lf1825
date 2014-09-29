@@ -1,8 +1,8 @@
 /*
- * adf7012.c
+ * File:   adf7012.c
+ * Author: Kadir
  *
- *  Created on: Jun 25, 2014
- *      Author: kadir
+ * Created on September 16, 2014, 6:55 PM
  */
 
 
@@ -14,8 +14,6 @@
 #include "utility.h"
 #include <string.h>
 #include <xc.h>
-
-uint32_t powerlevel;
 
 //Function Prototypes
 void Adf_Reset_Register_Zero(void);
@@ -99,7 +97,7 @@ void Adf_Reset_Register_Zero(void) {
     adf_config.r0.frequency_error_correction = 0;               // Don't bother for now...
     adf_config.r0.r_divider = ADF7012_CRYSTAL_DIVIDER;          // Whatever works best for 2m, 1.25m and 70 cm ham bands
     adf_config.r0.crystal_doubler = 0;                          // Who would want that? Lower f_pfd means finer channel steps.
-    adf_config.r0.crystal_oscillator_disable = 0;               // Enable traditional xtal - vcxo geldiginde kapatilacak kadir
+    adf_config.r0.crystal_oscillator_disable = 0;               // Disable traditional xtal
     adf_config.r0.clock_out_divider = 2;                        // Don't bother for now...
     adf_config.r0.vco_adjust = 0;                               // Don't bother for now... (Will be automatically adjusted until PLL lock is achieved)
     adf_config.r0.output_divider = ADF_OUTPUT_DIVIDER_BY_4;     // Pre-set div 4 for 2m. Will be changed according tx frequency on the fly
@@ -107,7 +105,7 @@ void Adf_Reset_Register_Zero(void) {
 
 void Adf_Reset_Register_One(void) {
     adf_config.r1.integer_n = 109;                              // Pre-set for 144.390 MHz APRS. Will be changed according tx frequency on the fly
-    adf_config.r1.fractional_n = 0;                          // Pre-set for 144.390 MHz APRS. Will be changed according tx frequency on the fly
+    adf_config.r1.fractional_n = 0;                             // Pre-set for 144.390 MHz APRS. Will be changed according tx frequency on the fly
     adf_config.r1.prescaler = ADF_PRESCALER_8_9;                // 8/9 requires an integer_n > 91; 4/5 only requires integer_n > 31
 }
 
@@ -239,7 +237,7 @@ bool Adf_Lock(void)
 
     adf_config.r3.pll_enable = 1;
     //adf_config.r3.muxout = ADF_MUXOUT_DIGITAL_LOCK;
-    adf_config.r3.muxout = ADF_MUXOUT_ANALOGUE_LOCK; //vcxo geldiginde digital lock moduna alinacak - kadir
+    adf_config.r3.muxout = ADF_MUXOUT_ANALOGUE_LOCK;       /*TODO both analogue_lock and digital_lock did not achieved test it via serial debug*/
 
     Adf_Write_Config();
     Delay_ms(5);
@@ -249,13 +247,12 @@ bool Adf_Lock(void)
         adf_config.r0.vco_adjust = adj;
         adf_config.r3.vco_bias = bias;
         //adf_config.r3.muxout = ADF_MUXOUT_DIGITAL_LOCK;
-          adf_config.r3.muxout = ADF_MUXOUT_ANALOGUE_LOCK; //vcxo geldiginde digital lock moduna aliancak kadir
+        adf_config.r3.muxout = ADF_MUXOUT_ANALOGUE_LOCK; /*TODO both analogue_lock and digital_lock did not achieved test it via serial debug*/
         Adf_Write_Config();
         Delay_ms(5);
         if(++bias == 14) {
             bias = 1;
             if(++adj == 4) {
-               // Serial.println("Couldn't achieve PLL lock :( ");
                 // Using best guess defaults:
                 adf_config.r0.vco_adjust = 0;
                 adf_config.r3.vco_bias = 5;
@@ -278,10 +275,6 @@ bool Adf_Locked(void)
 
 void Set_Freq(uint32_t freq)
 {
-
-  // Set the output divider according to recommended ranges given in ADF7012 datasheet
-  // 2012-08-10 TK lowered the borders a bit in order to keep n high enough for 144, 222 and 430 MHz amateur bands
-  // with a constant crystal divider of 8
   adf_config.r0.output_divider = ADF_OUTPUT_DIVIDER_BY_1;
   if (freq < 410000000) { adf_config.r0.output_divider = ADF_OUTPUT_DIVIDER_BY_2; };
   if (freq < 210000000) { adf_config.r0.output_divider = ADF_OUTPUT_DIVIDER_BY_4; };
@@ -307,7 +300,7 @@ void Radio_Setup()
 {
   
   Adf_Reset_Config();
-  //Set_Freq(RADIO_FREQUENCY); // Set the default frequency
+  //Set_Freq(RADIO_FREQUENCY);              // Removed because of workload
   Adf_Write_Config();
 
   Delay_ms(10);
@@ -316,9 +309,6 @@ void Radio_Setup()
 
 bool Ptt_On()
 {
-
-  //digitalWrite(PTT_PIN, HIGH);
-  //digitalWrite(ADF7012_TX_DATA_PIN, LOW);
   adf_config.r3.pa_enable = 0;
   adf_config.r2.power_amplifier_level = 0;
   adf_config.r3.muxout = ADF_MUXOUT_REG_READY;
@@ -326,17 +316,17 @@ bool Ptt_On()
   Adf_Write_Config();
   Delay_ms(10);
 
-  // Do we have good power on the ADF7012 voltage regulator?
+ 
 
-  if (!Read_Adf7012_Muxout())  // Power is bad
+  if (!Read_Adf7012_Muxout())  // Power is not OK
   {
       return false;
   }
-  else              // Power is good apparently
+  else                         // Power is OK
   {
     
     adf_config.r3.pa_enable = 1;
-    adf_config.r2.power_amplifier_level = 63; //63 is max power
+    adf_config.r2.power_amplifier_level = 63;     //give max. power to the PA
 
     Delay_ms(10);
     Adf_Write_Config();
