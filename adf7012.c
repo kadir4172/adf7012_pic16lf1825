@@ -338,6 +338,7 @@ bool Ptt_On()
 
 void Ptt_Off()
 {
+  ADF7012_SET_DATA_PIN; 
   adf_config.r3.pa_enable = 0;
   adf_config.r2.power_amplifier_level = 0;
   Adf_Write_Config();

@@ -64,6 +64,9 @@ void Modem_Flush_Frame(void)
   current_sample_in_baud = 0;
   MODEM_TRANSMITTING = true;
 
+  ADF7012_CLEAR_DATA_PIN;
+  Delay_ms(1);
+  
 /*
     try_to_push_button:
     if(!Ptt_On()){     //means power is bad

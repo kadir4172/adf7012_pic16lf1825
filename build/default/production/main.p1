@@ -88,11 +88,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _OSCSTAT `Vuc ~T0 @X0 0 e@154 ]
 "27 utility.h
 [v _Gpio_Config `(uc ~T0 @X0 0 ef ]
-"64
+"61
 [v _Timer1_Start `(v ~T0 @X0 0 ef ]
-"66
+"63
 [v _Dac0_Start_Hold `(v ~T0 @X0 0 ef ]
-"68
+"65
 [v _Adc1_Start `(v ~T0 @X0 0 ef ]
 "418 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16lf1825.h
 [s S35 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -115,13 +115,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _Ax25_Send_Footer `(v ~T0 @X0 0 ef ]
 "24 audio_tone.h
 [v _Modem_Setup `(v ~T0 @X0 0 ef ]
-"56 utility.h
+"467 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16lf1825.h
+[s S37 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S37 . RC0 RC1 RC2 RC3 RC4 RC5 ]
+"466
+[u S36 `S37 1 ]
+[n S36 . . ]
+"476
+[v _PORTCbits `VS36 ~T0 @X0 0 e@14 ]
+"53 utility.h
 [v _Adf_Lock `(uc ~T0 @X0 0 ef ]
-"52
-[v _Ptt_On `(uc ~T0 @X0 0 ef ]
 "23 main.c
 [v _PTT_OFF `uc ~T0 @X0 0 e ]
-"53 utility.h
+"50 utility.h
 [v _Ptt_Off `(v ~T0 @X0 0 ef ]
 "26 audio_tone.h
 [v _Modem_Flush_Frame `(v ~T0 @X0 0 ef ]
@@ -2920,20 +2926,20 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;utility.h: 28: extern bool Read_Adf7012_Muxout(void);
 [; ;utility.h: 29: extern bool Reverse_Array(uint8_t* ,uint8_t);
 [; ;utility.h: 30: extern bool Send_Vcxo_Signal(uint8_t);
-[; ;utility.h: 51: extern void Radio_Setup(void);
-[; ;utility.h: 52: extern bool Ptt_On(void);
-[; ;utility.h: 53: extern void Ptt_Off(void);
-[; ;utility.h: 54: extern void Set_Freq(uint32_t);
-[; ;utility.h: 55: extern bool Spi_Byte_Send(uint8_t);
-[; ;utility.h: 56: extern bool Adf_Lock(void);
-[; ;utility.h: 62: extern void Timer0_Start(void);
-[; ;utility.h: 63: extern void Timer0_Stop(void);
-[; ;utility.h: 64: extern void Timer1_Start(void);
-[; ;utility.h: 65: extern void Timer1_Stop(void);
-[; ;utility.h: 66: extern void Dac0_Start_Hold(void);
-[; ;utility.h: 67: extern void Dac0_Stop(void);
-[; ;utility.h: 68: extern void Adc1_Start(void);
-[; ;utility.h: 69: extern void Adc1_Stop(void);
+[; ;utility.h: 48: extern void Radio_Setup(void);
+[; ;utility.h: 49: extern bool Ptt_On(void);
+[; ;utility.h: 50: extern void Ptt_Off(void);
+[; ;utility.h: 51: extern void Set_Freq(uint32_t);
+[; ;utility.h: 52: extern bool Spi_Byte_Send(uint8_t);
+[; ;utility.h: 53: extern bool Adf_Lock(void);
+[; ;utility.h: 59: extern void Timer0_Start(void);
+[; ;utility.h: 60: extern void Timer0_Stop(void);
+[; ;utility.h: 61: extern void Timer1_Start(void);
+[; ;utility.h: 62: extern void Timer1_Stop(void);
+[; ;utility.h: 63: extern void Dac0_Start_Hold(void);
+[; ;utility.h: 64: extern void Dac0_Stop(void);
+[; ;utility.h: 65: extern void Adc1_Start(void);
+[; ;utility.h: 66: extern void Adc1_Stop(void);
 [; ;string.h: 22: extern void * memcpy(void *, const void *, size_t);
 [; ;string.h: 23: extern void * memmove(void *, const void *, size_t);
 [; ;string.h: 24: extern void * memset(void *, int, size_t);
@@ -3315,68 +3321,71 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 195: Ax25_Send_Footer();
 "195
 [e ( _Ax25_Send_Footer ..  ]
-[; ;main.c: 199: Modem_Setup();
-"199
+[; ;main.c: 197: Modem_Setup();
+"197
 [e ( _Modem_Setup ..  ]
-[; ;main.c: 200: Delay_ms(100);
+[; ;main.c: 198: PORTCbits.RC3 = 1;;
+"198
+[e = . . _PORTCbits 0 3 -> -> 1 `i `uc ]
+[; ;main.c: 199: Delay_ms(100);
+"199
+[e ( _Delay_ms (1 -> -> 100 `i `ui ]
+[; ;main.c: 200: Adf_Lock();
 "200
-[e ( _Delay_ms (1 -> -> 100 `i `ui ]
-[; ;main.c: 201: Adf_Lock();
-"201
 [e ( _Adf_Lock ..  ]
-[; ;main.c: 202: Delay_ms(100);
-"202
+[; ;main.c: 201: Delay_ms(100);
+"201
 [e ( _Delay_ms (1 -> -> 100 `i `ui ]
-[; ;main.c: 211: Ptt_On();
-"211
-[e ( _Ptt_On ..  ]
-[; ;main.c: 214: while(1){
-"214
+[; ;main.c: 204: while(1){
+"204
 [e :U 341 ]
 {
-[; ;main.c: 215: if(PTT_OFF){
-"215
+[; ;main.c: 205: if(PTT_OFF){
+"205
 [e $ ! != -> _PTT_OFF `i -> -> -> 0 `i `uc `i 343  ]
 {
-[; ;main.c: 216: Ptt_Off();
-"216
+[; ;main.c: 206: Ptt_Off();
+"206
 [e ( _Ptt_Off ..  ]
-[; ;main.c: 217: PTT_OFF = 0;
-"217
+[; ;main.c: 207: PTT_OFF = 0;
+"207
 [e = _PTT_OFF -> -> 0 `i `uc ]
-"218
+"208
 }
 [e :U 343 ]
-[; ;main.c: 218: }
-[; ;main.c: 221: Modem_Flush_Frame();
-"221
+[; ;main.c: 208: }
+[; ;main.c: 209: Delay_ms(2000);
+"209
+[e ( _Delay_ms (1 -> -> 2000 `i `ui ]
+[; ;main.c: 211: Modem_Flush_Frame();
+"211
 [e ( _Modem_Flush_Frame ..  ]
-[; ;main.c: 222: while(MODEM_TRANSMITTING);
-"222
+[; ;main.c: 212: while(MODEM_TRANSMITTING);
+"212
 [e $U 344  ]
 [e :U 345 ]
 [e :U 344 ]
 [e $ != -> _MODEM_TRANSMITTING `i -> -> -> 0 `i `uc `i 345  ]
 [e :U 346 ]
-[; ;main.c: 223: Delay_ms(2000);
-"223
+[; ;main.c: 213: Delay_ms(2000);
+"213
 [e ( _Delay_ms (1 -> -> 2000 `i `ui ]
-[; ;main.c: 235: asm("clrwdt");
-"235
+[; ;main.c: 225: asm("clrwdt");
+"225
 [; <" clrwdt ;# ">
-"236
+"226
 }
 [e :U 340 ]
-"214
+"204
 [e $U 341  ]
 [e :U 342 ]
-[; ;main.c: 236: }
-[; ;main.c: 237: return (0);
-"237
+[; ;main.c: 226: }
+[; ;main.c: 227: return (0);
+"227
 [e ) -> 0 `i ]
 [e $UE 336  ]
-[; ;main.c: 238: }
-"238
+[; ;main.c: 228: }
+"228
 [e :UE 336 ]
 }
 [a 1C 72 69 76 76 79 0 ]

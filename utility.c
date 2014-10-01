@@ -33,8 +33,8 @@ bool Gpio_Config(void){
    //PortA and PortC configurations
     TRISA |= 0b00000010;
     TRISA &= 0b11001011;
-    TRISC |= 0b00100000;
-    TRISC &= 0b11100000;
+    TRISC |= 0b00110000;
+    TRISC &= 0b11110000;
     
   return true;
 

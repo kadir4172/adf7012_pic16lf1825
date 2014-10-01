@@ -42,9 +42,6 @@ extern bool Send_Vcxo_Signal(uint8_t);
 #define ADF7012_CLEAR_DATA_PIN PORTCbits.RC3 = 0;
 #define ADF7012_SET_DATA_PIN   PORTCbits.RC3 = 1;
 
-
-#define ADF7012_CLEAR_CLK_PIN  PORTCbits.RC4 = 0;
-#define ADF7012_SET_CLK_PIN    PORTCbits.RC4 = 1;
 //Hardware Specific Variables/Macros
 
 //Common Functions

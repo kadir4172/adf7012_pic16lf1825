@@ -3,7 +3,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _TRISA `Vuc ~T0 @X0 0 e@140 ]
 "1124
 [v _TRISC `Vuc ~T0 @X0 0 e@142 ]
-"66 utility.h
+"63 utility.h
 [v _Dac0_Start_Hold `(v ~T0 @X0 0 ef ]
 [v F3133 `(v ~T0 @X0 1 tf1`ul ]
 "154 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic.h
@@ -25,7 +25,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S34 . . ]
 "427
 [v _PORTAbits `VS34 ~T0 @X0 0 e@12 ]
-"55 utility.h
+"52 utility.h
 [v _Spi_Byte_Send `(uc ~T0 @X0 0 ef1`uc ]
 "2417 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16lf1825.h
 [v _DACCON1 `Vuc ~T0 @X0 0 e@281 ]
@@ -232,20 +232,20 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;utility.h: 28: extern bool Read_Adf7012_Muxout(void);
 [; ;utility.h: 29: extern bool Reverse_Array(uint8_t* ,uint8_t);
 [; ;utility.h: 30: extern bool Send_Vcxo_Signal(uint8_t);
-[; ;utility.h: 51: extern void Radio_Setup(void);
-[; ;utility.h: 52: extern bool Ptt_On(void);
-[; ;utility.h: 53: extern void Ptt_Off(void);
-[; ;utility.h: 54: extern void Set_Freq(uint32_t);
-[; ;utility.h: 55: extern bool Spi_Byte_Send(uint8_t);
-[; ;utility.h: 56: extern bool Adf_Lock(void);
-[; ;utility.h: 62: extern void Timer0_Start(void);
-[; ;utility.h: 63: extern void Timer0_Stop(void);
-[; ;utility.h: 64: extern void Timer1_Start(void);
-[; ;utility.h: 65: extern void Timer1_Stop(void);
-[; ;utility.h: 66: extern void Dac0_Start_Hold(void);
-[; ;utility.h: 67: extern void Dac0_Stop(void);
-[; ;utility.h: 68: extern void Adc1_Start(void);
-[; ;utility.h: 69: extern void Adc1_Stop(void);
+[; ;utility.h: 48: extern void Radio_Setup(void);
+[; ;utility.h: 49: extern bool Ptt_On(void);
+[; ;utility.h: 50: extern void Ptt_Off(void);
+[; ;utility.h: 51: extern void Set_Freq(uint32_t);
+[; ;utility.h: 52: extern bool Spi_Byte_Send(uint8_t);
+[; ;utility.h: 53: extern bool Adf_Lock(void);
+[; ;utility.h: 59: extern void Timer0_Start(void);
+[; ;utility.h: 60: extern void Timer0_Stop(void);
+[; ;utility.h: 61: extern void Timer1_Start(void);
+[; ;utility.h: 62: extern void Timer1_Stop(void);
+[; ;utility.h: 63: extern void Dac0_Start_Hold(void);
+[; ;utility.h: 64: extern void Dac0_Stop(void);
+[; ;utility.h: 65: extern void Adc1_Start(void);
+[; ;utility.h: 66: extern void Adc1_Stop(void);
 [; ;string.h: 22: extern void * memcpy(void *, const void *, size_t);
 [; ;string.h: 23: extern void * memmove(void *, const void *, size_t);
 [; ;string.h: 24: extern void * memset(void *, int, size_t);
@@ -2877,12 +2877,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;utility.c: 35: TRISA &= 0b11001011;
 "35
 [e =& _TRISA -> -> 203 `i `uc ]
-[; ;utility.c: 36: TRISC |= 0b00100000;
+[; ;utility.c: 36: TRISC |= 0b00110000;
 "36
-[e =| _TRISC -> -> 32 `i `uc ]
-[; ;utility.c: 37: TRISC &= 0b11100000;
+[e =| _TRISC -> -> 48 `i `uc ]
+[; ;utility.c: 37: TRISC &= 0b11110000;
 "37
-[e =& _TRISC -> -> 224 `i `uc ]
+[e =& _TRISC -> -> 240 `i `uc ]
 [; ;utility.c: 39: return 1;
 "39
 [e ) -> -> 1 `i `uc ]

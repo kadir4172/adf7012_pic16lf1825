@@ -306,7 +306,7 @@ extern bool Read_Adf7012_Muxout(void);
 extern bool Reverse_Array(uint8_t* ,uint8_t);
 extern bool Send_Vcxo_Signal(uint8_t);
 
-# 51
+# 48
 extern void Radio_Setup(void);
 extern bool Ptt_On(void);
 extern void Ptt_Off(void);
@@ -314,7 +314,7 @@ extern void Set_Freq(uint32_t);
 extern bool Spi_Byte_Send(uint8_t);
 extern bool Adf_Lock(void);
 
-# 62
+# 59
 extern void Timer0_Start(void);
 extern void Timer0_Stop(void);
 extern void Timer1_Start(void);
@@ -4211,6 +4211,7 @@ return 1;
 
 void Ptt_Off()
 {
+PORTCbits.RC3 = 1;;
 adf_config.r3.pa_enable = 0;
 adf_config.r2.power_amplifier_level = 0;
 Adf_Write_Config();

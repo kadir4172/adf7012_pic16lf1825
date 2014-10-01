@@ -52,6 +52,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _Adf_Locked `(uc ~T0 @X0 0 ef ]
 "28 utility.h
 [v _Read_Adf7012_Muxout `(uc ~T0 @X0 0 ef ]
+"467 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16lf1825.h
+[s S37 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S37 . RC0 RC1 RC2 RC3 RC4 RC5 ]
+"466
+[u S36 `S37 1 ]
+[n S36 . . ]
+"476
+[v _PORTCbits `VS36 ~T0 @X0 0 e@14 ]
 [; ;math.h: 3: extern double fabs(double);
 [; ;math.h: 4: extern double floor(double);
 [; ;math.h: 5: extern double ceil(double);
@@ -225,20 +233,20 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;utility.h: 28: extern bool Read_Adf7012_Muxout(void);
 [; ;utility.h: 29: extern bool Reverse_Array(uint8_t* ,uint8_t);
 [; ;utility.h: 30: extern bool Send_Vcxo_Signal(uint8_t);
-[; ;utility.h: 51: extern void Radio_Setup(void);
-[; ;utility.h: 52: extern bool Ptt_On(void);
-[; ;utility.h: 53: extern void Ptt_Off(void);
-[; ;utility.h: 54: extern void Set_Freq(uint32_t);
-[; ;utility.h: 55: extern bool Spi_Byte_Send(uint8_t);
-[; ;utility.h: 56: extern bool Adf_Lock(void);
-[; ;utility.h: 62: extern void Timer0_Start(void);
-[; ;utility.h: 63: extern void Timer0_Stop(void);
-[; ;utility.h: 64: extern void Timer1_Start(void);
-[; ;utility.h: 65: extern void Timer1_Stop(void);
-[; ;utility.h: 66: extern void Dac0_Start_Hold(void);
-[; ;utility.h: 67: extern void Dac0_Stop(void);
-[; ;utility.h: 68: extern void Adc1_Start(void);
-[; ;utility.h: 69: extern void Adc1_Stop(void);
+[; ;utility.h: 48: extern void Radio_Setup(void);
+[; ;utility.h: 49: extern bool Ptt_On(void);
+[; ;utility.h: 50: extern void Ptt_Off(void);
+[; ;utility.h: 51: extern void Set_Freq(uint32_t);
+[; ;utility.h: 52: extern bool Spi_Byte_Send(uint8_t);
+[; ;utility.h: 53: extern bool Adf_Lock(void);
+[; ;utility.h: 59: extern void Timer0_Start(void);
+[; ;utility.h: 60: extern void Timer0_Stop(void);
+[; ;utility.h: 61: extern void Timer1_Start(void);
+[; ;utility.h: 62: extern void Timer1_Stop(void);
+[; ;utility.h: 63: extern void Dac0_Start_Hold(void);
+[; ;utility.h: 64: extern void Dac0_Stop(void);
+[; ;utility.h: 65: extern void Adc1_Start(void);
+[; ;utility.h: 66: extern void Adc1_Stop(void);
 [; ;string.h: 22: extern void * memcpy(void *, const void *, size_t);
 [; ;string.h: 23: extern void * memmove(void *, const void *, size_t);
 [; ;string.h: 24: extern void * memset(void *, int, size_t);
@@ -3526,19 +3534,22 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;adf7012.c: 340: {
 [e :U _Ptt_Off ]
 [f ]
-[; ;adf7012.c: 341: adf_config.r3.pa_enable = 0;
+[; ;adf7012.c: 341: PORTCbits.RC3 = 1;;
 "341
-[e = . . _adf_config 3 1 -> -> 0 `i `uc ]
-[; ;adf7012.c: 342: adf_config.r2.power_amplifier_level = 0;
+[e = . . _PORTCbits 0 3 -> -> 1 `i `uc ]
+[; ;adf7012.c: 342: adf_config.r3.pa_enable = 0;
 "342
-[e = . . _adf_config 2 2 -> -> 0 `i `uc ]
-[; ;adf7012.c: 343: Adf_Write_Config();
+[e = . . _adf_config 3 1 -> -> 0 `i `uc ]
+[; ;adf7012.c: 343: adf_config.r2.power_amplifier_level = 0;
 "343
-[e ( _Adf_Write_Config ..  ]
-[; ;adf7012.c: 344: Delay_ms(10);
+[e = . . _adf_config 2 2 -> -> 0 `i `uc ]
+[; ;adf7012.c: 344: Adf_Write_Config();
 "344
-[e ( _Delay_ms (1 -> -> 10 `i `ui ]
-[; ;adf7012.c: 345: }
+[e ( _Adf_Write_Config ..  ]
+[; ;adf7012.c: 345: Delay_ms(10);
 "345
+[e ( _Delay_ms (1 -> -> 10 `i `ui ]
+[; ;adf7012.c: 346: }
+"346
 [e :UE 360 ]
 }

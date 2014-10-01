@@ -3862,7 +3862,7 @@ extern bool Read_Adf7012_Muxout(void);
 extern bool Reverse_Array(uint8_t* ,uint8_t);
 extern bool Send_Vcxo_Signal(uint8_t);
 
-# 51
+# 48
 extern void Radio_Setup(void);
 extern bool Ptt_On(void);
 extern void Ptt_Off(void);
@@ -3870,7 +3870,7 @@ extern void Set_Freq(uint32_t);
 extern bool Spi_Byte_Send(uint8_t);
 extern bool Adf_Lock(void);
 
-# 62
+# 59
 extern void Timer0_Start(void);
 extern void Timer0_Stop(void);
 extern void Timer1_Start(void);
@@ -4104,15 +4104,11 @@ Ax25_Send_Header(beacon_address,2);
 Ax25_Send_String("HELLO");
 Ax25_Send_Footer();
 
-
-
 Modem_Setup();
+PORTCbits.RC3 = 1;;
 Delay_ms(100);
 Adf_Lock();
 Delay_ms(100);
-
-# 211
-Ptt_On();
 
 
 while(1){
@@ -4120,13 +4116,13 @@ if(PTT_OFF){
 Ptt_Off();
 PTT_OFF = 0;
 }
-
+Delay_ms(2000);
 
 Modem_Flush_Frame();
 while(MODEM_TRANSMITTING);
 Delay_ms(2000);
 
-# 235
+# 225
 asm("clrwdt");
 }
 return (0);

@@ -194,31 +194,21 @@ int main(void) {
     Ax25_Send_String("HELLO");                                    //Send string
     Ax25_Send_Footer();                                           //Send Footer
 
-
-
-    Modem_Setup();                                               //Set modem reset configurations to ADF7012
+    Modem_Setup();                                                //Set modem reset configurations to ADF7012
+    ADF7012_SET_DATA_PIN;                                         //Data invert = ON , set data pin to stop transmit
     Delay_ms(100);
-    Adf_Lock();                                                  //Try to achieve a good PLL lock, otherwise use default vco configuration
+    Adf_Lock();                                                   //Try to achieve a good PLL lock, otherwise use default vco configuration
     Delay_ms(100);
-/*
-    try_to_push_button:
-    if(!Ptt_On()){     //means power is bad
-        Modem_Setup(); //try to reconfigure adf7012
-        Delay_ms(200);
-        goto try_to_push_button;
-    }
-*/
-     Ptt_On(); /* TODO remove this line when working on real hardware */
-     
-     
+    
+    
      while(1){
           if(PTT_OFF){
-		  Ptt_Off();                                    //Turn of PTT
+		  Ptt_Off();                                      //Turn of PTT
 		  PTT_OFF  = false;
 	  }
+          Delay_ms(2000);
 
-
-	  Modem_Flush_Frame();                                 //Transmit modem_packet[]
+	  Modem_Flush_Frame();                                   //Transmit modem_packet[]
           while(MODEM_TRANSMITTING);
 	  Delay_ms(2000);
 
@@ -232,7 +222,7 @@ int main(void) {
           Delay_ms(3000);
 #endif
 
-          CLRWDT();
+          CLRWDT();                                            //Clear Watchdog timer
          }
     return (EXIT_SUCCESS);
 }

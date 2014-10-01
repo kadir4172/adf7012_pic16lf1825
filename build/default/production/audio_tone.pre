@@ -314,7 +314,7 @@ extern bool Read_Adf7012_Muxout(void);
 extern bool Reverse_Array(uint8_t* ,uint8_t);
 extern bool Send_Vcxo_Signal(uint8_t);
 
-# 51
+# 48
 extern void Radio_Setup(void);
 extern bool Ptt_On(void);
 extern void Ptt_Off(void);
@@ -322,7 +322,7 @@ extern void Set_Freq(uint32_t);
 extern bool Spi_Byte_Send(uint8_t);
 extern bool Adf_Lock(void);
 
-# 62
+# 59
 extern void Timer0_Start(void);
 extern void Timer0_Stop(void);
 extern void Timer1_Start(void);
@@ -3958,7 +3958,10 @@ packet_pos = 0;
 current_sample_in_baud = 0;
 MODEM_TRANSMITTING = 1;
 
-# 75
+PORTCbits.RC3 = 0;;
+Delay_ms(1);
+
+# 78
 Ptt_On();
 
 Delay_ms(100);
