@@ -239,7 +239,10 @@ bool Adf_Lock(void)
     //adf_config.r3.muxout = ADF_MUXOUT_DIGITAL_LOCK;
     adf_config.r3.muxout = ADF_MUXOUT_ANALOGUE_LOCK;       /*TODO both analogue_lock and digital_lock did not achieved test it via serial debug*/
 
-    Adf_Write_Config();
+    //Adf_Write_Config();                                  //closed not to write all registers
+    Adf_Write_Register_Zero();
+    Adf_Write_Register_Three();
+    
     Delay_ms(5);
 
     while(!Adf_Locked()) {
@@ -248,7 +251,10 @@ bool Adf_Lock(void)
         adf_config.r3.vco_bias = bias;
         //adf_config.r3.muxout = ADF_MUXOUT_DIGITAL_LOCK;
         adf_config.r3.muxout = ADF_MUXOUT_ANALOGUE_LOCK; /*TODO both analogue_lock and digital_lock did not achieved test it via serial debug*/
-        Adf_Write_Config();
+        //Adf_Write_Config();                              //closed not to write all registers
+        Adf_Write_Register_Zero();
+        Adf_Write_Register_Three();
+
         Delay_ms(5);
         if(++bias == 14) {
             bias = 1;
@@ -313,7 +319,10 @@ bool Ptt_On()
   adf_config.r2.power_amplifier_level = 0;
   adf_config.r3.muxout = ADF_MUXOUT_REG_READY;
 
-  Adf_Write_Config();
+  //Adf_Write_Config();                     //Closed not to write all registers
+  Adf_Write_Register_Two();
+  Adf_Write_Register_Three();
+
   Delay_ms(10);
 
  
@@ -329,7 +338,11 @@ bool Ptt_On()
     adf_config.r2.power_amplifier_level = 63;     //give max. power to the PA
 
     Delay_ms(10);
-    Adf_Write_Config();
+    
+    //Adf_Write_Config();                     //Closed not to write all registers
+    Adf_Write_Register_Two();
+    Adf_Write_Register_Three();
+
     Delay_ms(1);
 
     return true;
@@ -341,6 +354,10 @@ void Ptt_Off()
   ADF7012_SET_DATA_PIN; 
   adf_config.r3.pa_enable = 0;
   adf_config.r2.power_amplifier_level = 0;
-  Adf_Write_Config();
+  
+  //Adf_Write_Config();                     //Closed not to write all registers
+  Adf_Write_Register_Two();
+  Adf_Write_Register_Three();
+
   Delay_ms(10);
 }

@@ -4112,7 +4112,10 @@ adf_config.r3.pll_enable = 1;
 
 adf_config.r3.muxout = 5;
 
-Adf_Write_Config();
+
+Adf_Write_Register_Zero();
+Adf_Write_Register_Three();
+
 Delay_ms(5);
 
 while(!Adf_Locked()) {
@@ -4121,7 +4124,10 @@ adf_config.r0.vco_adjust = adj;
 adf_config.r3.vco_bias = bias;
 
 adf_config.r3.muxout = 5;
-Adf_Write_Config();
+
+Adf_Write_Register_Zero();
+Adf_Write_Register_Three();
+
 Delay_ms(5);
 if(++bias == 14) {
 bias = 1;
@@ -4186,7 +4192,10 @@ adf_config.r3.pa_enable = 0;
 adf_config.r2.power_amplifier_level = 0;
 adf_config.r3.muxout = 3;
 
-Adf_Write_Config();
+
+Adf_Write_Register_Two();
+Adf_Write_Register_Three();
+
 Delay_ms(10);
 
 
@@ -4202,7 +4211,11 @@ adf_config.r3.pa_enable = 1;
 adf_config.r2.power_amplifier_level = 63;
 
 Delay_ms(10);
-Adf_Write_Config();
+
+
+Adf_Write_Register_Two();
+Adf_Write_Register_Three();
+
 Delay_ms(1);
 
 return 1;
@@ -4214,6 +4227,10 @@ void Ptt_Off()
 PORTCbits.RC3 = 1;;
 adf_config.r3.pa_enable = 0;
 adf_config.r2.power_amplifier_level = 0;
-Adf_Write_Config();
+
+
+Adf_Write_Register_Two();
+Adf_Write_Register_Three();
+
 Delay_ms(10);
 }

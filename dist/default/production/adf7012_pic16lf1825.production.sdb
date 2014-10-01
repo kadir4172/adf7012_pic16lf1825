@@ -27,15 +27,15 @@
 [v _Adf_Write_Register_Three Adf_Write_Register_Three `(v  1 e 0 0 ]
 "231
 [v _Adf_Lock Adf_Lock `(uc  1 e 1 0 ]
-"270
-[v _Adf_Locked Adf_Locked `(uc  1 e 1 0 ]
 "276
+[v _Adf_Locked Adf_Locked `(uc  1 e 1 0 ]
+"282
 [v _Set_Freq Set_Freq `(v  1 e 0 0 ]
-"299
+"305
 [v _Radio_Setup Radio_Setup `(v  1 e 0 0 ]
-"310
+"316
 [v _Ptt_On Ptt_On `(uc  1 e 1 0 ]
-"339
+"352
 [v _Ptt_Off Ptt_Off `(v  1 e 0 0 ]
 "47 C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\audio_tone.c
 [v _Configure_Audio Configure_Audio `(v  1 e 0 0 ]
@@ -408,20 +408,34 @@
 {
 "165
 } 0
-"339 C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\adf7012.c
+"352 C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\adf7012.c
 [v _Ptt_Off Ptt_Off `(v  1 e 0 0 ]
 {
-"346
+"363
 } 0
 "53 C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\audio_tone.c
 [v _Modem_Setup Modem_Setup `(v  1 e 0 0 ]
 {
 "57
 } 0
-"299 C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\adf7012.c
+"305 C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\adf7012.c
 [v _Radio_Setup Radio_Setup `(v  1 e 0 0 ]
 {
-"307
+"313
+} 0
+"150
+[v _Adf_Write_Config Adf_Write_Config `(v  1 e 0 0 ]
+{
+"155
+} 0
+"176
+[v _Adf_Write_Register_One Adf_Write_Register_One `(v  1 e 0 0 ]
+{
+"177
+[v Adf_Write_Register_One@reg reg `ul  1 a 4 31 ]
+"183
+[v Adf_Write_Register_One@reg_ptr reg_ptr `[3]uc  1 a 3 35 ]
+"187
 } 0
 "84
 [v _Adf_Reset_Config Adf_Reset_Config `(v  1 e 0 0 ]
@@ -468,10 +482,19 @@
 {
 "248
 } 0
-"310 C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\adf7012.c
+"316 C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\adf7012.c
 [v _Ptt_On Ptt_On `(uc  1 e 1 0 ]
 {
-"337
+"350
+} 0
+"189
+[v _Adf_Write_Register_Two Adf_Write_Register_Two `(v  1 e 0 0 ]
+{
+"200
+[v Adf_Write_Register_Two@reg_ptr reg_ptr `[4]uc  1 a 4 43 ]
+"190
+[v Adf_Write_Register_Two@reg reg `ul  1 a 4 47 ]
+"204
 } 0
 "31 C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\utility.c
 [v _Gpio_Config Gpio_Config `(uc  1 e 1 0 ]
@@ -565,12 +588,7 @@
 [v Adf_Lock@bias bias `i  1 a 2 10 ]
 "235
 [v Adf_Lock@adj adj `i  1 a 2 8 ]
-"268
-} 0
-"150
-[v _Adf_Write_Config Adf_Write_Config `(v  1 e 0 0 ]
-{
-"155
+"274
 } 0
 "157
 [v _Adf_Write_Register_Zero Adf_Write_Register_Zero `(v  1 e 0 0 ]
@@ -581,15 +599,6 @@
 [v Adf_Write_Register_Zero@reg reg `ul  1 a 4 51 ]
 "174
 } 0
-"189
-[v _Adf_Write_Register_Two Adf_Write_Register_Two `(v  1 e 0 0 ]
-{
-"200
-[v Adf_Write_Register_Two@reg_ptr reg_ptr `[4]uc  1 a 4 43 ]
-"190
-[v Adf_Write_Register_Two@reg reg `ul  1 a 4 47 ]
-"204
-} 0
 "206
 [v _Adf_Write_Register_Three Adf_Write_Register_Three `(v  1 e 0 0 ]
 {
@@ -598,15 +607,6 @@
 "207
 [v Adf_Write_Register_Three@reg reg `ul  1 a 4 4 ]
 "229
-} 0
-"176
-[v _Adf_Write_Register_One Adf_Write_Register_One `(v  1 e 0 0 ]
-{
-"177
-[v Adf_Write_Register_One@reg reg `ul  1 a 4 31 ]
-"183
-[v Adf_Write_Register_One@reg_ptr reg_ptr `[3]uc  1 a 3 35 ]
-"187
 } 0
 "82 C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\utility.c
 [v _Write_Adf7012_Reg Write_Adf7012_Reg `(uc  1 e 1 0 ]
@@ -681,10 +681,10 @@
 [v memcpy@d1 d1 `*.4v  1 a 1 6 ]
 "32
 } 0
-"270 C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\adf7012.c
+"276 C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\adf7012.c
 [v _Adf_Locked Adf_Locked `(uc  1 e 1 0 ]
 {
-"273
+"279
 } 0
 "64 C:\Users\Kadir\Documents\GitHub\adf7012_pic16lf1825\utility.c
 [v _Read_Adf7012_Muxout Read_Adf7012_Muxout `(uc  1 e 1 0 ]
