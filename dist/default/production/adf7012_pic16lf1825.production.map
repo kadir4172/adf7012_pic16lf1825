@@ -5,7 +5,7 @@ Linker command line:
 --edf=C:\Program Files (x86)\Microchip\xc8\v1.33\dat\en_msgs.txt -cs \
   -h+dist/default/production\adf7012_pic16lf1825.production.sym \
   --cmf=dist/default/production\adf7012_pic16lf1825.production.cmf -z \
-  -Q16LF1825 -oC:\Users\Kadir\AppData\Local\Temp\s5p0.6 \
+  -Q16LF1825 -oC:\Users\Kadir\AppData\Local\Temp\s574.6 \
   -Mdist/default/production/adf7012_pic16lf1825.production.map -E1 -ver=XC8 \
   -ASTACK=02130h-0231fh -pstack=STACK -ACONST=00h-0FFhx32 \
   -ACODE=00h-07FFhx4 -ASTRCODE=00h-01FFFh -AENTRY=00h-0FFhx32 \
@@ -32,7 +32,7 @@ Linker command line:
   -pconfig=CONFIG -DCONFIG=2 -AIDLOC=08000h-08003h -pidloc=IDLOC -DIDLOC=2 \
   -AEEDATA=00h-0FFh/0F000h -peeprom_data=EEDATA -DEEDATA=2 -DCODE=2 \
   -DSTRCODE=2 -DSTRING=2 -DCONST=2 -DENTRY=2 -k \
-  C:\Users\Kadir\AppData\Local\Temp\s5p0.obj \
+  C:\Users\Kadir\AppData\Local\Temp\s574.obj \
   dist/default/production\adf7012_pic16lf1825.production.obj 
 
 Object code version is 3.11
@@ -42,7 +42,7 @@ Machine type is 16LF1825
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\Kadir\AppData\Local\Temp\s5p0.obj
+C:\Users\Kadir\AppData\Local\Temp\s574.obj
                 end_init                             2B       2B        2        8       0
                 reset_vec                             0        0        2        0       0
                 config                             8007     8007        2    1000E       0
@@ -491,7 +491,7 @@ Ax25_Send_Sync@byte                cstackBANK0  00026
 Ax25_Send_Sync@i                   cstackBANK0  00027
 Delay_ms@i                         cstackBANK0  00024
 Delay_ms@time_to_delay             cstackBANK0  00020
-Reverse_Array@F3148                bssBANK1     000A5
+Reverse_Array@F3014                bssBANK1     000A5
 Reverse_Array@buffer_array         cstackBANK0  0002D
 Reverse_Array@i                    cstackBANK0  00032
 Reverse_Array@input                cstackBANK0  00031
@@ -1063,7 +1063,7 @@ ltemp0                             (abs)        0007E
 ltemp1                             (abs)        00082
 ltemp2                             (abs)        00086
 ltemp3                             (abs)        00080
-main@F3171                         dataBANK2    00147
+main@F2948                         dataBANK2    00147
 main@beacon_address                cstackBANK1  000D5
 memcpy@d                           cstackBANK0  00024
 memcpy@d1                          cstackBANK0  00026
@@ -1096,7 +1096,7 @@ FUNCTION INFORMATION:
 
  *************** function _main *****************
  Defined at:
-		line 165 in file "main.c"
+		line 160 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1137,7 +1137,7 @@ Total ram usage:       17 bytes
 
  *************** function _Timer1_Start *****************
  Defined at:
-		line 254 in file "utility.c"
+		line 249 in file "utility.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1167,7 +1167,7 @@ Total ram usage:        0 bytes
 
  *************** function _System_Start *****************
  Defined at:
-		line 73 in file "main.c"
+		line 68 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1197,7 +1197,7 @@ Total ram usage:        1 bytes
 
  *************** function _Ptt_Off *****************
  Defined at:
-		line 352 in file "adf7012.c"
+		line 351 in file "adf7012.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1229,7 +1229,7 @@ Total ram usage:        0 bytes
 
  *************** function _Modem_Setup *****************
  Defined at:
-		line 53 in file "audio_tone.c"
+		line 50 in file "audio_tone.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1260,7 +1260,7 @@ Total ram usage:        0 bytes
 
  *************** function _Radio_Setup *****************
  Defined at:
-		line 305 in file "adf7012.c"
+		line 304 in file "adf7012.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1292,7 +1292,7 @@ Total ram usage:        0 bytes
 
  *************** function _Adf_Write_Config *****************
  Defined at:
-		line 150 in file "adf7012.c"
+		line 149 in file "adf7012.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1325,7 +1325,7 @@ Total ram usage:        0 bytes
 
  *************** function _Adf_Write_Register_One *****************
  Defined at:
-		line 176 in file "adf7012.c"
+		line 175 in file "adf7012.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1358,7 +1358,7 @@ Total ram usage:       19 bytes
 
  *************** function _Adf_Reset_Config *****************
  Defined at:
-		line 84 in file "adf7012.c"
+		line 83 in file "adf7012.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1392,7 +1392,7 @@ Total ram usage:        0 bytes
 
  *************** function _Adf_Reset_Register_Zero *****************
  Defined at:
-		line 96 in file "adf7012.c"
+		line 95 in file "adf7012.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1422,7 +1422,7 @@ Total ram usage:        1 bytes
 
  *************** function _Adf_Reset_Register_Two *****************
  Defined at:
-		line 112 in file "adf7012.c"
+		line 111 in file "adf7012.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1452,7 +1452,7 @@ Total ram usage:        1 bytes
 
  *************** function _Adf_Reset_Register_Three *****************
  Defined at:
-		line 121 in file "adf7012.c"
+		line 120 in file "adf7012.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1482,7 +1482,7 @@ Total ram usage:        1 bytes
 
  *************** function _Adf_Reset_Register_One *****************
  Defined at:
-		line 106 in file "adf7012.c"
+		line 105 in file "adf7012.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1512,7 +1512,7 @@ Total ram usage:        1 bytes
 
  *************** function _Adf_Reset *****************
  Defined at:
-		line 140 in file "adf7012.c"
+		line 139 in file "adf7012.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1542,7 +1542,7 @@ Total ram usage:        0 bytes
 
  *************** function _Configure_Audio *****************
  Defined at:
-		line 47 in file "audio_tone.c"
+		line 44 in file "audio_tone.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1572,7 +1572,7 @@ Total ram usage:        1 bytes
 
  *************** function _Modem_Flush_Frame *****************
  Defined at:
-		line 59 in file "audio_tone.c"
+		line 56 in file "audio_tone.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1604,7 +1604,7 @@ Total ram usage:        1 bytes
 
  *************** function _Timer0_Start *****************
  Defined at:
-		line 244 in file "utility.c"
+		line 239 in file "utility.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1634,7 +1634,7 @@ Total ram usage:        0 bytes
 
  *************** function _Ptt_On *****************
  Defined at:
-		line 316 in file "adf7012.c"
+		line 315 in file "adf7012.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1667,7 +1667,7 @@ Total ram usage:        1 bytes
 
  *************** function _Adf_Write_Register_Two *****************
  Defined at:
-		line 189 in file "adf7012.c"
+		line 188 in file "adf7012.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1702,7 +1702,7 @@ Total ram usage:       32 bytes
 
  *************** function _Gpio_Config *****************
  Defined at:
-		line 31 in file "utility.c"
+		line 26 in file "utility.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1732,7 +1732,7 @@ Total ram usage:        1 bytes
 
  *************** function _Ax25_Send_String *****************
  Defined at:
-		line 91 in file "ax25.c"
+		line 85 in file "ax25.c"
  Parameters:    Size  Location     Type
   string          2   13[BANK0 ] PTR const unsigned char 
 		 -> STR_1(6), 
@@ -1763,7 +1763,7 @@ Total ram usage:        4 bytes
 
  *************** function _Ax25_Send_Byte *****************
  Defined at:
-		line 58 in file "ax25.c"
+		line 52 in file "ax25.c"
  Parameters:    Size  Location     Type
   byte            1    wreg     unsigned char 
  Auto vars:     Size  Location     Type
@@ -1793,7 +1793,7 @@ Total ram usage:        1 bytes
 
  *************** function _Ax25_Send_Header *****************
  Defined at:
-		line 99 in file "ax25.c"
+		line 93 in file "ax25.c"
  Parameters:    Size  Location     Type
   addresses       1    wreg     PTR struct .
 		 -> main@beacon_address(16), 
@@ -1830,7 +1830,7 @@ Total ram usage:       10 bytes
 
  *************** function _Ax25_Send_Sync *****************
  Defined at:
-		line 63 in file "ax25.c"
+		line 57 in file "ax25.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1861,7 +1861,7 @@ Total ram usage:        9 bytes
 
  *************** function _Ax25_Send_Footer *****************
  Defined at:
-		line 141 in file "ax25.c"
+		line 135 in file "ax25.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1892,7 +1892,7 @@ Total ram usage:        2 bytes
 
  *************** function _Send_Byte *****************
  Defined at:
-		line 32 in file "ax25.c"
+		line 26 in file "ax25.c"
  Parameters:    Size  Location     Type
   byte            1    wreg     unsigned char 
  Auto vars:     Size  Location     Type
@@ -1925,7 +1925,7 @@ Total ram usage:        9 bytes
 
  *************** function _Update_Crc *****************
  Defined at:
-		line 23 in file "ax25.c"
+		line 17 in file "ax25.c"
  Parameters:    Size  Location     Type
   input_bit       1    wreg     unsigned char 
  Auto vars:     Size  Location     Type
@@ -1955,7 +1955,7 @@ Total ram usage:        3 bytes
 
  *************** function _Ax25_Send_Flag *****************
  Defined at:
-		line 77 in file "ax25.c"
+		line 71 in file "ax25.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1987,7 +1987,7 @@ Total ram usage:        9 bytes
 
  *************** function _Adf_Lock *****************
  Defined at:
-		line 231 in file "adf7012.c"
+		line 230 in file "adf7012.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -2021,7 +2021,7 @@ Total ram usage:        6 bytes
 
  *************** function _Adf_Write_Register_Zero *****************
  Defined at:
-		line 157 in file "adf7012.c"
+		line 156 in file "adf7012.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -2055,7 +2055,7 @@ Total ram usage:       36 bytes
 
  *************** function _Adf_Write_Register_Three *****************
  Defined at:
-		line 206 in file "adf7012.c"
+		line 205 in file "adf7012.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -2091,7 +2091,7 @@ Total ram usage:       64 bytes
 
  *************** function _Write_Adf7012_Reg *****************
  Defined at:
-		line 82 in file "utility.c"
+		line 77 in file "utility.c"
  Parameters:    Size  Location     Type
   reg_value       1    wreg     PTR unsigned char 
 		 -> Adf_Write_Register_Three@reg_ptr(4), Adf_Write_Register_Two@reg_ptr(4), Adf_Write_Register_One@reg_ptr(3), Adf_Write_Register_Zero@reg_ptr(4), 
@@ -2129,7 +2129,7 @@ Total ram usage:        4 bytes
 
  *************** function _Spi_Byte_Send *****************
  Defined at:
-		line 220 in file "utility.c"
+		line 215 in file "utility.c"
  Parameters:    Size  Location     Type
   data            1    wreg     unsigned char 
  Auto vars:     Size  Location     Type
@@ -2161,7 +2161,7 @@ Total ram usage:        4 bytes
 
  *************** function _Delay_ms *****************
  Defined at:
-		line 44 in file "utility.c"
+		line 39 in file "utility.c"
  Parameters:    Size  Location     Type
   time_to_dela    2    0[BANK0 ] unsigned int 
  Auto vars:     Size  Location     Type
@@ -2199,7 +2199,7 @@ Total ram usage:        6 bytes
 
  *************** function _Dac0_Start_Hold *****************
  Defined at:
-		line 275 in file "utility.c"
+		line 270 in file "utility.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -2230,7 +2230,7 @@ Total ram usage:        0 bytes
 
  *************** function _Reverse_Array *****************
  Defined at:
-		line 198 in file "utility.c"
+		line 193 in file "utility.c"
  Parameters:    Size  Location     Type
   input           1    wreg     PTR unsigned char 
 		 -> Adf_Write_Register_Three@reg_ptr(4), Adf_Write_Register_Two@reg_ptr(4), Adf_Write_Register_One@reg_ptr(3), Adf_Write_Register_Zero@reg_ptr(4), 
@@ -2316,7 +2316,7 @@ Total ram usage:        7 bytes
 
  *************** function _Adf_Locked *****************
  Defined at:
-		line 276 in file "adf7012.c"
+		line 275 in file "adf7012.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -2346,7 +2346,7 @@ Total ram usage:        0 bytes
 
  *************** function _Read_Adf7012_Muxout *****************
  Defined at:
-		line 64 in file "utility.c"
+		line 59 in file "utility.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -2377,7 +2377,7 @@ Total ram usage:        0 bytes
 
  *************** function _Adc1_Start *****************
  Defined at:
-		line 286 in file "utility.c"
+		line 281 in file "utility.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -2407,7 +2407,7 @@ Total ram usage:        0 bytes
 
  *************** function _global_interrupt *****************
  Defined at:
-		line 35 in file "main.c"
+		line 30 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -2440,7 +2440,7 @@ Total ram usage:        2 bytes
 
  *************** function _TIMER1_ISR *****************
  Defined at:
-		line 50 in file "isr.c"
+		line 44 in file "isr.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -2469,7 +2469,7 @@ Total ram usage:        1 bytes
 
  *************** function _TIMER0_ISR *****************
  Defined at:
-		line 67 in file "isr.c"
+		line 61 in file "isr.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -2499,7 +2499,7 @@ Total ram usage:        1 bytes
 
  *************** function _Sinus_Generator *****************
  Defined at:
-		line 84 in file "audio_tone.c"
+		line 81 in file "audio_tone.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -2530,7 +2530,7 @@ Total ram usage:        6 bytes
 
  *************** function _Timer0_Stop *****************
  Defined at:
-		line 249 in file "utility.c"
+		line 244 in file "utility.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -2559,7 +2559,7 @@ Total ram usage:        0 bytes
 
  *************** function _Send_Vcxo_Signal *****************
  Defined at:
-		line 108 in file "utility.c"
+		line 103 in file "utility.c"
  Parameters:    Size  Location     Type
   value           1    wreg     unsigned char 
  Auto vars:     Size  Location     Type
@@ -2588,7 +2588,7 @@ Total ram usage:        1 bytes
 
  *************** function _I2C_ISR *****************
  Defined at:
-		line 72 in file "isr.c"
+		line 66 in file "isr.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -2617,7 +2617,7 @@ Total ram usage:        1 bytes
 
  *************** function _ADC_ISR *****************
  Defined at:
-		line 42 in file "isr.c"
+		line 36 in file "isr.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type

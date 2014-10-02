@@ -8,7 +8,6 @@
 
 
 #include "config.h"
-#include <math.h>
 #include "adf7012.h"
 #include <stdint.h>
 #include "utility.h"

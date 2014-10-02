@@ -6,14 +6,9 @@
  */
 
 #include "utility.h"
-#include <string.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdbool.h>
 #include <xc.h>
-
+#include <stdio.h>
+#include <string.h>
 
 #define _XTAL_FREQ 32000000    //for '_delay' function, in fact it is the CPU freq rather than crystal frequency
 

@@ -6,13 +6,7 @@
  */
 
 #include "ax25.h"
-#include "config.h"
 #include "audio_tone.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdint.h>
-#include "configuration.h"
-#include <stdbool.h>
 #include "utility.h"
 
 //Globals

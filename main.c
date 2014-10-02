@@ -5,13 +5,8 @@
  * Created on September 15, 2014, 6:55 PM
  */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdint.h>
 #include "configuration.h"
-#include <stdbool.h>
 #include "utility.h"
-#include <string.h>
 #include <math.h>
 #include "ax25.h"
 #include "audio_tone.h"

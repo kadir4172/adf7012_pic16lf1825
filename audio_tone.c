@@ -9,9 +9,6 @@
 #include "config.h"
 #include "audio_tone.h"
 #include "utility.h"
-#include <stdlib.h>
-#include <string.h>
-#include <stdio.h>
 #include "adf7012.h"
 #include <xc.h>
 

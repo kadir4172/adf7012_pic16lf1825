@@ -118,31 +118,31 @@ Version 3.2 HI-TECH Software Intermediate Code
 "6742
 [v _SSP1IE `Vb ~T0 @X0 0 e@1163 ]
 [p mainexit ]
-"27 utility.h
+"23 utility.h
 [v _Gpio_Config `(uc ~T0 @X0 0 ef ]
 "1641 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16lf1825.h
 [v _OSCSTAT `Vuc ~T0 @X0 0 e@154 ]
-"61 utility.h
+"57 utility.h
 [v _Timer1_Start `(v ~T0 @X0 0 ef ]
-"63
+"59
 [v _Dac0_Start_Hold `(v ~T0 @X0 0 ef ]
-"65
+"61
 [v _Adc1_Start `(v ~T0 @X0 0 ef ]
 "418 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16lf1825.h
-[s S35 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S35 . RA0 RA1 RA2 RA3 RA4 RA5 ]
+[s S30 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S30 . RA0 RA1 RA2 RA3 RA4 RA5 ]
 "417
-[u S34 `S35 1 ]
-[n S34 . . ]
+[u S29 `S30 1 ]
+[n S29 . . ]
 "427
-[v _PORTAbits `VS34 ~T0 @X0 0 e@12 ]
-"25 utility.h
+[v _PORTAbits `VS29 ~T0 @X0 0 e@12 ]
+"21 utility.h
 [v _Delay_ms `(v ~T0 @X0 0 ef1`ui ]
 "18 ax25.h
-[s S329 `uc -> 7 `i `uc 1 ]
-[n S329 . callsign ssid ]
+[s S328 `uc -> 7 `i `uc 1 ]
+[n S328 . callsign ssid ]
 "23
-[v _Ax25_Send_Header `(v ~T0 @X0 0 ef2`*S329`i ]
+[v _Ax25_Send_Header `(v ~T0 @X0 0 ef2`*S328`i ]
 "25
 [v _Ax25_Send_String `(v ~T0 @X0 0 ef1`*Cuc ]
 "26
@@ -150,135 +150,23 @@ Version 3.2 HI-TECH Software Intermediate Code
 "24 audio_tone.h
 [v _Modem_Setup `(v ~T0 @X0 0 ef ]
 "467 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16lf1825.h
-[s S37 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S37 . RC0 RC1 RC2 RC3 RC4 RC5 ]
+[s S32 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S32 . RC0 RC1 RC2 RC3 RC4 RC5 ]
 "466
-[u S36 `S37 1 ]
-[n S36 . . ]
+[u S31 `S32 1 ]
+[n S31 . . ]
 "476
-[v _PORTCbits `VS36 ~T0 @X0 0 e@14 ]
-"53 utility.h
+[v _PORTCbits `VS31 ~T0 @X0 0 e@14 ]
+"49 utility.h
 [v _Adf_Lock `(uc ~T0 @X0 0 ef ]
-"24 main.c
+"19 main.c
 [v _PTT_OFF `uc ~T0 @X0 0 e ]
-"50 utility.h
+"46 utility.h
 [v _Ptt_Off `(v ~T0 @X0 0 ef ]
 "26 audio_tone.h
 [v _Modem_Flush_Frame `(v ~T0 @X0 0 ef ]
-"25 main.c
+"20 main.c
 [v _MODEM_TRANSMITTING `uc ~T0 @X0 0 e ]
-[; ;stdio.h: 8: typedef int ptrdiff_t;
-[; ;stdio.h: 9: typedef unsigned size_t;
-[; ;stdio.h: 10: typedef unsigned short wchar_t;
-[; ;stdarg.h: 7: typedef void * va_list[1];
-[; ;stdarg.h: 10: extern void * __va_start(void);
-[; ;stdarg.h: 13: extern void * __va_arg(void *, ...);
-[; ;stdio.h: 23: extern int errno;
-[; ;stdio.h: 54: struct __prbuf
-[; ;stdio.h: 55: {
-[; ;stdio.h: 56: char * ptr;
-[; ;stdio.h: 57: void (* func)(char);
-[; ;stdio.h: 58: };
-[; ;conio.h: 17: extern int errno;
-[; ;conio.h: 20: extern void init_uart(void);
-[; ;conio.h: 22: extern char getch(void);
-[; ;conio.h: 23: extern char getche(void);
-[; ;conio.h: 24: extern void putch(char);
-[; ;conio.h: 25: extern void ungetch(char);
-[; ;conio.h: 27: extern __bit kbhit(void);
-[; ;conio.h: 31: extern char * cgets(char *);
-[; ;conio.h: 32: extern void cputs(const char *);
-[; ;stdio.h: 99: extern int cprintf(char *, ...);
-[; ;stdio.h: 104: extern int _doprnt(struct __prbuf *, const register char *, register va_list);
-[; ;stdio.h: 194: extern char * gets(char *);
-[; ;stdio.h: 195: extern int puts(const char *);
-[; ;stdio.h: 196: extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
-[; ;stdio.h: 197: extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
-[; ;stdio.h: 198: extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
-[; ;stdio.h: 199: extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
-[; ;stdio.h: 200: extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
-[; ;stdio.h: 201: extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
-[; ;stdio.h: 205: extern int sprintf(char *, const char *, ...);
-[; ;stdio.h: 206: extern int printf(const char *, ...);
-[; ;stdlib.h: 27: typedef struct {
-[; ;stdlib.h: 28: int rem;
-[; ;stdlib.h: 29: int quot;
-[; ;stdlib.h: 30: } div_t;
-[; ;stdlib.h: 31: typedef struct {
-[; ;stdlib.h: 32: unsigned rem;
-[; ;stdlib.h: 33: unsigned quot;
-[; ;stdlib.h: 34: } udiv_t;
-[; ;stdlib.h: 35: typedef struct {
-[; ;stdlib.h: 36: long quot;
-[; ;stdlib.h: 37: long rem;
-[; ;stdlib.h: 38: } ldiv_t;
-[; ;stdlib.h: 39: typedef struct {
-[; ;stdlib.h: 40: unsigned long quot;
-[; ;stdlib.h: 41: unsigned long rem;
-[; ;stdlib.h: 42: } uldiv_t;
-[; ;stdlib.h: 65: extern double atof(const char *);
-[; ;stdlib.h: 66: extern double strtod(const char *, const char **);
-[; ;stdlib.h: 67: extern int atoi(const char *);
-[; ;stdlib.h: 68: extern unsigned xtoi(const char *);
-[; ;stdlib.h: 69: extern long atol(const char *);
-[; ;stdlib.h: 70: extern long strtol(const char *, char **, int);
-[; ;stdlib.h: 72: extern int rand(void);
-[; ;stdlib.h: 73: extern void srand(unsigned int);
-[; ;stdlib.h: 74: extern void * calloc(size_t, size_t);
-[; ;stdlib.h: 75: extern div_t div(int numer, int denom);
-[; ;stdlib.h: 76: extern udiv_t udiv(unsigned numer, unsigned denom);
-[; ;stdlib.h: 77: extern ldiv_t ldiv(long numer, long denom);
-[; ;stdlib.h: 78: extern uldiv_t uldiv(unsigned long numer,unsigned long denom);
-[; ;stdlib.h: 79: extern unsigned long _lrotl(unsigned long value, unsigned int shift);
-[; ;stdlib.h: 80: extern unsigned long _lrotr(unsigned long value, unsigned int shift);
-[; ;stdlib.h: 81: extern unsigned int _rotl(unsigned int value, unsigned int shift);
-[; ;stdlib.h: 82: extern unsigned int _rotr(unsigned int value, unsigned int shift);
-[; ;stdlib.h: 87: extern void * malloc(size_t);
-[; ;stdlib.h: 88: extern void free(void *);
-[; ;stdlib.h: 89: extern void * realloc(void *, size_t);
-[; ;stdlib.h: 91: extern void abort(void);
-[; ;stdlib.h: 92: extern void exit(int);
-[; ;stdlib.h: 93: extern int atexit(void (*)(void));
-[; ;stdlib.h: 94: extern char * getenv(const char *);
-[; ;stdlib.h: 95: extern char ** environ;
-[; ;stdlib.h: 96: extern int system(char *);
-[; ;stdlib.h: 97: extern void qsort(void *, size_t, size_t, int (*)(const void *, const void *));
-[; ;stdlib.h: 98: extern void * bsearch(const void *, void *, size_t, size_t, int(*)(const void *, const void *));
-[; ;stdlib.h: 99: extern int abs(int);
-[; ;stdlib.h: 100: extern long labs(long);
-[; ;stdlib.h: 103: extern char * itoa(char * buf, int val, int base);
-[; ;stdlib.h: 104: extern char * utoa(char * buf, unsigned val, int base);
-[; ;stdlib.h: 109: extern char * ltoa(char * buf, long val, int base);
-[; ;stdlib.h: 110: extern char * ultoa(char * buf, unsigned long val, int base);
-[; ;stdlib.h: 112: extern char * ftoa(float f, int * status);
-[; ;stdint.h: 13: typedef signed char int8_t;
-[; ;stdint.h: 20: typedef signed int int16_t;
-[; ;stdint.h: 28: typedef signed short long int int24_t;
-[; ;stdint.h: 36: typedef signed long int int32_t;
-[; ;stdint.h: 43: typedef unsigned char uint8_t;
-[; ;stdint.h: 49: typedef unsigned int uint16_t;
-[; ;stdint.h: 56: typedef unsigned short long int uint24_t;
-[; ;stdint.h: 63: typedef unsigned long int uint32_t;
-[; ;stdint.h: 71: typedef signed char int_least8_t;
-[; ;stdint.h: 78: typedef signed int int_least16_t;
-[; ;stdint.h: 90: typedef signed short long int int_least24_t;
-[; ;stdint.h: 98: typedef signed long int int_least32_t;
-[; ;stdint.h: 105: typedef unsigned char uint_least8_t;
-[; ;stdint.h: 111: typedef unsigned int uint_least16_t;
-[; ;stdint.h: 121: typedef unsigned short long int uint_least24_t;
-[; ;stdint.h: 128: typedef unsigned long int uint_least32_t;
-[; ;stdint.h: 137: typedef signed char int_fast8_t;
-[; ;stdint.h: 144: typedef signed int int_fast16_t;
-[; ;stdint.h: 156: typedef signed short long int int_fast24_t;
-[; ;stdint.h: 164: typedef signed long int int_fast32_t;
-[; ;stdint.h: 171: typedef unsigned char uint_fast8_t;
-[; ;stdint.h: 177: typedef unsigned int uint_fast16_t;
-[; ;stdint.h: 187: typedef unsigned short long int uint_fast24_t;
-[; ;stdint.h: 194: typedef unsigned long int uint_fast32_t;
-[; ;stdint.h: 200: typedef int32_t intmax_t;
-[; ;stdint.h: 205: typedef uint32_t uintmax_t;
-[; ;stdint.h: 210: typedef int16_t intptr_t;
-[; ;stdint.h: 215: typedef uint16_t uintptr_t;
 [; ;htc.h: 21: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 24: extern void __builtin_software_breakpoint(void);
 [; ;pic16lf1825.h: 47: extern volatile unsigned char INDF0 @ 0x000;
@@ -2895,39 +2783,110 @@ Version 3.2 HI-TECH Software Intermediate Code
 [p x BORV=LO ]
 "28
 [p x LVP=ON ]
-[; ;stdbool.h: 12: typedef unsigned char bool;
-[; ;string.h: 22: extern void * memcpy(void *, const void *, size_t);
-[; ;string.h: 23: extern void * memmove(void *, const void *, size_t);
-[; ;string.h: 24: extern void * memset(void *, int, size_t);
-[; ;string.h: 28: extern void * __builtin_memcpy(void *, const void *, size_t);
-[; ;string.h: 42: extern char * strcat(char *, const char *);
-[; ;string.h: 43: extern char * strcpy(char *, const char *);
-[; ;string.h: 44: extern char * strncat(char *, const char *, size_t);
-[; ;string.h: 45: extern char * strncpy(char *, const char *, size_t);
-[; ;string.h: 46: extern char * strdup(const char *);
-[; ;string.h: 47: extern char * strtok(char *, const char *);
-[; ;string.h: 50: extern int memcmp(const void *, const void *, size_t);
-[; ;string.h: 51: extern int strcmp(const char *, const char *);
-[; ;string.h: 52: extern int stricmp(const char *, const char *);
-[; ;string.h: 53: extern int strncmp(const char *, const char *, size_t);
-[; ;string.h: 54: extern int strnicmp(const char *, const char *, size_t);
-[; ;string.h: 55: extern void * memchr(const void *, int, size_t);
-[; ;string.h: 56: extern size_t strcspn(const char *, const char *);
-[; ;string.h: 57: extern char * strpbrk(const char *, const char *);
-[; ;string.h: 58: extern size_t strspn(const char *, const char *);
-[; ;string.h: 59: extern char * strstr(const char *, const char *);
-[; ;string.h: 60: extern char * stristr(const char *, const char *);
-[; ;string.h: 61: extern char * strerror(int);
-[; ;string.h: 62: extern size_t strlen(const char *);
-[; ;string.h: 63: extern char * strchr(const char *, int);
-[; ;string.h: 64: extern char * strichr(const char *, int);
-[; ;string.h: 65: extern char * strrchr(const char *, int);
-[; ;string.h: 66: extern char * strrichr(const char *, int);
+[; ;stdlib.h: 4: typedef int ptrdiff_t;
+[; ;stdlib.h: 5: typedef unsigned size_t;
+[; ;stdlib.h: 6: typedef unsigned short wchar_t;
+[; ;stdlib.h: 16: extern int errno;
+[; ;stdlib.h: 27: typedef struct {
+[; ;stdlib.h: 28: int rem;
+[; ;stdlib.h: 29: int quot;
+[; ;stdlib.h: 30: } div_t;
+[; ;stdlib.h: 31: typedef struct {
+[; ;stdlib.h: 32: unsigned rem;
+[; ;stdlib.h: 33: unsigned quot;
+[; ;stdlib.h: 34: } udiv_t;
+[; ;stdlib.h: 35: typedef struct {
+[; ;stdlib.h: 36: long quot;
+[; ;stdlib.h: 37: long rem;
+[; ;stdlib.h: 38: } ldiv_t;
+[; ;stdlib.h: 39: typedef struct {
+[; ;stdlib.h: 40: unsigned long quot;
+[; ;stdlib.h: 41: unsigned long rem;
+[; ;stdlib.h: 42: } uldiv_t;
+[; ;stdlib.h: 65: extern double atof(const char *);
+[; ;stdlib.h: 66: extern double strtod(const char *, const char **);
+[; ;stdlib.h: 67: extern int atoi(const char *);
+[; ;stdlib.h: 68: extern unsigned xtoi(const char *);
+[; ;stdlib.h: 69: extern long atol(const char *);
+[; ;stdlib.h: 70: extern long strtol(const char *, char **, int);
+[; ;stdlib.h: 72: extern int rand(void);
+[; ;stdlib.h: 73: extern void srand(unsigned int);
+[; ;stdlib.h: 74: extern void * calloc(size_t, size_t);
+[; ;stdlib.h: 75: extern div_t div(int numer, int denom);
+[; ;stdlib.h: 76: extern udiv_t udiv(unsigned numer, unsigned denom);
+[; ;stdlib.h: 77: extern ldiv_t ldiv(long numer, long denom);
+[; ;stdlib.h: 78: extern uldiv_t uldiv(unsigned long numer,unsigned long denom);
+[; ;stdlib.h: 79: extern unsigned long _lrotl(unsigned long value, unsigned int shift);
+[; ;stdlib.h: 80: extern unsigned long _lrotr(unsigned long value, unsigned int shift);
+[; ;stdlib.h: 81: extern unsigned int _rotl(unsigned int value, unsigned int shift);
+[; ;stdlib.h: 82: extern unsigned int _rotr(unsigned int value, unsigned int shift);
+[; ;stdlib.h: 87: extern void * malloc(size_t);
+[; ;stdlib.h: 88: extern void free(void *);
+[; ;stdlib.h: 89: extern void * realloc(void *, size_t);
+[; ;stdlib.h: 91: extern void abort(void);
+[; ;stdlib.h: 92: extern void exit(int);
+[; ;stdlib.h: 93: extern int atexit(void (*)(void));
+[; ;stdlib.h: 94: extern char * getenv(const char *);
+[; ;stdlib.h: 95: extern char ** environ;
+[; ;stdlib.h: 96: extern int system(char *);
+[; ;stdlib.h: 97: extern void qsort(void *, size_t, size_t, int (*)(const void *, const void *));
+[; ;stdlib.h: 98: extern void * bsearch(const void *, void *, size_t, size_t, int(*)(const void *, const void *));
+[; ;stdlib.h: 99: extern int abs(int);
+[; ;stdlib.h: 100: extern long labs(long);
 [; ;stdlib.h: 103: extern char * itoa(char * buf, int val, int base);
 [; ;stdlib.h: 104: extern char * utoa(char * buf, unsigned val, int base);
 [; ;stdlib.h: 109: extern char * ltoa(char * buf, long val, int base);
 [; ;stdlib.h: 110: extern char * ultoa(char * buf, unsigned long val, int base);
 [; ;stdlib.h: 112: extern char * ftoa(float f, int * status);
+[; ;stdint.h: 13: typedef signed char int8_t;
+[; ;stdint.h: 20: typedef signed int int16_t;
+[; ;stdint.h: 28: typedef signed short long int int24_t;
+[; ;stdint.h: 36: typedef signed long int int32_t;
+[; ;stdint.h: 43: typedef unsigned char uint8_t;
+[; ;stdint.h: 49: typedef unsigned int uint16_t;
+[; ;stdint.h: 56: typedef unsigned short long int uint24_t;
+[; ;stdint.h: 63: typedef unsigned long int uint32_t;
+[; ;stdint.h: 71: typedef signed char int_least8_t;
+[; ;stdint.h: 78: typedef signed int int_least16_t;
+[; ;stdint.h: 90: typedef signed short long int int_least24_t;
+[; ;stdint.h: 98: typedef signed long int int_least32_t;
+[; ;stdint.h: 105: typedef unsigned char uint_least8_t;
+[; ;stdint.h: 111: typedef unsigned int uint_least16_t;
+[; ;stdint.h: 121: typedef unsigned short long int uint_least24_t;
+[; ;stdint.h: 128: typedef unsigned long int uint_least32_t;
+[; ;stdint.h: 137: typedef signed char int_fast8_t;
+[; ;stdint.h: 144: typedef signed int int_fast16_t;
+[; ;stdint.h: 156: typedef signed short long int int_fast24_t;
+[; ;stdint.h: 164: typedef signed long int int_fast32_t;
+[; ;stdint.h: 171: typedef unsigned char uint_fast8_t;
+[; ;stdint.h: 177: typedef unsigned int uint_fast16_t;
+[; ;stdint.h: 187: typedef unsigned short long int uint_fast24_t;
+[; ;stdint.h: 194: typedef unsigned long int uint_fast32_t;
+[; ;stdint.h: 200: typedef int32_t intmax_t;
+[; ;stdint.h: 205: typedef uint32_t uintmax_t;
+[; ;stdint.h: 210: typedef int16_t intptr_t;
+[; ;stdint.h: 215: typedef uint16_t uintptr_t;
+[; ;stdbool.h: 12: typedef unsigned char bool;
+[; ;utility.h: 21: extern void Delay_ms(uint16_t);
+[; ;utility.h: 22: extern bool Write_Adf7012_Reg(uint8_t*, uint8_t);
+[; ;utility.h: 23: extern bool Gpio_Config(void);
+[; ;utility.h: 24: extern bool Read_Adf7012_Muxout(void);
+[; ;utility.h: 25: extern bool Reverse_Array(uint8_t* ,uint8_t);
+[; ;utility.h: 26: extern bool Send_Vcxo_Signal(uint8_t);
+[; ;utility.h: 44: extern void Radio_Setup(void);
+[; ;utility.h: 45: extern bool Ptt_On(void);
+[; ;utility.h: 46: extern void Ptt_Off(void);
+[; ;utility.h: 47: extern void Set_Freq(uint32_t);
+[; ;utility.h: 48: extern bool Spi_Byte_Send(uint8_t);
+[; ;utility.h: 49: extern bool Adf_Lock(void);
+[; ;utility.h: 55: extern void Timer0_Start(void);
+[; ;utility.h: 56: extern void Timer0_Stop(void);
+[; ;utility.h: 57: extern void Timer1_Start(void);
+[; ;utility.h: 58: extern void Timer1_Stop(void);
+[; ;utility.h: 59: extern void Dac0_Start_Hold(void);
+[; ;utility.h: 60: extern void Dac0_Stop(void);
+[; ;utility.h: 61: extern void Adc1_Start(void);
+[; ;utility.h: 62: extern void Adc1_Stop(void);
 [; ;math.h: 3: extern double fabs(double);
 [; ;math.h: 4: extern double floor(double);
 [; ;math.h: 5: extern double ceil(double);
@@ -2954,53 +2913,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;math.h: 26: extern double fmod(double, double);
 [; ;math.h: 27: extern double trunc(double);
 [; ;math.h: 28: extern double round(double);
-[; ;utility.h: 25: extern void Delay_ms(uint16_t);
-[; ;utility.h: 26: extern bool Write_Adf7012_Reg(uint8_t*, uint8_t);
-[; ;utility.h: 27: extern bool Gpio_Config(void);
-[; ;utility.h: 28: extern bool Read_Adf7012_Muxout(void);
-[; ;utility.h: 29: extern bool Reverse_Array(uint8_t* ,uint8_t);
-[; ;utility.h: 30: extern bool Send_Vcxo_Signal(uint8_t);
-[; ;utility.h: 48: extern void Radio_Setup(void);
-[; ;utility.h: 49: extern bool Ptt_On(void);
-[; ;utility.h: 50: extern void Ptt_Off(void);
-[; ;utility.h: 51: extern void Set_Freq(uint32_t);
-[; ;utility.h: 52: extern bool Spi_Byte_Send(uint8_t);
-[; ;utility.h: 53: extern bool Adf_Lock(void);
-[; ;utility.h: 59: extern void Timer0_Start(void);
-[; ;utility.h: 60: extern void Timer0_Stop(void);
-[; ;utility.h: 61: extern void Timer1_Start(void);
-[; ;utility.h: 62: extern void Timer1_Stop(void);
-[; ;utility.h: 63: extern void Dac0_Start_Hold(void);
-[; ;utility.h: 64: extern void Dac0_Stop(void);
-[; ;utility.h: 65: extern void Adc1_Start(void);
-[; ;utility.h: 66: extern void Adc1_Stop(void);
-[; ;string.h: 22: extern void * memcpy(void *, const void *, size_t);
-[; ;string.h: 23: extern void * memmove(void *, const void *, size_t);
-[; ;string.h: 24: extern void * memset(void *, int, size_t);
-[; ;string.h: 28: extern void * __builtin_memcpy(void *, const void *, size_t);
-[; ;string.h: 42: extern char * strcat(char *, const char *);
-[; ;string.h: 43: extern char * strcpy(char *, const char *);
-[; ;string.h: 44: extern char * strncat(char *, const char *, size_t);
-[; ;string.h: 45: extern char * strncpy(char *, const char *, size_t);
-[; ;string.h: 46: extern char * strdup(const char *);
-[; ;string.h: 47: extern char * strtok(char *, const char *);
-[; ;string.h: 50: extern int memcmp(const void *, const void *, size_t);
-[; ;string.h: 51: extern int strcmp(const char *, const char *);
-[; ;string.h: 52: extern int stricmp(const char *, const char *);
-[; ;string.h: 53: extern int strncmp(const char *, const char *, size_t);
-[; ;string.h: 54: extern int strnicmp(const char *, const char *, size_t);
-[; ;string.h: 55: extern void * memchr(const void *, int, size_t);
-[; ;string.h: 56: extern size_t strcspn(const char *, const char *);
-[; ;string.h: 57: extern char * strpbrk(const char *, const char *);
-[; ;string.h: 58: extern size_t strspn(const char *, const char *);
-[; ;string.h: 59: extern char * strstr(const char *, const char *);
-[; ;string.h: 60: extern char * stristr(const char *, const char *);
-[; ;string.h: 61: extern char * strerror(int);
-[; ;string.h: 62: extern size_t strlen(const char *);
-[; ;string.h: 63: extern char * strchr(const char *, int);
-[; ;string.h: 64: extern char * strichr(const char *, int);
-[; ;string.h: 65: extern char * strrchr(const char *, int);
-[; ;string.h: 66: extern char * strrichr(const char *, int);
 [; ;ax25.h: 18: typedef struct {
 [; ;ax25.h: 19: uint8_t callsign[7];
 [; ;ax25.h: 20: uint8_t ssid;
@@ -3018,315 +2930,315 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;isr.h: 16: extern void TIMER1_ISR(void);
 [; ;isr.h: 17: extern void TIMER0_ISR(void);
 [; ;isr.h: 18: extern void I2C_ISR(void);
-[; ;main.c: 24: extern bool PTT_OFF;
-[; ;main.c: 25: extern bool MODEM_TRANSMITTING;
-[v F3165 `(v ~T0 @X0 1 tf ]
-"35 main.c
-[v _global_interrupt `IF3165 ~T0 @X0 1 e ]
+[; ;main.c: 19: extern bool PTT_OFF;
+[; ;main.c: 20: extern bool MODEM_TRANSMITTING;
+[v F2942 `(v ~T0 @X0 1 tf ]
+"30 main.c
+[v _global_interrupt `IF2942 ~T0 @X0 1 e ]
 {
-[; ;main.c: 35: void interrupt global_interrupt(){
+[; ;main.c: 30: void interrupt global_interrupt(){
 [e :U _global_interrupt ]
 [f ]
-[; ;main.c: 37: INTCON &= ~0x80;
-"37
+[; ;main.c: 32: INTCON &= ~0x80;
+"32
 [e =& _INTCON -> ~ -> 128 `i `uc ]
-[; ;main.c: 40: if(ADIF){
-"40
-[e $ ! _ADIF 331  ]
+[; ;main.c: 35: if(ADIF){
+"35
+[e $ ! _ADIF 330  ]
 {
-[; ;main.c: 41: ADC_ISR();
-"41
+[; ;main.c: 36: ADC_ISR();
+"36
 [e ( _ADC_ISR ..  ]
-[; ;main.c: 42: return;
-"42
-[e $UE 330  ]
+[; ;main.c: 37: return;
+"37
+[e $UE 329  ]
+"38
+}
+[e :U 330 ]
+[; ;main.c: 38: }
+[; ;main.c: 43: if(PIR1 & 0x04){
 "43
+[e $ ! != & -> _PIR1 `i -> 4 `i -> 0 `i 331  ]
+{
+[; ;main.c: 44: TIMER1_ISR();
+"44
+[e ( _TIMER1_ISR ..  ]
+[; ;main.c: 45: return;
+"45
+[e $UE 329  ]
+"46
 }
 [e :U 331 ]
-[; ;main.c: 43: }
-[; ;main.c: 48: if(PIR1 & 0x04){
-"48
-[e $ ! != & -> _PIR1 `i -> 4 `i -> 0 `i 332  ]
-{
-[; ;main.c: 49: TIMER1_ISR();
-"49
-[e ( _TIMER1_ISR ..  ]
-[; ;main.c: 50: return;
-"50
-[e $UE 330  ]
+[; ;main.c: 46: }
+[; ;main.c: 51: if(INTCON & 0x04){
 "51
+[e $ ! != & -> _INTCON `i -> 4 `i -> 0 `i 332  ]
+{
+[; ;main.c: 52: TIMER0_ISR();
+"52
+[e ( _TIMER0_ISR ..  ]
+[; ;main.c: 53: return;
+"53
+[e $UE 329  ]
+"54
 }
 [e :U 332 ]
-[; ;main.c: 51: }
-[; ;main.c: 56: if(INTCON & 0x04){
-"56
-[e $ ! != & -> _INTCON `i -> 4 `i -> 0 `i 333  ]
-{
-[; ;main.c: 57: TIMER0_ISR();
-"57
-[e ( _TIMER0_ISR ..  ]
-[; ;main.c: 58: return;
-"58
-[e $UE 330  ]
+[; ;main.c: 54: }
+[; ;main.c: 59: if(SSP1IF){
 "59
+[e $ ! _SSP1IF 333  ]
+{
+[; ;main.c: 60: I2C_ISR();
+"60
+[e ( _I2C_ISR ..  ]
+[; ;main.c: 61: return;
+"61
+[e $UE 329  ]
+"62
 }
 [e :U 333 ]
-[; ;main.c: 59: }
-[; ;main.c: 64: if(SSP1IF){
-"64
-[e $ ! _SSP1IF 334  ]
-{
-[; ;main.c: 65: I2C_ISR();
+[; ;main.c: 62: }
+[; ;main.c: 65: INTCON |= 0x80;
 "65
-[e ( _I2C_ISR ..  ]
-[; ;main.c: 66: return;
-"66
-[e $UE 330  ]
-"67
-}
-[e :U 334 ]
-[; ;main.c: 67: }
-[; ;main.c: 70: INTCON |= 0x80;
-"70
 [e =| _INTCON -> -> 128 `i `uc ]
-[; ;main.c: 71: }
-"71
-[e :UE 330 ]
+[; ;main.c: 66: }
+"66
+[e :UE 329 ]
 }
-"73
+"68
 [v _System_Start `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 73: void System_Start(void){
+[; ;main.c: 68: void System_Start(void){
 [e :U _System_Start ]
 [f ]
-[; ;main.c: 76: WDTPS4 = 1;
-"76
+[; ;main.c: 71: WDTPS4 = 1;
+"71
 [e = _WDTPS4 -> -> 1 `i `b ]
-[; ;main.c: 77: WDTPS3 = 0;
-"77
+[; ;main.c: 72: WDTPS3 = 0;
+"72
 [e = _WDTPS3 -> -> 0 `i `b ]
-[; ;main.c: 78: WDTPS2 = 0;
-"78
+[; ;main.c: 73: WDTPS2 = 0;
+"73
 [e = _WDTPS2 -> -> 0 `i `b ]
-[; ;main.c: 79: WDTPS1 = 0;
-"79
+[; ;main.c: 74: WDTPS1 = 0;
+"74
 [e = _WDTPS1 -> -> 0 `i `b ]
-[; ;main.c: 80: WDTPS0 = 1;
-"80
+[; ;main.c: 75: WDTPS0 = 1;
+"75
 [e = _WDTPS0 -> -> 1 `i `b ]
-[; ;main.c: 84: OSCCON = 0x00;
-"84
+[; ;main.c: 79: OSCCON = 0x00;
+"79
 [e = _OSCCON -> -> 0 `i `uc ]
-[; ;main.c: 85: OSCCON |= 0b11110000;
-"85
+[; ;main.c: 80: OSCCON |= 0b11110000;
+"80
 [e =| _OSCCON -> -> 240 `i `uc ]
-[; ;main.c: 86: OSCTUNE = 0x00;
-"86
+[; ;main.c: 81: OSCTUNE = 0x00;
+"81
 [e = _OSCTUNE -> -> 0 `i `uc ]
-[; ;main.c: 90: TMR0CS = 0;
-"90
+[; ;main.c: 85: TMR0CS = 0;
+"85
 [e = _TMR0CS -> -> 0 `i `b ]
-[; ;main.c: 91: PSA = 1;
-"91
+[; ;main.c: 86: PSA = 1;
+"86
 [e = _PSA -> -> 1 `i `b ]
-[; ;main.c: 95: TMR1ON = 1;
-"95
+[; ;main.c: 90: TMR1ON = 1;
+"90
 [e = _TMR1ON -> -> 1 `i `b ]
-[; ;main.c: 96: TMR1GE = 0;
-"96
+[; ;main.c: 91: TMR1GE = 0;
+"91
 [e = _TMR1GE -> -> 0 `i `b ]
-[; ;main.c: 98: TMR1CS1 = 0;
-"98
+[; ;main.c: 93: TMR1CS1 = 0;
+"93
 [e = _TMR1CS1 -> -> 0 `i `b ]
-[; ;main.c: 99: TMR1CS0 = 0;
-"99
+[; ;main.c: 94: TMR1CS0 = 0;
+"94
 [e = _TMR1CS0 -> -> 0 `i `b ]
-[; ;main.c: 101: T1CKPS1 = 1;
-"101
+[; ;main.c: 96: T1CKPS1 = 1;
+"96
 [e = _T1CKPS1 -> -> 1 `i `b ]
-[; ;main.c: 102: T1CKPS0 = 1;
-"102
+[; ;main.c: 97: T1CKPS0 = 1;
+"97
 [e = _T1CKPS0 -> -> 1 `i `b ]
-[; ;main.c: 104: CCP1M3 = 1;
-"104
+[; ;main.c: 99: CCP1M3 = 1;
+"99
 [e = _CCP1M3 -> -> 1 `i `b ]
-[; ;main.c: 105: CCP1M2 = 0;
-"105
+[; ;main.c: 100: CCP1M2 = 0;
+"100
 [e = _CCP1M2 -> -> 0 `i `b ]
-[; ;main.c: 106: CCP1M1 = 1;
-"106
+[; ;main.c: 101: CCP1M1 = 1;
+"101
 [e = _CCP1M1 -> -> 1 `i `b ]
-[; ;main.c: 107: CCP1M1 = 0;
-"107
+[; ;main.c: 102: CCP1M1 = 0;
+"102
 [e = _CCP1M1 -> -> 0 `i `b ]
-[; ;main.c: 111: DACOE = 1;
-"111
+[; ;main.c: 106: DACOE = 1;
+"106
 [e = _DACOE -> -> 1 `i `b ]
-[; ;main.c: 112: DACPSS1 = 0;
-"112
+[; ;main.c: 107: DACPSS1 = 0;
+"107
 [e = _DACPSS1 -> -> 0 `i `b ]
-[; ;main.c: 113: DACPSS0 = 0;
-"113
+[; ;main.c: 108: DACPSS0 = 0;
+"108
 [e = _DACPSS0 -> -> 0 `i `b ]
-[; ;main.c: 114: DACNSS = 0;
-"114
+[; ;main.c: 109: DACNSS = 0;
+"109
 [e = _DACNSS -> -> 0 `i `b ]
-[; ;main.c: 119: ANSA1 = 1;
-"119
+[; ;main.c: 114: ANSA1 = 1;
+"114
 [e = _ANSA1 -> -> 1 `i `b ]
-[; ;main.c: 120: ADCON0 &= 0b10000011;
-"120
+[; ;main.c: 115: ADCON0 &= 0b10000011;
+"115
 [e =& _ADCON0 -> -> 131 `i `uc ]
-[; ;main.c: 121: ADCON0 |= 0b00000100;
-"121
+[; ;main.c: 116: ADCON0 |= 0b00000100;
+"116
 [e =| _ADCON0 -> -> 4 `i `uc ]
-[; ;main.c: 122: ADNREF = 0;
-"122
+[; ;main.c: 117: ADNREF = 0;
+"117
 [e = _ADNREF -> -> 0 `i `b ]
-[; ;main.c: 123: ADPREF1 = 0;
-"123
+[; ;main.c: 118: ADPREF1 = 0;
+"118
 [e = _ADPREF1 -> -> 0 `i `b ]
-[; ;main.c: 124: ADPREF0 = 0;
-"124
+[; ;main.c: 119: ADPREF0 = 0;
+"119
 [e = _ADPREF0 -> -> 0 `i `b ]
-[; ;main.c: 125: ADCS2 = 1;
-"125
+[; ;main.c: 120: ADCS2 = 1;
+"120
 [e = _ADCS2 -> -> 1 `i `b ]
-[; ;main.c: 126: ADCS1 = 1;
-"126
+[; ;main.c: 121: ADCS1 = 1;
+"121
 [e = _ADCS1 -> -> 1 `i `b ]
-[; ;main.c: 127: ADCS0 = 0;
-"127
+[; ;main.c: 122: ADCS0 = 0;
+"122
 [e = _ADCS0 -> -> 0 `i `b ]
-[; ;main.c: 128: ADFM = 1;
-"128
+[; ;main.c: 123: ADFM = 1;
+"123
 [e = _ADFM -> -> 1 `i `b ]
-[; ;main.c: 133: TMR0IF = 0;
-"133
+[; ;main.c: 128: TMR0IF = 0;
+"128
 [e = _TMR0IF -> -> 0 `i `b ]
-[; ;main.c: 134: TMR1IF = 0;
-"134
+[; ;main.c: 129: TMR1IF = 0;
+"129
 [e = _TMR1IF -> -> 0 `i `b ]
-[; ;main.c: 135: CCP1IF = 0;
-"135
+[; ;main.c: 130: CCP1IF = 0;
+"130
 [e = _CCP1IF -> -> 0 `i `b ]
-[; ;main.c: 136: ADIF = 0;
-"136
+[; ;main.c: 131: ADIF = 0;
+"131
 [e = _ADIF -> -> 0 `i `b ]
-[; ;main.c: 140: SSPEN = 1;
-"140
+[; ;main.c: 135: SSPEN = 1;
+"135
 [e = _SSPEN -> -> 1 `i `b ]
-[; ;main.c: 141: SSPM3 = 0;
-"141
+[; ;main.c: 136: SSPM3 = 0;
+"136
 [e = _SSPM3 -> -> 0 `i `b ]
-[; ;main.c: 142: SSPM2 = 1;
-"142
+[; ;main.c: 137: SSPM2 = 1;
+"137
 [e = _SSPM2 -> -> 1 `i `b ]
-[; ;main.c: 143: SSPM1 = 1;
-"143
+[; ;main.c: 138: SSPM1 = 1;
+"138
 [e = _SSPM1 -> -> 1 `i `b ]
-[; ;main.c: 144: SSPM0 = 0;
-"144
+[; ;main.c: 139: SSPM0 = 0;
+"139
 [e = _SSPM0 -> -> 0 `i `b ]
-[; ;main.c: 145: GCEN = 0;
-"145
+[; ;main.c: 140: GCEN = 0;
+"140
 [e = _GCEN -> -> 0 `i `b ]
-[; ;main.c: 146: ACKDT = 0;
-"146
+[; ;main.c: 141: ACKDT = 0;
+"141
 [e = _ACKDT -> -> 0 `i `b ]
-[; ;main.c: 147: SEN = 1;
-"147
+[; ;main.c: 142: SEN = 1;
+"142
 [e = _SEN -> -> 1 `i `b ]
-[; ;main.c: 148: SSP1ADD = 0x60;
-"148
+[; ;main.c: 143: SSP1ADD = 0x60;
+"143
 [e = _SSP1ADD -> -> 96 `i `uc ]
-[; ;main.c: 149: SSPMSK |= 0b11111110;
-"149
+[; ;main.c: 144: SSPMSK |= 0b11111110;
+"144
 [e =| _SSPMSK -> -> 254 `i `uc ]
-[; ;main.c: 150: PCIE = 0;
-"150
+[; ;main.c: 145: PCIE = 0;
+"145
 [e = _PCIE -> -> 0 `i `b ]
-[; ;main.c: 151: SCIE = 0;
-"151
+[; ;main.c: 146: SCIE = 0;
+"146
 [e = _SCIE -> -> 0 `i `b ]
-[; ;main.c: 152: BOEN = 0;
-"152
+[; ;main.c: 147: BOEN = 0;
+"147
 [e = _BOEN -> -> 0 `i `b ]
-[; ;main.c: 153: AHEN = 0;
-"153
+[; ;main.c: 148: AHEN = 0;
+"148
 [e = _AHEN -> -> 0 `i `b ]
-[; ;main.c: 154: DHEN = 0;
-"154
+[; ;main.c: 149: DHEN = 0;
+"149
 [e = _DHEN -> -> 0 `i `b ]
-[; ;main.c: 155: SBCDE = 0;
-"155
+[; ;main.c: 150: SBCDE = 0;
+"150
 [e = _SBCDE -> -> 0 `i `b ]
-[; ;main.c: 156: SSP1IF = 0;
-"156
+[; ;main.c: 151: SSP1IF = 0;
+"151
 [e = _SSP1IF -> -> 0 `i `b ]
-[; ;main.c: 157: SSP1IE = 1;
-"157
+[; ;main.c: 152: SSP1IE = 1;
+"152
 [e = _SSP1IE -> -> 1 `i `b ]
-[; ;main.c: 161: INTCON |= 0xC0;
-"161
+[; ;main.c: 156: INTCON |= 0xC0;
+"156
 [e =| _INTCON -> -> 192 `i `uc ]
-[; ;main.c: 162: }
-"162
-[e :UE 335 ]
+[; ;main.c: 157: }
+"157
+[e :UE 334 ]
 }
-"165
+"160
 [v _main `(i ~T0 @X0 1 ef ]
 {
-[; ;main.c: 165: int main(void) {
+[; ;main.c: 160: int main(void) {
 [e :U _main ]
 [f ]
-[; ;main.c: 166: Gpio_Config();
-"166
+[; ;main.c: 161: Gpio_Config();
+"161
 [e ( _Gpio_Config ..  ]
-[; ;main.c: 167: System_Start();
-"167
+[; ;main.c: 162: System_Start();
+"162
 [e ( _System_Start ..  ]
-[; ;main.c: 168: while (!(OSCSTAT & (0x01))){}
-"168
-[e $U 337  ]
-[e :U 338 ]
+[; ;main.c: 163: while (!(OSCSTAT & (0x01))){}
+"163
+[e $U 336  ]
+[e :U 337 ]
 {
 }
-[e :U 337 ]
-[e $ ! != & -> _OSCSTAT `i -> 1 `i -> 0 `i 338  ]
-[e :U 339 ]
-[; ;main.c: 172: Timer1_Start();
-"172
+[e :U 336 ]
+[e $ ! != & -> _OSCSTAT `i -> 1 `i -> 0 `i 337  ]
+[e :U 338 ]
+[; ;main.c: 166: Timer1_Start();
+"166
 [e ( _Timer1_Start ..  ]
-[; ;main.c: 174: Dac0_Start_Hold();
-"174
+[; ;main.c: 168: Dac0_Start_Hold();
+"168
 [e ( _Dac0_Start_Hold ..  ]
-[; ;main.c: 176: Adc1_Start();
-"176
+[; ;main.c: 170: Adc1_Start();
+"170
 [e ( _Adc1_Start ..  ]
-[; ;main.c: 178: PORTAbits.RA5 = 0;;
-"178
+[; ;main.c: 172: PORTAbits.RA5 = 0;;
+"172
 [e = . . _PORTAbits 0 5 -> -> 0 `i `uc ]
-[; ;main.c: 179: Delay_ms(10);
-"179
+[; ;main.c: 173: Delay_ms(10);
+"173
 [e ( _Delay_ms (1 -> -> 10 `i `ui ]
-[; ;main.c: 180: PORTAbits.RA4 = 1;;
-"180
+[; ;main.c: 174: PORTAbits.RA4 = 1;;
+"174
 [e = . . _PORTAbits 0 4 -> -> 1 `i `uc ]
-[; ;main.c: 181: Delay_ms(10);
-"181
+[; ;main.c: 175: Delay_ms(10);
+"175
 [e ( _Delay_ms (1 -> -> 10 `i `ui ]
-[; ;main.c: 182: PORTAbits.RA5 = 1;;
-"182
+[; ;main.c: 176: PORTAbits.RA5 = 1;;
+"176
 [e = . . _PORTAbits 0 5 -> -> 1 `i `uc ]
-[; ;main.c: 183: Delay_ms(10);
-"183
+[; ;main.c: 177: Delay_ms(10);
+"177
 [e ( _Delay_ms (1 -> -> 10 `i `ui ]
-[; ;main.c: 185: Delay_ms(200);
-"185
+[; ;main.c: 179: Delay_ms(200);
+"179
 [e ( _Delay_ms (1 -> -> 200 `i `ui ]
-[v F3171 `S329 ~T0 @X0 -> 2 `i s ]
-[i F3171
+[v F2948 `S328 ~T0 @X0 -> 2 `i s ]
+[i F2948
 :U ..
 :U ..
 :U ..
@@ -3338,7 +3250,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> 89 `c
 -> 0 `c
 ..
-"188
+"182
 -> -> 5 `i `uc
 ..
 :U ..
@@ -3355,84 +3267,84 @@ Version 3.2 HI-TECH Software Intermediate Code
 ..
 ..
 ]
-[v _beacon_address `S329 ~T0 @X0 -> 2 `i a ]
-[; ;main.c: 188: s_address beacon_address[2] = {{"CUBEYY", 5},{"CUBEXX", 6}};
-[e = _beacon_address F3171 ]
-[; ;main.c: 190: Ax25_Send_Header(beacon_address,2);
-"190
+[v _beacon_address `S328 ~T0 @X0 -> 2 `i a ]
+[; ;main.c: 182: s_address beacon_address[2] = {{"CUBEYY", 5},{"CUBEXX", 6}};
+[e = _beacon_address F2948 ]
+[; ;main.c: 184: Ax25_Send_Header(beacon_address,2);
+"184
 [e ( _Ax25_Send_Header (2 , &U _beacon_address -> 2 `i ]
-[; ;main.c: 191: Ax25_Send_String("HELLO");
-"191
+[; ;main.c: 185: Ax25_Send_String("HELLO");
+"185
 [e ( _Ax25_Send_String (1 :s 1C ]
-[; ;main.c: 192: Ax25_Send_Footer();
-"192
+[; ;main.c: 186: Ax25_Send_Footer();
+"186
 [e ( _Ax25_Send_Footer ..  ]
-[; ;main.c: 194: Modem_Setup();
-"194
+[; ;main.c: 188: Modem_Setup();
+"188
 [e ( _Modem_Setup ..  ]
-[; ;main.c: 195: PORTCbits.RC3 = 1;;
-"195
+[; ;main.c: 189: PORTCbits.RC3 = 1;;
+"189
 [e = . . _PORTCbits 0 3 -> -> 1 `i `uc ]
-[; ;main.c: 196: Delay_ms(100);
-"196
+[; ;main.c: 190: Delay_ms(100);
+"190
 [e ( _Delay_ms (1 -> -> 100 `i `ui ]
-[; ;main.c: 197: Adf_Lock();
-"197
+[; ;main.c: 191: Adf_Lock();
+"191
 [e ( _Adf_Lock ..  ]
-[; ;main.c: 198: Delay_ms(100);
-"198
+[; ;main.c: 192: Delay_ms(100);
+"192
 [e ( _Delay_ms (1 -> -> 100 `i `ui ]
-[; ;main.c: 201: while(1){
-"201
-[e :U 341 ]
-{
-[; ;main.c: 202: if(PTT_OFF){
-"202
-[e $ ! != -> _PTT_OFF `i -> -> -> 0 `i `uc `i 343  ]
-{
-[; ;main.c: 203: Ptt_Off();
-"203
-[e ( _Ptt_Off ..  ]
-[; ;main.c: 204: PTT_OFF = 0;
-"204
-[e = _PTT_OFF -> -> 0 `i `uc ]
-"205
-}
-[e :U 343 ]
-[; ;main.c: 205: }
-[; ;main.c: 206: Delay_ms(2000);
-"206
-[e ( _Delay_ms (1 -> -> 2000 `i `ui ]
-[; ;main.c: 208: Modem_Flush_Frame();
-"208
-[e ( _Modem_Flush_Frame ..  ]
-[; ;main.c: 209: while(MODEM_TRANSMITTING);
-"209
-[e $U 344  ]
-[e :U 345 ]
-[e :U 344 ]
-[e $ != -> _MODEM_TRANSMITTING `i -> -> -> 0 `i `uc `i 345  ]
-[e :U 346 ]
-[; ;main.c: 210: Delay_ms(2000);
-"210
-[e ( _Delay_ms (1 -> -> 2000 `i `ui ]
-[; ;main.c: 222: asm("clrwdt");
-"222
-[; <" clrwdt ;# ">
-"223
-}
+[; ;main.c: 195: while(1){
+"195
 [e :U 340 ]
-"201
-[e $U 341  ]
+{
+[; ;main.c: 196: if(PTT_OFF){
+"196
+[e $ ! != -> _PTT_OFF `i -> -> -> 0 `i `uc `i 342  ]
+{
+[; ;main.c: 197: Ptt_Off();
+"197
+[e ( _Ptt_Off ..  ]
+[; ;main.c: 198: PTT_OFF = 0;
+"198
+[e = _PTT_OFF -> -> 0 `i `uc ]
+"199
+}
 [e :U 342 ]
-[; ;main.c: 223: }
-[; ;main.c: 224: return (0);
-"224
+[; ;main.c: 199: }
+[; ;main.c: 200: Delay_ms(2000);
+"200
+[e ( _Delay_ms (1 -> -> 2000 `i `ui ]
+[; ;main.c: 202: Modem_Flush_Frame();
+"202
+[e ( _Modem_Flush_Frame ..  ]
+[; ;main.c: 203: while(MODEM_TRANSMITTING);
+"203
+[e $U 343  ]
+[e :U 344 ]
+[e :U 343 ]
+[e $ != -> _MODEM_TRANSMITTING `i -> -> -> 0 `i `uc `i 344  ]
+[e :U 345 ]
+[; ;main.c: 204: Delay_ms(2000);
+"204
+[e ( _Delay_ms (1 -> -> 2000 `i `ui ]
+[; ;main.c: 216: asm("clrwdt");
+"216
+[; <" clrwdt ;# ">
+"217
+}
+[e :U 339 ]
+"195
+[e $U 340  ]
+[e :U 341 ]
+[; ;main.c: 217: }
+[; ;main.c: 218: return (0);
+"218
 [e ) -> 0 `i ]
-[e $UE 336  ]
-[; ;main.c: 225: }
-"225
-[e :UE 336 ]
+[e $UE 335  ]
+[; ;main.c: 219: }
+"219
+[e :UE 335 ]
 }
 [a 1C 72 69 76 76 79 0 ]
 

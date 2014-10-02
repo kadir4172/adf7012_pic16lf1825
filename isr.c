@@ -5,15 +5,9 @@
  * Created on October 2, 2014, 1:35 PM
  */
 #include <xc.h>
-#include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
 #include <stdbool.h>
-
-//#include <string.h>
-//#include <math.h>
-
-
 
 uint8_t adc__high = 0;                       //Adc return values
 uint8_t adc__low  = 0;
