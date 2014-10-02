@@ -3936,39 +3936,24 @@ void Modem_Setup(void);
 void Modem_Start(void);
 void Modem_Flush_Frame(void);
 
-# 23 "main.c"
-extern bool PTT_OFF;
+# 15 "isr.h"
+extern void ADC_ISR(void);
+extern void TIMER1_ISR(void);
+extern void TIMER0_ISR(void);
+extern void I2C_ISR(void);
 
-extern void Sinus_Generator(void);
+# 24 "main.c"
+extern bool PTT_OFF;
 extern bool MODEM_TRANSMITTING;
 
-uint8_t adc__high = 0;
-uint8_t adc__low = 0;
-
 # 35
-uint8_t i2c_address = 0;
-uint8_t i2c_data[5] = {0};
-uint8_t i2c_dummy = 0;
-uint8_t i2c_data_index = 0;
-
-
-
-uint32_t Systick_Counter = 0;
-bool Change_to_New_Baud = 0;
-
-# 53
 void interrupt global_interrupt(){
 
 INTCON &= ~0x80;
 
 
 if(ADIF){
-
-adc__high = ADRESH;
-adc__low = ADRESL;
-
-ADIF = 0;
-
+ADC_ISR();
 return;
 }
 
@@ -3976,97 +3961,25 @@ return;
 
 
 if(PIR1 & 0x04){
-
-Change_to_New_Baud = 1;
-
-
-
-TMR1H = 0x00;
-TMR1L = 0x00;
-
-PIR1 &= ~0x04;
-
-Systick_Counter += 1;
-if(Systick_Counter > 100000){
-Systick_Counter = 0;
-ADCON0 |= 0b00000010;
-}
-
+TIMER1_ISR();
 return;
 }
+
 
 
 
 if(INTCON & 0x04){
-
-Sinus_Generator();
-
-INTCON &= ~0x04;
-
+TIMER0_ISR();
 return;
 }
+
 
 
 
 if(SSP1IF){
-
-if(!SSP1STATbits.D_nA){
-SSP1IF = 0;
-i2c_address = SSP1BUF;
-if(SSP1STATbits.R_nW){
-if(!SSP1STATbits.BF)
-SSP1BUF = i2c_data[i2c_data_index++];
-else{
-i2c_dummy = SSP1BUF;
-
-SSP1BUF = 0xCC;
-}
-
-CKP = 1;
-}
-else{
-CKP = 1;
-}
-
-}
-else{
-SSP1IF = 0;
-
-if(i2c_address & 0x01){
-if(SSP1CON2bits.ACKSTAT == 1){
-CKP = 1;
-}
-else{
-if(!SSP1STATbits.BF){
-SSP1BUF = i2c_data[i2c_data_index++];
-}
-else{
-i2c_dummy = SSP1BUF;
-SSP1BUF = 0xCC;
-}
-CKP = 1;
-}
-
-}
-else{
-i2c_data[i2c_data_index++] = SSP1BUF;
-CKP = 1;
-}
-
-
-}
-
-i2c_dummy = SSP1BUF;
-WCOL = 0;
-SSPOV = 0;
-
-if(i2c_data_index >= 5)
-i2c_data_index = 0;
-
+I2C_ISR();
 return;
 }
-
-
 
 
 INTCON |= 0x80;
@@ -4211,7 +4124,7 @@ Modem_Flush_Frame();
 while(MODEM_TRANSMITTING);
 Delay_ms(2000);
 
-# 317
+# 222
 asm("clrwdt");
 }
 return (0);

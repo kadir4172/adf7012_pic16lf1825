@@ -15,32 +15,14 @@
 #include <math.h>
 #include "ax25.h"
 #include "audio_tone.h"
+#include "isr.h"
 
 //#define Debug_Modem_Packet                 //uncomment this line to debug the data encoded with AX25
 
-#define BATTERY_MEAS_EVERY_MILISECOND 100000 //batarya olcme periyodu [ms]
+#define I2C_ADDRESS                           0x60
 
-extern  bool PTT_OFF;                        // PTT_OFF flag, not to pull Ptt_Off function within an interrupt
-
-extern void Sinus_Generator(void);           //function which generates audio signal
+extern bool PTT_OFF;                         //PTT_OFF flag, not to pull Ptt_Off function within an interrupt
 extern bool MODEM_TRANSMITTING;              //flag to check whether modem_packet is fully transmitted
-
-uint8_t adc__high = 0;                       //Adc return values
-uint8_t adc__low  = 0;
-
-
-//I2c global variables
-#define I2C_ADDRESS                           0x60                
-#define I2C_DATA_BUFFER_LENGTH                5
-uint8_t i2c_address                         = 0;
-uint8_t i2c_data[I2C_DATA_BUFFER_LENGTH]    = {0};
-uint8_t i2c_dummy                           = 0;
-uint8_t i2c_data_index                      = 0;
-//I2c global variables
-
-
-uint32_t Systick_Counter = 0;                //Counter with period of 833 us
-bool Change_to_New_Baud = false;             //Flag to check for changing to new baud
 
 #ifdef Debug_Modem_Packet
 extern uint8_t modem_packet[MODEM_MAX_PACKET];
@@ -56,112 +38,35 @@ void interrupt global_interrupt(){          //single interrupt vector to handle 
 
     //ADC interrupt
     if(ADIF){
-        //ADC1 ISR
-        adc__high = ADRESH;
-        adc__low  = ADRESL;
-
-        ADIF = 0;
-        //ADC1 ISR
-        return;
+      ADC_ISR();
+      return;
     }
     //ADC interrupt
     
 
     //Timer1 interrupt
     if(PIR1 & 0x04){
-       //Timer1 ISR
-        Change_to_New_Baud = true;         //Change to new baud in Sinus_Generator()
-       
-
-       //reset Timer1 registers
-       TMR1H = 0x00;
-       TMR1L = 0x00;
-       
-       PIR1 &= ~0x04; //Clear Timer1 interrupt flag
-
-       Systick_Counter += 1;
-       if(Systick_Counter > BATTERY_MEAS_EVERY_MILISECOND){
-            Systick_Counter = 0;
-            ADCON0 |= 0b00000010;         //If period overruns for battery reading start the ADC conversion
-        }
-       //Timer1 ISR
-       return;
+      TIMER1_ISR();
+      return;
     }
     //Timer1 interrupt
 
+    
     //Timer0 interrupt
     if(INTCON & 0x04){
-       //Timer0 ISR
-       Sinus_Generator();                //Call Sinus_Generator() with Playback_Rate
-        
-       INTCON &= ~0x04;                  //Clear Timer0 interrupt flag
-        //Timer0 ISR
-       return;
+      TIMER0_ISR();
+      return;
     }
     //Timer0 interrupt
- 
+
+    
     //I2C interrupt
     if(SSP1IF){
-        //I2C ISR
-       if(!SSP1STATbits.D_nA){                              //last byte received/transmitted was an address
-            SSP1IF = 0;                                     //clear interrupt flag
-            i2c_address = SSP1BUF;                          //read address and clear the buffer
-            if(SSP1STATbits.R_nW){                          //address with read option
-                if(!SSP1STATbits.BF)                        //load the buffer if it is not full
-                  SSP1BUF = i2c_data[i2c_data_index++];     //First byte of the data to send
-                else{                                       //clear the buffer and send data
-                  i2c_dummy = SSP1BUF;
-
-                  SSP1BUF = 0xCC;
-                }
-
-                CKP = 1;                                    //release the clock line
-            }
-            else{                                           //address with write option
-                CKP = 1;                                    //release the clock line
-            }
-
-        }
-       else{                                                //last byte received/transmitted was a data
-            SSP1IF = 0;                                     //clear interrupt flag
-            //if(SSP1STATbits.R_nW){                        //address with read option
-            if(i2c_address & 0x01){                         //address with read option
-              if(SSP1CON2bits.ACKSTAT == 1){                //transfer is complete
-                CKP = 1;                                    //release the clock line
-              }
-              else{                                         //transfer is not complete
-                if(!SSP1STATbits.BF){                       //load the buffer if it is not full
-                  SSP1BUF = i2c_data[i2c_data_index++];     //rest of the data to send
-                }
-                else{                                       //clear the buffer and send data
-                  i2c_dummy = SSP1BUF;
-                  SSP1BUF = 0xCC;                           //0xCC data is interpreted as buffer full error on master side
-                }
-                CKP = 1;                                    //release the clock line
-              }
-
-            }
-            else{                                           //address with write option
-              i2c_data[i2c_data_index++] = SSP1BUF;         //read data and clear buffer
-              CKP = 1;                                      //release the clock line
-            }
-
-
-        }
-
-        i2c_dummy = SSP1BUF;                               //clear buffer full flag
-        WCOL      = 0;                                     //clear write collision flag
-        SSPOV     = 0;                                     //clear overflow flag
-
-        if(i2c_data_index >= I2C_DATA_BUFFER_LENGTH)
-            i2c_data_index = 0;
-       //I2C ISR
-        return;
+      I2C_ISR();
+      return;
     }
     //I2C interrupt
 
- 
-  
     INTCON |= 0x80;                       //Global interrupt enabled again
 }
 
@@ -183,20 +88,20 @@ void System_Start(void){
     
     //Configurations for Timer0
       TMR0CS = 0;                 //Internal clock source (Fosc/4)
-      PSA    = 1;                    //Do not use Prescaler
+      PSA    = 1;                 //Do not use Prescaler
     //Configurations for Timer0
 
     //Configurations for Timer1
-      TMR1ON = 1;                //Timer1 always count
+      TMR1ON = 1;                 //Timer1 always count
       TMR1GE = 0;
 
-      TMR1CS1 = 0;               //Fosc/4
+      TMR1CS1 = 0;                //Fosc/4
       TMR1CS0 = 0;
 
-      T1CKPS1 = 1;               //1/8 prescaler
+      T1CKPS1 = 1;                //1/8 prescaler
       T1CKPS0 = 1;
 
-      CCP1M3 = 1;               //Software interrupt on compare event
+      CCP1M3 = 1;                 //Software interrupt on compare event
       CCP1M2 = 0;
       CCP1M1 = 1;
       CCP1M1 = 0;
@@ -211,7 +116,7 @@ void System_Start(void){
 
    
     //Configurations for Adc1
-      ANSA1   = 1;                //RA1 analog input
+      ANSA1   = 1;              //RA1 analog input
       ADCON0 &= 0b10000011;
       ADCON0 |= 0b00000100;     //AN1 channel select
       ADNREF  = 0;              //Vref- = GND
@@ -219,8 +124,8 @@ void System_Start(void){
       ADPREF0 = 0;              //Vref+ = Vdd
       ADCS2   = 1;
       ADCS1   = 1;
-      ADCS0   = 0;               //Fosc/64 for conversion clock
-      ADFM    = 1;                 //Output on right hand side
+      ADCS0   = 0;              //Fosc/64 for conversion clock
+      ADFM    = 1;              //Output on right hand side
     //Configurations for Adc1
 
 
@@ -263,7 +168,6 @@ int main(void) {
     while (!(OSCSTAT & (0x01))){}    //Wait for HFIOFS Osc. stable bit
     /* TODO check the timeout somehow, CPU clock is not stable, implement a dummy counter or WDT will handle this */
 
-    //Gpio_Config();                   //Gpio configuration
     Timer1_Start();                  //Timer1 with 833 us period
 
     Dac0_Start_Hold();               //Start Dac output and make the output Vdd/2
