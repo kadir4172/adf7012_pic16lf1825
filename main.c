@@ -28,6 +28,17 @@ extern bool MODEM_TRANSMITTING;              //flag to check whether modem_packe
 uint8_t adc__high = 0;                       //Adc return values
 uint8_t adc__low  = 0;
 
+
+//I2c global variables
+#define I2C_ADDRESS                           0x60                
+#define I2C_DATA_BUFFER_LENGTH                5
+uint8_t i2c_address                         = 0;
+uint8_t i2c_data[I2C_DATA_BUFFER_LENGTH]    = {0};
+uint8_t i2c_dummy                           = 0;
+uint8_t i2c_data_index                      = 0;
+//I2c global variables
+
+
 uint32_t Systick_Counter = 0;                //Counter with period of 833 us
 bool Change_to_New_Baud = false;             //Flag to check for changing to new baud
 
@@ -89,8 +100,68 @@ void interrupt global_interrupt(){          //single interrupt vector to handle 
     }
     //Timer0 interrupt
  
+    //I2C interrupt
+    if(SSP1IF){
+        //I2C ISR
+       if(!SSP1STATbits.D_nA){                              //last byte received/transmitted was an address
+            SSP1IF = 0;                                     //clear interrupt flag
+            i2c_address = SSP1BUF;                          //read address and clear the buffer
+            if(SSP1STATbits.R_nW){                          //address with read option
+                if(!SSP1STATbits.BF)                        //load the buffer if it is not full
+                  SSP1BUF = i2c_data[i2c_data_index++];     //First byte of the data to send
+                else{                                       //clear the buffer and send data
+                  i2c_dummy = SSP1BUF;
+
+                  SSP1BUF = 0xCC;
+                }
+
+                CKP = 1;                                    //release the clock line
+            }
+            else{                                           //address with write option
+                CKP = 1;                                    //release the clock line
+            }
+
+        }
+       else{                                                //last byte received/transmitted was a data
+            SSP1IF = 0;                                     //clear interrupt flag
+            //if(SSP1STATbits.R_nW){                        //address with read option
+            if(i2c_address & 0x01){                         //address with read option
+              if(SSP1CON2bits.ACKSTAT == 1){                //transfer is complete
+                CKP = 1;                                    //release the clock line
+              }
+              else{                                         //transfer is not complete
+                if(!SSP1STATbits.BF){                       //load the buffer if it is not full
+                  SSP1BUF = i2c_data[i2c_data_index++];     //rest of the data to send
+                }
+                else{                                       //clear the buffer and send data
+                  i2c_dummy = SSP1BUF;
+                  SSP1BUF = 0xCC;                           //0xCC data is interpreted as buffer full error on master side
+                }
+                CKP = 1;                                    //release the clock line
+              }
+
+            }
+            else{                                           //address with write option
+              i2c_data[i2c_data_index++] = SSP1BUF;         //read data and clear buffer
+              CKP = 1;                                      //release the clock line
+            }
 
 
+        }
+
+        i2c_dummy = SSP1BUF;                               //clear buffer full flag
+        WCOL      = 0;                                     //clear write collision flag
+        SSPOV     = 0;                                     //clear overflow flag
+
+        if(i2c_data_index >= I2C_DATA_BUFFER_LENGTH)
+            i2c_data_index = 0;
+       //I2C ISR
+        return;
+    }
+    //I2C interrupt
+
+ 
+  
     INTCON |= 0x80;                       //Global interrupt enabled again
 }
 
@@ -160,18 +231,39 @@ void System_Start(void){
       ADIF   = 0;
     //Reset Interrupt Flags
 
+    //Configurations for I2C
+      SSPEN   = 1;               //Pin configurations for the I2C peripheral
+      SSPM3   = 0;               //Slave operation with 7 bit adress, S/P interrupt disabled
+      SSPM2   = 1;
+      SSPM1   = 1;
+      SSPM0   = 0;
+      GCEN    = 0;               //General Call disabled
+      ACKDT   = 0;               //ACK on every receive    /*TODO this may not be implemented in Proteus*/
+      SEN     = 1;               //Clock stretch enabled
+      SSP1ADD = I2C_ADDRESS;     //7 bit adress
+      SSPMSK |= 0b11111110;      //Address check for all bits
+      PCIE    = 0;               //P interrupt disable
+      SCIE    = 0;               //S interrupt disable
+      BOEN    = 0;               //SSP1BUF is updated ignoring SSPOV
+      AHEN    = 0;               //Adress hold disable
+      DHEN    = 0;               //Data hold disable
+      SBCDE   = 0;               //Collision Detect interrupt disable
+      SSP1IF  = 0;               //Clear interrupt flag
+      SSP1IE  = 1;               //I2C interrupt enable
+    //Configurations for I2C
+
     //Global Interrupt ve Peripheral Interrupt Enable
       INTCON |= 0xC0;
 }
 
 
 int main(void) {
+    Gpio_Config();                   //Gpio configuration
     System_Start();
     while (!(OSCSTAT & (0x01))){}    //Wait for HFIOFS Osc. stable bit
     /* TODO check the timeout somehow, CPU clock is not stable, implement a dummy counter or WDT will handle this */
 
-    Gpio_Config();                   //Gpio configuration
- 
+    //Gpio_Config();                   //Gpio configuration
     Timer1_Start();                  //Timer1 with 833 us period
 
     Dac0_Start_Hold();               //Start Dac output and make the output Vdd/2

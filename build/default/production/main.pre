@@ -3945,10 +3945,18 @@ extern bool MODEM_TRANSMITTING;
 uint8_t adc__high = 0;
 uint8_t adc__low = 0;
 
+# 35
+uint8_t i2c_address = 0;
+uint8_t i2c_data[5] = {0};
+uint8_t i2c_dummy = 0;
+uint8_t i2c_data_index = 0;
+
+
+
 uint32_t Systick_Counter = 0;
 bool Change_to_New_Baud = 0;
 
-# 42
+# 53
 void interrupt global_interrupt(){
 
 INTCON &= ~0x80;
@@ -3994,6 +4002,66 @@ if(INTCON & 0x04){
 Sinus_Generator();
 
 INTCON &= ~0x04;
+
+return;
+}
+
+
+
+if(SSP1IF){
+
+if(!SSP1STATbits.D_nA){
+SSP1IF = 0;
+i2c_address = SSP1BUF;
+if(SSP1STATbits.R_nW){
+if(!SSP1STATbits.BF)
+SSP1BUF = i2c_data[i2c_data_index++];
+else{
+i2c_dummy = SSP1BUF;
+
+SSP1BUF = 0xCC;
+}
+
+CKP = 1;
+}
+else{
+CKP = 1;
+}
+
+}
+else{
+SSP1IF = 0;
+
+if(i2c_address & 0x01){
+if(SSP1CON2bits.ACKSTAT == 1){
+CKP = 1;
+}
+else{
+if(!SSP1STATbits.BF){
+SSP1BUF = i2c_data[i2c_data_index++];
+}
+else{
+i2c_dummy = SSP1BUF;
+SSP1BUF = 0xCC;
+}
+CKP = 1;
+}
+
+}
+else{
+i2c_data[i2c_data_index++] = SSP1BUF;
+CKP = 1;
+}
+
+
+}
+
+i2c_dummy = SSP1BUF;
+WCOL = 0;
+SSPOV = 0;
+
+if(i2c_data_index >= 5)
+i2c_data_index = 0;
 
 return;
 }
@@ -4071,16 +4139,37 @@ ADIF = 0;
 
 
 
+SSPEN = 1;
+SSPM3 = 0;
+SSPM2 = 1;
+SSPM1 = 1;
+SSPM0 = 0;
+GCEN = 0;
+ACKDT = 0;
+SEN = 1;
+SSP1ADD = 0x60;
+SSPMSK |= 0b11111110;
+PCIE = 0;
+SCIE = 0;
+BOEN = 0;
+AHEN = 0;
+DHEN = 0;
+SBCDE = 0;
+SSP1IF = 0;
+SSP1IE = 1;
+
+
+
 INTCON |= 0xC0;
 }
 
 
 int main(void) {
+Gpio_Config();
 System_Start();
 while (!(OSCSTAT & (0x01))){}
 
 
-Gpio_Config();
 
 Timer1_Start();
 
@@ -4122,7 +4211,7 @@ Modem_Flush_Frame();
 while(MODEM_TRANSMITTING);
 Delay_ms(2000);
 
-# 225
+# 317
 asm("clrwdt");
 }
 return (0);

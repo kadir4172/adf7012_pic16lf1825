@@ -2877,12 +2877,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;utility.c: 35: TRISA &= 0b11001011;
 "35
 [e =& _TRISA -> -> 203 `i `uc ]
-[; ;utility.c: 36: TRISC |= 0b00110000;
+[; ;utility.c: 36: TRISC |= 0b00110011;
 "36
-[e =| _TRISC -> -> 48 `i `uc ]
-[; ;utility.c: 37: TRISC &= 0b11110000;
+[e =| _TRISC -> -> 51 `i `uc ]
+[; ;utility.c: 37: TRISC &= 0b11110011;
 "37
-[e =& _TRISC -> -> 240 `i `uc ]
+[e =& _TRISC -> -> 243 `i `uc ]
 [; ;utility.c: 39: return 1;
 "39
 [e ) -> -> 1 `i `uc ]
